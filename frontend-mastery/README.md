@@ -5,6 +5,17 @@
 
 ---
 
+## Two Tracks Live Here
+
+This folder has two complementary tracks. Pick by what you need right now:
+
+- **`staff-track/`** — narrative, internals-first, written like a senior peer is walking you through how each layer actually works. Use this when you want to upgrade your mental model, not look up an API. See [`staff-track/README.md`](staff-track/README.md).
+- **`docs/` and `exercises/` (this directory)** — quick-reference guides. Senior-level content but optimized for scanning, not reading. Use these when you want to refresh on a topic fast.
+
+If you're starting fresh, read the staff track first. Come back here for reference when you need it.
+
+---
+
 ## How To Use This Folder
 
 Read the docs in order once. After that, jump by situation:
