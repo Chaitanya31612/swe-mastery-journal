@@ -40,41 +40,46 @@
 - Player has position, has_started?
 
 #### Board
+
 ```
 - size
+- Cell[size]
 - jumps_for_cell <Cell, Jump>
 --
 + resolveMove(player)
 + final_cell?
 ```
 
-#### Cell
 ```
+Cell
 - position
 - Jump <optional>
 + has_jump?
 ```
 
-#### Dice
 ```
+Dice
 - count
 + roll
 ```
 
-#### Jump
 ```
+Jump
+
 - from
 - to
+
 ```
 
-#### Player
 ```
+Player
 - position
 + setPosition(newPos)
 ```
 
-#### Game
 ```
+Game
+
 - board
 - players
 - dice
@@ -92,158 +97,52 @@
 ```ruby
 module SnakeAndLadder
 
-  MAX_TURNS = 10_000
-
-  class Game
-    attr_reader :board, :players, :dice, :log, :winner
-
-    def initialize(board, players, dice)
-      @board = board
-      @players = players
-      @dice = dice
-      @log = GameLog.new # has method append
-      @turn = 1
-    end
-
-    def play
-      while (!winner && @turn <= MAX_TURNS) {
-        roll = dice.roll
-        log.append("Turn #{@turn}: #{current_player.name} rolled a #{roll}")
-        resolved_position = board.resolve(current_player.position, roll)
-
-        if resolved_position == current_player.position
-          log.append("Overshoot, over to next player")
-        elsif resolved_position < current_player.position
-          log.append("Oops, encountered a snake")
-        elsif resolved_position > current_player.position + roll
-          log.append("Woah, found a ladder!")
-        else
-          log.append("Moved to position #{resolved_position}")
-        end
-
-        current_player.move_to(resolved_position)
-        declare_winner! if board.final_cell?(resolved_position)
-        @turn += 1 unless winner
-      }
-    end
-
-    private
-
-    def current_player
-      players[(@turn-1) % players.size]
-    end
-
-    def declare_winner!
-      @winner = current_player
-    end
+class Game
+  attr_reader :board, :players, :dice, :log, :winner
+  
+  def initialize(board, players, dice)
+    @board = board
+    @players = players
+    @dice = dice
+    @log = GameLog.new # has method append
+    @turn = 1
   end
 
-  class Board
-    def initialize(size, jumps)
-      @size = size
-      @jumps = jumps
-    end
+  def play
+    while (!winner) {
+      roll = dice.roll
+      final_player_position = board.resolve(current_player, roll)
 
-    def resolve(player_position, roll)
-      new_pos = player_position + roll
-      return player_position if new_pos > size # overshoot
+      puts "Overshoot, over to next player" if final_player_position == current_player.position
+      current_player.move_to(final_player_position)
+      declare_winner! if board.is_final_cell?(final_player_position)
+      @turn++
+    }
 
-      @jumps[new_pos] ? @jumps[new_pos].to : new_pos
-    end
-
-    def final_cell?(pos)
-      pos == size
-    end
+    @winner
   end
 
-  class Dice
-    def initialize(count)
-      @count = count
-    end
+  private
 
-    def roll
-      rand(1..6) * @count
-    end
+  def current_player
+    @players[(@turn-1) % @players.size]
   end
 
-  # Abstract Base class
-  class Jump
-    attr_reader :from, :to
+  def declare_winner!
+    @winner = current_player
+  end
+end
 
-    def initialize(from, to)
-      @from = from
-      @to = to
-      validate!
-    end
+class Board
+  attr_reader :size, cells, jump_for_cell
+
+  def initialize(size)
+    @size = size
+    init_cells_and_jumps(size)
   end
 
-  class Snake < Jump
-    def validate!
-      raise "Invalid snake, head should be > tail" unless from > to
-    end
-  end
 
-  class Ladder < Jump
-    def validate!
-      raise "Invalid ladder, foot should be < head" unless from < to
-    end
-  end
-
-  class Player
-    attr_reader :name, :position
-
-    def initialize(name, position = 0)
-      @name = name
-      @position = position
-    end
-
-    def move_to(new_position)
-      @position = new_position
-    end
-  end
-
-  class GameLog
-    def initialize
-      @entries = []
-    end
-
-    def append(entry)
-      @entries << entry
-    end
-
-    def to_s
-      @entries.join('\n')
-    end
-  end
-
-  class Driver
-    def self.play
-      # Setup players
-      player1 = Player.new("Ravi", 0)
-      player2 = Player.new("Simran", 0)
-      player3 = Player.new("Aisha", 0)
-
-      players = [player1, player2, player3]
-
-      # Setup jumps
-      jumps = { 4 => Ladder.new(4, 14), 9 => Snake.new(9, 2),
-                18 => Ladder.new(18, 28), 20 => Snake.new(20, 8),
-                28 => Ladder.new(28, 38), 30 => Snake.new(30, 12),
-                35 => Ladder.new(35, 45), 40 => Snake.new(40, 22),
-                45 => Ladder.new(45, 55), 50 => Snake.new(50, 32),
-                55 => Ladder.new(55, 65), 60 => Snake.new(60, 42),
-                65 => Ladder.new(65, 75), 70 => Snake.new(70, 52),
-                75 => Ladder.new(75, 85), 80 => Snake.new(80, 62),
-                85 => Ladder.new(85, 95), 90 => Snake.new(90, 72),
-                95 => Ladder.new(95, 100), 98 => Snake.new(98, 88) }
-
-      board = Board.new(100, jumps)
-      dice = Dice.new(2)
-      game = Game.new(board, players, dice)
-      game.play
-      puts game.log.to_s
-      puts "Winner: #{game.winner.name}"
-    end
-  end
+  
+end
 end
 ```
