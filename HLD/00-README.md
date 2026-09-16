@@ -31,27 +31,27 @@ For every concept in this curriculum, we obsessively answer:
 
 All 19 phases have been authored with rigorous engineering depth, following the 16-point standard topic blueprint:
 
-| Phase | Directory & Primary Module | Core Focus Area | Status |
+| Phase | Primary Learning Module | Detailed Solutions | Status |
 |---|---|---|---|
-| **Phase 0** | [`01-baseline/01-diagnostic-assessment.md`](./01-baseline/01-diagnostic-assessment.md) | Diagnostic Baseline (23 Calibration Questions) | 🟢 Complete |
-| **Phase 1** | [`02-system-design-thinking/01-system-design-mental-model.md`](./02-system-design-thinking/01-system-design-mental-model.md) | System Design Mental Model & 11 NFR Tensions | 🟢 Complete |
-| **Phase 2** | [`03-estimation/01-back-of-the-envelope-estimation.md`](./03-estimation/01-back-of-the-envelope-estimation.md) | Back-of-the-Envelope Estimation Toolkit & Exercises | 🟢 Complete |
-| **Phase 3** | [`04-networking/01-request-lifecycle-and-networking.md`](./04-networking/01-request-lifecycle-and-networking.md) | Request Lifecycle, Anycast, DNS, TCP/TLS & L4/L7 LBs | 🟢 Complete |
-| **Phase 4** | [`05-compute-and-scaling/01-compute-statelessness-and-scaling.md`](./05-compute-and-scaling/01-compute-statelessness-and-scaling.md) | Compute, Statelessness, Scaling & 9 Bottlenecks | 🟢 Complete |
-| **Phase 5** | [`06-databases/01-data-modeling-relational-and-nosql.md`](./06-databases/01-data-modeling-relational-and-nosql.md) | Relational vs NoSQL, B-Trees vs LSM-Trees, Sharding | 🟢 Complete |
-| **Phase 6** | [`07-caching/01-caching-strategies-and-invalidation.md`](./07-caching/01-caching-strategies-and-invalidation.md) | Cache Patterns, Stampede/Penetration & Invalidation | 🟢 Complete |
-| **Phase 7** | [`08-async-systems/01-queues-pubsub-and-event-driven.md`](./08-async-systems/01-queues-pubsub-and-event-driven.md) | Queues, Pub/Sub, Streams, Idempotency & Backpressure | 🟢 Complete |
-| **Phase 8** | [`09-distributed-systems/01-distributed-fundamentals-and-consensus.md`](./09-distributed-systems/01-distributed-fundamentals-and-consensus.md) | Consensus (Raft), Quorums, CAP/PACELC & Resiliency | 🟢 Complete |
-| **Phase 9** | [`10-storage/01-storage-paradigms-and-object-stores.md`](./10-storage/01-storage-paradigms-and-object-stores.md) | Block, File, Object Storage & Pre-Signed Direct Uploads | 🟢 Complete |
-| **Phase 10** | [`11-search/01-search-systems-and-indexing-pipelines.md`](./11-search/01-search-systems-and-indexing-pipelines.md) | Inverted Indexes, Lexical Analysis, BM25 & CDC Sync | 🟢 Complete |
-| **Phase 11** | [`12-reliability/01-reliability-fault-tolerance-and-slas.md`](./12-reliability/01-reliability-fault-tolerance-and-slas.md) | Bulkheads, Circuit Breakers, Failover & SLA/SLO/SLI | 🟢 Complete |
-| **Phase 12** | [`13-observability/01-observability-telemetry-and-debugging.md`](./13-observability/01-observability-telemetry-and-debugging.md) | Metrics, Distributed Tracing (OTel), Logs & p99 Tails | 🟢 Complete |
-| **Phase 13** | [`14-security/01-practical-architectural-security.md`](./14-security/01-practical-architectural-security.md) | Zero Trust, mTLS, Token Bucket Rate Limiting & BOLA | 🟢 Complete |
-| **Phase 14** | [`15-architecture-patterns/01-core-architectural-patterns.md`](./15-architecture-patterns/01-core-architectural-patterns.md) | 16 Core Blueprints (CQRS, Sagas, Fan-out, Gateway) | 🟢 Complete |
-| **Phase 15** | [`16-practical-designs/01-level-1-foundational-designs.md`](./16-practical-designs/01-level-1-foundational-designs.md)<br>[`16-practical-designs/02-level-2-distributed-designs.md`](./16-practical-designs/02-level-2-distributed-designs.md) | 10 Hands-on Designs with 13-Step Sequence | 🟢 Complete |
-| **Phase 16** | [`17-industry-vocabulary/01-staff-engineer-dialect-guide.md`](./17-industry-vocabulary/01-staff-engineer-dialect-guide.md) | Staff Engineer Dialect (25 Essential System Terms) | 🟢 Complete |
-| **Phase 17** | [`18-revision/01-spaced-repetition-and-decision-cheatsheet.md`](./18-revision/01-spaced-repetition-and-decision-cheatsheet.md) | Spaced Repetition, Anti-patterns & Decision Rules | 🟢 Complete |
-| **Phase 18** | [`19-final-assessment/01-comprehensive-readiness-exam.md`](./19-final-assessment/01-comprehensive-readiness-exam.md) | Capstone Exam (Parts A–F) for Alex Xu Readiness | 🟢 Complete |
+| **Phase 0** | [`01-baseline/01-diagnostic-assessment.md`](./01-baseline/01-diagnostic-assessment.md) | [`01-baseline/solutions.md`](./01-baseline/solutions.md) | 🟢 Complete |
+| **Phase 1** | [`02-system-design-thinking/01-system-design-mental-model.md`](./02-system-design-thinking/01-system-design-mental-model.md) | [`02-system-design-thinking/solutions.md`](./02-system-design-thinking/solutions.md) | 🟢 Complete |
+| **Phase 2** | [`03-estimation/01-back-of-the-envelope-estimation.md`](./03-estimation/01-back-of-the-envelope-estimation.md) | [`03-estimation/solutions.md`](./03-estimation/solutions.md) | 🟢 Complete |
+| **Phase 3** | [`04-networking/01-request-lifecycle-and-networking.md`](./04-networking/01-request-lifecycle-and-networking.md) | [`04-networking/solutions.md`](./04-networking/solutions.md) | 🟢 Complete |
+| **Phase 4** | [`05-compute-and-scaling/01-compute-statelessness-and-scaling.md`](./05-compute-and-scaling/01-compute-statelessness-and-scaling.md) | [`05-compute-and-scaling/solutions.md`](./05-compute-and-scaling/solutions.md) | 🟢 Complete |
+| **Phase 5** | [`06-databases/01-data-modeling-relational-and-nosql.md`](./06-databases/01-data-modeling-relational-and-nosql.md) | [`06-databases/solutions.md`](./06-databases/solutions.md) | 🟢 Complete |
+| **Phase 6** | [`07-caching/01-caching-strategies-and-invalidation.md`](./07-caching/01-caching-strategies-and-invalidation.md) | [`07-caching/solutions.md`](./07-caching/solutions.md) | 🟢 Complete |
+| **Phase 7** | [`08-async-systems/01-queues-pubsub-and-event-driven.md`](./08-async-systems/01-queues-pubsub-and-event-driven.md) | [`08-async-systems/solutions.md`](./08-async-systems/solutions.md) | 🟢 Complete |
+| **Phase 8** | [`09-distributed-systems/01-distributed-fundamentals-and-consensus.md`](./09-distributed-systems/01-distributed-fundamentals-and-consensus.md) | [`09-distributed-systems/solutions.md`](./09-distributed-systems/solutions.md) | 🟢 Complete |
+| **Phase 9** | [`10-storage/01-storage-paradigms-and-object-stores.md`](./10-storage/01-storage-paradigms-and-object-stores.md) | [`10-storage/solutions.md`](./10-storage/solutions.md) | 🟢 Complete |
+| **Phase 10** | [`11-search/01-search-systems-and-indexing-pipelines.md`](./11-search/01-search-systems-and-indexing-pipelines.md) | [`11-search/solutions.md`](./11-search/solutions.md) | 🟢 Complete |
+| **Phase 11** | [`12-reliability/01-reliability-fault-tolerance-and-slas.md`](./12-reliability/01-reliability-fault-tolerance-and-slas.md) | [`12-reliability/solutions.md`](./12-reliability/solutions.md) | 🟢 Complete |
+| **Phase 12** | [`13-observability/01-observability-telemetry-and-debugging.md`](./13-observability/01-observability-telemetry-and-debugging.md) | [`13-observability/solutions.md`](./13-observability/solutions.md) | 🟢 Complete |
+| **Phase 13** | [`14-security/01-practical-architectural-security.md`](./14-security/01-practical-architectural-security.md) | [`14-security/solutions.md`](./14-security/solutions.md) | 🟢 Complete |
+| **Phase 14** | [`15-architecture-patterns/01-core-architectural-patterns.md`](./15-architecture-patterns/01-core-architectural-patterns.md) | [`15-architecture-patterns/solutions.md`](./15-architecture-patterns/solutions.md) | 🟢 Complete |
+| **Phase 15** | [`16-practical-designs/01-level-1-foundational-designs.md`](./16-practical-designs/01-level-1-foundational-designs.md)<br>[`16-practical-designs/02-level-2-distributed-designs.md`](./16-practical-designs/02-level-2-distributed-designs.md) | [`16-practical-designs/solutions.md`](./16-practical-designs/solutions.md) | 🟢 Complete |
+| **Phase 16** | [`17-industry-vocabulary/01-staff-engineer-dialect-guide.md`](./17-industry-vocabulary/01-staff-engineer-dialect-guide.md) | [`17-industry-vocabulary/solutions.md`](./17-industry-vocabulary/solutions.md) | 🟢 Complete |
+| **Phase 17** | [`18-revision/01-spaced-repetition-and-decision-cheatsheet.md`](./18-revision/01-spaced-repetition-and-decision-cheatsheet.md) | [`18-revision/solutions.md`](./18-revision/solutions.md) | 🟢 Complete |
+| **Phase 18** | [`19-final-assessment/01-comprehensive-readiness-exam.md`](./19-final-assessment/01-comprehensive-readiness-exam.md) | [`19-final-assessment/solutions.md`](./19-final-assessment/solutions.md) | 🟢 Complete |
 
 ---
 
