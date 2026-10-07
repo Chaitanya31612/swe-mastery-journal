@@ -1,5 +1,9 @@
 # System Design / HLD Foundation Program
 
+> **Expanded Volume 1 course (6 October 2026):** Start with [the architect course](./21-volume-1-architect-course/README.md), including a reusable framework, three worked teaching examples, 17 modules, unsolved practices/checkpoints, and separate answer folders. The earlier **1 November** date remains its foundation checkpoint; complete Volume 1 at an assessed pace before moving to Volume 2.
+
+> **Personal study course:** Follow the [one-month assessed course](./20-month-course/00-course.md) for the 7-hours/week plan ending **1 November 2026**, with [progress tracking](./20-month-course/02-progress-tracker.md) and [attempt templates](./20-month-course/01-attempt-template.md). It combines foundations, book case studies, unaided practice, and delayed recall from the start. “Complete” in the module list below means **material authored**, not personal mastery. Some reference heuristics require workload-specific assumptions; see the course’s reading notes.
+
 A rigorous, engineering-first High-Level Design (HLD) foundation curriculum designed to bridge the gap between fragmented distributed systems knowledge and intuitive architectural mastery.
 
 > **Target Profile:** Software engineers with 3+ years of experience looking to build an unshakeable mental model of system design before diving into interview problem patterns (e.g., Alex Xu's System Design Interview volumes).

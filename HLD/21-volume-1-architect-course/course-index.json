@@ -1,0 +1,138 @@
+[
+  {
+    "slug": "00-design-framework",
+    "title": "Design framework",
+    "hours": 4,
+    "prerequisite": "API/database familiarity",
+    "book": "Chapter 3; PDF pages 42\u201350",
+    "outcome": "Retrieve the seven-part framework and prioritize risks."
+  },
+  {
+    "slug": "01-request-scale-estimation",
+    "title": "Requests, scale, and useful estimates",
+    "hours": 4,
+    "prerequisite": "00",
+    "book": "Chapters 1\u20132; PDF pages 5\u201341",
+    "outcome": "Trace a request, separate latency from throughput, estimate capacity with units, and choose a bottleneck from evidence."
+  },
+  {
+    "slug": "02-data-cache-correctness",
+    "title": "Data access, caches, and atomic boundaries",
+    "hours": 4,
+    "prerequisite": "01",
+    "book": "Chapter 1 data/cache foundations; supplemented by database semantics",
+    "outcome": "Choose keys/indexes from access patterns, preserve a concurrent invariant, and specify cache freshness/failure behavior."
+  },
+  {
+    "slug": "03-url-shortener",
+    "title": "URL shortener: serving and mutable mappings",
+    "hours": 4,
+    "prerequisite": "00\u201302",
+    "book": "Chapter 8; PDF pages 119\u2013131",
+    "outcome": "Derive a read-heavy architecture, prevent code collisions, and revise caching when links become editable or revocable."
+  },
+  {
+    "slug": "04-unique-ids",
+    "title": "Unique IDs: clocks, coordination, and order",
+    "hours": 3,
+    "prerequisite": "02\u201303",
+    "book": "Chapter 7; PDF pages 110\u2013118",
+    "outcome": "Separate uniqueness from ordering and explain allocation, worker identity, clock rollback, and sequence exhaustion."
+  },
+  {
+    "slug": "05-rate-limiter",
+    "title": "Distributed rate limiting and overload control",
+    "hours": 4,
+    "prerequisite": "00\u201302; 04 useful",
+    "book": "Chapter 4; PDF pages 51\u201370",
+    "outcome": "Choose an algorithm from the exact admission contract, enforce an atomic decision, and handle store/region failure."
+  },
+  {
+    "slug": "06-consistent-hashing",
+    "title": "Consistent hashing, placement, and migration",
+    "hours": 3,
+    "prerequisite": "01\u201302",
+    "book": "Chapter 5; PDF pages 71\u201386",
+    "outcome": "Compute ownership and changed placement, distinguish distribution from replication, and preserve reads during migration."
+  },
+  {
+    "slug": "07-key-value-store",
+    "title": "Distributed key-value stores and honest consistency claims",
+    "hours": 5,
+    "prerequisite": "02/06",
+    "book": "Chapter 6; PDF pages 87\u2013109",
+    "outcome": "Trace durable read/write paths, explain replicas and quorum assumptions, and reason about partitions, conflicts, and repair."
+  },
+  {
+    "slug": "08-notifications",
+    "title": "Async workflows, retries, and notification delivery",
+    "hours": 5,
+    "prerequisite": "02/05; 07 useful",
+    "book": "Chapter 10; PDF pages 151\u2013165",
+    "outcome": "Separate accepted/processed/external effects, close the database-to-event gap, and design retries, quotas, and recovery."
+  },
+  {
+    "slug": "09-web-crawler",
+    "title": "Crawler scheduling, bounded exploration, and safe fetching",
+    "hours": 4,
+    "prerequisite": "05/06/08",
+    "book": "Chapter 9; PDF pages 132\u2013150",
+    "outcome": "Design a restartable frontier with per-host policy, explain deduplication limits, and protect the fetch boundary."
+  },
+  {
+    "slug": "10-news-feed",
+    "title": "News feed: projections, fan-out, and privacy",
+    "hours": 4,
+    "prerequisite": "02/06/08",
+    "book": "Chapter 11; PDF pages 166\u2013177",
+    "outcome": "Choose push/pull/hybrid from follower skew and freshness, design stable pagination, and preserve access on derived views."
+  },
+  {
+    "slug": "11-chat",
+    "title": "Chat: durable acceptance, live delivery, and reconnects",
+    "hours": 5,
+    "prerequisite": "04/08; 07 useful",
+    "book": "Chapter 12; PDF pages 178\u2013199",
+    "outcome": "Separate transport from durability, implement retry-safe messages and catch-up cursors, and state presence/order limits."
+  },
+  {
+    "slug": "12-autocomplete",
+    "title": "Autocomplete: derived indexes, top-K, and fresh snapshots",
+    "hours": 4,
+    "prerequisite": "02/08/10",
+    "book": "Chapter 13; PDF pages 200\u2013219",
+    "outcome": "Separate ingestion from serving, choose a prefix access structure, and evolve versioned results with privacy/freshness controls."
+  },
+  {
+    "slug": "13-video-platform",
+    "title": "Video delivery: control plane, data plane, and processing",
+    "hours": 5,
+    "prerequisite": "08/12",
+    "book": "Chapter 14; PDF pages 220\u2013243",
+    "outcome": "Separate media bytes from metadata, publish only ready renditions, and reason about bandwidth, retries, CDN policy, and cost."
+  },
+  {
+    "slug": "14-file-sync",
+    "title": "File sync: versioned metadata and recoverable conflicts",
+    "hours": 5,
+    "prerequisite": "02/08/13",
+    "book": "Chapter 15; PDF pages 244\u2013263",
+    "outcome": "Separate blob upload from metadata commit, handle concurrent edits/deletes, and synchronize devices with replayable cursors."
+  },
+  {
+    "slug": "15-production-architecture",
+    "title": "Production practice: service objectives, security, and safe evolution",
+    "hours": 5,
+    "prerequisite": "At least three completed design modules",
+    "book": "Chapter 1 and chapter wrap-ups; extended with production engineering",
+    "outcome": "Turn a diagram into measurable service behavior, bounded failure recovery, threat boundaries, and a reversible migration plan."
+  },
+  {
+    "slug": "16-final-assessment",
+    "title": "Transfer assessment and graduation evidence",
+    "hours": 4,
+    "prerequisite": "00\u201315, with delayed recall records",
+    "book": "Apply Volume 1 mechanisms to non-book prompts; no Volume 2 required",
+    "outcome": "Demonstrate unaided reasoning on three different problem families and review a real architecture from evidence."
+  }
+]
