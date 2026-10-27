@@ -24,22 +24,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,7 +76,7 @@
   "trace": [
     {
       "title": "Permitted bounded source",
-      "detail": "Multimodal models can accept supported combinations of text, images, audio or other inputs. They expand what can be interpreted, not what may be trusted. A scanned form, screenshot or recording can contain missing context, extraction errors or injected instructions.\n\nPreserve provenance through parsing: page, region, timestamp, speaker/segment where relevant, and source version. A document answer may depend on table layout, units, handwriting or an attachment that was not included. Treat OCR/transcription and interpretation as separate stages and evaluate their errors independently.\n\nBound input size/cost, validate file types with robust handling, control storage/access, and expose uncertain/unreadable states. For important structured values, validate against authoritative records or a human review process. Never silently “correct” a digit because it looks more plausible to the model."
+      "detail": "## Understand\n\nMultimodal models can accept supported combinations of text, images, audio or other inputs. They expand what can be interpreted, not what may be trusted.\n\nA scanned form, screenshot or recording can contain missing context, extraction errors or injected instructions.\n\nPreserve provenance through parsing: page, region, timestamp, speaker/segment where relevant, and source version. A document answer may depend on table layout, units, handwriting or an attachment that was not included.\n\nTreat OCR/transcription and interpretation as separate stages and evaluate their errors independently.\n\nBound input size/cost, validate file types with robust handling, control storage/access, and expose uncertain/unreadable states. For important structured values, validate against authoritative records or a human review process.\n\nNever silently “correct” a digit because it looks more plausible to the model."
     },
     {
       "title": "Follow one input",
@@ -84,7 +84,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A correct transcription can still be interpreted incorrectly. An image can contain instructions intended to redirect the agent. A source location alone does not prove the extracted value is right."
+      "detail": "A correct transcription can still be interpreted incorrectly. An image can contain instructions intended to redirect the agent.\n\nA source location alone does not prove the extracted value is right."
     }
   ],
   "sources": [

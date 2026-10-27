@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Raw response or refusal",
-      "detail": "JSON mode asks for JSON. Structured output can constrain a supported model to a supported JSON Schema. These are different guarantees. Valid syntax and schema adherence still do not prove that a depot exists, a citation supports a claim, or an operation is allowed.\n\nTreat the model response as outside input. Handle refusal, incomplete output, provider error, schema failure, semantic failure, and accepted result as separate states. Avoid parsing with eval or silently accepting extra fields. Bound string lengths and collections before they reach expensive application work.\n\nUse required fields and explicit enums for supported decisions. A status such as needs_clarification is useful data. Keep unknown or missing separate from a false or zero value. Your Rails service should return a domain result rather than handing a raw provider object to every controller."
+      "detail": "## Understand\n\nJSON mode asks for JSON. Structured output can constrain a supported model to a supported JSON Schema.\n\nThese are different guarantees. Valid syntax and schema adherence still do not prove that a depot exists, a citation supports a claim, or an operation is allowed.\n\nTreat the model response as outside input. Handle refusal, incomplete output, provider error, schema failure, semantic failure, and accepted result as separate states.\n\nAvoid parsing with eval or silently accepting extra fields. Bound string lengths and collections before they reach expensive application work.\n\nUse required fields and explicit enums for supported decisions. A status such as needs_clarification is useful data.\n\nKeep unknown or missing separate from a false or zero value. Your Rails service should return a domain result rather than handing a raw provider object to every controller."
     },
     {
       "title": "Follow one input",
-      "detail": "Provider bytes → JSON parse → schema validation → domain validation → authorization → execution or fallback. Put each rejection on a trace with a safe error code. Do not include raw sensitive payloads in logs just to diagnose formatting."
+      "detail": "Provider bytes → JSON parse → schema validation → domain validation → authorization → execution or fallback. Put each rejection on a trace with a safe error code.\n\nDo not include raw sensitive payloads in logs just to diagnose formatting."
     },
     {
       "title": "Try the failure",

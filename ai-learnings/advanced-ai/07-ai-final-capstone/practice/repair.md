@@ -1,6 +1,8 @@
 ## Build a support workbench from a blank page
 
-A vendor-support team handles tickets for two customer organizations. They need to find waiting tickets, explain a delay, compare up to five tickets, and read approved support policies. The first release is read-only.
+A vendor-support team handles tickets for two customer organizations. They need to find waiting tickets, explain a delay, compare up to five tickets, and read approved support policies.
+
+The first release is read-only.
 
 ### Your constraints
 
@@ -21,4 +23,6 @@ A vendor-support team handles tickets for two customer organizations. They need 
 6. Evidence for at least four negative checks. Capture the actual provider input at a fake adapter so you can assert forbidden facts are absent. Do not log real private payloads.
 7. A release decision with cost/latency limits, rollback conditions, unknowns, and a no-model path.
 
-Use Predict, Change, Verify, Explain in your submission. Quote actual command results only if you ran them. For a design-only attempt, identify exactly which checks remain unverified. Submit before opening the reference.
+Use Predict, Change, Verify, Explain in your submission. Quote actual command results only if you ran them.
+
+For a design-only attempt, identify exactly which checks remain unverified. Submit before opening the reference.

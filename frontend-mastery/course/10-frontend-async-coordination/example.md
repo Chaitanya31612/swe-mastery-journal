@@ -9,5 +9,4 @@ const results = await Promise.allSettled(files.map(validateSmallFile))
 const errors = results.filter(r => r.status === 'rejected')
 // For large/network work, use a concurrency limit instead of unbounded map.
 ```
-
 Abort a prior search when starting the next one. Still check which request is current before publishing its result.

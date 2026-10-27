@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Needed task data",
-      "detail": "An AI feature creates a data flow, not just a model call. Inputs, retrieved passages, tool outputs, run records, provider logs/settings, evaluation samples, caches and analytics can all hold related data. Identify each copy, purpose, access policy and lifetime.\n\nMinimize before sending. A model explaining a shipment hold may need a status and reason code, not customer contact details or a full account object. Separate service identity from end-user permission. Do not place credentials in prompts or expose server provider keys to the browser.\n\nCheck current provider/deployment data-handling settings and your actual organizational requirements. This course is not a compliance approval. “Private hosting,” “encrypted,” or “not used for training” each answers only part of the data-flow question. Deletion, authorized access, purpose and residual derived stores remain explicit engineering work."
+      "detail": "## Understand\n\nAn AI feature creates a data flow, not just a model call. Inputs, retrieved passages, tool outputs, run records, provider logs/settings, evaluation samples, caches and analytics can all hold related data.\n\nIdentify each copy, purpose, access policy and lifetime.\n\nMinimize before sending. A model explaining a shipment hold may need a status and reason code, not customer contact details or a full account object.\n\nSeparate service identity from end-user permission. Do not place credentials in prompts or expose server provider keys to the browser.\n\nCheck current provider/deployment data-handling settings and your actual organizational requirements. This course is not a compliance approval.\n\n“Private hosting,” “encrypted,” or “not used for training” each answers only part of the data-flow question. Deletion, authorized access, purpose and residual derived stores remain explicit engineering work."
     },
     {
       "title": "Follow one input",
-      "detail": "Choose one fact and follow every derived copy. Revoke the actor's access and remove the source. Verify what can still be returned from histories, indexes, cached answers and run endpoints. Separate a necessary retained audit record from general reusable model context."
+      "detail": "Choose one fact and follow every derived copy. Revoke the actor's access and remove the source.\n\nVerify what can still be returned from histories, indexes, cached answers and run endpoints. Separate a necessary retained audit record from general reusable model context."
     },
     {
       "title": "Try the failure",

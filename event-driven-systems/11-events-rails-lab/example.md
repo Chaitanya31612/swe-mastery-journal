@@ -10,5 +10,4 @@ POST /tickets/:id/complete
   → transaction(inbox + projection)
   → commit message offset
 ```
-
 Open the app’s Hands-on lab tab for the complete file tree and commands. The README includes expected observations, repeat-event checks, and safe cleanup limited to this Compose project.

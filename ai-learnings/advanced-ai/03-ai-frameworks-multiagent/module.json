@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Simple orchestration baseline",
-      "detail": "An agent framework can provide tool registration, state graphs, retries, tracing or persistence. It can reduce wiring, but it can also hide control flow and defaults. Start by drawing the underlying state machine and identifying which guarantees the framework actually supplies in the selected version.\n\nMultiple agents can divide work by expertise, source or independent review. They also add context handoffs, correlated errors, coordination cost and a larger capability surface. Two models agreeing is not independent proof if both saw the same bad evidence. A reviewer agent needs a rubric and authority limits too.\n\nKeep shared state typed and provenance-aware. Do not pass every private context field to every agent. Bound delegation depth, fan-out, time and cost. Compare a single-agent or deterministic workflow baseline on the same held-out tasks before adopting the extra machinery."
+      "detail": "## Understand\n\nAn agent framework can provide tool registration, state graphs, retries, tracing or persistence. It can reduce wiring, but it can also hide control flow and defaults.\n\nStart by drawing the underlying state machine and identifying which guarantees the framework actually supplies in the selected version.\n\nMultiple agents can divide work by expertise, source or independent review. They also add context handoffs, correlated errors, coordination cost and a larger capability surface.\n\nTwo models agreeing is not independent proof if both saw the same bad evidence. A reviewer agent needs a rubric and authority limits too.\n\nKeep shared state typed and provenance-aware. Do not pass every private context field to every agent.\n\nBound delegation depth, fan-out, time and cost. Compare a single-agent or deterministic workflow baseline on the same held-out tasks before adopting the extra machinery."
     },
     {
       "title": "Follow one input",
-      "detail": "Explicit workflow baseline → identify a bottleneck → add one framework capability or specialist → trace context/capability handoff → measure outcome/cost → review new failures. Inspect retries and side-effect defaults rather than assuming names imply guarantees."
+      "detail": "Explicit workflow baseline → identify a bottleneck → add one framework capability or specialist → trace context/capability handoff → measure outcome/cost → review new failures.\n\nInspect retries and side-effect defaults rather than assuming names imply guarantees."
     },
     {
       "title": "Try the failure",

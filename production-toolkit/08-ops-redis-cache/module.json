@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Scoped key",
-      "detail": "Cache-aside reads a copy if present, otherwise loads from the authority and stores a copy. The hard questions are which values may be stale, for how long, and how a write changes the cached answer."
+      "detail": "## Understand the idea\n\nCache-aside reads a copy if present, otherwise loads from the authority and stores a copy.\n\nThe hard questions are which values may be stale, for how long, and how a write changes the cached answer.\n\nInclude tenant, query, and relevant version dimensions in keys. A TTL limits some stale lifetimes but does not prove immediate revocation or prevent old data being refilled after a race.\n\nPermission-sensitive checks may need a fresh authority boundary separate from cached content.\n\nWhen many keys expire together, requests can stampede the database. Use bounded rebuilds, jittered expiries, request coalescing, and stale-serving policies only where the product allows them.\n\nA cache outage should not create unlimited fallback work."
     },
     {
       "title": "Follow one item",
-      "detail": "Read miss → DB load → cache fill. Now interleave a write: A reads old DB, B commits new DB and deletes cache, A fills old value. A simple “delete after write” rule can still have a stale-fill race.\n\nChoose a consistency policy that matches the requirement: tolerate bounded staleness, version entries, use guarded refresh, or read the authority for strict decisions. Test the chosen timeline."
+      "detail": "Read miss → DB load → cache fill. Now interleave a write: A reads old DB, B commits new DB and deletes cache, A fills old value.\n\nA simple “delete after write” rule can still have a stale-fill race.\n\nChoose a consistency policy that matches the requirement: tolerate bounded staleness, version entries, use guarded refresh, or read the authority for strict decisions. Test the chosen timeline."
     },
     {
       "title": "Try the failure",
-      "detail": "TTL is not a universal correctness proof. Caching a denied/allowed result without proper context can leak access. Cold-cache fallback can collapse the authority."
+      "detail": "TTL is not a universal correctness proof. Caching a denied/allowed result without proper context can leak access.\n\nCold-cache fallback can collapse the authority."
     }
   ],
   "sources": [

@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Durable notification intent",
-      "detail": "An email integration has several states: saved intent, attempted request, provider acceptance, recipient-server delivery, bounce, suppression, and user interaction. The API accepting a request does not prove the person received or read it."
+      "detail": "## Understand the idea\n\nAn email integration has several states: saved intent, attempted request, provider acceptance, recipient-server delivery, bounce, suppression, and user interaction.\n\nThe API accepting a request does not prove the person received or read it.\n\nUse a narrow adapter and store a logical notification identity. Authenticate the sending domain and configure the selected provider’s required settings.\n\nKeep secrets out of code and validate webhook signatures/replay policy using the provider’s supported mechanism.\n\nSetup: choose a training/sandbox mode, verify sender/domain configuration, scope the API credential, define templates and minimal data, add signed event-webhook handling, and test accepted, rejected, bounced, duplicate-event, and timeout cases.\n\nThis course sends no real email."
     },
     {
       "title": "Follow one item",
-      "detail": "Follow one notification ID through retries and provider events. A webhook can be repeated or arrive after another event. Define allowed state transitions from observed facts rather than assuming arrival order is perfect.\n\nFor a timeout, check provider-supported status/idempotency behavior before resending. If acceptance is unknown, record uncertainty and reconcile rather than asserting success or failure without evidence."
+      "detail": "Follow one notification ID through retries and provider events. A webhook can be repeated or arrive after another event.\n\nDefine allowed state transitions from observed facts rather than assuming arrival order is perfect.\n\nFor a timeout, check provider-supported status/idempotency behavior before resending. If acceptance is unknown, record uncertainty and reconcile rather than asserting success or failure without evidence."
     },
     {
       "title": "Try the failure",
-      "detail": "A delivered event does not prove the human read the message. Tracking opens can have privacy/client artifacts. Webhook bodies alone are not proof of sender authenticity."
+      "detail": "A delivered event does not prove the human read the message. Tracking opens can have privacy/client artifacts.\n\nWebhook bodies alone are not proof of sender authenticity."
     }
   ],
   "sources": [

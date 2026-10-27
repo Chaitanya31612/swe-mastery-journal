@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,11 +72,11 @@
   "trace": [
     {
       "title": "External route",
-      "detail": "Pods can be replaced and their addresses can change. A Service gives a stable access abstraction for matching endpoints. Selectors connect the Service to labelled Pods; a spelling mismatch can leave no endpoints."
+      "detail": "## Understand the idea\n\nPods can be replaced and their addresses can change. A Service gives a stable access abstraction for matching endpoints.\n\nSelectors connect the Service to labelled Pods; a spelling mismatch can leave no endpoints.\n\nIngress or Gateway-related resources describe external routing under a selected controller implementation. Defining an Ingress object does not install every required controller or cloud load balancer.\n\nThe exact controller’s contract matters.\n\nMap DNS, ports, targetPort, ready endpoints, network policy, and app listener separately. Inside a Pod, localhost refers to its network namespace.\n\nReaching a peer service uses the service name, not the browser’s public URL by habit."
     },
     {
       "title": "Follow one item",
-      "detail": "Client/edge → controller route → Service port → selected ready Pod endpoint → app target port. A 503 can come from no eligible endpoints even when a pod process exists.\n\nTest a selector mismatch, wrong targetPort, and readiness failure separately. Observe how each changes events/endpoints/response. Keep the app’s allowed-host/proxy/TLS configuration in the path."
+      "detail": "Client/edge → controller route → Service port → selected ready Pod endpoint → app target port. A 503 can come from no eligible endpoints even when a pod process exists.\n\nTest a selector mismatch, wrong targetPort, and readiness failure separately. Observe how each changes events/endpoints/response.\n\nKeep the app’s allowed-host/proxy/TLS configuration in the path."
     },
     {
       "title": "Try the failure",

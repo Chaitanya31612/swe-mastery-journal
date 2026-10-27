@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Trusted completion command",
-      "detail": "A direct DB write followed by a Kafka send is a dual write. Crash after DB commit but before send loses the event. Send first and a later DB rollback can publish a fact that never committed. Neither ordering solves both cases."
+      "detail": "## Understand the idea\n\nA direct DB write followed by a Kafka send is a dual write. Crash after DB commit but before send loses the event.\n\nSend first and a later DB rollback can publish a fact that never committed. Neither ordering solves both cases.\n\nAn outbox stores the business change and event intent in one PostgreSQL transaction. A separate dispatcher publishes committed rows.\n\nIf it crashes after Kafka acknowledgement but before marking the row published, it may resend the same event.\n\nThe outbox trades lost intent for a repeatable delivery path; it does not create universal exactly-once effects.\n\nKeep a stable event ID and a unique business rule for creating the completion fact. Define dispatcher concurrency and ordering.\n\nThe lab starts with one serial dispatcher for clarity; a production multi-worker design needs claim leases/locking, throughput, ordering, and stuck-work recovery."
     },
     {
       "title": "Follow one item",
-      "detail": "HTTP completion → lock/check → ticket update + outbox insert → DB commit → dispatcher reads → producer delivery acknowledgement → published mark. Break the process at each arrow and state what can be retried.\n\nafter_commit enqueue alone still has a crash gap. It can be useful as a wake-up, but a durable scanner/outbox source must recover missing wake-ups."
+      "detail": "HTTP completion → lock/check → ticket update + outbox insert → DB commit → dispatcher reads → producer delivery acknowledgement → published mark.\n\nBreak the process at each arrow and state what can be retried.\n\nafter_commit enqueue alone still has a crash gap. It can be useful as a wake-up, but a durable scanner/outbox source must recover missing wake-ups."
     },
     {
       "title": "Try the failure",
-      "detail": "Holding a DB lock during a slow network send can hurt capacity. Multiple dispatchers can reorder or duplicate without a deliberate claim strategy. A published flag is evidence of a local mark, not downstream completion."
+      "detail": "Holding a DB lock during a slow network send can hurt capacity. Multiple dispatchers can reorder or duplicate without a deliberate claim strategy.\n\nA published flag is evidence of a local mark, not downstream completion."
     }
   ],
   "sources": [

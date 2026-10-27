@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Find callers and concerns",
-      "detail": "Callbacks can protect local lifecycle rules, but they can also hide a large workflow behind save. A concern may register callbacks when included. Search declarations and callers before assuming the method body is the whole behavior."
+      "detail": "## Understand the idea\n\nCallbacks can protect local lifecycle rules, but they can also hide a large workflow behind save. A concern may register callbacks when included.\n\nSearch declarations and callers before assuming the method body is the whole behavior.\n\nFirst map what actually happens: validation, transaction, callback, database write, after_commit, enqueue, and external effect.\n\nRails 4.2 callback halting and exception behavior differ from newer versions; verify the exact fork/version rather than pasting modern throw(:abort) guidance into legacy code.\n\nMove orchestration in small steps. Keep an observed behavior test, introduce an explicit use case, route callers through it, and remove duplicate callback paths only when their coverage is clear.\n\nDo not fire the event both explicitly and through the old callback."
     },
     {
       "title": "Follow one item",
-      "detail": "List entry points and callback registrations. Record one completion with timestamps and event ID. Add tests for update!, bulk updates, imports, and rollback according to their actual paths.\n\nThen change one caller. Assert one logical event, not merely one method invocation under a fake. Inspect direct SQL/bulk methods that intentionally bypass callbacks."
+      "detail": "List entry points and callback registrations. Record one completion with timestamps and event ID.\n\nAdd tests for update!, bulk updates, imports, and rollback according to their actual paths.\n\nThen change one caller. Assert one logical event, not merely one method invocation under a fake.\n\nInspect direct SQL/bulk methods that intentionally bypass callbacks."
     },
     {
       "title": "Try the failure",
-      "detail": "update_all bypasses model callbacks/validations. A callback’s after_commit hook can still lose enqueue during a crash gap. Removing a callback without tracing callers can remove behavior from an import."
+      "detail": "update_all bypasses model callbacks/validations. A callback’s after_commit hook can still lose enqueue during a crash gap.\n\nRemoving a callback without tracing callers can remove behavior from an import."
     }
   ],
   "sources": [

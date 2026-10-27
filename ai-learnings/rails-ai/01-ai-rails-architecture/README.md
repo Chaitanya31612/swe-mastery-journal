@@ -22,5 +22,4 @@ flowchart TD
  D --> UI
  UI --> U
 ```
-
 Remember: **A useful AI feature still looks like a well-structured application.**

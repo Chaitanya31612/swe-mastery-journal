@@ -4,4 +4,6 @@ A new Date() or random value rendered independently on server and client can pro
 
 **Memory cue:** URL → request → tree → layout → paint.
 
-Close this lesson. Draw the five steps. Explain one failure in your own words before opening Practice.
+Close this lesson. Draw the five steps.
+
+Explain one failure in your own words before opening Practice.

@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Published fact",
-      "detail": "SNS can publish a message to subscriptions. This is fan-out: independent destinations can receive the same published fact. A set of workers competing on one queue instead shares work among them. Choose based on whether each downstream system needs its own copy."
+      "detail": "## Understand the idea\n\nSNS can publish a message to subscriptions. This is fan-out: independent destinations can receive the same published fact.\n\nA set of workers competing on one queue instead shares work among them. Choose based on whether each downstream system needs its own copy.\n\nUse SNS-to-SQS when subscribers need their own buffering and processing pace. Define message schema, subscription filtering, access policies, and failure/retry handling.\n\nDelivery behavior depends on topic and subscription types; record the exact option rather than assuming one global ordering guarantee.\n\nSetup: create a training topic, create a separate queue for each durable subscriber role, add subscriptions/filters, allow only the intended topic to send to each queue, then publish a synthetic event and verify each required subscriber independently."
     },
     {
       "title": "Follow one item",
-      "detail": "Publisher sends one fact → SNS evaluates subscriptions/filters → each destination receives according to its delivery contract → each queue/consumer manages its own completion. One slow subscriber should not dictate another’s progress when their buffers are separate.\n\nCarry an event ID for duplicate handling and traceability. A publish acknowledgement does not prove every subscriber’s business effect completed."
+      "detail": "Publisher sends one fact → SNS evaluates subscriptions/filters → each destination receives according to its delivery contract → each queue/consumer manages its own completion.\n\nOne slow subscriber should not dictate another’s progress when their buffers are separate.\n\nCarry an event ID for duplicate handling and traceability. A publish acknowledgement does not prove every subscriber’s business effect completed."
     },
     {
       "title": "Try the failure",

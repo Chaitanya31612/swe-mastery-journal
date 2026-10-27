@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Private DB access",
-      "detail": "RDS manages parts of database infrastructure, not your schema, query design, or business rules. You still choose engine/version, instance/storage settings, network, credentials, backup retention, maintenance, and application connection behavior."
+      "detail": "## Understand the idea\n\nRDS manages parts of database infrastructure, not your schema, query design, or business rules. You still choose engine/version, instance/storage settings, network, credentials, backup retention, maintenance, and application connection behavior.\n\nHigh availability and read scaling are different goals. A standby/failover arrangement is not automatically the same thing as an application read replica.\n\nRead replicas can lag; sending a read-after-write there can show old data. Use the selected RDS deployment type’s exact contract.\n\nSetup: choose a training PostgreSQL engine/version, private subnet group and DB security group, credential delivery, backup/restore policy, connection settings, and monitoring.\n\nTest connection failure and a restore to a separate instance with synthetic data. A backup checkbox is not a completed recovery exercise."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Managed backups do not prove your restore time. More app replicas can multiply connections. Read-replica lag can look like a lost update to the user."
+      "detail": "Managed backups do not prove your restore time. More app replicas can multiply connections.\n\nRead-replica lag can look like a lost update to the user."
     }
   ],
   "sources": [

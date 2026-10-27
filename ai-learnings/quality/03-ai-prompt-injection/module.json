@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Context origins",
-      "detail": "Prompt injection places hostile or irrelevant instructions in user text, retrieved documents, tool results, or other context. The goal may be to override the task, reveal data, trigger a tool, or change the answer. A document can contain both useful facts and an instruction the application must not obey.\n\nUse layered controls: minimize capabilities, scope data before exposure, separate trusted instructions from outside content, validate tool proposals and output, restrict egress, and require precise approval for consequential actions. A detector or sanitizing prompt can help some cases but is not a complete boundary.\n\nTreat model output as outside input too. Do not execute generated HTML, SQL, shell commands or URLs without a separate deliberate contract. A retrieved page cannot grant the user new privileges. Test indirect instructions across multiple turns and tool results, not only “ignore previous instructions” typed directly by the user."
+      "detail": "## Understand\n\nPrompt injection places hostile or irrelevant instructions in user text, retrieved documents, tool results, or other context.\n\nThe goal may be to override the task, reveal data, trigger a tool, or change the answer. A document can contain both useful facts and an instruction the application must not obey.\n\nUse layered controls: minimize capabilities, scope data before exposure, separate trusted instructions from outside content, validate tool proposals and output, restrict egress, and require precise approval for consequential actions.\n\nA detector or sanitizing prompt can help some cases but is not a complete boundary.\n\nTreat model output as outside input too. Do not execute generated HTML, SQL, shell commands or URLs without a separate deliberate contract.\n\nA retrieved page cannot grant the user new privileges. Test indirect instructions across multiple turns and tool results, not only “ignore previous instructions” typed directly by the user."
     },
     {
       "title": "Follow one input",
-      "detail": "Mark every context segment's origin. Follow a malicious instruction from document to model proposal to host policy. Verify that forbidden data never entered context and unapproved actions never executed. Log safe failure categories, not the full sensitive attempted payload."
+      "detail": "Mark every context segment's origin. Follow a malicious instruction from document to model proposal to host policy.\n\nVerify that forbidden data never entered context and unapproved actions never executed. Log safe failure categories, not the full sensitive attempted payload."
     },
     {
       "title": "Try the failure",

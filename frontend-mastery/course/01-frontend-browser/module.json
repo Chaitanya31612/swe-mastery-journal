@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -80,11 +80,11 @@
   "trace": [
     {
       "title": "URL request",
-      "detail": "The browser turns a URL into a request, receives HTML, builds a DOM tree, loads CSS and JavaScript, and paints pixels. JavaScript can change the DOM later. Layout calculates geometry. Paint draws visible styles. These are different costs."
+      "detail": "# Start with this\n\nThe browser turns a URL into a page you can see and use.\n\nThink of it as a few separate jobs.\n\n```text\nRequest a URL → receive HTML → build the DOM\n                                  ↓\n                     use CSS to calculate layout\n                                  ↓\n                         paint visible pixels\n```\n\nThe DOM is the browser’s tree of page elements. JavaScript can change that tree later.\n\n**Layout** finds sizes and positions. **Paint** draws visible styles.\n\nChanging the page can trigger more of this work. Different changes have different costs.\n\n## A small example\n\nYou click a link in a Vue app. The app may change the URL and screen without loading a new HTML document.\n\nNow refresh that same URL. The browser makes a new server request.\n\nThe server must know how to return the app for that route. A blank page after refresh may be a server setup problem.\n\n## Server-rendered pages\n\nA server can send HTML before browser JavaScript is ready.\n\n**Hydration** connects that existing HTML to the app’s browser behavior.\n\nThe initial browser output must match the server output where hydration expects it to match.\n\n## Remember\n\n“Show HTML,” “run JavaScript,” “calculate layout,” and “paint pixels” are different steps.\n"
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Trace document request → HTML parsing → CSS/layout → script → UI change. Then trace a client navigation separately. The network requests and work can differ.\n\nFor a slow page, determine whether the wait is server response time, asset loading, script execution, layout, or a later API call. A single “loading” label hides several possible causes."
+      "detail": "Trace document request → HTML parsing → CSS/layout → script → UI change. Then trace a client navigation separately.\n\nThe network requests and work can differ.\n\nFor a slow page, determine whether the wait is server response time, asset loading, script execution, layout, or a later API call. A single “loading” label hides several possible causes."
     },
     {
       "title": "Check the result",

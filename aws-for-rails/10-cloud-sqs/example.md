@@ -11,5 +11,4 @@ messages.each do |message|
     receipt_handle: message.receipt_handle)
 end
 ```
-
 The loop is a teaching boundary. Add graceful shutdown, bounded concurrency, validation, visibility extension, error policy, and telemetry for a real worker.

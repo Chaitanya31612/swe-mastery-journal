@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,15 +76,15 @@
   "trace": [
     {
       "title": "Render snapshot",
-      "detail": "A React render calculates UI from a snapshot of props and state. Event handlers created during that render see that snapshot. Calling a state setter requests an update; it does not rewrite the local variable in the handler that is already running."
+      "detail": "# The idea\n\nA React render calculates UI from a snapshot of props and state. Event handlers created during that render see that snapshot.\n\nCalling a state setter requests an update; it does not rewrite the local variable in the handler that is already running.\n\nWhen the next value depends on the previous queued value, use a functional updater. Keep render pure: do not send requests or mutate outside objects while calculating JSX.\n\nEffects synchronize with an external system after a committed render and need cleanup when applicable.\n\nKeys identify sibling items across renders. Stable IDs preserve the right item identity.\n\nArray indexes can attach local row state to the wrong item when the list is reordered. Memoization is a measured performance tool, not a correctness patch."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "The updater queue starts with the previous state, then applies +1 three times. The next committed render gets +3. Direct values computed from one snapshot can instead request the same next value repeatedly.\n\nFor an effect subscription: setup attaches to an external source; cleanup detaches before replacement/unmount. Include the values the effect uses. A missing dependency can keep a handler tied to old values. Development Strict Mode checks can reveal missing cleanup."
+      "detail": "The updater queue starts with the previous state, then applies +1 three times. The next committed render gets +3.\n\nDirect values computed from one snapshot can instead request the same next value repeatedly.\n\nFor an effect subscription: setup attaches to an external source; cleanup detaches before replacement/unmount. Include the values the effect uses.\n\nA missing dependency can keep a handler tied to old values. Development Strict Mode checks can reveal missing cleanup."
     },
     {
       "title": "Check the result",
-      "detail": "An effect that only computes fullName from firstName/lastName stores redundant state. Derive it during rendering. React’s scheduling details do not mean any render is allowed to mutate external state."
+      "detail": "An effect that only computes fullName from firstName/lastName stores redundant state. Derive it during rendering.\n\nReact’s scheduling details do not mean any render is allowed to mutate external state."
     }
   ],
   "recallPrompt": "Without notes: Explain stale closures, functional updates, effects, keys, and render purity. Give a concrete failure example.",

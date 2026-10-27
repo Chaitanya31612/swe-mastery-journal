@@ -1,7 +1,37 @@
-## Understand
+# First decide where the answer lives
 
-RAG means retrieving relevant material and giving it to a generator. It is an application pattern, not a guarantee of correctness. The original research combines learned generation with retrieved information; modern products implement many variants.
+Some answers come from current database records. Others need documents.
 
-A current delivery count belongs in a scoped database query. A policy explanation may need retrieved documents. A shipment's verified hold reason may come from a deterministic rule over current fields. These sources can appear together in one answer, but keep their authority and freshness visible.
+Choose the source before choosing an AI tool.
 
-Start with the smallest sufficient retrieval method. Exact IDs, filters, full-text search, and a document table may be enough. Add semantic search when wording varies in a way lexical search misses. Never move access control into similarity scoring or ask a model to infer the user's tenant.
+## A small example
+
+- “How many parcels are held?” → run an allowed database query.
+- “What does the dispatch policy say?” → find an allowed policy document.
+- “Why is this parcel held?” → check its current fields and the reviewed hold rules.
+
+```text
+Question → current facts, documents, or both → answer with its sources
+```
+
+Keep counts and exact rules in code.
+
+## What RAG adds
+
+**RAG** means finding relevant material and giving it to the model before it answers.
+
+A simple version might search a document table and include the matching passages in the request.
+
+You can use exact IDs, filters, or full-text search. Add semantic search when differences in wording make those methods miss useful material.
+
+## What RAG does not prove
+
+Retrieved text can be old, irrelevant, or outside the user’s access.
+
+The model can also write a claim that the text does not support.
+
+Keep permission checks, source versions, and answer checks visible.
+
+## Remember
+
+Use live data for live facts. Use documents for document knowledge. Check both before showing an answer.

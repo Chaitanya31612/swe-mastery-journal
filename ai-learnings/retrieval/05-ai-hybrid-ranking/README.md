@@ -17,5 +17,4 @@ flowchart LR
  P --> B[Select diverse evidence within budget]
  B --> G[Answer or missing evidence]
 ```
-
 Remember: **Find candidates. Order candidates. Pack evidence. Debug each separately.**

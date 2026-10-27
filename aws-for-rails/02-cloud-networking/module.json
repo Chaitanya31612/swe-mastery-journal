@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Name resolution",
-      "detail": "A VPC is a network boundary you configure. A subnet belongs to one Availability Zone. A route table decides where traffic goes. A security group controls allowed traffic for attached resources; a route and a permission rule solve different parts of connectivity."
+      "detail": "## Understand the idea\n\nA VPC is a network boundary you configure. A subnet belongs to one Availability Zone.\n\nA route table decides where traffic goes. A security group controls allowed traffic for attached resources; a route and a permission rule solve different parts of connectivity.\n\n“Private subnet” does not mean an application has no outbound needs. A worker may need S3, a queue, image registry, or an external email API.\n\nNAT and VPC endpoints are different ways to reach services, with different scope and costs. Choose the path you need; do not add a NAT gateway by reflex.\n\nSetup sketch: choose non-overlapping CIDRs, subnets in two zones, explicit route tables, an internet-facing load balancer where needed, private app/database placement, and security-group references that allow only the intended paths.\n\nRecord DNS resolution and outbound service access."
     },
     {
       "title": "Follow one item",
-      "detail": "A request needs DNS, a routable destination, a listener, and allowed traffic. A database timeout is not the same as a database login rejection. Follow the packet one hop at a time.\n\nFor S3 from a private task, inspect the endpoint/NAT route, endpoint policy, task IAM role, and bucket policy. Network reachability does not imply S3 authorization."
+      "detail": "A request needs DNS, a routable destination, a listener, and allowed traffic. A database timeout is not the same as a database login rejection.\n\nFollow the packet one hop at a time.\n\nFor S3 from a private task, inspect the endpoint/NAT route, endpoint policy, task IAM role, and bucket policy. Network reachability does not imply S3 authorization."
     },
     {
       "title": "Try the failure",
-      "detail": "Putting RDS in a subnet does not decide all access rules. Opening a group to the whole internet can hide a wrong source rule. A NAT gateway can add continuing cost and is not inbound access to a private task."
+      "detail": "Putting RDS in a subnet does not decide all access rules. Opening a group to the whole internet can hide a wrong source rule.\n\nA NAT gateway can add continuing cost and is not inbound access to a private task."
     }
   ],
   "sources": [

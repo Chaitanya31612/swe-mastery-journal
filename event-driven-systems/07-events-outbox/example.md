@@ -11,5 +11,4 @@ Ticket.transaction do
   end
 end
 ```
-
 The runnable lab defines every model/migration/service and keeps this transaction local. No network call is made while holding the ticket lock.

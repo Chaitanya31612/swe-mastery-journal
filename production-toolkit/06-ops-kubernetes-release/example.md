@@ -13,5 +13,4 @@ resources:
   requests: {cpu: "100m", memory: "256Mi"}
   limits: {memory: "512Mi"}
 ```
-
 Illustrative values only: measure the actual Rails startup, memory, and traffic. Do not paste arbitrary limits into production.

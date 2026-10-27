@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,7 +77,7 @@
   "trace": [
     {
       "title": "Label queries and supporting spans",
-      "detail": "Create realistic questions with expected supporting documents/spans and answerability labels. Include paraphrases, exact terms, exceptions, stale documents, forbidden documents, ambiguity, and no-answer cases. Freeze a held-out set before tuning.\n\nRecall@k asks whether expected relevant evidence is among the first k results under a defined relevance label. Precision@k asks how much of the retrieved set is relevant. Ranking metrics measure order. These are not final-answer accuracy, and relevance labels may have multiple valid supporting sources.\n\nCheck the pipeline in order: parsed source quality, candidate recall, ranking/context packing, answer support, access boundaries, latency and cost. Use an exact/scoped or lexical baseline. Keep permission leakage as a separate hard failure, not a small penalty hidden by an average relevance score."
+      "detail": "## Understand\n\nCreate realistic questions with expected supporting documents/spans and answerability labels. Include paraphrases, exact terms, exceptions, stale documents, forbidden documents, ambiguity, and no-answer cases.\n\nFreeze a held-out set before tuning.\n\nRecall@k asks whether expected relevant evidence is among the first k results under a defined relevance label. Precision@k asks how much of the retrieved set is relevant.\n\nRanking metrics measure order. These are not final-answer accuracy, and relevance labels may have multiple valid supporting sources.\n\nCheck the pipeline in order: parsed source quality, candidate recall, ranking/context packing, answer support, access boundaries, latency and cost. Use an exact/scoped or lexical baseline.\n\nKeep permission leakage as a separate hard failure, not a small penalty hidden by an average relevance score."
     },
     {
       "title": "Follow one input",

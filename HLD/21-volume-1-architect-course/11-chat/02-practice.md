@@ -1,10 +1,16 @@
 # Chat: durable acceptance, live delivery, and reconnects — practice
 
-Save your attempt before opening answers. Label assistance and previous exposure. Use the seven-part framework; explain assumptions and consequences.
+Save your attempt before opening answers. Label assistance and previous exposure.
+
+Use the seven-part framework; explain assumptions and consequences.
 
 ## P1 — Multi-device chat
 
-500,000 connected devices, ten million messages/day, 10× message peak, 4 KB average stored message. Keep history 90 days. Users can have three devices. Require durable acceptance, per-conversation order, and offline catch-up; presence may be approximate. Estimate message and connection limits and design retry/reconnect/membership flows.
+500,000 connected devices, ten million messages/day, 10× message peak, 4 KB average stored message. Keep history 90 days.
+
+Users can have three devices. Require durable acceptance, per-conversation order, and offline catch-up; presence may be approximate.
+
+Estimate message and connection limits and design retry/reconnect/membership flows.
 
 ## P2 — Add a large room
 
@@ -17,7 +23,6 @@ message_id = wall_clock_ms()
 socket.send(message)
 return "durably sent"
 ```
-
 There is no durable append or client request identity. Repair acceptance and retry semantics; explain how ordering is assigned.
 
 ## Delayed gate

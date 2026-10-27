@@ -15,5 +15,4 @@ class SettingTest < Minitest::Test
   end
 end
 ```
-
 Run the supplied standalone Ruby lab in the learning journal, not in the work project. It needs only the Ruby standard library.

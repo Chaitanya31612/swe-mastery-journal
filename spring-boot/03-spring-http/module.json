@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "HTTP and filters",
-      "detail": "An HTTP endpoint is a boundary. Treat incoming strings and JSON as untrusted input. Binding turns JSON into Java values. Validation checks those values. Authorization checks whether this caller may perform this action. These are separate steps."
+      "detail": "# The idea\n\nAn HTTP endpoint is a boundary. Treat incoming strings and JSON as untrusted input.\n\nBinding turns JSON into Java values. Validation checks those values.\n\nAuthorization checks whether this caller may perform this action. These are separate steps.\n\nKeep controller methods short. Convert input, call a use case, then map its result to an HTTP response.\n\nPut reusable business rules in the service. Return DTOs, which are small request/response types, rather than exposing database entities and all their fields.\n\nChoose errors that help the client: bad input is different from a missing record or a conflict. Do not return stack traces or SQL text to callers.\n\nAn exception handler can make the error shape consistent."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "A servlet filter can run before MVC. DispatcherServlet chooses a handler. A message converter reads JSON. Validation runs on the bound input. Then the controller invokes the service. The response converter writes JSON.\n\nTry an empty title, malformed JSON, a valid request, and a simulated service conflict. For each, predict whether the service should run. Use @RestControllerAdvice with @ExceptionHandler for your domain errors. Log a request ID so an operator can find details privately."
+      "detail": "A servlet filter can run before MVC. DispatcherServlet chooses a handler.\n\nA message converter reads JSON. Validation runs on the bound input.\n\nThen the controller invokes the service. The response converter writes JSON.\n\nTry an empty title, malformed JSON, a valid request, and a simulated service conflict. For each, predict whether the service should run.\n\nUse @RestControllerAdvice with @ExceptionHandler for your domain errors. Log a request ID so an operator can find details privately."
     },
     {
       "title": "Check the result",

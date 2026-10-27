@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Request identity",
-      "detail": "CloudFront is an edge delivery/cache layer in front of an origin. Static versioned assets are a natural fit. Dynamic or personalized responses require a deliberate cache key and authorization policy."
+      "detail": "## Understand the idea\n\nCloudFront is an edge delivery/cache layer in front of an origin. Static versioned assets are a natural fit.\n\nDynamic or personalized responses require a deliberate cache key and authorization policy.\n\nCache identity answers which requests may share a response. If two users receive different data but the key omits that difference, a shared cache can leak content.\n\nDo not solve this by forwarding every header blindly; that can destroy cache usefulness and complicate origin behavior.\n\nSetup: select an origin, restrict direct S3 origin access when appropriate, create behaviors for assets versus dynamic paths, choose cache/origin-request policies, configure TLS/domain, and test hit/miss plus a private-user boundary.\n\nVersion asset names to avoid expensive broad invalidations for every release."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Caching personalized JSON under one shared key is dangerous. Removing old assets immediately can break clients with cached HTML. An invalidation is not a substitute for a correct cache policy."
+      "detail": "Caching personalized JSON under one shared key is dangerous. Removing old assets immediately can break clients with cached HTML.\n\nAn invalidation is not a substitute for a correct cache policy."
     }
   ],
   "sources": [

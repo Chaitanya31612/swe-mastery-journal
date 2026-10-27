@@ -17,5 +17,4 @@ flowchart LR
  P1 --> D1[(Shipment database)]
  P2 --> D2[(Document store)]
 ```
-
 Remember: **MCP connects capabilities. Your application still owns the decisions.**

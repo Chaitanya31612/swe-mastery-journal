@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,15 +72,15 @@
   "trace": [
     {
       "title": "Image artifact",
-      "detail": "An image is a packaged filesystem/configuration template. A container is a running or stopped instance with its own writable layer. It runs processes using the host kernel’s container facilities; it is not automatically a whole independent virtual machine."
+      "detail": "# Start with three things\n\n- **Image:** packaged files and settings used to start a container.\n- **Container:** an instance of that image, with its own writable layer.\n- **Volume:** storage with a lifecycle you manage separately.\n\n```text\nImage → start → container → application process\n                   ↓\n          important data goes to managed storage\n```\n\nA container runs processes using the host kernel’s container features.\n\nIt is not automatically a separate virtual machine with its own kernel.\n\n## A small example\n\nWrite a file inside a container. Stopping that container does not mean you removed it.\n\nReplace the container, and that file may disappear with the old writable layer.\n\nPut important state in a managed volume or an external service.\n\n## Two ways to attach storage\n\nA **bind mount** connects a path on your machine to a path in the container.\n\nA **named volume** has a separate lifecycle managed through Docker.\n\nKnow which one you are using before you remove a container.\n\n## Remember\n\nDocker helps repeat the same environment. You still need permissions, backups, and correct application code.\n"
     },
     {
       "title": "Follow one item",
-      "detail": "Build image → create container → start main process → write to layer/volume → stop → restart or replace. Before each step, predict which bytes and process state remain.\n\nTrace a Rails upload written locally. A replacement container starts from the image again; it does not inherit the old writable layer. External object storage solves a different boundary from packaging."
+      "detail": "Build image → create container → start main process → write to layer/volume → stop → restart or replace. Before each step, predict which bytes and process state remain.\n\nTrace a Rails upload written locally. A replacement container starts from the image again; it does not inherit the old writable layer.\n\nExternal object storage solves a different boundary from packaging."
     },
     {
       "title": "Try the failure",
-      "detail": "EXPOSE documents a container port; it does not publish it to the host. A running container can contain a failing app. A volume is not itself a tested backup."
+      "detail": "EXPOSE documents a container port; it does not publish it to the host. A running container can contain a failing app.\n\nA volume is not itself a tested backup."
     }
   ],
   "sources": [

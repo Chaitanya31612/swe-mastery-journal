@@ -12,5 +12,4 @@ export function visibleTasks(tasks, filter) {
 // 1. Start query A. 2. Start query B.
 // 3. Resolve B then A. Assert only B remains visible.
 ```
-
 Use deferred promises/fake requests to control completion order. A timeout-based guess makes the test flaky.

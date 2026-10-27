@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Run identity",
-      "detail": "Streaming sends incremental events so the UI can show progress before completion. It changes delivery timing, not the correctness of the answer. Provider streams can include text, tool-call arguments, usage, refusals, errors, and completion signals; do not assume every event is display text.\n\nKeep a state machine: queued, running, partial, validating, completed, unavailable, cancelled, or expired. Do not mark the operation successful because the first bytes arrived. Do not execute a tool from partial JSON arguments. Buffer a complete validated proposal before applying it.\n\nFor a Rails browser flow, a background job can write run events and the client can read status through polling or a controlled streaming channel. Bound buffers, escape generated text, preserve keyboard focus, and cancel obsolete views. A disconnected browser must not cause a partial answer to be stored as a completed one."
+      "detail": "## Understand\n\nStreaming sends incremental events so the UI can show progress before completion. It changes delivery timing, not the correctness of the answer.\n\nProvider streams can include text, tool-call arguments, usage, refusals, errors, and completion signals; do not assume every event is display text.\n\nKeep a state machine: queued, running, partial, validating, completed, unavailable, cancelled, or expired. Do not mark the operation successful because the first bytes arrived.\n\nDo not execute a tool from partial JSON arguments. Buffer a complete validated proposal before applying it.\n\nFor a Rails browser flow, a background job can write run events and the client can read status through polling or a controlled streaming channel.\n\nBound buffers, escape generated text, preserve keyboard focus, and cancel obsolete views. A disconnected browser must not cause a partial answer to be stored as a completed one."
     },
     {
       "title": "Follow one input",
-      "detail": "Trace job status separately from transport connection. Simulate disconnect, reconnect, out-of-order status reads, malformed final output, and a newer request finishing first. Protect every visible state update with the current run identity."
+      "detail": "Trace job status separately from transport connection. Simulate disconnect, reconnect, out-of-order status reads, malformed final output, and a newer request finishing first.\n\nProtect every visible state update with the current run identity."
     },
     {
       "title": "Try the failure",

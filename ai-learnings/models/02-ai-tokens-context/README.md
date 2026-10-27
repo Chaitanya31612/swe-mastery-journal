@@ -17,5 +17,4 @@ flowchart LR
  S --> B
  F -->|Yes| M[Model request]
 ```
-
 Remember: **Count the whole suitcase, not just the question.**

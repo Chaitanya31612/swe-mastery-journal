@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,15 +72,15 @@
   "trace": [
     {
       "title": "Partition assignment",
-      "detail": "A consumer group shares partition responsibility among its members. A different group has independent progress and can read the same retained records. Within a group, one assigned member normally owns a partition at a time under the selected group protocol."
+      "detail": "## Understand the idea\n\nA consumer group shares partition responsibility among its members. A different group has independent progress and can read the same retained records.\n\nWithin a group, one assigned member normally owns a partition at a time under the selected group protocol.\n\nDistinguish fetched position, a client’s stored progress, and committed group offsets. Exact APIs vary by library.\n\nA committed offset conventionally identifies the next record to resume from, not the last business event ID.\n\nProcess the durable effect before committing the relevant completed progress. A crash after effect but before commit replays it.\n\nCommitting too early can skip unfinished work after a crash. Auto offset reset applies when there is no usable committed position; earliest does not rewind a healthy group on every restart."
     },
     {
       "title": "Follow one item",
-      "detail": "Assigned partition → fetch → validate → DB transaction → commit completed progress. Parallel processing needs a contiguous completion frontier: do not commit past an earlier unfinished record merely because a later one finished.\n\nTest a consumer restart with an existing group and then a new group. Explain the difference from resetting offsets deliberately."
+      "detail": "Assigned partition → fetch → validate → DB transaction → commit completed progress.\n\nParallel processing needs a contiguous completion frontier: do not commit past an earlier unfinished record merely because a later one finished.\n\nTest a consumer restart with an existing group and then a new group. Explain the difference from resetting offsets deliberately."
     },
     {
       "title": "Try the failure",
-      "detail": "A high fetched position does not mean business work completed. More group members than partitions can leave members idle. An automatic progress setting can acknowledge work before your code intended."
+      "detail": "A high fetched position does not mean business work completed. More group members than partitions can leave members idle.\n\nAn automatic progress setting can acknowledge work before your code intended."
     }
   ],
   "sources": [

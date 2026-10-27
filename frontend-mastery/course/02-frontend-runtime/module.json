@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,15 +76,15 @@
   "trace": [
     {
       "title": "Event and stack",
-      "detail": "JavaScript code runs on a call stack. Browser events and timers schedule later tasks. Promise callbacks use a microtask queue, which is drained after the current stack before the next task. A zero-delay timer means “eligible later,” not “run now.”"
+      "detail": "# The idea\n\nJavaScript code runs on a call stack. Browser events and timers schedule later tasks.\n\nPromise callbacks use a microtask queue, which is drained after the current stack before the next task. A zero-delay timer means “eligible later,” not “run now.”\n\nClosures retain access to lexical bindings. const prevents rebinding the name; it does not freeze the object. let in a loop creates useful per-iteration bindings.\n\nPrototype lookup chooses inherited properties when an own property is absent.\n\nAsync requests can finish out of order. If a search for “ca” finishes after “cat,” blindly applying both results makes the screen go backward.\n\nCancellation can save work, but a latest-request check makes the UI’s acceptance rule explicit."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Write the synchronous lines first: A and D. Then drain the promise callback: C. Then the timer task can run: B.\n\nFor search, label each request with a number. Only the latest number may publish rows. Also guard loading/error updates; a stale failure must not replace the current success. Encode user input when putting it into a URL."
+      "detail": "Write the synchronous lines first: A and D. Then drain the promise callback: C.\n\nThen the timer task can run: B.\n\nFor search, label each request with a number. Only the latest number may publish rows.\n\nAlso guard loading/error updates; a stale failure must not replace the current success. Encode user input when putting it into a URL."
     },
     {
       "title": "Check the result",
-      "detail": "await pauses that async function, not the whole browser. A long synchronous loop still blocks input. A stale request can also clear the current loading spinner if only result assignment is guarded."
+      "detail": "await pauses that async function, not the whole browser. A long synchronous loop still blocks input.\n\nA stale request can also clear the current loading spinner if only result assignment is guarded."
     }
   ],
   "recallPrompt": "Without notes: Predict JavaScript ordering and prevent old requests from replacing new results. Give a concrete failure example.",

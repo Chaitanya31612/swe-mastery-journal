@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Authorization discovery",
-      "detail": "For HTTP-based remote MCP, the selected specification defines an authorization framework using protected-resource metadata and authorization-server discovery. Use a supported OAuth flow for the deployment rather than inventing a token exchange inside a tool.\n\nValidate token issuer, audience, expiry and scopes through appropriate middleware/libraries. Do not forward an upstream access token to a downstream service that was not its intended audience. Token passthrough and confused-deputy behavior can give a caller powers it should not have.\n\nAn access token that permits calling read_shipment_facts still does not authorize every shipment. Resolve the principal and apply tenant/record/field policy at the domain boundary. Bind identities per request. Session IDs and resource URIs are not authentication credentials. The local lab uses synthetic demo identity and is explicitly not a production OAuth implementation."
+      "detail": "## Understand\n\nFor HTTP-based remote MCP, the selected specification defines an authorization framework using protected-resource metadata and authorization-server discovery.\n\nUse a supported OAuth flow for the deployment rather than inventing a token exchange inside a tool.\n\nValidate token issuer, audience, expiry and scopes through appropriate middleware/libraries. Do not forward an upstream access token to a downstream service that was not its intended audience.\n\nToken passthrough and confused-deputy behavior can give a caller powers it should not have.\n\nAn access token that permits calling read_shipment_facts still does not authorize every shipment. Resolve the principal and apply tenant/record/field policy at the domain boundary.\n\nBind identities per request. Session IDs and resource URIs are not authentication credentials.\n\nThe local lab uses synthetic demo identity and is explicitly not a production OAuth implementation."
     },
     {
       "title": "Follow one input",
-      "detail": "Trace identity from client authorization to server middleware to domain policy. Test wrong audience, missing scope, expired identity, revoked role and foreign record. Inspect discovery/redirect/SSRF handling in the selected authorization implementation."
+      "detail": "Trace identity from client authorization to server middleware to domain policy. Test wrong audience, missing scope, expired identity, revoked role and foreign record.\n\nInspect discovery/redirect/SSRF handling in the selected authorization implementation."
     },
     {
       "title": "Try the failure",

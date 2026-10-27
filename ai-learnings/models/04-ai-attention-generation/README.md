@@ -17,5 +17,4 @@ flowchart TD
  X -->|Yes| R[Return output]
  X -->|No| U
 ```
-
 Remember: **It continues a context. It does not inspect your world by itself.**

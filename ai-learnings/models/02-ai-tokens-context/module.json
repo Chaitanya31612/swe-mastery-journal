@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Instructions and schemas",
-      "detail": "A token is a model-specific unit of text or other encoded input. It may be a word fragment, punctuation, or bytes. Token count is not character count. Different languages, code, and tokenizers produce different counts.\n\nThe context window bounds what a request can process under the selected model’s rules. Instructions, user messages, conversation history, tool definitions, retrieved passages, and tool results all compete for space. Output and, on some models, internal reasoning also have limits or budget implications. Check the selected API rather than assuming one universal formula.\n\nA model call does not automatically remember every previous request. The application or a provider conversation service supplies the context. Keep essential policy and current evidence. Trim stale content deliberately; do not split a tool request from its result. A long window is capacity, not proof that the model will use every detail correctly."
+      "detail": "## Understand\n\nA token is a model-specific unit of text or other encoded input. It may be a word fragment, punctuation, or bytes.\n\nToken count is not character count. Different languages, code, and tokenizers produce different counts.\n\nThe context window bounds what a request can process under the selected model’s rules. Instructions, user messages, conversation history, tool definitions, retrieved passages, and tool results all compete for space.\n\nOutput and, on some models, internal reasoning also have limits or budget implications. Check the selected API rather than assuming one universal formula.\n\nA model call does not automatically remember every previous request. The application or a provider conversation service supplies the context.\n\nKeep essential policy and current evidence. Trim stale content deliberately; do not split a tool request from its result.\n\nA long window is capacity, not proof that the model will use every detail correctly."
     },
     {
       "title": "Follow one input",
-      "detail": "Draw each context contributor as a box. Add input counts, output reserve, and any provider-specific reasoning budget. If evidence does not fit, retrieve fewer relevant passages or summarize with provenance. Never fix overflow by dropping authorization or instruction boundaries."
+      "detail": "Draw each context contributor as a box. Add input counts, output reserve, and any provider-specific reasoning budget.\n\nIf evidence does not fit, retrieve fewer relevant passages or summarize with provenance. Never fix overflow by dropping authorization or instruction boundaries."
     },
     {
       "title": "Try the failure",

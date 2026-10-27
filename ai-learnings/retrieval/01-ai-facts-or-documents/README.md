@@ -17,5 +17,4 @@ flowchart TD
  B --> G
  G --> V[Check supported claims or abstain]
 ```
-
 Remember: **Find the authority first. Retrieve second. Generate only if useful.**

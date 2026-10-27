@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Common base",
-      "detail": "Conflict markers identify text Git could not combine automatically. They do not tell you which product behavior should win. Read the common base, each change, callers, and tests."
+      "detail": "## Understand the idea\n\nConflict markers identify text Git could not combine automatically. They do not tell you which product behavior should win.\n\nRead the common base, each change, callers, and tests.\n\nDuring rebase, Git replays your commits onto another base. The meanings of ours and theirs can feel reversed from an ordinary merge.\n\nInspect actual content rather than clicking a side label by habit.\n\nSome dangerous conflicts are semantic and have no markers: one change renames a field while another still sends the old field; one adds a new state while another assumes only two states.\n\nTest the combined contract even after a clean merge."
     },
     {
       "title": "Follow one item",
-      "detail": "Write intended before/after behavior for each branch. Decide the combined behavior. Edit the resolution, stage it, continue the operation, and run the relevant regression tests. If the operation is wrong for the task, abort deliberately after preserving needed work.\n\nUse the graph to explain where the resolution lives. A merge commit can contain meaningful hand-written conflict decisions that deserve review."
+      "detail": "Write intended before/after behavior for each branch. Decide the combined behavior.\n\nEdit the resolution, stage it, continue the operation, and run the relevant regression tests. If the operation is wrong for the task, abort deliberately after preserving needed work.\n\nUse the graph to explain where the resolution lives. A merge commit can contain meaningful hand-written conflict decisions that deserve review."
     },
     {
       "title": "Try the failure",
-      "detail": "Accept Both can duplicate work or create unreachable code. Accept Current can remove a new rule. Conflict-free text can still be an invalid combined design."
+      "detail": "Accept Both can duplicate work or create unreachable code. Accept Current can remove a new rule.\n\nConflict-free text can still be an invalid combined design."
     }
   ],
   "sources": [

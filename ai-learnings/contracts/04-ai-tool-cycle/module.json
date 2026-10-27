@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Declared tools",
-      "detail": "The model can emit a request to use a declared tool. In a client-side integration, your host application receives that proposal, validates it, executes permitted code, and returns a tool result. The model does not obtain the function's privileges merely by generating its name.\n\nA tool definition describes name, purpose, and argument shape. Keep descriptions narrow and schemas small. Resolve identity outside arguments. Treat arguments as outside input and results as potentially untrusted content. Return bounded data with explicit errors.\n\nThe host maintains the conversation item linking a call ID to its result. A second model step can use the result to answer or propose another call. Put limits on steps, time, output size, and total cost. Some platforms can execute tools server-side; their execution boundary and authorization still need an explicit design."
+      "detail": "## Understand\n\nThe model can emit a request to use a declared tool. In a client-side integration, your host application receives that proposal, validates it, executes permitted code, and returns a tool result.\n\nThe model does not obtain the function's privileges merely by generating its name.\n\nA tool definition describes name, purpose, and argument shape. Keep descriptions narrow and schemas small.\n\nResolve identity outside arguments. Treat arguments as outside input and results as potentially untrusted content.\n\nReturn bounded data with explicit errors.\n\nThe host maintains the conversation item linking a call ID to its result. A second model step can use the result to answer or propose another call.\n\nPut limits on steps, time, output size, and total cost. Some platforms can execute tools server-side; their execution boundary and authorization still need an explicit design."
     },
     {
       "title": "Follow one input",
-      "detail": "User input → model tool proposal → schema and policy checks → bounded function → safe result with matching call ID → model continuation. Trace the real tool name, duration, result status, and policy decision without logging private arguments by default."
+      "detail": "User input → model tool proposal → schema and policy checks → bounded function → safe result with matching call ID → model continuation.\n\nTrace the real tool name, duration, result status, and policy decision without logging private arguments by default."
     },
     {
       "title": "Try the failure",
-      "detail": "Schema-valid arguments can still be unauthorized. A tool can return injected instructions. A timeout after a write can have an unknown outcome, so a blind retry can duplicate effects."
+      "detail": "Schema-valid arguments can still be unauthorized. A tool can return injected instructions.\n\nA timeout after a write can have an unknown outcome, so a blind retry can duplicate effects."
     }
   ],
   "sources": [

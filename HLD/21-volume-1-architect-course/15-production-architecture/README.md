@@ -1,6 +1,8 @@
 # 15 — Production practice: service objectives, security, and safe evolution
 
-Budget: **5 hours** including local feedback/retrieval. Prerequisites: modules At least three completed design modules. Book connection: Chapter 1 and chapter wrap-ups; extended with production engineering.
+Budget: **5 hours** including local feedback/retrieval. Prerequisites: modules At least three completed design modules.
+
+Book connection: Chapter 1 and chapter wrap-ups; extended with production engineering.
 
 Outcome: Turn a diagram into measurable service behavior, bounded failure recovery, threat boundaries, and a reversible migration plan.
 
@@ -12,4 +14,6 @@ Outcome: Turn a diagram into measurable service behavior, bounded failure recove
 4. Only after submitting your attempt, open [solutions](answers/01-solutions.md). Compare consequences, not diagram appearance.
 5. Schedule delayed recall: Explain RPO/RTO with an actual restore scenario. Write an expand/migrate/contract plan and identify when rollback ceases to be safe.
 
-Use [the rubric](../assessment-rubric.md) and [the learning protocol](../learning-protocol.md). A focused local exercise may leave rubric dimensions unassessed; use full designs to establish overall independence. Sources are optional verification in [the source map](../sources.md). The lesson includes the mechanisms needed for these exercises.
+Use [the rubric](../assessment-rubric.md) and [the learning protocol](../learning-protocol.md). A focused local exercise may leave rubric dimensions unassessed; use full designs to establish overall independence.
+
+Sources are optional verification in [the source map](../sources.md). The lesson includes the mechanisms needed for these exercises.

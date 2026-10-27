@@ -1,62 +1,62 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2026-10-27-ai",
+  "contentVersion": "2026-10-27-ai-plain-reading",
   "title": "AI Learnings",
   "tracks": [
     {
       "id": "models",
-      "title": "1 \u00b7 Understand the model",
+      "title": "1 · Understand the model",
       "description": "Tokens, context, training, attention, uncertainty, and choosing a useful model.",
-      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "version": "Application engineering · checked 2026-10-27 · see chapter references",
       "hours": 11.5
     },
     {
       "id": "contracts",
-      "title": "2 \u00b7 Build a reliable model boundary",
+      "title": "2 · Build a reliable model boundary",
       "description": "Prompts, schemas, provider adapters, tool calls, timeouts, streams, and traces.",
-      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "version": "Application engineering · checked 2026-10-27 · see chapter references",
       "hours": 13.5
     },
     {
       "id": "retrieval",
-      "title": "3 \u00b7 Give it the right knowledge",
+      "title": "3 · Give it the right knowledge",
       "description": "SQL facts, document ingestion, embeddings, hybrid search, grounded answers, and retrieval checks.",
-      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "version": "Application engineering · checked 2026-10-27 · see chapter references",
       "hours": 15.0
     },
     {
       "id": "agents",
-      "title": "4 \u00b7 Control tools and workflows",
+      "title": "4 · Control tools and workflows",
       "description": "Choose a workflow, run a bounded agent loop, own memory, and protect actions.",
-      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "version": "Application engineering · checked 2026-10-27 · see chapter references",
       "hours": 11.5
     },
     {
       "id": "mcp",
-      "title": "5 \u00b7 Connect through MCP",
+      "title": "5 · Connect through MCP",
       "description": "Understand hosts, clients, servers, lifecycle, transports, authorization, and Ruby integration.",
-      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "version": "Application engineering · checked 2026-10-27 · see chapter references",
       "hours": 13.0
     },
     {
       "id": "rails-ai",
-      "title": "6 \u00b7 Build a complete Rails feature",
+      "title": "6 · Build a complete Rails feature",
       "description": "Trace a fictional operations assistant through controllers, jobs, services, facts, and fallback UI.",
-      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "version": "Application engineering · checked 2026-10-27 · see chapter references",
       "hours": 20.0
     },
     {
       "id": "quality",
-      "title": "7 \u00b7 Measure and operate it",
+      "title": "7 · Measure and operate it",
       "description": "Evaluation, red teams, access boundaries, privacy, cost, observability, and release gates.",
-      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "version": "Application engineering · checked 2026-10-27 · see chapter references",
       "hours": 12
     },
     {
       "id": "advanced-ai",
-      "title": "8 \u00b7 Make production decisions",
+      "title": "8 · Make production decisions",
       "description": "Advanced retrieval, durable agents, framework tradeoffs, tuning, serving, multimodal work, and the final capstone.",
-      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "version": "Application engineering · checked 2026-10-27 · see chapter references",
       "hours": 18.0
     }
   ],

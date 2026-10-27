@@ -14,7 +14,9 @@ Operations and units; average/peak; object size/retention; which estimate change
 
 ## Model and flows
 
-API contracts, source of truth, keys/access patterns, atomic boundary. Draw and narrate a write and a read/background flow. Mark exactly when success is acknowledged.
+API contracts, source of truth, keys/access patterns, atomic boundary. Draw and narrate a write and a read/background flow.
+
+Mark exactly when success is acknowledged.
 
 ## Critical risk
 

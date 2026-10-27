@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Saved intent",
-      "detail": "A background job runs later and may run more than once. Pass small JSON-friendly arguments, usually IDs, rather than whole model objects. The row may have changed or disappeared before the worker starts."
+      "detail": "# The idea\n\nA background job runs later and may run more than once. Pass small JSON-friendly arguments, usually IDs, rather than whole model objects.\n\nThe row may have changed or disappeared before the worker starts.\n\nSidekiq 5 uses include Sidekiq::Worker for a direct worker. Modern Sidekiq examples can use newer APIs; keep that version difference visible.\n\nA successful enqueue is not proof that work completed. Monitor queue latency, retries, and terminal failures.\n\nIdempotent means repeating the same logical command does not create another logical effect. A seen? pre-check can race.\n\nUse a database uniqueness rule for local effects and a stable provider idempotency key when the remote API supports it. A cache stores a copy; define its key, expiry, and invalidation.\n\nTenant/user context may belong in the key."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Trace enqueue → delayed start → load current row → attempt external effect → timeout → retry. The timeout does not say whether the provider accepted the action. Reusing the same logical key lets a supporting provider deduplicate it.\n\nFor a cache, trace miss → compute → store → hit → underlying update → expiry/invalidation. Record what maximum staleness the user can accept. A permission decision should not use an indefinitely stale shared cache."
+      "detail": "Trace enqueue → delayed start → load current row → attempt external effect → timeout → retry. The timeout does not say whether the provider accepted the action.\n\nReusing the same logical key lets a supporting provider deduplicate it.\n\nFor a cache, trace miss → compute → store → hit → underlying update → expiry/invalidation. Record what maximum staleness the user can accept.\n\nA permission decision should not use an indefinitely stale shared cache."
     },
     {
       "title": "Check the result",
-      "detail": "Testing Sidekiq inline changes timing and can hide a transaction visibility bug. Enqueueing before commit can let a worker read data that is not committed yet. A cache key without tenant scope can leak another tenant’s result."
+      "detail": "Testing Sidekiq inline changes timing and can hide a transaction visibility bug. Enqueueing before commit can let a worker read data that is not committed yet.\n\nA cache key without tenant scope can leak another tenant’s result."
     }
   ],
   "recallPrompt": "Without notes: Make a job safe to repeat and explain when cached data may be old. Give a concrete failure example.",

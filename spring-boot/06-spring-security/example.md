@@ -11,5 +11,6 @@ class TaskAccess {
 // load the task, check ownership, then change it.
 // Never take callerId from an editable JSON field as proof of identity.
 ```
+Configure a SecurityFilterChain bean for routes and authentication. This fragment deliberately does not pretend to be a complete production login system.
 
-Configure a SecurityFilterChain bean for routes and authentication. This fragment deliberately does not pretend to be a complete production login system. In the sandbox, test a denied request as carefully as an allowed one.
+In the sandbox, test a denied request as carefully as an allowed one.

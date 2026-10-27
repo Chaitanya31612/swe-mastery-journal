@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,15 +72,15 @@
   "trace": [
     {
       "title": "Access question",
-      "detail": "Redis is a networked data-structure service, not just a faster hash in your Ruby process. Each operation has a data type, cost, key scope, and failure behavior. Keep network round trips and memory in mind."
+      "detail": "## Understand the idea\n\nRedis is a networked data-structure service, not just a faster hash in your Ruby process. Each operation has a data type, cost, key scope, and failure behavior.\n\nKeep network round trips and memory in mind.\n\nStrings fit values/counters. Hashes fit fields under one key.\n\nSets answer membership/uniqueness. Sorted sets rank members by score.\n\nLists model ordered pushes/pops. Streams provide a retained entry structure with consumer-group features.\n\nPub/Sub is a different live-delivery contract and should not be mistaken for a durable queue.\n\nName keys with scope and purpose. Decide expiry deliberately.\n\nUse SCAN-style iteration for operational browsing rather than blocking a large server with a casual KEYS *. An atomic command is not the same thing as an atomic multi-command business workflow."
     },
     {
       "title": "Follow one item",
-      "detail": "Choose a question → choose a structure/key → execute a bounded operation → inspect result/TTL → define rebuild or persistence. Compare one command with read-modify-write in application code.\n\nINCR is atomic as that command. GET followed by SET from two clients can lose an update. A string counter also needs a policy for expiry and retry."
+      "detail": "Choose a question → choose a structure/key → execute a bounded operation → inspect result/TTL → define rebuild or persistence. Compare one command with read-modify-write in application code.\n\nINCR is atomic as that command. GET followed by SET from two clients can lose an update.\n\nA string counter also needs a policy for expiry and retry."
     },
     {
       "title": "Try the failure",
-      "detail": "A set’s uniqueness does not coordinate a PostgreSQL write automatically. A key with no expiry can grow forever. Pub/Sub messages can be missed by disconnected subscribers under its contract."
+      "detail": "A set’s uniqueness does not coordinate a PostgreSQL write automatically. A key with no expiry can grow forever.\n\nPub/Sub messages can be missed by disconnected subscribers under its contract."
     }
   ],
   "sources": [

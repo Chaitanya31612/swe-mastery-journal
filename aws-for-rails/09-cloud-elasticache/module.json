@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Choose data role",
-      "detail": "ElastiCache supplies managed in-memory engines/options. Identify the selected engine and mode rather than assuming every Redis-compatible feature and durability behavior is identical. Client compatibility, topology, authentication, TLS, and failover matter."
+      "detail": "## Understand the idea\n\nElastiCache supplies managed in-memory engines/options. Identify the selected engine and mode rather than assuming every Redis-compatible feature and durability behavior is identical.\n\nClient compatibility, topology, authentication, TLS, and failover matter.\n\nA disposable cache can evict/rebuild data. A background queue’s work may not be safely disposable.\n\nMixing both under one eviction and memory policy can turn a cache-pressure event into lost jobs. Isolate roles according to their correctness needs.\n\nSetup: choose engine/mode, private connectivity, access/TLS settings, memory/eviction policy, client timeout/pool behavior, and monitoring. Test a cold cache, memory pressure, and endpoint/failover changes with synthetic data.\n\nDo not expose a cache endpoint publicly to avoid a VPC configuration problem."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A cache is not permission authority. A Redis queue on an eviction-enabled shared cache can lose work. A cold-cache stampede can create a database incident."
+      "detail": "A cache is not permission authority. A Redis queue on an eviction-enabled shared cache can lose work.\n\nA cold-cache stampede can create a database incident."
     }
   ],
   "sources": [

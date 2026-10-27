@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Owned run record",
-      "detail": "A longer explanation should have an application run ID and explicit state. Store actor/scope, task identity, source version, prompt/model version and outcome metadata. A job loads that run, rechecks current access, obtains facts, calls the provider, validates the result, and stores an allowed terminal state.\n\nPersisting a run and enqueueing a job are separate boundaries unless the chosen queue/database mechanism unifies them. For important work, use a durable enqueue strategy or an outbox/recovery process. Rails' in-process async adapter is useful for a local demonstration but loses queued work on process exit.\n\nResult access needs its own authorization. A user should not fetch another user's run by guessing its ID. A job started while access was valid may finish after revocation. Recheck the evidence version and current access before displaying stored results."
+      "detail": "## Understand\n\nA longer explanation should have an application run ID and explicit state. Store actor/scope, task identity, source version, prompt/model version and outcome metadata.\n\nA job loads that run, rechecks current access, obtains facts, calls the provider, validates the result, and stores an allowed terminal state.\n\nPersisting a run and enqueueing a job are separate boundaries unless the chosen queue/database mechanism unifies them. For important work, use a durable enqueue strategy or an outbox/recovery process.\n\nRails' in-process async adapter is useful for a local demonstration but loses queued work on process exit.\n\nResult access needs its own authorization. A user should not fetch another user's run by guessing its ID.\n\nA job started while access was valid may finish after revocation. Recheck the evidence version and current access before displaying stored results."
     },
     {
       "title": "Follow one input",
-      "detail": "Trace enqueue failure, duplicate execution, process crash, permission revocation and source change. Avoid holding a DB lock during a slow model request. Use a claim/lease and attempt identity where needed for concurrent durable workers."
+      "detail": "Trace enqueue failure, duplicate execution, process crash, permission revocation and source change. Avoid holding a DB lock during a slow model request.\n\nUse a claim/lease and attempt identity where needed for concurrent durable workers."
     },
     {
       "title": "Try the failure",

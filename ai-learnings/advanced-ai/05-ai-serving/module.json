@@ -24,22 +24,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,7 +76,7 @@
   "trace": [
     {
       "title": "Deployment constraints",
-      "detail": "Managed APIs reduce serving operations but add external dependency, capability, region and data-handling choices. Self-hosting gives different control and responsibilities: model artifacts/licensing, hardware, serving runtime, security, updates, capacity, evaluation and recovery. “Open weights” does not automatically mean unrestricted use or production readiness.\n\nModel weights occupy memory. Serving also needs KV cache, activations, runtime overhead and concurrency capacity. Quantization represents some values with fewer bits and can reduce memory/compute costs under a chosen implementation, with quality and compatibility tradeoffs. A smaller weight file does not by itself predict full serving memory or acceptable latency.\n\nPrefill/decode, batching, scheduling and cache management affect user latency and throughput. More batching can improve throughput while increasing queue delay. Compare actual task quality and end-to-end latency on representative context lengths and concurrency. Reasoning-heavy calls may spend output/compute budget that a short visible answer does not reveal."
+      "detail": "## Understand\n\nManaged APIs reduce serving operations but add external dependency, capability, region and data-handling choices. Self-hosting gives different control and responsibilities: model artifacts/licensing, hardware, serving runtime, security, updates, capacity, evaluation and recovery.\n\n“Open weights” does not automatically mean unrestricted use or production readiness.\n\nModel weights occupy memory. Serving also needs KV cache, activations, runtime overhead and concurrency capacity.\n\nQuantization represents some values with fewer bits and can reduce memory/compute costs under a chosen implementation, with quality and compatibility tradeoffs.\n\nA smaller weight file does not by itself predict full serving memory or acceptable latency.\n\nPrefill/decode, batching, scheduling and cache management affect user latency and throughput. More batching can improve throughput while increasing queue delay.\n\nCompare actual task quality and end-to-end latency on representative context lengths and concurrency. Reasoning-heavy calls may spend output/compute budget that a short visible answer does not reveal."
     },
     {
       "title": "Follow one input",

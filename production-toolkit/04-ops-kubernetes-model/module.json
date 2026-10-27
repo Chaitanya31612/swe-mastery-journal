@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,11 +72,11 @@
   "trace": [
     {
       "title": "Deployment desired state",
-      "detail": "Docker packages/runs containers. Kubernetes coordinates desired workloads through an API and controllers. It can use compatible container runtimes; Docker Engine is not a required node runtime for every cluster."
+      "detail": "## Understand the idea\n\nDocker packages/runs containers. Kubernetes coordinates desired workloads through an API and controllers.\n\nIt can use compatible container runtimes; Docker Engine is not a required node runtime for every cluster.\n\nA Pod groups containers that share a lifecycle/network context. A Deployment manages a ReplicaSet and replaceable Pods for suitable workloads.\n\nYou usually change the desired specification rather than manually repairing a particular pod.\n\nRequests/limits, probes, identity, configuration, and storage affect whether a workload can run usefully. Kubernetes does not know your business transaction rule.\n\nA replacement pod can repeat work if the job/consumer boundary is not designed for it."
     },
     {
       "title": "Follow one item",
-      "detail": "Submit desired state → controller creates/adjusts ReplicaSet → scheduler chooses capacity → kubelet/runtime starts containers → readiness decides traffic eligibility. Remove one lab pod and observe reconciliation, not manual resurrection of the same identity.\n\nInspect events when a pod is Pending or repeatedly restarting. Image pull, scheduling, process failure, and readiness failure are different states."
+      "detail": "Submit desired state → controller creates/adjusts ReplicaSet → scheduler chooses capacity → kubelet/runtime starts containers → readiness decides traffic eligibility.\n\nRemove one lab pod and observe reconciliation, not manual resurrection of the same identity.\n\nInspect events when a pod is Pending or repeatedly restarting. Image pull, scheduling, process failure, and readiness failure are different states."
     },
     {
       "title": "Try the failure",

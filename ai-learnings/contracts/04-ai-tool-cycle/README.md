@@ -23,5 +23,4 @@ sequenceDiagram
  M-->>H: Draft or next proposed call
  H->>H: Enforce total steps, time and spend
 ```
-
 Remember: **The model asks. The host validates and runs.**

@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Task contract",
-      "detail": "A prompt is an input contract for a probabilistic component. State the task, allowed evidence, output shape, ambiguity behavior, and limits. Prefer concrete examples over a long list of vague demands such as “be accurate.” Version the prompt alongside the code that validates its output.\n\nKeep trusted application instructions separate from user text, documents, and tool results. Role or delimiter structure helps communicate that boundary; it is not a complete security sandbox. A malicious instruction inside a retrieved page remains outside data even if it sounds authoritative.\n\nFew-shot examples demonstrate valid behavior. Include a normal case, an ambiguous case, and an unknown case. Avoid examples that silently grant access or teach unsupported default values. Test changes on cases that were not used to write the examples."
+      "detail": "# Tell the model one clear job\n\nA prompt is a set of instructions for a model call.\n\nSay what to do, what evidence to use, and what the answer should look like.\n\n## A small example\n\n> **Task**\n>\n> Turn this sentence into an allowed shipment filter.\n>\n> If the depot name matches two places, ask which one. Do not guess.\n\n```text\nTask + allowed evidence + output shape + what to do when unsure\n                              ↓\n                         Model proposal\n                              ↓\n                    Code validates the result\n```\n\n“Be accurate” is too vague to be a useful rule by itself.\n\n## Show more than the happy path\n\nGive a normal example, an unclear example, and an unknown example.\n\nThese are **few-shot examples**: a few demonstrations of the behavior you want.\n\nDo not let an example quietly grant extra permissions or invent a default value.\n\n## Keep instructions separate from outside text\n\nUser messages, documents, and tool results can contain hostile instructions.\n\nRoles and delimiters help show the boundary. They do not enforce access rules.\n\nKeep the prompt and its output checks under version control together.\n\n## Remember\n\nGive the model clear instructions. Let code enforce the rules.\n"
     },
     {
       "title": "Follow one input",
-      "detail": "Write the expected typed result before the prompt. Add two examples and one counterexample. Run fixtures, inspect the failure category, and revise only the part that addresses it. Keep prompt version and validator version aligned."
+      "detail": "Write the expected typed result before the prompt. Add two examples and one counterexample.\n\nRun fixtures, inspect the failure category, and revise only the part that addresses it. Keep prompt version and validator version aligned."
     },
     {
       "title": "Try the failure",

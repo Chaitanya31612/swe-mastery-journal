@@ -14,5 +14,6 @@ pre { overflow-x: auto; max-width: 100%; }
   .workspace { grid-template-columns: 1fr; }
 }
 ```
+The code block scrolls inside its panel. It should not make the entire page wider than the viewport.
 
-The code block scrolls inside its panel. It should not make the entire page wider than the viewport. Test a long unbroken identifier, browser zoom, and translated text.
+Test a long unbroken identifier, browser zoom, and translated text.

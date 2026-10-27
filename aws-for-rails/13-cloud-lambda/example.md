@@ -9,5 +9,4 @@ def handler(event:, context:)
   { processed: event.fetch('Records').length }
 end
 ```
-
 The event schema and partial-batch response must match the selected trigger. Do not copy this return value as if it acknowledges every source type correctly.

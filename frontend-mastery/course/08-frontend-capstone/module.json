@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -84,11 +84,11 @@
   "trace": [
     {
       "title": "Observed symptom",
-      "detail": "Debug from an observed symptom. Write the exact steps, expected result, and actual result. Decide which boundary could explain the difference: URL, state ownership, request ordering, server response, cache, rendering identity, or browser layout."
+      "detail": "# The idea\n\nDebug from an observed symptom. Write the exact steps, expected result, and actual result.\n\nDecide which boundary could explain the difference: URL, state ownership, request ordering, server response, cache, rendering identity, or browser layout.\n\nUnit tests suit pure transformations. Component tests suit interaction and visible states.\n\nA small end-to-end test checks that important boundaries connect. Avoid replacing every dependency with a mock and calling the result a full application test.\n\nCapstone: a searchable task list with a URL filter, editable title, save failure recovery, stable row identity, and stale-response protection.\n\nUse either React or Vue for the implementation, then explain the same state ownership in the other framework. Next.js is an optional boundary exercise, not a reason to rebuild every screen."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Reproduce with the smallest synthetic dataset. Follow the event through handler, state update, request, accepted response, and render. Add one regression test at the boundary that failed.\n\nFor completion, demonstrate direct-link refresh, back navigation, one failed save without data loss, one out-of-order request, keyboard use, and a mobile layout. Explain what your tests cover and what they do not."
+      "detail": "Reproduce with the smallest synthetic dataset. Follow the event through handler, state update, request, accepted response, and render.\n\nAdd one regression test at the boundary that failed.\n\nFor completion, demonstrate direct-link refresh, back navigation, one failed save without data loss, one out-of-order request, keyboard use, and a mobile layout. Explain what your tests cover and what they do not."
     },
     {
       "title": "Check the result",

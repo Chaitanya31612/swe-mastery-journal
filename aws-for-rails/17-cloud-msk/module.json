@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Client network and identity",
-      "detail": "MSK provides managed Kafka options. It reduces parts of broker infrastructure work, but does not choose event keys, schemas, consumer groups, offset policy, or business idempotence for you. Provisioned/serverless options have different configuration and capacity contracts."
+      "detail": "## Understand the idea\n\nMSK provides managed Kafka options. It reduces parts of broker infrastructure work, but does not choose event keys, schemas, consumer groups, offset policy, or business idempotence for you.\n\nProvisioned/serverless options have different configuration and capacity contracts.\n\nA client needs reachable advertised broker endpoints, the selected authentication/TLS mechanism, authorization, and compatible client support. “The bootstrap server responds” is not enough if metadata returns endpoints the client cannot reach.\n\nSetup: choose the MSK offering/version, private connectivity and access mechanism, topic/partition policy, client credentials/role support, monitoring, and retention. Run the local Kafka lab first.\n\nThen test a synthetic event and replay in the chosen training AWS environment."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "MSK does not make a Rails DB write and Kafka publish atomic. Client libraries can require explicit support for the selected authentication method. A topic with one hot key can bottleneck despite more brokers."
+      "detail": "MSK does not make a Rails DB write and Kafka publish atomic. Client libraries can require explicit support for the selected authentication method.\n\nA topic with one hot key can bottleneck despite more brokers."
     }
   ],
   "sources": [

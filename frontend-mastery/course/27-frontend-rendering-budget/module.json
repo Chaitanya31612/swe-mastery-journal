@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Representative task",
-      "detail": "A slow screen can wait on a network response, execute too much JavaScript, repeatedly measure layout, paint a large area, or render too many DOM nodes. Each needs different evidence. A fast SQL query does not prove a fast interaction."
+      "detail": "## Understand the idea\n\nA slow screen can wait on a network response, execute too much JavaScript, repeatedly measure layout, paint a large area, or render too many DOM nodes. Each needs different evidence.\n\nA fast SQL query does not prove a fast interaction.\n\nThe browser builds style/layout information and paints/composites the result. Reading layout after changing styles can force work earlier than expected.\n\nRepeating write → read → write → read in a loop can create layout thrashing. Batch reads and writes when the trace shows this problem.\n\nMeasure a user task on representative data and a constrained device. Separate initial load from later interaction.\n\nAverages can hide a slow tail. Use a performance recording, network timing, bundle analysis, and Vue profiling to locate the bottleneck.\n\nOptimize that boundary, then rerun the same task."
     },
     {
       "title": "Follow one item",
-      "detail": "Record open-ticket → filter → select → edit using the same fixture. Mark request start/end and visible response. Inspect long tasks, style/layout, paints, and component updates. Check the slow path after the proposed repair.\n\nVirtualizing a list reduces DOM work but changes focus, search, row sizing, and screen-reader behavior. Memoization can add invalidation complexity. Choose the smallest fix supported by the recording."
+      "detail": "Record open-ticket → filter → select → edit using the same fixture. Mark request start/end and visible response.\n\nInspect long tasks, style/layout, paints, and component updates. Check the slow path after the proposed repair.\n\nVirtualizing a list reduces DOM work but changes focus, search, row sizing, and screen-reader behavior. Memoization can add invalidation complexity.\n\nChoose the smallest fix supported by the recording."
     },
     {
       "title": "Try the failure",
-      "detail": "Optimizing only the bundle can leave a long interaction unchanged. A desktop-only recording can hide low-end-device delay. A synthetic score is not the same as every real user outcome."
+      "detail": "Optimizing only the bundle can leave a long interaction unchanged. A desktop-only recording can hide low-end-device delay.\n\nA synthetic score is not the same as every real user outcome."
     }
   ],
   "sources": [

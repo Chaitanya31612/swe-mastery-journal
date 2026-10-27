@@ -1,7 +1,39 @@
-# The idea
+# Start with this
 
-The browser turns a URL into a request, receives HTML, builds a DOM tree, loads CSS and JavaScript, and paints pixels. JavaScript can change the DOM later. Layout calculates geometry. Paint draws visible styles. These are different costs.
+The browser turns a URL into a page you can see and use.
 
-In a client-routed app, clicking a link may update browser history and UI without requesting a whole new document. Refreshing that URL is still a server request, so the server needs an appropriate route fallback. A blank page after refresh can be a serving/configuration bug rather than a component bug.
+Think of it as a few separate jobs.
 
-HTML from server rendering can appear before client JavaScript is interactive. Hydration connects client behavior to that initial markup. Initial client output must agree with the server output where hydration expects a match.
+```text
+Request a URL → receive HTML → build the DOM
+                                  ↓
+                     use CSS to calculate layout
+                                  ↓
+                         paint visible pixels
+```
+
+The DOM is the browser’s tree of page elements. JavaScript can change that tree later.
+
+**Layout** finds sizes and positions. **Paint** draws visible styles.
+
+Changing the page can trigger more of this work. Different changes have different costs.
+
+## A small example
+
+You click a link in a Vue app. The app may change the URL and screen without loading a new HTML document.
+
+Now refresh that same URL. The browser makes a new server request.
+
+The server must know how to return the app for that route. A blank page after refresh may be a server setup problem.
+
+## Server-rendered pages
+
+A server can send HTML before browser JavaScript is ready.
+
+**Hydration** connects that existing HTML to the app’s browser behavior.
+
+The initial browser output must match the server output where hydration expects it to match.
+
+## Remember
+
+“Show HTML,” “run JavaScript,” “calculate layout,” and “paint pixels” are different steps.

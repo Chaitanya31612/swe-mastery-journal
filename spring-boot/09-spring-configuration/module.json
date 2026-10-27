@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,11 +72,11 @@
   "trace": [
     {
       "title": "Property sources",
-      "detail": "Configuration changes behavior without changing the application’s source. That makes it powerful and easy to misunderstand. A value may come from a file, profile, environment variable, command line, or remote source. Record the effective value and its source without logging secrets."
+      "detail": "## Understand the idea\n\nConfiguration changes behavior without changing the application’s source. That makes it powerful and easy to misunderstand.\n\nA value may come from a file, profile, environment variable, command line, or remote source. Record the effective value and its source without logging secrets.\n\nGroup related settings with typed configuration rather than scattering string lookups. Validate required URLs, limits, and durations at startup.\n\nA service that starts with an invalid payment endpoint can fail much later in a confusing place.\n\nProfiles select groups of behavior; they are not a permission system or a secret store. Prefer workload identity for cloud access and explicit secret injection.\n\nTest the production-like configuration graph separately from pure business logic."
     },
     {
       "title": "Follow one item",
-      "detail": "Boot prepares environment properties → binds a settings object → validates it → creates dependent clients → starts serving traffic. A bad required setting should fail at a clear boundary.\n\nIn a test, supply an invalid max-attempts and verify startup rejects it. Then verify the intended profile chooses the fake integration. A unit test constructing the settings object does not prove binding/validation wiring."
+      "detail": "Boot prepares environment properties → binds a settings object → validates it → creates dependent clients → starts serving traffic. A bad required setting should fail at a clear boundary.\n\nIn a test, supply an invalid max-attempts and verify startup rejects it. Then verify the intended profile chooses the fake integration.\n\nA unit test constructing the settings object does not prove binding/validation wiring."
     },
     {
       "title": "Try the failure",

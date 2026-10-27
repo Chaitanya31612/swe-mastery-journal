@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -75,15 +75,15 @@
   "trace": [
     {
       "title": "Remote commit",
-      "detail": "A remote is a named location. origin/main is a local remote-tracking reference updated by fetch; it is not a live window into the server. Your main branch is a different local label."
+      "detail": "# The idea\n\nA remote is a named location. origin/main is a local remote-tracking reference updated by fetch; it is not a live window into the server. Your main branch is a different local label.\n\nfetch downloads objects and updates remote-tracking information. It does not normally merge changes into your checked-out branch. pull adds an integration step, with behavior affected by configuration and flags.\n\nBe explicit about merge, rebase, or fast-forward-only when the choice matters.\n\nA pull request is a review boundary. Keep the change small, explain the trigger and resulting behavior, and show validation.\n\nA force-with-lease push checks expected remote state; it does not guarantee no collaborator depends on rewritten commits."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "The other clone pushes. Your origin/main stays old until fetch. Fetch moves origin/main. Your local branch remains where it was. An explicit integration step moves or joins your local history.\n\nBefore pushing, inspect the outgoing commits and diff. Before reviewing, compare against the intended base. A three-dot diff uses a merge base, which is often useful for what the branch introduced."
+      "detail": "The other clone pushes. Your origin/main stays old until fetch.\n\nFetch moves origin/main. Your local branch remains where it was.\n\nAn explicit integration step moves or joins your local history.\n\nBefore pushing, inspect the outgoing commits and diff. Before reviewing, compare against the intended base.\n\nA three-dot diff uses a merge base, which is often useful for what the branch introduced."
     },
     {
       "title": "Check the result",
-      "detail": "A green local test on the wrong base may miss integration failures. Remote-tracking refs are snapshots of your latest fetch. Never treat a failed push as permission to overwrite somebody else’s work."
+      "detail": "A green local test on the wrong base may miss integration failures. Remote-tracking refs are snapshots of your latest fetch.\n\nNever treat a failed push as permission to overwrite somebody else’s work."
     }
   ],
   "recallPrompt": "Without notes: Explain remote-tracking refs and avoid treating fetch as a merge. Give a concrete failure example.",

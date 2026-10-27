@@ -19,5 +19,4 @@ sequenceDiagram
  S-->>H: Tool result or error
  H->>H: Correlate result and apply execution budget
 ```
-
 Remember: **Negotiate first. Correlate carefully. Classify the failure.**

@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -80,15 +80,15 @@
   "trace": [
     {
       "title": "User action",
-      "detail": "Source state is information you choose to store. Derived state can be calculated from it. If tasks and a filter are stored, visibleTasks can often be derived. Storing both copies creates a synchronization job you may not need."
+      "detail": "# The idea\n\nSource state is information you choose to store. Derived state can be calculated from it.\n\nIf tasks and a filter are stored, visibleTasks can often be derived. Storing both copies creates a synchronization job you may not need.\n\nURL state belongs in the URL when users should bookmark, refresh, or share it, such as search and page. Server state is remote data with freshness and loading concerns.\n\nLocal UI state includes an open tooltip or unsaved input. A global store is not the default home for everything.\n\nGive each fact one clear owner. Other places read it or send updates through that owner.\n\nA cache is another copy with a freshness policy, not a new unquestioned source of truth."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Begin with the user action. Editing a draft changes local unsaved state. Saving asks the server to change persisted state. A successful response updates the cached server record. A derived list recalculates from that cache and the URL filter.\n\nFor optimistic UI, record how to undo or reconcile a failed action. If two saves overlap, an old response must not erase a newer edit. A disabled button alone may not cover every caller."
+      "detail": "Begin with the user action. Editing a draft changes local unsaved state.\n\nSaving asks the server to change persisted state. A successful response updates the cached server record.\n\nA derived list recalculates from that cache and the URL filter.\n\nFor optimistic UI, record how to undo or reconcile a failed action. If two saves overlap, an old response must not erase a newer edit.\n\nA disabled button alone may not cover every caller."
     },
     {
       "title": "Check the result",
-      "detail": "Copying props into local state once can make later prop changes invisible. Deriving everything in an effect adds extra updates and stale intermediate renders. Define ownership and reset rules first."
+      "detail": "Copying props into local state once can make later prop changes invisible. Deriving everything in an effect adds extra updates and stale intermediate renders.\n\nDefine ownership and reset rules first."
     }
   ],
   "recallPrompt": "Without notes: Separate source state, derived values, URL state, server data, and temporary UI state. Give a concrete failure example.",

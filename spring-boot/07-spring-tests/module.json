@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Business unit test",
-      "detail": "A unit test checks a small piece of behavior using ordinary objects and controlled dependencies. It should be quick. A web test checks HTTP binding, validation, status, and JSON. An integration test checks actual wiring or external boundaries."
+      "detail": "# The idea\n\nA unit test checks a small piece of behavior using ordinary objects and controlled dependencies. It should be quick.\n\nA web test checks HTTP binding, validation, status, and JSON. An integration test checks actual wiring or external boundaries.\n\nDo not load the entire application for every arithmetic or ownership rule. Do not use only mocks to claim that SQL, transactions, and bean discovery work.\n\nUse a small number of database tests against the database type you rely on for concurrency and constraints.\n\nTest observable behavior.\n\nA good failure test names what must not happen: a denied request must not write, a failed transaction must not leave half a change, and a duplicate command must not charge twice."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "First make the test fail for the right reason. Then change the implementation. For a bug in JSON validation, a service mock alone cannot see the problem; exercise MVC. For a missing unique index, an in-memory repository fake cannot see it; test the database.\n\nAvoid asserting exact private method order when the contract allows alternatives. Control time and remote responses. Race tests need controlled overlap; random sleeps create flaky evidence."
+      "detail": "First make the test fail for the right reason. Then change the implementation.\n\nFor a bug in JSON validation, a service mock alone cannot see the problem; exercise MVC. For a missing unique index, an in-memory repository fake cannot see it; test the database.\n\nAvoid asserting exact private method order when the contract allows alternatives. Control time and remote responses.\n\nRace tests need controlled overlap; random sleeps create flaky evidence."
     },
     {
       "title": "Check the result",

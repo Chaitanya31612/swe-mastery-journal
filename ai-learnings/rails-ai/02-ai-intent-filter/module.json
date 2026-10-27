@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,7 +77,7 @@
   "trace": [
     {
       "title": "User wording",
-      "detail": "Natural language can be ambiguous. A model can propose status and depot_name; application code decides whether those fields are supported and resolves names within the actor's scope. Never let the model choose tenant identity, arbitrary column names, joins or SQL.\n\nUse explicit result states: accepted filter, needs clarification, unsupported request, or unavailable model. Show the applied fields in human-readable chips. If there are two permitted depots called East, ask which one. Do not resolve ambiguity by searching all tenants.\n\nThe filter object should define its own validation and query conversion. That keeps model output away from ActiveRecord internals and makes the same filter usable through a manual form. Test language interpretation separately from deterministic filtering."
+      "detail": "## Understand\n\nNatural language can be ambiguous. A model can propose status and depot_name; application code decides whether those fields are supported and resolves names within the actor's scope.\n\nNever let the model choose tenant identity, arbitrary column names, joins or SQL.\n\nUse explicit result states: accepted filter, needs clarification, unsupported request, or unavailable model. Show the applied fields in human-readable chips.\n\nIf there are two permitted depots called East, ask which one. Do not resolve ambiguity by searching all tenants.\n\nThe filter object should define its own validation and query conversion. That keeps model output away from ActiveRecord internals and makes the same filter usable through a manual form.\n\nTest language interpretation separately from deterministic filtering."
     },
     {
       "title": "Follow one input",

@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,7 +72,7 @@
   "trace": [
     {
       "title": "Inspect fix",
-      "detail": "Cherry-pick applies a commit’s change onto the current base and usually creates a new commit. It does not bring every dependency of that change automatically. A patch that applies cleanly can still call a helper absent on the release branch."
+      "detail": "## Understand the idea\n\nCherry-pick applies a commit’s change onto the current base and usually creates a new commit. It does not bring every dependency of that change automatically.\n\nA patch that applies cleanly can still call a helper absent on the release branch.\n\nRevert creates a new corrective commit. It is often easier for collaborators than rewriting a published branch.\n\nReverting a merge requires choosing the intended mainline parent and understanding future merge consequences; do not guess from parent numbers.\n\nBefore any history operation, inspect the graph, outgoing patch, and current work. Use a disposable worktree for a release rehearsal.\n\nRecord which release line received the fix and how it was tested there."
     },
     {
       "title": "Follow one item",
@@ -80,7 +80,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A clean cherry-pick can be behaviorally incomplete. Reverting a migration commit does not reconstruct deleted data. Shared branch rewrites need coordination."
+      "detail": "A clean cherry-pick can be behaviorally incomplete. Reverting a migration commit does not reconstruct deleted data.\n\nShared branch rewrites need coordination."
     }
   ],
   "sources": [

@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Intended action",
-      "detail": "Fitts’s law connects pointing movement difficulty with target distance and size in a given task. The practical cue is useful: tiny distant targets are often harder to acquire. It does not mean every primary button should fill the entire screen."
+      "detail": "## Understand the idea\n\nFitts’s law connects pointing movement difficulty with target distance and size in a given task. The practical cue is useful: tiny distant targets are often harder to acquire.\n\nIt does not mean every primary button should fill the entire screen.\n\nThe hit area matters, not just the visible icon. Spacing helps users distinguish adjacent actions and avoid accidental taps.\n\nDestructive and routine actions should not be indistinguishable neighbors. Keyboard access supplies another path; it does not excuse unusable pointer targets.\n\nConsider touch, mouse, zoom, one-handed use, and limited motor control. A hover-only action can be unavailable on touch and hard to discover.\n\nUse WCAG target-size guidance with its exceptions and context rather than treating a single pixel number as the whole usability test."
     },
     {
       "title": "Follow one item",
-      "detail": "Point at the intended target → move → acquire it → confirm the outcome. Watch misclicks and corrective movement. Then complete the same task with keyboard focus and a narrow touch screen.\n\nWhen a target moves after the user starts pointing because an image loads above it, size alone will not fix the error. Stable layout is part of target reliability."
+      "detail": "Point at the intended target → move → acquire it → confirm the outcome. Watch misclicks and corrective movement.\n\nThen complete the same task with keyboard focus and a narrow touch screen.\n\nWhen a target moves after the user starts pointing because an image loads above it, size alone will not fix the error. Stable layout is part of target reliability."
     },
     {
       "title": "Try the failure",

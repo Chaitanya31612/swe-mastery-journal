@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,15 +72,15 @@
   "trace": [
     {
       "title": "User and context",
-      "detail": "A screen is a means to finish a task. “Add a dashboard” is not yet a task. “Find the oldest urgent ticket and assign it before the shift ends” is. Name the user, their goal, what they already know, and what interrupts them."
+      "detail": "# Start with the user’s job\n\nA screen helps someone finish a task.\n\n“Add a dashboard” describes a screen. It does not explain the task yet.\n\n## Make the goal concrete\n\n> **Example**\n>\n> “Find the oldest urgent ticket and assign it before the shift ends.”\n\nNow ask: Who is doing this? What do they already know? What might interrupt them?\n\n## Use the user’s words\n\nA support agent thinks about tickets, queues, and follow-ups.\n\nThey should not need to understand foreign keys or internal service names to use the screen.\n\nChoose labels that help them predict what an action will do.\n\n```text\nEnter → find the item → act → see feedback → finish\n                 ↖ recover or return later ↙\n```\n\n## Plan for an interruption\n\nSuppose the user refreshes halfway through an edit. What survives? What must they repeat?\n\nKeep the context they need. Avoid asking them to remember details from a previous screen.\n\n## Remember\n\nDesign around the job the user wants to finish. Then choose the screen that helps them finish it.\n"
     },
     {
       "title": "Follow one item",
-      "detail": "Observe one realistic attempt. Where does the person start? How do they identify the right records? What tells them the action finished? What do they do when only 12 of 15 changes succeed?\n\nWrite a decision log: observed problem → design choice → expected benefit → check. This keeps a critique from becoming a contest of taste."
+      "detail": "Observe one realistic attempt. Where does the person start?\n\nHow do they identify the right records? What tells them the action finished?\n\nWhat do they do when only 12 of 15 changes succeed?\n\nWrite a decision log: observed problem → design choice → expected benefit → check. This keeps a critique from becoming a contest of taste."
     },
     {
       "title": "Try the failure",
-      "detail": "Copying a competitor’s layout without the same user/context can add irrelevant controls. Showing a database term can make users guess. A success toast can hide partial failure."
+      "detail": "Copying a competitor’s layout without the same user/context can add irrelevant controls. Showing a database term can make users guess.\n\nA success toast can hide partial failure."
     }
   ],
   "sources": [

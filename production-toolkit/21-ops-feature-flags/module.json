@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,7 +72,7 @@
   "trace": [
     {
       "title": "Owned flag",
-      "detail": "A feature flag changes which behavior is active for a context. It can separate deployment from exposure and help a controlled rollout. It does not undo data already written or remove the need to test both paths."
+      "detail": "## Understand the idea\n\nA feature flag changes which behavior is active for a context. It can separate deployment from exposure and help a controlled rollout.\n\nIt does not undo data already written or remove the need to test both paths.\n\nDefine the flag owner, intended lifetime, targeting inputs, safe default, and removal plan. Evaluate permissions on the server regardless of a client flag.\n\nA client-visible flag is not a secret access gate.\n\nA flag provider is another dependency. Decide whether evaluation is local/cached/remote and what happens when it is unavailable.\n\nKeep the old/new schema compatible during overlap. Avoid combining many flags into untested state combinations."
     },
     {
       "title": "Follow one item",
@@ -80,7 +80,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A flag can become permanent dead code. A frontend flag does not authorize a server action. Untested combinations can multiply behavior states."
+      "detail": "A flag can become permanent dead code. A frontend flag does not authorize a server action.\n\nUntested combinations can multiply behavior states."
     }
   ],
   "sources": [

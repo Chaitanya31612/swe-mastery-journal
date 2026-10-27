@@ -20,5 +20,4 @@ flowchart TD
  G --> O[Limited rollout and rollback]
  O --> D[Delayed transfer problem in a new domain]
 ```
-
 Remember: **Build one path. Break its boundaries. Explain what the evidence actually proves.**

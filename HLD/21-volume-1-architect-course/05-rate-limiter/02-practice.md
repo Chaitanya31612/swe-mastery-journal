@@ -1,10 +1,14 @@
 # Distributed rate limiting and overload control — practice
 
-Save your attempt before opening answers. Label assistance and previous exposure. Use the seven-part framework; explain assumptions and consequences.
+Save your attempt before opening answers. Label assistance and previous exposure.
+
+Use the seven-part framework; explain assumptions and consequences.
 
 ## P1 — Exact rolling quota
 
-Across eight API instances enforce at most 120 accepted writes per account in any rolling 60-second period. Peak checks are 15,000/s. Read endpoints may use an approximate limit. Design the write limit, storage/memory estimate method, boundary concurrency, and degraded behavior when the shared store is unavailable.
+Across eight API instances enforce at most 120 accepted writes per account in any rolling 60-second period. Peak checks are 15,000/s.
+
+Read endpoints may use an approximate limit. Design the write limit, storage/memory estimate method, boundary concurrency, and degraded behavior when the shared store is unavailable.
 
 ## P2 — Global and regional budgets
 
@@ -20,7 +24,6 @@ if count < limit:
 else:
     deny()
 ```
-
 It has no window handling. Fix the race and identify what further mechanism the rolling-window contract requires.
 
 ## Delayed gate

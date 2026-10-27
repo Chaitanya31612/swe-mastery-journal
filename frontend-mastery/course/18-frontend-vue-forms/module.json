@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Owned draft",
-      "detail": "A form is a small state machine: pristine, editing, validating, saving, saved, or failed. Some checks are immediate, such as a required title. Others depend on the server. Avoid showing aggressive errors before a user has had a reasonable chance to enter a value."
+      "detail": "## Understand the idea\n\nA form is a small state machine: pristine, editing, validating, saving, saved, or failed. Some checks are immediate, such as a required title.\n\nOthers depend on the server. Avoid showing aggressive errors before a user has had a reasonable chance to enter a value.\n\nKeep the draft when a request fails. A successful response may contain normalized data or a new version; accept that deliberately.\n\nIf the record changed elsewhere, do not silently overwrite it. Use a version/ETag contract where the server supports it.\n\nAn error must say what can be fixed. Connect it to the field, keep the label visible, and focus a useful location after a failed submission.\n\nDisabling a button is not an explanation of why saving is blocked."
     },
     {
       "title": "Follow one item",
-      "detail": "Type → dirty draft → client checks → request with expected version → server validation/authorization → success or conflict → keep or reconcile draft. An old successful response must not overwrite newer edits typed during the request.\n\nTest paste, keyboard submit, double-click, slow save, field rejection, network loss, and record replacement. Use a visible saving status and a clear retry path."
+      "detail": "Type → dirty draft → client checks → request with expected version → server validation/authorization → success or conflict → keep or reconcile draft.\n\nAn old successful response must not overwrite newer edits typed during the request.\n\nTest paste, keyboard submit, double-click, slow save, field rejection, network loss, and record replacement. Use a visible saving status and a clear retry path."
     },
     {
       "title": "Try the failure",
-      "detail": "Resetting from props on every server refresh can wipe a dirty draft. Sending the whole entity can include server-owned fields. A stale response can erase a newer edit."
+      "detail": "Resetting from props on every server refresh can wipe a dirty draft. Sending the whole entity can include server-owned fields.\n\nA stale response can erase a newer edit."
     }
   ],
   "sources": [

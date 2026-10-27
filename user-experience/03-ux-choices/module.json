@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "User decision",
-      "detail": "A menu is a decision problem. Hick–Hyman-style findings relate choice time to uncertainty in controlled tasks. They do not prove that every product should hide options or use exactly a certain number of buttons. Familiarity, grouping, labels, and task frequency matter."
+      "detail": "## Understand the idea\n\nA menu is a decision problem. Hick–Hyman-style findings relate choice time to uncertainty in controlled tasks.\n\nThey do not prove that every product should hide options or use exactly a certain number of buttons. Familiarity, grouping, labels, and task frequency matter.\n\nSupport recognition instead of forcing recall: show the available statuses, recent queues, or selected filters. Working memory is limited, but “seven items” is not a universal navigation rule.\n\nReduce the information a person must carry across steps.\n\nProgressive disclosure puts common decisions first and exposes less common detail when needed. It works only if people can find the extra options and understand what is hidden.\n\nAn “Advanced” drawer should not conceal a setting most users need to finish the basic task."
     },
     {
       "title": "Follow one item",
-      "detail": "Observe where hesitation comes from: too many choices, unfamiliar labels, fear of consequences, or missing information. These need different repairs.\n\nCompare a grouped menu with a flat one using realistic tasks. Measure completion and wrong selections, not only how quickly someone clicks any option. Faster mistakes are not an improvement."
+      "detail": "Observe where hesitation comes from: too many choices, unfamiliar labels, fear of consequences, or missing information. These need different repairs.\n\nCompare a grouped menu with a flat one using realistic tasks. Measure completion and wrong selections, not only how quickly someone clicks any option.\n\nFaster mistakes are not an improvement."
     },
     {
       "title": "Try the failure",
-      "detail": "Hiding every option can increase search and memory burden. A default can help but can also cause a silent wrong choice. Do not use a cognitive “law” as a substitute for context."
+      "detail": "Hiding every option can increase search and memory burden. A default can help but can also cause a silent wrong choice.\n\nDo not use a cognitive “law” as a substitute for context."
     }
   ],
   "sources": [

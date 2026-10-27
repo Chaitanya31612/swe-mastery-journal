@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Request queue",
-      "detail": "A request can wait for a connection, a row lock, a slow query, or an external service. Low CPU does not prove spare useful capacity. Trace waiting time separately from execution time."
+      "detail": "## Understand the idea\n\nA request can wait for a connection, a row lock, a slow query, or an external service. Low CPU does not prove spare useful capacity.\n\nTrace waiting time separately from execution time.\n\nAn index should serve a query shape: filter, ordering, and selected data. Check the plan with representative synthetic data and actual predicates.\n\nAn index adds write/storage cost and may not help a very broad query. Avoid loading full entities when a screen needs a few fields.\n\nA connection pool is a limit, not free throughput. Long transactions hold connections and sometimes locks.\n\nIncreasing web threads beyond database capacity can grow queues and latency. Keep network calls out of database lock windows when possible."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A larger pool can overload the database. SQL logs can expose values. A query that is fast on 10 rows may use a different plan on a million."
+      "detail": "A larger pool can overload the database. SQL logs can expose values.\n\nA query that is fast on 10 rows may use a different plan on a million."
     }
   ],
   "sources": [

@@ -24,22 +24,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,7 +76,7 @@
   "trace": [
     {
       "title": "Input and preprocessing",
-      "detail": "An embedding maps an input into a numeric representation. Training encourages some relationships to appear as useful geometry. Similar wording or meaning may place vectors near each other, depending on the model and task. A vector is not a compressed database row that can reliably be decoded back into every original detail.\n\nDistance functions differ. Cosine distance compares direction; dot product and Euclidean distance have different behavior and normalization assumptions. Use the distance recommended for the selected embedding model and evaluate retrieval on your data.\n\nKeep embedding model/version, dimensions, preprocessing, and distance choice with the index. Vectors from unrelated embedding models generally cannot be mixed just because they have the same dimension. A migration needs re-embedding or a deliberately validated compatibility strategy. Similarity does not establish factual support or authorization."
+      "detail": "## Understand\n\nAn embedding maps an input into a numeric representation. Training encourages some relationships to appear as useful geometry.\n\nSimilar wording or meaning may place vectors near each other, depending on the model and task.\n\nA vector is not a compressed database row that can reliably be decoded back into every original detail.\n\nDistance functions differ. Cosine distance compares direction; dot product and Euclidean distance have different behavior and normalization assumptions.\n\nUse the distance recommended for the selected embedding model and evaluate retrieval on your data.\n\nKeep embedding model/version, dimensions, preprocessing, and distance choice with the index. Vectors from unrelated embedding models generally cannot be mixed just because they have the same dimension.\n\nA migration needs re-embedding or a deliberately validated compatibility strategy. Similarity does not establish factual support or authorization."
     },
     {
       "title": "Follow one input",

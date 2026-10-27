@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Computed style",
-      "detail": "The cascade considers origin/importance and layers before specificity and source order. A more specific selector is not always the winner across different layers or important rules. Inspect the computed-style panel to see the actual winning declaration."
+      "detail": "## Understand the idea\n\nThe cascade considers origin/importance and layers before specificity and source order. A more specific selector is not always the winner across different layers or important rules.\n\nInspect the computed-style panel to see the actual winning declaration.\n\nUse small component selectors and explicit state attributes/classes. Design tokens give repeated choices a name: spacing, surface, border, text, focus, and danger.\n\nA token system helps consistency; it does not justify low contrast or shrinking a label to fit.\n\nA component has states beyond the happy screenshot: hover, focus-visible, disabled, busy, invalid, empty, and high contrast preferences. Focus must remain visible against each surface.\n\nA disabled appearance is not a substitute for explaining why an action is unavailable."
     },
     {
       "title": "Follow one item",
-      "detail": "Select the element. Read computed style and the crossed-out rules. Locate origin/layer, selector, and source order. Remove accidental global leakage instead of adding another !important.\n\nThen inspect every state in the same container and theme. Token changes need representative screens, long text, zoom, and focus checks. A contrast check is necessary for relevant colors; it does not test whether the task is understandable."
+      "detail": "Select the element. Read computed style and the crossed-out rules.\n\nLocate origin/layer, selector, and source order. Remove accidental global leakage instead of adding another !important.\n\nThen inspect every state in the same container and theme. Token changes need representative screens, long text, zoom, and focus checks.\n\nA contrast check is necessary for relevant colors; it does not test whether the task is understandable."
     },
     {
       "title": "Try the failure",
-      "detail": "A global button rule can break one nested form. Repeated !important patches make the next change harder. Color-only state is invisible to some users."
+      "detail": "A global button rule can break one nested form. Repeated !important patches make the next change harder.\n\nColor-only state is invisible to some users."
     }
   ],
   "sources": [

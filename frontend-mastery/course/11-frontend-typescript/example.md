@@ -12,5 +12,4 @@ function heading(state: LoadState) {
   return state.kind === 'failed' ? state.message : 'Loading tickets'
 }
 ```
-
 Write a parser that accepts unknown and rejects missing/non-string IDs before creating a Ticket. Do not use response.json() as Ticket[] as your validation step.

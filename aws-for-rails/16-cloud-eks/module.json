@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "EKS responsibility map",
-      "detail": "EKS supplies managed Kubernetes offerings. You still need to understand the selected mode’s responsibilities: workload configuration, identity, networking, storage, admission/access, observability, upgrades, and application recovery."
+      "detail": "## Understand the idea\n\nEKS supplies managed Kubernetes offerings. You still need to understand the selected mode’s responsibilities: workload configuration, identity, networking, storage, admission/access, observability, upgrades, and application recovery.\n\nChoose Kubernetes when its APIs/ecosystem and team needs justify the operational surface. A small Rails web/worker service may fit ECS more simply.\n\nEKS is not the required next level after learning Docker; it is a different operating model.\n\nSetup outline: choose the supported cluster/mode/version, establish access and workload identity, network/node or managed-capacity settings, registry/logging, ingress/load balancing, secrets delivery, and resource/probe policies.\n\nDeploy a training namespace and verify one request and one rescheduled pod before adding more tools."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Running a DB in a StatefulSet does not create a complete backup/HA plan. A broad node role can accidentally become every pod’s effective access. More platform components can increase incident surface."
+      "detail": "Running a DB in a StatefulSet does not create a complete backup/HA plan. A broad node role can accidentally become every pod’s effective access.\n\nMore platform components can increase incident surface."
     }
   ],
   "sources": [

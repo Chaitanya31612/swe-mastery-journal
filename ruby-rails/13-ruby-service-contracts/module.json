@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,11 +72,11 @@
   "trace": [
     {
       "title": "Trusted input",
-      "detail": "A service object is ordinary Ruby. It earns its place by naming one use case and making its boundary clear. It does not automatically supply permissions, a transaction, retries, or thread safety."
+      "detail": "## Understand the idea\n\nA service object is ordinary Ruby. It earns its place by naming one use case and making its boundary clear.\n\nIt does not automatically supply permissions, a transaction, retries, or thread safety.\n\nChoose a result contract. A business rejection such as “already closed” can be an expected result.\n\nAn unexpected database or programmer error should remain visible to monitoring. Do not rescue everything into nil; callers then cannot tell rejection from failure.\n\nState who owns the transaction and which side effects happen later. Keep request-specific data in arguments and local values.\n\nClass-level mutable state can leak across calls or threads."
     },
     {
       "title": "Follow one item",
-      "detail": "Controller validates permitted input and identifies actor → service checks the use-case rule → transaction writes → result maps to HTTP. A job caller uses the same rule with a deliberate actor/system role.\n\nUnit-test expected branches with a narrow seam. Use database tests for rollback and constraints. Test the caller’s mapping so a failure is not shown as a success response."
+      "detail": "Controller validates permitted input and identifies actor → service checks the use-case rule → transaction writes → result maps to HTTP.\n\nA job caller uses the same rule with a deliberate actor/system role.\n\nUnit-test expected branches with a narrow seam. Use database tests for rollback and constraints.\n\nTest the caller’s mapping so a failure is not shown as a success response."
     },
     {
       "title": "Try the failure",

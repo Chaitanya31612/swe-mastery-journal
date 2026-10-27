@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Outside data",
-      "detail": "Outside text is data. Rendering it as HTML can turn it into executable behavior. Vue’s ordinary interpolation escapes text; v-html crosses a different boundary. If rich HTML is required, use a maintained sanitizer with an explicit policy and keep it updated."
+      "detail": "## Understand the idea\n\nOutside text is data. Rendering it as HTML can turn it into executable behavior.\n\nVue’s ordinary interpolation escapes text; v-html crosses a different boundary. If rich HTML is required, use a maintained sanitizer with an explicit policy and keep it updated.\n\nBrowser storage is available to code running in the origin. It is not a secret vault.\n\nA script injection can read accessible tokens and drafts. Cookie settings, CSRF protection, Content Security Policy, and server access checks address different risks.\n\nNever send a field to the browser just because it is hidden visually. Client props, network payloads, source maps, logs, and analytics can all reveal information.\n\nSelect permitted data on the server and keep telemetry deliberately small."
     },
     {
       "title": "Follow one item",
-      "detail": "Input arrives → validate shape → decide text versus rich content → render through the right boundary → enforce server permissions for actions. Audit the payload and telemetry, not just pixels.\n\nTest a title containing markup-looking text. It should appear as text. Test a direct unauthorized request without using the UI. These are different checks."
+      "detail": "Input arrives → validate shape → decide text versus rich content → render through the right boundary → enforce server permissions for actions. Audit the payload and telemetry, not just pixels.\n\nTest a title containing markup-looking text. It should appear as text.\n\nTest a direct unauthorized request without using the UI. These are different checks."
     },
     {
       "title": "Try the failure",
-      "detail": "A hidden field in a client payload is still present. A client filter is not a tenant boundary. Escaping output does not validate a destination URL or authorize a mutation."
+      "detail": "A hidden field in a client payload is still present. A client filter is not a tenant boundary.\n\nEscaping output does not validate a destination URL or authorize a mutation."
     }
   ],
   "sources": [

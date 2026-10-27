@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Local process or remote HTTP",
-      "detail": "Stdio commonly connects a host to a locally launched server process. Protocol messages share standard input/output; logs should not corrupt that channel. “Local” does not mean harmless: the process has OS permissions and access to its inherited environment.\n\nStreamable HTTP connects over HTTP using the selected MCP transport rules, which may include JSON responses or server-sent events. Sessions, protocol-version headers, reconnection, origin handling and proxy behavior matter. It is not merely a generic POST route that accepts tool names.\n\nUse the SDK transport for its supported revision and test through the actual reverse-proxy/runtime path. Remote identity and authorization are separate from the transport's ability to deliver messages. A stateless server still needs a current authenticated actor for every operation."
+      "detail": "## Understand\n\nStdio commonly connects a host to a locally launched server process. Protocol messages share standard input/output; logs should not corrupt that channel.\n\n“Local” does not mean harmless: the process has OS permissions and access to its inherited environment.\n\nStreamable HTTP connects over HTTP using the selected MCP transport rules, which may include JSON responses or server-sent events. Sessions, protocol-version headers, reconnection, origin handling and proxy behavior matter.\n\nIt is not merely a generic POST route that accepts tool names.\n\nUse the SDK transport for its supported revision and test through the actual reverse-proxy/runtime path. Remote identity and authorization are separate from the transport's ability to deliver messages.\n\nA stateless server still needs a current authenticated actor for every operation."
     },
     {
       "title": "Follow one input",
-      "detail": "For stdio: host process → constrained child process → clean protocol output. For HTTP: client → TLS/auth/proxy → transport → request-local server context → tool. Test disconnect and two different users concurrently."
+      "detail": "For stdio: host process → constrained child process → clean protocol output. For HTTP: client → TLS/auth/proxy → transport → request-local server context → tool.\n\nTest disconnect and two different users concurrently."
     },
     {
       "title": "Try the failure",
-      "detail": "Logs on stdout can break stdio parsing. A globally cached actor can leak one user's identity into another request. A proxy can buffer a stream and erase expected progress behavior."
+      "detail": "Logs on stdout can break stdio parsing. A globally cached actor can leak one user's identity into another request.\n\nA proxy can buffer a stream and erase expected progress behavior."
     }
   ],
   "sources": [

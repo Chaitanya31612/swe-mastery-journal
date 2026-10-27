@@ -15,5 +15,4 @@ spec:
           image: learning/tickets:chosen-version
           ports: [{containerPort: 3000}]
 ```
-
 This manifest fragment needs a real image, configuration, resource policy, and probes. It is not automatically applied to any cluster.

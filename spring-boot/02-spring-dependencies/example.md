@@ -15,5 +15,4 @@ class TaskService {
   }
 }
 ```
-
 Test without Spring: new TaskService(text -> captured.add(text)).complete(7). Use an in-memory list owned by that test only.

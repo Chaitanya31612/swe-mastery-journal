@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Run and version IDs",
-      "detail": "A useful trace shows task, run ID, prompt/model versions, retrieval version, tool calls, validation decisions, fallback reason, durations, token usage, and outcome. It does not require storing every raw conversation or document.\n\nSeparate operational telemetry from a deliberately reviewed evaluation dataset. Minimize inputs, redact where appropriate, restrict access, and define retention. A hash is useful for correlation in some cases, but is not automatically anonymous or safe for low-entropy sensitive values.\n\nBreak end-to-end latency into retrieval, queueing, provider time, tool work, and validation. Track accepted answers and meaningful task outcomes, not only request success. A 200 response with an unsupported explanation is still a product failure. Cost accounting should include retries and multi-step work."
+      "detail": "## Understand\n\nA useful trace shows task, run ID, prompt/model versions, retrieval version, tool calls, validation decisions, fallback reason, durations, token usage, and outcome. It does not require storing every raw conversation or document.\n\nSeparate operational telemetry from a deliberately reviewed evaluation dataset. Minimize inputs, redact where appropriate, restrict access, and define retention.\n\nA hash is useful for correlation in some cases, but is not automatically anonymous or safe for low-entropy sensitive values.\n\nBreak end-to-end latency into retrieval, queueing, provider time, tool work, and validation. Track accepted answers and meaningful task outcomes, not only request success.\n\nA 200 response with an unsupported explanation is still a product failure. Cost accounting should include retries and multi-step work."
     },
     {
       "title": "Follow one input",
-      "detail": "Start with “the user saw a stale answer.” Find its run, evidence/source version, completion time, cache key, and validation outcome. Compare to the current record version. You can often locate the fault without exposing the full text to every operator."
+      "detail": "Start with “the user saw a stale answer.” Find its run, evidence/source version, completion time, cache key, and validation outcome. Compare to the current record version.\n\nYou can often locate the fault without exposing the full text to every operator."
     },
     {
       "title": "Try the failure",

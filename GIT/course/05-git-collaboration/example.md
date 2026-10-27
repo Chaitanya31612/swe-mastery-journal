@@ -8,5 +8,6 @@ git diff --stat HEAD...origin/main
 git pull --ff-only
 git branch -vv
 ```
+In the lab, use a local bare repository as a fake remote. Make another clone and push a commit from there.
 
-In the lab, use a local bare repository as a fake remote. Make another clone and push a commit from there. Observe that your working branch does not move on fetch.
+Observe that your working branch does not move on fetch.

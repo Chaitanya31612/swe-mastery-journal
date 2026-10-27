@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Task language",
-      "detail": "Words are interface controls. “Submit” may be less clear than “Assign 15 tickets.” A label names the input; a hint explains a constraint; an error explains what is wrong and how to repair it. Placeholder text is not a stable replacement for a label."
+      "detail": "## Understand the idea\n\nWords are interface controls.\n\n“Submit” may be less clear than “Assign 15 tickets.” A label names the input; a hint explains a constraint; an error explains what is wrong and how to repair it.\n\nPlaceholder text is not a stable replacement for a label.\n\nAsk only for information needed now. Explain unusual requirements before users fail.\n\nChoose defaults from the task and make their scope visible. A default workspace or audience can create a serious mistake if it is hidden.\n\nEmpty, loading, no-results, and failed are different states.\n\n“No tickets yet” is not the same as “No tickets match these filters” or “We could not load tickets.” Each needs a different next action."
     },
     {
       "title": "Follow one item",
-      "detail": "Read the task → understand the field → enter a value → see timely validation → repair if needed → confirm the result. Check whether people understand the terms without internal team knowledge.\n\nFor defaults, test changing workspace, returning later, and repeating the action. A remembered choice can become wrong when context changes."
+      "detail": "Read the task → understand the field → enter a value → see timely validation → repair if needed → confirm the result.\n\nCheck whether people understand the terms without internal team knowledge.\n\nFor defaults, test changing workspace, returning later, and repeating the action. A remembered choice can become wrong when context changes."
     },
     {
       "title": "Try the failure",
-      "detail": "Required markers without an explanation can be confusing. A disabled button without a reason hides progress. Internal error codes tell users little about the repair."
+      "detail": "Required markers without an explanation can be confusing. A disabled button without a reason hides progress.\n\nInternal error codes tell users little about the repair."
     }
   ],
   "sources": [

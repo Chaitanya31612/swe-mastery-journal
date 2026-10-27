@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Business fact",
-      "detail": "An event envelope makes meaning explicit. Include event_id, event_type, schema_version, aggregate identity/version, occurred_at, and minimal payload. Distinguish when the business fact happened from when a consumer processed it."
+      "detail": "## Understand the idea\n\nAn event envelope makes meaning explicit. Include event_id, event_type, schema_version, aggregate identity/version, occurred_at, and minimal payload.\n\nDistinguish when the business fact happened from when a consumer processed it.\n\nDo not publish an entire Rails model by habit. It couples consumers to private columns and may expose data they do not need.\n\nUse the smallest fact that supports the subscriber’s job. A schema registry can help manage format compatibility; it does not decide business meaning or permission policy for you.\n\nFor evolution, add optional fields with clear defaults where compatible. Renaming/removing a required field can break old consumers.\n\nProducers and consumers may run different versions during deployment. Test representative old/new messages, not only the newest example."
     },
     {
       "title": "Follow one item",
-      "detail": "Business fact → envelope builder → serialization → broker bytes → consumer parsing → schema/business validation → effect. A valid JSON document can still be an invalid event.\n\nFor a new optional field, test an old consumer ignoring it and a new consumer handling its absence. For a new event meaning, choose a deliberate version/type transition rather than silently repurposing a field."
+      "detail": "Business fact → envelope builder → serialization → broker bytes → consumer parsing → schema/business validation → effect. A valid JSON document can still be an invalid event.\n\nFor a new optional field, test an old consumer ignoring it and a new consumer handling its absence.\n\nFor a new event meaning, choose a deliberate version/type transition rather than silently repurposing a field."
     },
     {
       "title": "Try the failure",

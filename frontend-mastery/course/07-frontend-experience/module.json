@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -80,15 +80,15 @@
   "trace": [
     {
       "title": "User intent",
-      "detail": "A useful screen explains what is happening and what the user can do next. Design initial, loading, empty, ready, saving, failed, and retry states. Keep an unsaved draft when a save fails. An empty list and a failed request should not look identical."
+      "detail": "# The idea\n\nA useful screen explains what is happening and what the user can do next. Design initial, loading, empty, ready, saving, failed, and retry states.\n\nKeep an unsaved draft when a save fails. An empty list and a failed request should not look identical.\n\nUse real buttons for actions and links for navigation. Labels must identify form controls.\n\nKeyboard users need a visible focus indicator and a sensible focus order. Errors should name the field and explain a repair.\n\nColor alone is not enough.\n\nPerformance starts with measurement. LCP concerns major content appearing, INP concerns responsiveness, and CLS concerns unexpected layout movement.\n\nA fast API does not guarantee a responsive page if JavaScript blocks the main thread. Measure on representative devices and data."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Trace user intent → action → immediate feedback → result → recovery. During saving, prevent accidental duplicate actions while explaining progress. On failure, keep the input and offer retry. If a modal closes, restore focus to the control that opened it.\n\nUse a performance profile to find the long task behind an unresponsive click. Split work, reduce unnecessary rendering, or virtualize a genuinely large list after measuring. Do not add memoization to every line without evidence."
+      "detail": "Trace user intent → action → immediate feedback → result → recovery. During saving, prevent accidental duplicate actions while explaining progress.\n\nOn failure, keep the input and offer retry. If a modal closes, restore focus to the control that opened it.\n\nUse a performance profile to find the long task behind an unresponsive click. Split work, reduce unnecessary rendering, or virtualize a genuinely large list after measuring.\n\nDo not add memoization to every line without evidence."
     },
     {
       "title": "Check the result",
-      "detail": "A spinner without context can feel stuck. A disabled control may hide why an action is unavailable. A click-only div is not equivalent to a keyboard-accessible button."
+      "detail": "A spinner without context can feel stuck. A disabled control may hide why an action is unavailable.\n\nA click-only div is not equivalent to a keyboard-accessible button."
     }
   ],
   "recallPrompt": "Without notes: Design accessible states and measure a real user-visible delay. Give a concrete failure example.",

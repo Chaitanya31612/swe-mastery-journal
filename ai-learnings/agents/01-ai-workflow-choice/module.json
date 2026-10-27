@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Task variability",
-      "detail": "A workflow follows code-defined paths. An agentic loop lets a model propose some next steps or tools based on observations. The distinction is who chooses the next operation, not whether the product has a chat box.\n\nMany useful features are workflows: classify request → validate filter → fetch facts → explain. Fixed paths are easier to test, budget, and reason about. An agent becomes useful when the necessary sequence depends on what it discovers, such as inspecting several permitted sources before forming a comparison.\n\nUse the simplest path that meets the task. Adding autonomy adds possible tool sequences, latency, cost, and failure modes. The host must still enforce capabilities, budgets and stopping. A framework can help orchestration but cannot decide your product's trust model for you."
+      "detail": "# Who chooses the next step?\n\nIn a **workflow**, code chooses the path.\n\nIn an **agent loop**, the model can suggest a next step based on what it finds.\n\n## Start with a workflow\n\n```text\nUnderstand request → check filter → fetch facts → draft explanation → validate\n```\n\nCode already knows these steps. A workflow is usually easier to test and limit.\n\nA chat box does not automatically make the system an agent.\n\n## When a loop may help\n\nSuppose the task needs several sources. The model may need to inspect one result before choosing the next useful source.\n\nThat can justify a loop. It does not justify unlimited access or unlimited retries.\n\n## Keep the application in charge\n\nLimit tools, steps, time, and spending.\n\nCheck every proposed operation before running it. Stop with a useful partial result when a limit is reached.\n\nA framework can coordinate steps. It cannot choose the application’s trust rules for you.\n\n## Remember\n\nUse fixed steps when the path is known. Add model-chosen steps only when they help the task.\n"
     },
     {
       "title": "Follow one input",
-      "detail": "Draw the steps and mark each chooser: code, user, or model. List all possible tools and side effects. Compare a workflow baseline with an agent on the same tasks, including failures and cost."
+      "detail": "Draw the steps and mark each chooser: code, user, or model. List all possible tools and side effects.\n\nCompare a workflow baseline with an agent on the same tasks, including failures and cost."
     },
     {
       "title": "Try the failure",

@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Business transaction",
-      "detail": "Change data capture reads database changes through a supported source mechanism. Debezium connectors can take an initial snapshot and continue from a log position. This is useful for integration/projections, but a row change is not automatically a well-designed business event."
+      "detail": "## Understand the idea\n\nChange data capture reads database changes through a supported source mechanism. Debezium connectors can take an initial snapshot and continue from a log position.\n\nThis is useful for integration/projections, but a row change is not automatically a well-designed business event.\n\nAn outbox table stores a deliberate event with the business transaction. A connector/outbox router can publish that committed intent instead of relying on an application polling dispatcher.\n\nThis changes the delivery machinery, not the need for schema, keys, deduplication, and recovery.\n\nSetup concept: verify database/connector versions, required replication/log settings and privileges, snapshot/log retention, connector offsets/state, outbox schema/routing, and monitoring.\n\nCDC can retain database logs when it stops; monitor the source as well as Kafka."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "CDC may expose columns not intended for downstream systems if schema/filtering is careless. A stopped replication slot/log reader can grow retained WAL. Running both polling and CDC publishers without coordination can duplicate events."
+      "detail": "CDC may expose columns not intended for downstream systems if schema/filtering is careless. A stopped replication slot/log reader can grow retained WAL.\n\nRunning both polling and CDC publishers without coordination can duplicate events."
     }
   ],
   "sources": [

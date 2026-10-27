@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,7 +77,7 @@
   "trace": [
     {
       "title": "Versioned change",
-      "detail": "An AI integration has several changing dependencies: model snapshot/alias, prompt, schema, tools, retrieval corpus/index, rules, SDK, policy and UI. A change to any can alter behavior. Record the effective combination and run regression checks before enabling it broadly.\n\nShadow mode can run a candidate without letting its output control user-visible behavior. It still consumes data and budget, so use approved inputs and explicit limits. A limited cohort rollout should have success/failure thresholds, monitoring and a rollback owner. Compare practical task outcomes, not only a provider uptime chart.\n\nDuring an incident, identify the affected versions and boundary. Disable optional generation or a specific capability while deterministic work continues. Preserve minimal diagnostic evidence, reconcile uncertain effects, and turn a reviewed reproduction into a new regression case."
+      "detail": "## Understand\n\nAn AI integration has several changing dependencies: model snapshot/alias, prompt, schema, tools, retrieval corpus/index, rules, SDK, policy and UI. A change to any can alter behavior.\n\nRecord the effective combination and run regression checks before enabling it broadly.\n\nShadow mode can run a candidate without letting its output control user-visible behavior. It still consumes data and budget, so use approved inputs and explicit limits.\n\nA limited cohort rollout should have success/failure thresholds, monitoring and a rollback owner. Compare practical task outcomes, not only a provider uptime chart.\n\nDuring an incident, identify the affected versions and boundary. Disable optional generation or a specific capability while deterministic work continues.\n\nPreserve minimal diagnostic evidence, reconcile uncertain effects, and turn a reviewed reproduction into a new regression case."
     },
     {
       "title": "Follow one input",

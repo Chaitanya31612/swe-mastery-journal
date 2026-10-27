@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,15 +76,15 @@
   "trace": [
     {
       "title": "Reactive source",
-      "detail": "Vue tracks reactive reads and updates dependents when those values change. In Vue 3, reactive uses proxies for objects and ref holds a value accessed as .value in JavaScript. A computed value derives a result and caches it until tracked dependencies change."
+      "detail": "# The idea\n\nVue tracks reactive reads and updates dependents when those values change. In Vue 3, reactive uses proxies for objects and ref holds a value accessed as .value in JavaScript.\n\nA computed value derives a result and caches it until tracked dependencies change.\n\nA watcher runs a side effect when its watched input changes. Use it for external work such as requests, not just to copy one derived value into another stored field.\n\nClean up obsolete work so old responses do not overwrite current state.\n\nThe work app uses Vue 2.6. It uses property getters/setters and has limits when adding properties or assigning array indexes.\n\nVue.set or array methods are relevant there. Vue 3 proxy behavior and newer watcher cleanup APIs must not be presented as Vue 2 behavior."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "state.count is read through the proxy inside computed, so the dependency is tracked. Destructuring a primitive copies the current value into a plain variable. toRefs creates a linked access wrapper instead.\n\nFor a watcher, trace input change → old cleanup → new request → latest accepted result. onWatcherCleanup is a newer Vue 3 API; the callback cleanup parameter is another version-dependent choice. Do not paste it into Vue 2."
+      "detail": "state.count is read through the proxy inside computed, so the dependency is tracked. Destructuring a primitive copies the current value into a plain variable. toRefs creates a linked access wrapper instead.\n\nFor a watcher, trace input change → old cleanup → new request → latest accepted result. onWatcherCleanup is a newer Vue 3 API; the callback cleanup parameter is another version-dependent choice.\n\nDo not paste it into Vue 2."
     },
     {
       "title": "Check the result",
-      "detail": "A deep watcher is not free: it can traverse much data. Replacing computed with a watcher can add stale state. In Vue 2, setting list[index] directly has different detection behavior from splice."
+      "detail": "A deep watcher is not free: it can traverse much data. Replacing computed with a watcher can add stale state.\n\nIn Vue 2, setting list[index] directly has different detection behavior from splice."
     }
   ],
   "recallPrompt": "Without notes: Explain refs, computed values, watchers, and Vue 2 versus Vue 3 change detection. Give a concrete failure example.",

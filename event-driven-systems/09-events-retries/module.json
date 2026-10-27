@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Classify failure",
-      "detail": "A transient outage and an invalid schema are different failures. Retrying malformed data forever does not repair it. Classify failures, bound attempts/delay, and retain enough safe context for diagnosis."
+      "detail": "## Understand the idea\n\nA transient outage and an invalid schema are different failures. Retrying malformed data forever does not repair it.\n\nClassify failures, bound attempts/delay, and retain enough safe context for diagnosis.\n\nBlocking a partition preserves its processing order but can hold back unrelated keys there. Sending a failed item to a retry topic lets later records advance, which can reorder one entity’s effects.\n\nA dead-letter/quarantine path needs ownership, alerting, retention, and redrive rules; it is not a successful business outcome.\n\nNever commit past required work silently. If the product permits skipping/quarantine, record that decision durably and explain the resulting projection completeness.\n\nReplays must remain idempotent and schema-compatible."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Retry topics can break per-key ordering if not designed for it. A DLQ can become a graveyard. More workers do not solve a deterministic poison message."
+      "detail": "Retry topics can break per-key ordering if not designed for it. A DLQ can become a graveyard.\n\nMore workers do not solve a deterministic poison message."
     }
   ],
   "sources": [

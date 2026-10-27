@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Active edits preserved",
-      "detail": "Use reflog to find a recent local reference movement, then name the candidate commit with a rescue branch before changing anything else. Reflog is local and expires; it does not store every unsaved file."
+      "detail": "## Understand the idea\n\nUse reflog to find a recent local reference movement, then name the candidate commit with a rescue branch before changing anything else.\n\nReflog is local and expires; it does not store every unsaved file.\n\nUse bisect only after a repeatable good/bad check exists. A flaky network dependency can make a confident wrong culprit.\n\nVerify the check against known endpoints of the search.\n\nA worktree gives a separate checkout for the exact committed snapshot. It helps avoid accidentally testing a staged patch together with unstaged helper changes.\n\nSave needed files before removing a worktree, and use Git’s worktree commands to keep registration consistent."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A test can fail because its historical build environment is unavailable. Mark such commits untestable/skip rather than bad. A cleanup command can delete untracked work that Git never stored."
+      "detail": "A test can fail because its historical build environment is unavailable. Mark such commits untestable/skip rather than bad.\n\nA cleanup command can delete untracked work that Git never stored."
     }
   ],
   "sources": [

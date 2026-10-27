@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,7 +72,7 @@
   "trace": [
     {
       "title": "Stable event ID",
-      "detail": "A producer serializes a record and asks a partition leader to append it. Its delivery handle/future reports the result under the client configuration. Enqueueing into a client buffer is not the same as an acknowledged broker append."
+      "detail": "## Understand the idea\n\nA producer serializes a record and asks a partition leader to append it. Its delivery handle/future reports the result under the client configuration.\n\nEnqueueing into a client buffer is not the same as an acknowledged broker append.\n\nacks, replica/min-ISR settings, retry limits, and delivery timeouts interact. Idempotent producer support prevents certain retry duplicates under the protocol/session contract.\n\nIt does not recognize that two separate application calls with different identities mean the same business completion.\n\nAlways carry a stable business event ID. In the outbox, retrying the same saved event preserves that ID.\n\nA consumer can then deduplicate the business effect even when the application re-publishes after a crash.\n\nChoose and verify settings for the actual client library; Ruby librdkafka options are not every Java default pasted unchanged."
     },
     {
       "title": "Follow one item",
@@ -80,7 +80,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Fire-and-forget publication can lose errors. Producer idempotence is often overclaimed as exactly-once business processing. App-level resends remain a distinct duplicate source."
+      "detail": "Fire-and-forget publication can lose errors. Producer idempotence is often overclaimed as exactly-once business processing.\n\nApp-level resends remain a distinct duplicate source."
     }
   ],
   "sources": [

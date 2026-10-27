@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Rack and route",
-      "detail": "Rails connects a Rack request to a route, a controller action, model work, and a response. A before_action can establish a current user. It does not automatically limit every database lookup to that user."
+      "detail": "# The idea\n\nRails connects a Rack request to a route, a controller action, model work, and a response. A before_action can establish a current user.\n\nIt does not automatically limit every database lookup to that user.\n\nStrong parameters select attributes allowed for mass assignment. They do not authorize access to a particular row.\n\nScope the lookup to the caller’s allowed records, then check action permissions.\n\nA service object is an ordinary Ruby object that can organize one use case without making the controller or model do everything.\n\nThe work baseline is Rails 4.2: use params.require(...).permit(...), not modern params.expect. ApplicationRecord is a later convention; models here can inherit ActiveRecord::Base.\n\nThese version differences are part of the lesson, not typos."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Trace PUT /tasks/7: route chooses update; authentication runs; the scoped find either returns an allowed task or raises not found; permitted input reaches update; the action chooses JSON and status.\n\nThe private helper cannot be called as a public action. Use request tests for missing authentication, another user’s ID, rejected attributes, validation errors, and a successful update. Also assert the database row stayed unchanged on rejection."
+      "detail": "Trace PUT /tasks/7: route chooses update; authentication runs; the scoped find either returns an allowed task or raises not found; permitted input reaches update; the action chooses JSON and status.\n\nThe private helper cannot be called as a public action. Use request tests for missing authentication, another user’s ID, rejected attributes, validation errors, and a successful update.\n\nAlso assert the database row stayed unchanged on rejection."
     },
     {
       "title": "Check the result",
-      "detail": "Task.find(params[:id]) plus permit(:title) still allows an ownership bug. Strong parameters protect allowed attributes, not which task you can edit. Never permit owner_id just because the browser sent it."
+      "detail": "Task.find(params[:id]) plus permit(:title) still allows an ownership bug. Strong parameters protect allowed attributes, not which task you can edit.\n\nNever permit owner_id just because the browser sent it."
     }
   ],
   "recallPrompt": "Without notes: Trace a Rails 4.2 action and protect record ownership at the server. Give a concrete failure example.",

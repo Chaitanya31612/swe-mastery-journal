@@ -1,7 +1,39 @@
-## Understand
+# Think of MCP as a shared way to connect tools
 
-Model Context Protocol standardizes how an AI application connects to tools and context providers. The host is the application coordinating the experience. A client connection inside the host talks to an MCP server. The server exposes capabilities such as tools, resources, and prompts. The model is a separate participant in the host's overall workflow.
+**Model Context Protocol (MCP)** lets an AI application talk to tools and sources through a common protocol.
 
-A provider function call and an MCP tool call are not the same wire message. The host can translate between its model provider's tool proposal and an MCP client's request. It must still decide which tools to expose, which result data may enter context, and whether an operation is authorized.
+It helps you reuse a connection format. It does not decide who may read your data.
 
-MCP does not train a model, provide RAG by itself, or grant database permissions. It is useful when several hosts need a standard interface to the same capabilities. A single Rails service can begin with an ordinary internal interface; use MCP where interoperability adds value.
+## Three parts to picture
+
+```text
+Host application
+    ├── talks to the model provider
+    └── contains an MCP client ↔ MCP server ↔ allowed tools and data
+```
+
+- **Host:** the app that manages the experience and decides what the model can use.
+- **Client:** a connection inside that host that sends and receives MCP messages.
+- **Server:** exposes tools, resources, or prompts through MCP.
+
+These roles do not have to be separate deployed services.
+
+## A small example
+
+The model suggests reading a parcel’s facts.
+
+The host checks the proposal. Its MCP client calls a tool on the shipment server.
+
+The server checks the current user’s access before returning facts.
+
+The provider’s tool-call message and the MCP message are different formats. The host can translate between them.
+
+## When to use it
+
+MCP is useful when several hosts need the same tool interface.
+
+For one internal Rails feature, a small ordinary service interface may be enough to start.
+
+## Remember
+
+MCP connects capabilities. Your application still owns permissions, validation, and execution limits.

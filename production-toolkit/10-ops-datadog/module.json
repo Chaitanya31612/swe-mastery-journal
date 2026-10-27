@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,15 +72,15 @@
   "trace": [
     {
       "title": "Service identity",
-      "detail": "Datadog combines observability capabilities such as infrastructure monitoring, APM, logs, and monitors. Choose the signals needed for a concrete investigation. Installing an agent alone does not make every request/job trace connected."
+      "detail": "## Understand the idea\n\nDatadog combines observability capabilities such as infrastructure monitoring, APM, logs, and monitors. Choose the signals needed for a concrete investigation.\n\nInstalling an agent alone does not make every request/job trace connected.\n\nUse stable service, environment, and version tags. Instrument the relevant Rails/client/job libraries with versions supported by your runtime.\n\nCurrent datadog gem setup differs from legacy ddtrace setups; a Rails 4.2/Ruby 2.7 application needs a verified compatibility choice.\n\nSetup path: choose supported tracer/agent versions, configure a training service identity and agent path, instrument a request and worker, correlate logs safely, define a useful monitor/runbook, and verify with a synthetic slow dependency.\n\nReview sampling, sensitive fields, ingestion, retention, and billing dimensions."
     },
     {
       "title": "Follow one item",
-      "detail": "User-visible latency spike → service latency/error metrics → slow trace → SQL or provider span → correlated safe logs → hypothesis → controlled repair → monitor recovery. Async boundaries need explicit context propagation/linking rather than assuming one synchronous stack.\n\nAn absent trace can mean sampling or missing instrumentation, not proof the request never ran."
+      "detail": "User-visible latency spike → service latency/error metrics → slow trace → SQL or provider span → correlated safe logs → hypothesis → controlled repair → monitor recovery.\n\nAsync boundaries need explicit context propagation/linking rather than assuming one synchronous stack.\n\nAn absent trace can mean sampling or missing instrumentation, not proof the request never ran."
     },
     {
       "title": "Try the failure",
-      "detail": "Unbounded tags and full payload capture can create cost/privacy problems. A monitor without a clear action becomes noise. Trace instrumentation can be misconfigured even when infrastructure metrics arrive."
+      "detail": "Unbounded tags and full payload capture can create cost/privacy problems. A monitor without a clear action becomes noise.\n\nTrace instrumentation can be misconfigured even when infrastructure metrics arrive."
     }
   ],
   "sources": [

@@ -8,5 +8,6 @@
   "data":{"title":"Synthetic ticket"}
 }
 ```
+This is teaching data. The lab validates required fields and refuses unsupported schema versions.
 
-This is teaching data. The lab validates required fields and refuses unsupported schema versions. It does not serialize the work project’s models.
+It does not serialize the work project’s models.

@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Metric contract",
-      "detail": "Prometheus commonly scrapes exposed metrics and stores time series. Grafana can query/display data from selected sources. A dashboard is a view over a data contract, not an independent guarantee that the service is healthy."
+      "detail": "## Understand the idea\n\nPrometheus commonly scrapes exposed metrics and stores time series. Grafana can query/display data from selected sources.\n\nA dashboard is a view over a data contract, not an independent guarantee that the service is healthy.\n\nCounters accumulate events; rates describe change over time. Gauges describe a current value.\n\nHistograms can help examine latency distributions under their configuration. Choose labels with bounded categories.\n\nA ticket ID per metric label can create an enormous number of series.\n\nSetup: define one task-relevant metric, expose it safely in a training service, configure a scrape, create a query/panel, and trigger a synthetic failure. Then write an alert with an owner and runbook.\n\nConsider hosted alternatives or Datadog when their operating model fits better; using both stacks is not mandatory."
     },
     {
       "title": "Follow one item",
-      "detail": "App records bounded metric → collector observes → query transforms over a time window → panel/alert presents it → investigator checks user outcome. A missing scrape and a true zero value are different things.\n\nFor a latency claim, ask which requests were included and whether errors/timeouts were excluded. A low median can coexist with painful tail latency."
+      "detail": "App records bounded metric → collector observes → query transforms over a time window → panel/alert presents it → investigator checks user outcome.\n\nA missing scrape and a true zero value are different things.\n\nFor a latency claim, ask which requests were included and whether errors/timeouts were excluded. A low median can coexist with painful tail latency."
     },
     {
       "title": "Try the failure",
-      "detail": "A mean alone can hide a slow minority. Unbounded labels can overwhelm the system. A pretty dashboard with no action/owner can fail silently during an incident."
+      "detail": "A mean alone can hide a slow minority. Unbounded labels can overwhelm the system.\n\nA pretty dashboard with no action/owner can fail silently during an incident."
     }
   ],
   "sources": [

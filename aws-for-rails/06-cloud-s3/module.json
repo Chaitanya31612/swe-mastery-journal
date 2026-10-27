@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Authorized metadata",
-      "detail": "S3 stores objects addressed by bucket and key. A slash in a key is a naming convention, not a filesystem directory with ordinary POSIX behavior. Keep application metadata and access rules in the database; the object is the bytes."
+      "detail": "## Understand the idea\n\nS3 stores objects addressed by bucket and key. A slash in a key is a naming convention, not a filesystem directory with ordinary POSIX behavior.\n\nKeep application metadata and access rules in the database; the object is the bytes.\n\nUse private defaults and a workload role scoped to the required bucket/prefix/actions. A presigned URL grants time-limited access using the signer’s permissions.\n\nIt can be reused while valid and may expire earlier when its credentials expire. It is not inherently a single-use ticket.\n\nSetup: choose a unique training bucket/region, block unintended public access, choose encryption and lifecycle/versioning deliberately, scope the app role, configure CORS only for required browser direct-upload behavior, then test an allowed upload/read and denied outside key.\n\nPlan cleanup of abandoned uploads and retained versions."
     },
     {
       "title": "Follow one item",
-      "detail": "User requests attachment → Rails authorizes record → app issues allowed key/URL → browser uploads bytes → app verifies completion and saves metadata → later read rechecks access before issuing a download.\n\nTest the crash between upload and metadata save. Orphan cleanup must distinguish abandoned objects from live references. For immediate revocation needs, consider the lifetime of already issued URLs."
+      "detail": "User requests attachment → Rails authorizes record → app issues allowed key/URL → browser uploads bytes → app verifies completion and saves metadata → later read rechecks access before issuing a download.\n\nTest the crash between upload and metadata save. Orphan cleanup must distinguish abandoned objects from live references.\n\nFor immediate revocation needs, consider the lifetime of already issued URLs."
     },
     {
       "title": "Try the failure",
-      "detail": "A public bucket can bypass Rails permission checks. Reusing a key can replace an existing object according to the operation/versioning contract. A presigned URL should not be logged as harmless metadata."
+      "detail": "A public bucket can bypass Rails permission checks. Reusing a key can replace an existing object according to the operation/versioning contract.\n\nA presigned URL should not be logged as harmless metadata."
     }
   ],
   "sources": [

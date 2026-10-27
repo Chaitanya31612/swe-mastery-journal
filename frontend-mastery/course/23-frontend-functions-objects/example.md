@@ -16,5 +16,4 @@ const safe = formatter.label.bind(formatter)
 safe(4) // 'Ticket 4'
 // detached(4) throws when this is undefined in strict mode.
 ```
-
 A timer callback reading a mutable selectedId will see its later value. Pass the intended ID as a local argument if the operation should belong to the original selection.

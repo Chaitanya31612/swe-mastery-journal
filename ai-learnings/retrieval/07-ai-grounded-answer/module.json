@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Claim and source ID",
-      "detail": "Grounding means relating an answer to supplied evidence. A good answer makes that relation inspectable: source identity, version/location, and the claim it supports. Still ask four separate questions: was the source supplied, does it support this claim, is it current enough, and is it authoritative for this task?\n\nCode can check many narrow facts exactly. A reported count can equal the supplied aggregate. A claim about a rule code can match a verified rule result. A free-form explanation needs a different support check. A source-ID membership validator cannot prove arbitrary prose is entailed by a passage.\n\nDesign partial or unavailable answers when evidence is incomplete or conflicting. Do not merge conflicting document revisions into a confident single instruction. Keep generated interpretation visibly distinct from code-verified facts and reviewed guidance."
+      "detail": "## Understand\n\nGrounding means relating an answer to supplied evidence. A good answer makes that relation inspectable: source identity, version/location, and the claim it supports.\n\nStill ask four separate questions: was the source supplied, does it support this claim, is it current enough, and is it authoritative for this task?\n\nCode can check many narrow facts exactly. A reported count can equal the supplied aggregate.\n\nA claim about a rule code can match a verified rule result. A free-form explanation needs a different support check.\n\nA source-ID membership validator cannot prove arbitrary prose is entailed by a passage.\n\nDesign partial or unavailable answers when evidence is incomplete or conflicting. Do not merge conflicting document revisions into a confident single instruction.\n\nKeep generated interpretation visibly distinct from code-verified facts and reviewed guidance."
     },
     {
       "title": "Follow one input",
-      "detail": "Extract claims → map to supplied source IDs → check exact fields where possible → assess semantic support → check freshness/authority → render the supported parts with clear labels. Evaluate contradictions and misleading-but-valid citations explicitly."
+      "detail": "Extract claims → map to supplied source IDs → check exact fields where possible → assess semantic support → check freshness/authority → render the supported parts with clear labels.\n\nEvaluate contradictions and misleading-but-valid citations explicitly."
     },
     {
       "title": "Try the failure",
-      "detail": "Citations can create false confidence. A correct number attached to the wrong category is still wrong. “All facts verified” is too strong if only IDs and numbers were checked."
+      "detail": "Citations can create false confidence. A correct number attached to the wrong category is still wrong.\n\n“All facts verified” is too strong if only IDs and numbers were checked."
     }
   ],
   "sources": [

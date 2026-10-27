@@ -4,4 +4,6 @@ A snapshot test alone may not reveal that an old request overwrites a new result
 
 **Memory cue:** Reproduce → trace → repair → prove.
 
-Close this lesson. Draw the five steps. Explain one failure in your own words before opening Practice.
+Close this lesson. Draw the five steps.
+
+Explain one failure in your own words before opening Practice.

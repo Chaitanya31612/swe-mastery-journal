@@ -14,5 +14,6 @@ class CompleteTask {
   }
 }
 ```
+Call run through an injected CompleteTask bean. For inventory, prefer an atomic conditional SQL update such as UPDATE stock SET quantity=quantity-1 WHERE id=?
 
-Call run through an injected CompleteTask bean. For inventory, prefer an atomic conditional SQL update such as UPDATE stock SET quantity=quantity-1 WHERE id=? AND quantity>0. Check the affected-row count.
+AND quantity>0. Check the affected-row count.

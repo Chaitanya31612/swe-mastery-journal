@@ -7,5 +7,4 @@ Observe: correct selection, audience understanding, partial-failure recovery.
 Success metric: correct assignments / eligible handoff attempts.
 Guardrail: wrong-team assignments and lost drafts.
 ```
-
 Use synthetic tasks and minimal event data. Write the event definition before installing an analytics SDK.

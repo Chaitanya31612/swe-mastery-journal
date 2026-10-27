@@ -11,5 +11,4 @@ DB transaction:
   create ticket and store response identity
   commit
 ```
-
 For GET /tickets?after=...&limit=..., cap limit on the server and use a deterministic ordered key. Tokens are data, not authorization.

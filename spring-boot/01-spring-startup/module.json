@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "main",
-      "detail": "Spring Boot builds on Spring. Spring manages objects called beans. Boot supplies useful defaults when the required classes and settings are present. This is auto-configuration. It can step aside when you define your own bean."
+      "detail": "# Start with this\n\nYou write Java classes. Spring creates and connects some of their objects for you.\n\nA Spring-managed object is called a **bean**. Spring Boot adds useful defaults so you need less setup.\n\n## A small picture\n\n```text\nmain() starts Spring\n       ↓\nSpring finds your components\n       ↓\nSpring creates beans and connects them\n       ↓\nThe web server starts accepting requests\n```\n\n## Try this example\n\nYou add a controller for `GET /tasks`. Spring must find that controller before it can handle the request.\n\nKeep the main application class above your feature packages. That gives component scanning a useful place to start.\n\nCreating an object with `new` does not automatically make it a Spring bean.\n\n## What Boot adds\n\nBoot checks the classes and settings available to the app. It can then set up common parts, such as a web server.\n\nThis is **auto-configuration**. Your own bean can replace a default when the auto-configuration conditions allow it.\n\n## Remember\n\nA successful startup means the app started. Send a real request to check that the route and its dependencies work.\n"
     },
     {
       "title": "Follow the middle steps",
-      "detail": "1. The JVM calls main. Boot builds the context.\n2. Component scanning finds PingController. MVC records its /ping mapping.\n3. The server listens on the configured port. A request reaches the mapped method.\n4. The method returns text. MVC writes the HTTP response.\n\nCommand-line properties override application.properties for this simple case. Profiles select environment-specific settings; they are not a place to commit secrets. Use the condition report (--debug) to see why a default was applied."
+      "detail": "1. The JVM calls main. Boot builds the context.\n2. Component scanning finds PingController. MVC records its /ping mapping.\n3. The server listens on the configured port. A request reaches the mapped method.\n4. The method returns text. MVC writes the HTTP response.\n\nCommand-line properties override application.properties for this simple case. Profiles select environment-specific settings; they are not a place to commit secrets.\n\nUse the condition report (--debug) to see why a default was applied."
     },
     {
       "title": "Check the result",
-      "detail": "A controller outside the scanned package may never become a bean. A port conflict happens before a request is handled. A 404 after startup is a routing problem, not proof that Boot failed to launch."
+      "detail": "A controller outside the scanned package may never become a bean. A port conflict happens before a request is handled.\n\nA 404 after startup is a routing problem, not proof that Boot failed to launch."
     }
   ],
   "recallPrompt": "Without notes: Explain how main(), the container, configuration, and the web server fit together. Give a concrete failure example.",

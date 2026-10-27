@@ -2,4 +2,6 @@
 
 A team adds BM25 score directly to cosine similarity and calls the result confidence. Repair its ranking and measurement.
 
-Write four things before opening the reference: **Predict** the result; **Change** the code or design; **Verify** with expected and observed evidence; **Explain** the rule and one limitation. If not run, say so. Use synthetic data in a training folder. A plausible diagram is not evidence that an integration ran.
+Write four things before opening the reference: **Predict** the result; **Change** the code or design; **Verify** with expected and observed evidence; **Explain** the rule and one limitation. If not run, say so.
+
+Use synthetic data in a training folder. A plausible diagram is not evidence that an integration ran.

@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Browser request",
-      "detail": "fetch resolves for an HTTP 404 or 500. Check response.ok before treating the body as success. A network failure is different from a server returning a deliberate error response."
+      "detail": "## Understand the idea\n\nfetch resolves for an HTTP 404 or 500. Check response.ok before treating the body as success.\n\nA network failure is different from a server returning a deliberate error response.\n\nThe browser HTTP cache, a service worker, your query cache, and the server cache are separate copies. Cache-Control describes HTTP caching policy.\n\nAn ETag can let the server say “not changed.” A fresh fetch call does not prove the server recomputed the data.\n\nCookies are sent according to origin/site, credentials mode, SameSite, and cookie attributes. CORS is a browser response-access rule, not authorization.\n\nA preflight request checks whether the browser may send a certain cross-origin request. Inspect both request and response headers before changing settings."
     },
     {
       "title": "Follow one item",
-      "detail": "Trace DNS → connection/TLS → request headers → server response → HTTP cache → app adapter → UI state. When the page is stale, identify which layer supplied the stale copy.\n\nA 304 response is used with a cached representation. A 200 with old data can come from a backend cache. A CORS error may hide a response from JavaScript while the server still received the request. Do not assume a browser error means no side effect happened."
+      "detail": "Trace DNS → connection/TLS → request headers → server response → HTTP cache → app adapter → UI state. When the page is stale, identify which layer supplied the stale copy.\n\nA 304 response is used with a cached representation. A 200 with old data can come from a backend cache.\n\nA CORS error may hide a response from JavaScript while the server still received the request. Do not assume a browser error means no side effect happened."
     },
     {
       "title": "Try the failure",

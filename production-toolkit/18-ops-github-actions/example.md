@@ -12,5 +12,4 @@ jobs:
       - uses: actions/checkout@v4 # training illustration; pin per policy
       - run: echo "Install pinned runtime, then run targeted checks"
 ```
-
 The example explains structure only. The lab's local checks are not automatically published as a repository workflow or granted cloud access.

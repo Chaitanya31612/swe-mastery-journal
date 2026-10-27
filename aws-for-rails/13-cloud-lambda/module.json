@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Configured source",
-      "detail": "This chapter focuses on Lambda event functions: a handler invoked under a configured event source. Other Lambda offerings have different contracts. A small S3 metadata check or queue-driven transformation can fit well; a large always-warm Rails web process is a different decision."
+      "detail": "## Understand the idea\n\nThis chapter focuses on Lambda event functions: a handler invoked under a configured event source. Other Lambda offerings have different contracts.\n\nA small S3 metadata check or queue-driven transformation can fit well; a large always-warm Rails web process is a different decision.\n\nThe trigger controls invocation and retry semantics. A queue event source is not identical to a synchronous API call.\n\nA batch can contain several records, and reporting failure incorrectly can repeat already completed items. Keep the logical effect idempotent.\n\nSetup: choose the runtime and handler, attach a narrow execution role, configure environment/secret access, timeout/memory/concurrency, connect the event source, and test failure plus repeated delivery.\n\nIf using private database access, plan network paths and connection multiplication."
     },
     {
       "title": "Follow one item",

@@ -11,7 +11,9 @@ Version: Portable JavaScript · React hooks · Vue 2/3 comparisons · Next App R
 - [Repair practice](practice/repair.md)
 - [Changed-condition practice](practice/transfer.md)
 
-Take the quiz in the application. Reference answers are in answers/; open them after an honest attempt. A reference is one valid argument, not the only acceptable design.
+Take the quiz in the application. Reference answers are in answers/; open them after an honest attempt.
+
+A reference is one valid argument, not the only acceptable design.
 
 ## Reading map
 

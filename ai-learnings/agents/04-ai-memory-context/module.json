@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Current intent",
-      "detail": "Short-term context is what the current request sees. Durable application state can include conversations, task progress, user preferences, evidence snapshots, tool outcomes and pending approvals. These stores are not the model's weights.\n\nRetain only what serves a purpose. A summary can lose an exception, change an uncertain statement into a fact, or preserve a malicious instruction. Keep source IDs and confidence/status labels with summaries. Treat stored memories as outside data on future turns.\n\nA memory key must include the relevant identity and scope. Recheck current access before reusing records or facts. A user's old permission does not authorize today's retrieval. Define retention, correction and deletion across derived caches and summaries. Product memory should not grow forever merely because storage is cheap."
+      "detail": "## Understand\n\nShort-term context is what the current request sees. Durable application state can include conversations, task progress, user preferences, evidence snapshots, tool outcomes and pending approvals.\n\nThese stores are not the model's weights.\n\nRetain only what serves a purpose. A summary can lose an exception, change an uncertain statement into a fact, or preserve a malicious instruction.\n\nKeep source IDs and confidence/status labels with summaries. Treat stored memories as outside data on future turns.\n\nA memory key must include the relevant identity and scope. Recheck current access before reusing records or facts.\n\nA user's old permission does not authorize today's retrieval. Define retention, correction and deletion across derived caches and summaries.\n\nProduct memory should not grow forever merely because storage is cheap."
     },
     {
       "title": "Follow one input",
-      "detail": "Current request → relevant permitted history → task state → bounded evidence → model call → explicit durable updates. Simulate a scope change and access revocation before a later turn. Check what is invalidated or reloaded."
+      "detail": "Current request → relevant permitted history → task state → bounded evidence → model call → explicit durable updates. Simulate a scope change and access revocation before a later turn.\n\nCheck what is invalidated or reloaded."
     },
     {
       "title": "Try the failure",

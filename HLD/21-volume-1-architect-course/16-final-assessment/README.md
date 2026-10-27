@@ -1,6 +1,8 @@
 # 16 — Transfer assessment and graduation evidence
 
-Budget: **4 hours** including local feedback/retrieval. Prerequisites: modules 00–15, with delayed recall records. Book connection: Apply Volume 1 mechanisms to non-book prompts; no Volume 2 required.
+Budget: **4 hours** including local feedback/retrieval. Prerequisites: modules 00–15, with delayed recall records.
+
+Book connection: Apply Volume 1 mechanisms to non-book prompts; no Volume 2 required.
 
 Outcome: Demonstrate unaided reasoning on three different problem families and review a real architecture from evidence.
 
@@ -12,4 +14,6 @@ Outcome: Demonstrate unaided reasoning on three different problem families and r
 4. Only after submitting your attempt, open [solutions](answers/01-solutions.md). Compare consequences, not diagram appearance.
 5. Schedule delayed recall: After two weeks, organize a new problem from memory, identify the central invariant, and justify the two highest-priority deep dives.
 
-Use [the rubric](../assessment-rubric.md) and [the learning protocol](../learning-protocol.md). A focused local exercise may leave rubric dimensions unassessed; use full designs to establish overall independence. Sources are optional verification in [the source map](../sources.md). The lesson includes the mechanisms needed for these exercises.
+Use [the rubric](../assessment-rubric.md) and [the learning protocol](../learning-protocol.md). A focused local exercise may leave rubric dimensions unassessed; use full designs to establish overall independence.
+
+Sources are optional verification in [the source map](../sources.md). The lesson includes the mechanisms needed for these exercises.

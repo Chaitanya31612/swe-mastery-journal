@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Content flow",
-      "detail": "Normal flow is the starting point: blocks stack and inline content flows within a line. The box model adds padding and border around content. box-sizing:border-box makes a declared width include padding and border. It does not make every child shrink automatically."
+      "detail": "## Understand the idea\n\nNormal flow is the starting point: blocks stack and inline content flows within a line.\n\nThe box model adds padding and border around content. box-sizing:border-box makes a declared width include padding and border. It does not make every child shrink automatically.\n\nUse Flexbox for one-dimensional distribution: a toolbar, row, or column. Use Grid when rows and columns should align together.\n\nA flexible item may refuse to shrink below its min-content size. min-width:0 on the right child or minmax(0,1fr) on a grid track often fixes a long code/title overflow.\n\nFind the actual owner before applying it everywhere.\n\nResponsive design follows content constraints. A breakpoint is where this layout stops working, not a universal device category.\n\nUse relative sizing, wrapping, and a readable line length. Keep DOM reading order sensible instead of using visual order to repair confusing markup."
     },
     {
       "title": "Follow one item",
-      "detail": "Inspect the overflowing element's bounding box. Walk to its grid/flex parent. Check min-size, fixed width, padding, and white-space. Change one rule, observe the effect, then remove temporary patches.\n\nA 100vw child plus body padding can overflow. A fixed-height card can cut off translated text. Avoid hiding overflow as the first repair because it can conceal controls or focused content."
+      "detail": "Inspect the overflowing element's bounding box. Walk to its grid/flex parent.\n\nCheck min-size, fixed width, padding, and white-space. Change one rule, observe the effect, then remove temporary patches.\n\nA 100vw child plus body padding can overflow. A fixed-height card can cut off translated text.\n\nAvoid hiding overflow as the first repair because it can conceal controls or focused content."
     },
     {
       "title": "Try the failure",

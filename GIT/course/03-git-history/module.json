@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -75,15 +75,15 @@
   "trace": [
     {
       "title": "Common base",
-      "detail": "Merge joins histories. A merge commit can have two parents and preserve both lines of development. A fast-forward just moves a branch label when no divergent history needs joining."
+      "detail": "# The idea\n\nMerge joins histories. A merge commit can have two parents and preserve both lines of development.\n\nA fast-forward just moves a branch label when no divergent history needs joining.\n\nRebase replays commits onto a different base, creating new commit identities. It can make a private sequence easier to review.\n\nRewriting commits that teammates already depend on needs explicit coordination. A clean graph is not worth surprising other users.\n\nA conflict means Git cannot safely choose content automatically. The correct resolution comes from the intended behavior of both changes.\n\nRemoving markers without testing that behavior is not enough. During rebase, “ours” and “theirs” can be counterintuitive; inspect the actual versions."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Draw O→A on main and O→B→C on your branch. Merge can produce a node with A and C as parents. Rebase builds B′ and C′ on A. The old B/C objects may still exist, but your branch now names C′.\n\nFor each conflict, read the common base, both edits, and nearby call sites. Test the combined result. Record a short explanation when the merge resolution makes a meaningful product decision."
+      "detail": "Draw O→A on main and O→B→C on your branch. Merge can produce a node with A and C as parents.\n\nRebase builds B′ and C′ on A. The old B/C objects may still exist, but your branch now names C′.\n\nFor each conflict, read the common base, both edits, and nearby call sites. Test the combined result.\n\nRecord a short explanation when the merge resolution makes a meaningful product decision."
     },
     {
       "title": "Check the result",
-      "detail": "A rebase can repeat conflicts across replayed commits. A merge can be conflict-free and still be behaviorally wrong. Git combines text; it does not understand your program’s rules."
+      "detail": "A rebase can repeat conflicts across replayed commits. A merge can be conflict-free and still be behaviorally wrong.\n\nGit combines text; it does not understand your program’s rules."
     }
   ],
   "recallPrompt": "Without notes: Choose a history operation from the graph and resolve intent rather than markers alone. Give a concrete failure example.",

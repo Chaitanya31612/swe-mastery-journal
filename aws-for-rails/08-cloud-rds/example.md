@@ -10,5 +10,4 @@ production:
   password: <%= ENV.fetch('DB_PASSWORD') %>
   pool: <%= ENV.fetch('DB_POOL', '5') %>
 ```
-
 Configure TLS/certificate verification according to your pg/client and RDS setup. Do not log the rendered connection credentials.

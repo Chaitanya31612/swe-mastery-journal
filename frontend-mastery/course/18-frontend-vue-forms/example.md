@@ -14,5 +14,4 @@ async function save() {
   finally { saving.value = false }
 }
 ```
-
 submitDraft must check HTTP status and map field/conflict errors; this fragment shows ownership, not a complete request adapter.

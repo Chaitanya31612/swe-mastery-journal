@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Rails use case",
-      "detail": "Define a small application-owned interface such as propose_filter or explain_facts. A provider adapter builds the vendor request, sets deadlines, maps response items, and returns your own result/error type. Controllers should not know whether a provider calls something input, messages, output, or toolResult.\n\nCapabilities still differ. Do not hide missing schema, tool, streaming, or modality support behind a uniform method name. Validate the selected combination at configuration time. Keep model identifiers in environment/configuration and record the effective version used in evaluations.\n\nThe official OpenAI Ruby SDK used in this course requires modern Ruby. The isolated lab uses Ruby 3.3 and Rails 7.2. A Ruby 2.7 / Rails 4.2 application may use a supported HTTP boundary or a separate modern gateway. Do not install this lab's gems into an existing legacy application."
+      "detail": "## Understand\n\nDefine a small application-owned interface such as propose_filter or explain_facts. A provider adapter builds the vendor request, sets deadlines, maps response items, and returns your own result/error type.\n\nControllers should not know whether a provider calls something input, messages, output, or toolResult.\n\nCapabilities still differ. Do not hide missing schema, tool, streaming, or modality support behind a uniform method name.\n\nValidate the selected combination at configuration time. Keep model identifiers in environment/configuration and record the effective version used in evaluations.\n\nThe official OpenAI Ruby SDK used in this course requires modern Ruby. The isolated lab uses Ruby 3.3 and Rails 7.2.\n\nA Ruby 2.7 / Rails 4.2 application may use a supported HTTP boundary or a separate modern gateway. Do not install this lab's gems into an existing legacy application."
     },
     {
       "title": "Follow one input",
-      "detail": "Controller → use case → adapter interface → provider response → normalized result → domain validator. Use a fake adapter for deterministic business tests. Use separate adapter contract tests for request/response mapping and separate labelled online evaluation for model behavior."
+      "detail": "Controller → use case → adapter interface → provider response → normalized result → domain validator. Use a fake adapter for deterministic business tests.\n\nUse separate adapter contract tests for request/response mapping and separate labelled online evaluation for model behavior."
     },
     {
       "title": "Try the failure",

@@ -1,7 +1,36 @@
-## Understand the idea
+# Start with a command and an event
 
-A command asks someone to do something: GenerateReport. An event states a fact: TicketCompleted. Naming the difference helps decide who owns rejection, completion, and follow-up work.
+A **command** asks for work: `GenerateReport`.
 
-A work queue commonly distributes work among competing workers. A retained log keeps ordered records under a retention policy while each consumer group tracks its own progress. Kafka is useful for independent subscribers and replay, not merely because a system has background jobs.
+An **event** says something happened: `TicketCompleted`.
 
-Asynchronous communication moves a boundary in time. It can buffer work and decouple processing, but users need an honest pending/result model. It also adds duplicates, schema evolution, delayed access/context, and operational recovery questions. A direct call or existing job queue can be simpler when those benefits are not needed.
+The difference helps you decide who can reject work and who owns the next step.
+
+## Two delivery models
+
+```text
+Work queue:    job → one of the available workers
+Retained log:  saved events → independent readers with their own positions
+```
+
+A queue commonly shares jobs among workers.
+
+A retained log keeps ordered records for a configured time. Each consumer group tracks how far it has read.
+
+## When Kafka helps
+
+Two teams may need the same events for different purposes. One builds reports; another sends notifications.
+
+Independent subscribers and replay can make a retained log useful here.
+
+A background job alone is not a reason to add Kafka. A direct call or your existing job queue may be enough.
+
+## What changes for the user?
+
+Work may finish later. Show a useful pending state and a way to see the result.
+
+Also plan for duplicate delivery, changing event formats, old permissions, and recovery after failure.
+
+## Remember
+
+Sending work later buys flexibility. It also creates new questions about timing and recovery.

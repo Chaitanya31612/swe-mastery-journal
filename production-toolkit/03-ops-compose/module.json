@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,15 +72,15 @@
   "trace": [
     {
       "title": "Compose project",
-      "detail": "Compose describes a multi-container application. Services can reach one another by service name on their configured network. localhost inside a container refers to that container, not the database next door or your host browser."
+      "detail": "## Understand the idea\n\nCompose describes a multi-container application.\n\nServices can reach one another by service name on their configured network. localhost inside a container refers to that container, not the database next door or your host browser.\n\nPublished host ports and container service ports are different. The browser may use localhost:3300 while the worker uses web:3000.\n\nKafka also advertises broker addresses to clients, so correct bootstrap reachability alone is not enough.\n\ndepends_on ordering is not universal application readiness. Use health checks/conditions where supported and keep client startup/retry behavior deliberate.\n\nName volumes and project scope so a lab does not collide with another application. Read the cleanup command before removing any volume."
     },
     {
       "title": "Follow one item",
-      "detail": "Compose creates network/services → database becomes healthy → schema setup completes → web/dispatch/consumer start → service DNS connects internal calls → published port serves the browser.\n\nInspect logs and exit status per service. Rebuilding an image does not necessarily replace every running service unless the chosen command does so. State what the command will change."
+      "detail": "Compose creates network/services → database becomes healthy → schema setup completes → web/dispatch/consumer start → service DNS connects internal calls → published port serves the browser.\n\nInspect logs and exit status per service. Rebuilding an image does not necessarily replace every running service unless the chosen command does so.\n\nState what the command will change."
     },
     {
       "title": "Try the failure",
-      "detail": "Using localhost for db from web points at the wrong container. Removing volumes erases local lab data. A started DB process may still be initializing or lack the schema."
+      "detail": "Using localhost for db from web points at the wrong container. Removing volumes erases local lab data.\n\nA started DB process may still be initializing or lack the schema."
     }
   ],
   "sources": [

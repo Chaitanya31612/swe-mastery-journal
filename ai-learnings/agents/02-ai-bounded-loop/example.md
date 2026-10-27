@@ -11,5 +11,4 @@ MAX_STEPS.times do
 end
 Result.partial(reason: 'step_limit', evidence: collected_facts)
 ```
-
 The local lab uses scripted proposals so tests can reproduce every transition. Scripted behavior is not evidence of live model quality.

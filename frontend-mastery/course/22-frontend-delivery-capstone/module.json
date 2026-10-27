@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "URL and user intent",
-      "detail": "Build one vertical feature rather than a gallery of disconnected examples. A support workspace should open directly from a URL, load an allowed ticket list, filter it, open a ticket, edit its title, and preserve edits after a failed save."
+      "detail": "## Understand the idea\n\nBuild one vertical feature rather than a gallery of disconnected examples.\n\nA support workspace should open directly from a URL, load an allowed ticket list, filter it, open a ticket, edit its title, and preserve edits after a failed save.\n\nUse a small boundary map: router owns context, an API adapter validates responses, a composable owns request lifetime, components render accessible states, and the server owns permission and concurrency rules.\n\nAdd a store only for state that really crosses component ownership boundaries.\n\nCompletion is a demonstration: a happy path, a denied request, a failed save, a reverse-order request race, a keyboard path, and a large-data profile.\n\nExplain which evidence came from pure tests, component tests, and a browser."
     },
     {
       "title": "Follow one item",
-      "detail": "Follow a search from URL to accepted rows. Follow an edit from input to versioned request to reconciled response. Follow a failed save back to a preserved draft. Finally trace an old request that arrives after navigation and prove it has no ownership.\n\nAdd one production-style change: a new optional status from the server. Decide how older clients render it. A strict parser can reject unexpected data; a tolerant adapter can preserve unknown states. Choose deliberately."
+      "detail": "Follow a search from URL to accepted rows. Follow an edit from input to versioned request to reconciled response.\n\nFollow a failed save back to a preserved draft. Finally trace an old request that arrives after navigation and prove it has no ownership.\n\nAdd one production-style change: a new optional status from the server. Decide how older clients render it.\n\nA strict parser can reject unexpected data; a tolerant adapter can preserve unknown states. Choose deliberately."
     },
     {
       "title": "Try the failure",

@@ -15,5 +15,4 @@ flowchart TD
  C --> P
  O -. Not normally a weight update .-> W
 ```
-
 Remember: **Weights learn patterns. Context carries this task. Your system owns current facts.**

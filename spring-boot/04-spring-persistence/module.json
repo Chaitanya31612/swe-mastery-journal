@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Repository query",
-      "detail": "JPA maps objects to relational rows. Hibernate is a common implementation. A repository is an access boundary; it does not remove the need to reason about SQL."
+      "detail": "# The idea\n\nJPA maps objects to relational rows. Hibernate is a common implementation.\n\nA repository is an access boundary; it does not remove the need to reason about SQL.\n\nAn entity loaded inside a persistence context is managed. Changing it can produce an UPDATE when work is flushed.\n\nFlush sends SQL; commit makes the transaction durable. They are not the same event.\n\nA detached object is no longer tracked by that context.\n\nAssociations can hide database work. Reading 20 tasks and then each task.owner.name can issue 21 queries.\n\nThat is N+1: one list query plus one per item. Choose a fetch plan or a DTO query for this screen.\n\nDo not switch every relation to eager loading; that can load a huge graph."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Ask what SQL runs at each line. The repository list call loads task rows. A lazy owner access can trigger another query while the context is open. Outside it, an uninitialized association may fail.\n\nBuild the response inside a deliberate read boundary. Count queries with test instrumentation or SQL logs in a sandbox. Compare one item and twenty items. A constant small query count is evidence; the word repository is not."
+      "detail": "Ask what SQL runs at each line. The repository list call loads task rows.\n\nA lazy owner access can trigger another query while the context is open. Outside it, an uninitialized association may fail.\n\nBuild the response inside a deliberate read boundary. Count queries with test instrumentation or SQL logs in a sandbox.\n\nCompare one item and twenty items. A constant small query count is evidence; the word repository is not."
     },
     {
       "title": "Check the result",
-      "detail": "An in-memory H2 test may hide PostgreSQL behavior. SQL logs can also expose values, so use synthetic test data. A uniqueness pre-check without a database constraint can race."
+      "detail": "An in-memory H2 test may hide PostgreSQL behavior. SQL logs can also expose values, so use synthetic test data.\n\nA uniqueness pre-check without a database constraint can race."
     }
   ],
   "recallPrompt": "Without notes: Explain entity state, repository queries, lazy reads, and the N+1 problem. Give a concrete failure example.",

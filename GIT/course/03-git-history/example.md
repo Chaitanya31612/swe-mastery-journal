@@ -10,5 +10,4 @@ git rebase --continue
 # Or return to the pre-rebase state:
 git rebase --abort
 ```
-
 Create two branches editing one sentence differently. Write the intended final behavior before resolving the conflict.

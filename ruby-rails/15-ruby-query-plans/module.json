@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Scoped relation",
-      "detail": "A report can be correct on ten rows and fail on a million. Ask how many rows are loaded, how many model objects are built, how many queries run, and whether the order matters."
+      "detail": "## Understand the idea\n\nA report can be correct on ten rows and fail on a million.\n\nAsk how many rows are loaded, how many model objects are built, how many queries run, and whether the order matters.\n\nUse SQL filtering/aggregation when it expresses the required rule. Use pluck for selected values when full model behavior is unnecessary.\n\nUse batches for large iteration, but check the Rails version’s batching order and limits. Rails 4.2 APIs differ from modern cursor options.\n\nAn index serves an actual predicate and order. Check the plan on representative synthetic PostgreSQL data.\n\nAvoid assuming an index is used merely because it exists. A large export may need a stable snapshot/job contract rather than paginating a moving live list."
     },
     {
       "title": "Follow one item",
-      "detail": "Request scope → SQL predicate/order → database plan → limited rows/batches → Ruby transformation → output. Measure rows, query count, and memory at separate points.\n\nFor an export, decide what happens when tickets change while it runs. A transaction snapshot may give stability but can be expensive over a long job; a materialized export scope is another tradeoff."
+      "detail": "Request scope → SQL predicate/order → database plan → limited rows/batches → Ruby transformation → output. Measure rows, query count, and memory at separate points.\n\nFor an export, decide what happens when tickets change while it runs.\n\nA transaction snapshot may give stability but can be expensive over a long job; a materialized export scope is another tradeoff."
     },
     {
       "title": "Try the failure",
-      "detail": "to_a before filtering moves potentially huge work into Ruby memory. Per-row association reads create N+1. A batch loop that changes its own selection criteria needs a progress rule."
+      "detail": "to_a before filtering moves potentially huge work into Ruby memory. Per-row association reads create N+1.\n\nA batch loop that changes its own selection criteria needs a progress rule."
     }
   ],
   "sources": [

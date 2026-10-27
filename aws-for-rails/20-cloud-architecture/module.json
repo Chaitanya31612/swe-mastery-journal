@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "User identity and edge",
-      "detail": "Use a modular Rails app with web and workers, PostgreSQL as the business source, private attachments, a cache, and deliberate event delivery. Choose ECS/Fargate as one baseline; EKS is an alternative when Kubernetes benefits justify it. They are not two layers every app must run together."
+      "detail": "## Understand the idea\n\nUse a modular Rails app with web and workers, PostgreSQL as the business source, private attachments, a cache, and deliberate event delivery.\n\nChoose ECS/Fargate as one baseline; EKS is an alternative when Kubernetes benefits justify it. They are not two layers every app must run together.\n\nTrace four journeys: a user opens a ticket, uploads an attachment, requests a report, and completes a ticket that updates reporting.\n\nFor each, name identity, network, authoritative write, asynchronous boundary, user-visible state, and recovery path.\n\nThen stress the design: one zone fails, the provider slows, a worker repeats, the DB pool fills, a secret rotates, or a user loses access.\n\nCost reasoning includes always-on capacity, storage/retention, data transfer, NAT/endpoints, logs, and managed service overhead. Use current regional pricing when actually provisioning; this course does not promise a free deployment."
     },
     {
       "title": "Follow one item",
-      "detail": "For each journey, point to where success is durable. A report request is not a ready file. An outbox commit is not a consumed event. A cache hit is not a new permission grant.\n\nWrite one runbook for a growing report age and one restore rehearsal for PostgreSQL/object metadata. Define RPO (acceptable data loss window) and RTO (acceptable recovery time) in plain task terms."
+      "detail": "For each journey, point to where success is durable. A report request is not a ready file.\n\nAn outbox commit is not a consumed event. A cache hit is not a new permission grant.\n\nWrite one runbook for a growing report age and one restore rehearsal for PostgreSQL/object metadata. Define RPO (acceptable data loss window) and RTO (acceptable recovery time) in plain task terms."
     },
     {
       "title": "Try the failure",
-      "detail": "Putting every named tool into one diagram can create needless operational burden. HA without restore/reconciliation evidence is incomplete. A rollback cannot unsend notifications or restore all deleted data."
+      "detail": "Putting every named tool into one diagram can create needless operational burden. HA without restore/reconciliation evidence is incomplete.\n\nA rollback cannot unsend notifications or restore all deleted data."
     }
   ],
   "sources": [

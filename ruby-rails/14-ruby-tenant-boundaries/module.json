@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Trusted workspace",
-      "detail": "Authentication answers who the caller is. A tenant/workspace scope answers which records belong to the current context. Authorization answers which actions are allowed on those records. None replaces the others."
+      "detail": "## Understand the idea\n\nAuthentication answers who the caller is. A tenant/workspace scope answers which records belong to the current context.\n\nAuthorization answers which actions are allowed on those records. None replaces the others.\n\nAn ID is not proof of access. Load through an allowed scope or enforce a policy before a write.\n\nStrong parameters limit fields; they do not establish row access. A job argument must also identify and validate the intended tenant/context.\n\nCaches and analytics are data boundaries too. A cache key missing workspace identity can serve another workspace’s result.\n\nDefault scopes can hide tenant filtering but are easy to bypass accidentally; make important scope assumptions visible and test them."
     },
     {
       "title": "Follow one item",
-      "detail": "Follow the workspace from trusted membership lookup through the record query, policy, service, and result. Repeat the trace for a worker and cached read. Name where revocation takes effect.\n\nCreate two synthetic workspaces with colliding local identifiers and users with different roles. Test direct requests and jobs, not only hidden UI buttons."
+      "detail": "Follow the workspace from trusted membership lookup through the record query, policy, service, and result. Repeat the trace for a worker and cached read.\n\nName where revocation takes effect.\n\nCreate two synthetic workspaces with colliding local identifiers and users with different roles. Test direct requests and jobs, not only hidden UI buttons."
     },
     {
       "title": "Try the failure",

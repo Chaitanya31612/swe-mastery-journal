@@ -24,22 +24,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,15 +76,15 @@
   "trace": [
     {
       "title": "User task",
-      "detail": "Start with a normal software boundary: input, output, failures, and an owner. An LLM predicts a useful continuation from the context it receives. It can turn a vague request into a proposed intent or explain supplied facts. It does not automatically know your database, current user, permissions, or whether a rule is true.\n\nKeep exact work in code. A warehouse report can let a model interpret “late parcels at the east depot.” Code resolves the depot, validates the filter, scopes the query, and counts the rows. The model can describe those results. It does not need permission to write SQL or change a shipment.\n\nThink in three boxes: **model proposes → code checks → application decides**. Some features need only deterministic code. Use the model where varied language or unstructured material makes it useful. Define a no-model path at the same time."
+      "detail": "# Start with a small job for AI\n\nA model can interpret a sentence or draft an explanation.\n\nYour application still owns the facts, permissions, and actions.\n\n## A small example\n\nThe user asks: “Show held parcels at the east depot.”\n\nThe model suggests a filter. Code checks that filter and runs an allowed query.\n\n```text\nUser’s sentence\n      ↓\nModel suggests a filter\n      ↓\nCode checks fields and the current user’s access\n      ↓\nDatabase returns the matching records and exact count\n```\n\nThe model does not need to write SQL or change a parcel.\n\n## What the model knows\n\nIt works with the context you give it. It does not automatically know your live database or the current user’s permissions.\n\nA fluent answer can still be wrong.\n\nUse code for exact rules and counts. Use the model where varied language makes it helpful.\n\n## Plan for failure now\n\nIf the model is unavailable, the ordinary filters should still work.\n\nA useful AI feature should have a useful no-model path.\n\n## Remember\n\n**Model suggests → code checks → application decides.**\n"
     },
     {
       "title": "Follow one input",
-      "detail": "Follow one request: the user expresses intent; a model proposes fields; a validator rejects unknown fields; a scoped query executes; the UI shows what was applied. Record which component owns each claim. Ask what the user sees if the model times out before the filter exists."
+      "detail": "Follow one request: the user expresses intent; a model proposes fields; a validator rejects unknown fields; a scoped query executes; the UI shows what was applied. Record which component owns each claim.\n\nAsk what the user sees if the model times out before the filter exists."
     },
     {
       "title": "Try the failure",
-      "detail": "A fluent answer can be wrong. A perfectly valid filter can still be unauthorized. A natural-language interface is not a replacement for a permission check."
+      "detail": "A fluent answer can be wrong. A perfectly valid filter can still be unauthorized.\n\nA natural-language interface is not a replacement for a permission check."
     }
   ],
   "sources": [

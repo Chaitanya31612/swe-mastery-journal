@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Owner value",
-      "detail": "A component API is a small agreement. Props bring information in. Events ask the owner to change something. Slots let a caller supply presentation while the component owns behavior. Decide which part owns the saved value, draft, and focus."
+      "detail": "## Understand the idea\n\nA component API is a small agreement. Props bring information in.\n\nEvents ask the owner to change something. Slots let a caller supply presentation while the component owns behavior.\n\nDecide which part owns the saved value, draft, and focus.\n\nAvoid mutating a nested object received as a prop. A shallow readonly prop boundary does not make every nested value immutable.\n\nEmit an update or edit an independent draft instead.\n\nv-model is a prop/event convention. In Vue 3.4+, defineModel is a convenience macro.\n\nThe older explicit modelValue plus update:modelValue contract is still useful to understand. Give events meaningful types and keep accidental HTML attributes from landing on the wrong element in wrapper components."
     },
     {
       "title": "Follow one item",
-      "detail": "Parent changes modelValue → child renders it. User types → child emits a value → parent accepts it → new prop flows down. This loop makes ownership visible.\n\nFor a wrapper, inspect whether id, aria-describedby, and class reach the actual input or only the wrapper div. Accessible names and error associations are part of the component’s contract."
+      "detail": "Parent changes modelValue → child renders it. User types → child emits a value → parent accepts it → new prop flows down.\n\nThis loop makes ownership visible.\n\nFor a wrapper, inspect whether id, aria-describedby, and class reach the actual input or only the wrapper div. Accessible names and error associations are part of the component’s contract."
     },
     {
       "title": "Try the failure",
-      "detail": "A component that both owns a private value and blindly watches the parent prop can overwrite an in-progress edit. A custom input without a real label is harder to use even when v-model works."
+      "detail": "A component that both owns a private value and blindly watches the parent prop can overwrite an in-progress edit.\n\nA custom input without a real label is harder to use even when v-model works."
     }
   ],
   "sources": [

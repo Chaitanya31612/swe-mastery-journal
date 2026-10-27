@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,11 +72,11 @@
   "trace": [
     {
       "title": "Unknown input",
-      "detail": "TypeScript checks code before it runs. It does not validate JSON at runtime. A cast tells the compiler what you claim; it does not turn a string into a number or verify an API response."
+      "detail": "## Understand the idea\n\nTypeScript checks code before it runs. It does not validate JSON at runtime.\n\nA cast tells the compiler what you claim; it does not turn a string into a number or verify an API response.\n\nA discriminated union uses one field to distinguish valid shapes. A loading state does not need fake rows and an error at the same time.\n\nNarrow the union before reading a field that exists only in one variant.\n\nUse unknown for data you have not checked. Keep interfaces small at the component boundary.\n\nPrefer a clear union for status to several booleans that allow impossible combinations such as loading=true and finished=true."
     },
     {
       "title": "Follow one item",
-      "detail": "At compile time, narrowing follows kind. At runtime, a parser checks actual values. Once parsed, UI code can work with the smaller trusted shape. Recheck when a new outside boundary is crossed.\n\nFor an exhaustive switch, assign the unreachable value to never. A later added state can then produce a compiler error in code that forgot to handle it."
+      "detail": "At compile time, narrowing follows kind. At runtime, a parser checks actual values.\n\nOnce parsed, UI code can work with the smaller trusted shape. Recheck when a new outside boundary is crossed.\n\nFor an exhaustive switch, assign the unreachable value to never. A later added state can then produce a compiler error in code that forgot to handle it."
     },
     {
       "title": "Try the failure",

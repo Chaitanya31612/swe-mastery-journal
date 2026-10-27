@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,7 +72,7 @@
   "trace": [
     {
       "title": "Read pattern",
-      "detail": "Cassandra is a distributed wide-column database with a query-oriented data model. Start from the reads you need. Partition keys distribute/group data; clustering columns order rows within a partition under the table definition."
+      "detail": "## Understand the idea\n\nCassandra is a distributed wide-column database with a query-oriented data model. Start from the reads you need.\n\nPartition keys distribute/group data; clustering columns order rows within a partition under the table definition.\n\nDo not port a normalized relational schema and expect arbitrary joins. You may store multiple tables/projections for different reads.\n\nThat makes write/update coordination and repair part of the application design.\n\nKeep partitions bounded. A workspace with years of events under one partition can become a hotspot or grow too large.\n\nTime bucketing is one possible strategy, with its own query cost. Consistency levels and replication settings affect the read/write/failure contract; they do not make every cross-row invariant transactional."
     },
     {
       "title": "Follow one item",
@@ -80,7 +80,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A very large/hot partition can dominate one path despite many nodes. ALLOW FILTERING is not a universal performance solution. Cross-table denormalization can leave inconsistent projections after failure."
+      "detail": "A very large/hot partition can dominate one path despite many nodes. ALLOW FILTERING is not a universal performance solution.\n\nCross-table denormalization can leave inconsistent projections after failure."
     }
   ],
   "sources": [

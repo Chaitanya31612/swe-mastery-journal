@@ -10,5 +10,6 @@ git status --short
 git restore --staged notes.txt
 # Compatibility form: git reset HEAD -- notes.txt
 ```
+In the disposable lab, change two lines for two reasons. Stage only the first.
 
-In the disposable lab, change two lines for two reasons. Stage only the first. Describe both snapshots before committing.
+Describe both snapshots before committing.

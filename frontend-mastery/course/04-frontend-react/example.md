@@ -11,5 +11,6 @@ function Counter() {
   return <button onClick={addThree}>{count}</button>
 }
 ```
+Compare three calls to setCount(count + 1). They all read the same render snapshot.
 
-Compare three calls to setCount(count + 1). They all read the same render snapshot. A render can be started, repeated, or discarded; side effects during render make that dangerous.
+A render can be started, repeated, or discarded; side effects during render make that dangerous.

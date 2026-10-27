@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Workflow trigger",
-      "detail": "A workflow is triggered by an event and runs jobs/steps on runners. CI should produce relevant evidence for a change: type checks, tests, build, and selected integration checks. CD promotes a known artifact into an environment under deliberate permissions."
+      "detail": "## Understand the idea\n\nA workflow is triggered by an event and runs jobs/steps on runners. CI should produce relevant evidence for a change: type checks, tests, build, and selected integration checks.\n\nCD promotes a known artifact into an environment under deliberate permissions.\n\nBuild once from a known revision and record the image digest. Do not rebuild independently for staging and production and call them the same tested artifact.\n\nCache dependencies for speed, but do not let a cache replace a lockfile or validation.\n\nChoose narrow workflow permissions and supported temporary cloud identity where appropriate. Untrusted PR code must not receive powerful deployment secrets.\n\nPin third-party actions according to the team’s supply-chain policy and review their access."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A build from a dirty local tree is not the CI-tested revision. Broad write permissions on untrusted workflows widen access. A deployment without a smoke check can be green while users fail."
+      "detail": "A build from a dirty local tree is not the CI-tested revision. Broad write permissions on untrusted workflows widen access.\n\nA deployment without a smoke check can be green while users fail."
     }
   ],
   "sources": [

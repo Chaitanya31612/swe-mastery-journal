@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Validated event",
-      "detail": "A consumer can receive a record again after a crash/rebalance/replay. A seen? query followed by a write races when two processes overlap. Use a unique consumer-specific event key at the authority that stores the effect."
+      "detail": "## Understand the idea\n\nA consumer can receive a record again after a crash/rebalance/replay. A seen? query followed by a write races when two processes overlap.\n\nUse a unique consumer-specific event key at the authority that stores the effect.\n\nAn inbox row and projection update in one DB transaction make the local effect repeat-safe: either both commit or neither does. A later Kafka offset commit remains a separate step.\n\nIf that commit fails, replay checks the inbox and avoids repeating the local projection.\n\nThis does not atomically include email, another database, or every external API. Each side-effect boundary needs its own intent/idempotency/reconciliation design.\n\n“Exactly once” must name the scope where it is enforced."
     },
     {
       "title": "Follow one item",
-      "detail": "Receive E → validate → insert inbox + update report → commit DB → commit Kafka. Crash after DB commit before Kafka commit: receive E again → unique inbox says local effect exists → do not repeat it → commit progress.\n\nInclude consumer identity in deduplication scope when different projections independently need the same event. Their completion responsibilities are separate."
+      "detail": "Receive E → validate → insert inbox + update report → commit DB → commit Kafka.\n\nCrash after DB commit before Kafka commit: receive E again → unique inbox says local effect exists → do not repeat it → commit progress.\n\nInclude consumer identity in deduplication scope when different projections independently need the same event. Their completion responsibilities are separate."
     },
     {
       "title": "Try the failure",
-      "detail": "Writing inbox before the effect in a separate committed transaction can lose the effect. Writing it after can duplicate. A memory Set disappears on process restart."
+      "detail": "Writing inbox before the effect in a separate committed transaction can lose the effect. Writing it after can duplicate.\n\nA memory Set disappears on process restart."
     }
   ],
   "sources": [

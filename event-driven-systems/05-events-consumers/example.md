@@ -8,5 +8,4 @@ Safe resume offset: 2
 Crash after effect for 2, before commit:
 resume at 2 → effect must tolerate repetition.
 ```
-
 The lab uses a synchronous rdkafka message commit after its DB transaction and disables automatic commit/store behavior explicitly.

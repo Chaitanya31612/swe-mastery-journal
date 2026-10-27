@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Unfamiliar product constraints",
-      "detail": "Design a vendor-support workbench. Users can ask for filtered tickets, explain why a ticket is waiting, compare a small selection, and ask questions over approved support policies. Live ticket fields and counts come from current scoped queries. Document answers need permitted versioned evidence. A read-only MCP server exposes a narrow facts capability.\n\nConstraints: two tenants; one actor can lose access while a job is running; the same depot/vendor name can be ambiguous; one policy revision conflicts with another; a document contains an injected export instruction; a provider can time out; the UI must work at narrow widths; and a run has a four-tool-step budget. The feature remains useful without generation.\n\nBegin with a threat/data-flow sketch and a deterministic baseline. Implement a vertical slice, then add retrieval and a bounded tool loop only where justified. Keep generated interpretation labels honest. A passing quiz is preparation for this demonstration, not a substitute for it."
+      "detail": "## Understand\n\nDesign a vendor-support workbench. Users can ask for filtered tickets, explain why a ticket is waiting, compare a small selection, and ask questions over approved support policies.\n\nLive ticket fields and counts come from current scoped queries. Document answers need permitted versioned evidence.\n\nA read-only MCP server exposes a narrow facts capability.\n\n## Constraints to test\n\n- two tenants\n- one actor can lose access while a job is running\n- the same depot/vendor name can be ambiguous\n- one policy revision conflicts with another\n- a document contains an injected export instruction\n- a provider can time out\n- the UI must work at narrow widths\n- a run has a four-tool-step budget.\n\nThe feature remains useful without generation.\n\nBegin with a threat/data-flow sketch and a deterministic baseline. Implement a vertical slice, then add retrieval and a bounded tool loop only where justified.\n\nKeep generated interpretation labels honest. A passing quiz is preparation for this demonstration, not a substitute for it."
     },
     {
       "title": "Follow one input",
-      "detail": "Run a normal case. Revoke access before job completion. Change the source before result fetch. Inject an unknown tool, malformed schema and valid-but-wrong citation. Exhaust the step budget. Stop the provider. Verify the deterministic UI remains usable. Record which tests actually ran."
+      "detail": "Run a normal case. Revoke access before job completion.\n\nChange the source before result fetch. Inject an unknown tool, malformed schema and valid-but-wrong citation.\n\nExhaust the step budget. Stop the provider.\n\nVerify the deterministic UI remains usable. Record which tests actually ran."
     },
     {
       "title": "Try the failure",
-      "detail": "A copied diagram can hide missing implementation. A green fixture suite can hide poor live model behavior. A live demo can hide unsafe access paths."
+      "detail": "A copied diagram can hide missing implementation. A green fixture suite can hide poor live model behavior.\n\nA live demo can hide unsafe access paths."
     }
   ],
   "sources": [

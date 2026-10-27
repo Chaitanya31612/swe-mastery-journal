@@ -1,7 +1,36 @@
-## Understand the idea
+# Start with one question: who is making this request?
 
-An AWS request is made by a principal under a permission context. Human sign-in and application identity should be separate. Use a dedicated training account/profile and temporary credentials. A workload normally receives a role instead of a permanent access key baked into its image.
+AWS checks an identity and its permissions before allowing an operation.
 
-A role has a trust policy describing who may assume it and permission policies describing allowed actions/resources. Both matter. An explicit deny or an organizational boundary can still block an apparently allowed action. Region and account are part of your context.
+That identity is called a **principal**. It might represent a person or an application.
 
-Setup path: establish the training account and human SSO/federation flow, configure a named CLI profile, verify caller identity and region, create a narrowly scoped workload role, and test an allowed and denied operation. Budget alerts help notice spend; they are not a hard spending cap.
+## Keep people and applications separate
+
+Use your own sign-in flow for human access.
+
+Give an application a role with the permissions it needs. Avoid putting a permanent access key inside its container image.
+
+```text
+Person or workload → identity → permission checks → allowed AWS action
+```
+
+## A role has two important parts
+
+- **Trust policy:** who may use this role?
+- **Permission policies:** what actions and resources may it use?
+
+An explicit deny or another policy boundary can still block a request.
+
+The account and region also matter. Check them before you create or change resources.
+
+## A small training exercise
+
+Use a separate training account or profile. Sign in with temporary credentials and check the current identity and region.
+
+Create a narrow workload role. Test one action it allows and one it must deny.
+
+## Remember
+
+“Who are you?” and “What may you do?” are different checks.
+
+Budget alerts help you notice spending. They do not impose a hard spending limit.

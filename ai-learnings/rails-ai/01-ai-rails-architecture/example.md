@@ -11,5 +11,6 @@ app/jobs/ai/explain_run_job.rb
 app/models/ai/run.rb
 app/mcp/read_shipment_facts_tool.rb
 ```
+The Code lab provides runnable files. A second example in the course answers handbook questions; other examples cover support triage and bounded actions.
 
-The Code lab provides runnable files. A second example in the course answers handbook questions; other examples cover support triage and bounded actions. Keep patterns general enough to reuse.
+Keep patterns general enough to reuse.

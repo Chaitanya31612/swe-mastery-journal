@@ -8,5 +8,4 @@ class ReadShipmentFacts
   end
 end
 ```
-
 No tenant_id or admin flag is accepted from the model. The returned fields are a deliberate allowlist.

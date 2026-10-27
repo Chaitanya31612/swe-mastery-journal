@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Client library",
-      "detail": "The client library handles protocol requests, metadata, batching, retries, and serialization integration. A bootstrap address helps discover the cluster. The client then communicates with relevant broker endpoints; bootstrap is not a permanent universal proxy."
+      "detail": "## Understand the idea\n\nThe client library handles protocol requests, metadata, batching, retries, and serialization integration. A bootstrap address helps discover the cluster.\n\nThe client then communicates with relevant broker endpoints; bootstrap is not a permanent universal proxy.\n\nBrokers host partition leaders/replicas and serve produce/fetch requests. Records are stored in log segments with indexes; the operating system page cache and sequential I/O are part of the performance picture.\n\nThis is a useful layer model, not a need to memorize every disk-file suffix.\n\nControllers manage cluster metadata/leadership under the selected Kafka mode. The course lab uses Kafka 4.1 KRaft, not a ZooKeeper tutorial.\n\nReplica placement and acknowledgement policy decide which failures an accepted record should survive. A one-broker local lab cannot demonstrate multi-broker availability."
     },
     {
       "title": "Follow one item",
-      "detail": "The producer discovers leader endpoints, sends a batch, and receives an acknowledgement under its configuration. A consumer fetches retained records from assigned partitions. It does not require the producer process to remain alive after durable publication.\n\nWhen a client cannot connect after initial discovery, inspect advertised listeners/DNS/network/auth for actual broker addresses. When append latency rises, inspect broker/storage/replica health rather than only Rails CPU."
+      "detail": "The producer discovers leader endpoints, sends a batch, and receives an acknowledgement under its configuration. A consumer fetches retained records from assigned partitions.\n\nIt does not require the producer process to remain alive after durable publication.\n\nWhen a client cannot connect after initial discovery, inspect advertised listeners/DNS/network/auth for actual broker addresses. When append latency rises, inspect broker/storage/replica health rather than only Rails CPU."
     },
     {
       "title": "Try the failure",
-      "detail": "One local broker hides replica/failover behavior. Acknowledgement settings cannot create replicas that do not exist. Confusing controller roles with business consumers makes diagnosis random."
+      "detail": "One local broker hides replica/failover behavior. Acknowledgement settings cannot create replicas that do not exist.\n\nConfusing controller roles with business consumers makes diagnosis random."
     }
   ],
   "sources": [

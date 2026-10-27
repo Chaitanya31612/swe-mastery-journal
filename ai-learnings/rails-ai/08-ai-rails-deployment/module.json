@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Current actor and minimized facts",
-      "detail": "A production deployment needs an explicit data boundary, identity flow, durable queue/run store, provider configuration, budgets, observability and rollback. The model call is one dependency inside that system. Keep secrets in approved runtime configuration; never expose provider keys to the browser or MCP tool arguments.\n\nFor a legacy Rails runtime, a separate modern AI gateway can isolate newer SDKs. The application authenticates the user, sends a minimal permitted request to the gateway, and validates the returned domain result. A gateway should not become an unscoped database administrator. Decide which service owns record access and keep that policy enforceable.\n\nBedrock, direct APIs and self-hosted models differ in operations, capabilities, region and data-handling settings. Use current provider documentation and your actual organizational policy. The course does not claim a particular provider/configuration is universally compliant or safe for private work data."
+      "detail": "## Understand\n\nA production deployment needs an explicit data boundary, identity flow, durable queue/run store, provider configuration, budgets, observability and rollback. The model call is one dependency inside that system.\n\nKeep secrets in approved runtime configuration; never expose provider keys to the browser or MCP tool arguments.\n\nFor a legacy Rails runtime, a separate modern AI gateway can isolate newer SDKs.\n\nThe application authenticates the user, sends a minimal permitted request to the gateway, and validates the returned domain result. A gateway should not become an unscoped database administrator.\n\nDecide which service owns record access and keep that policy enforceable.\n\nBedrock, direct APIs and self-hosted models differ in operations, capabilities, region and data-handling settings. Use current provider documentation and your actual organizational policy.\n\nThe course does not claim a particular provider/configuration is universally compliant or safe for private work data."
     },
     {
       "title": "Follow one input",
-      "detail": "Trace request identity, data egress, credentials, result storage and deletion. Deploy behind a feature flag with a manual fallback, a small allowed cohort, quality/error thresholds and a rollback switch. Verify through the actual proxy/queue/provider path."
+      "detail": "Trace request identity, data egress, credentials, result storage and deletion. Deploy behind a feature flag with a manual fallback, a small allowed cohort, quality/error thresholds and a rollback switch.\n\nVerify through the actual proxy/queue/provider path."
     },
     {
       "title": "Try the failure",

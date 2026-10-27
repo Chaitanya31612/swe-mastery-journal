@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,11 +72,11 @@
   "trace": [
     {
       "title": "Reactive source",
-      "detail": "reactive returns a proxy. Vue can track property reads through that proxy and notify effects when relevant writes happen. ref creates a reactive value wrapper. JavaScript uses .value; templates unwrap refs in supported contexts."
+      "detail": "## Understand the idea\n\nreactive returns a proxy. Vue can track property reads through that proxy and notify effects when relevant writes happen. ref creates a reactive value wrapper.\n\nJavaScript uses .value; templates unwrap refs in supported contexts.\n\ncomputed should calculate a value from tracked sources. Keep it free of network calls and mutations of unrelated state. watch is for a deliberate side effect.\n\nA destructured primitive is no longer a proxy property access; use toRef/toRefs or a getter when a live connection is required.\n\nState assignment happens synchronously, but DOM updates are batched. nextTick waits for Vue’s pending DOM update flush. It does not wait for a network request, image decoding, or every future render.\n\nMeasure an element after the relevant update, not by guessing a timeout."
     },
     {
       "title": "Follow one item",
-      "detail": "Read query inside computed → Vue records that dependency. Change query → computed becomes stale → a dependent render asks for the new value. Several synchronous writes can lead to one DOM update batch.\n\nUse shallowRef when you intentionally treat a large outside object as one replaceable value. Deep mutation will not behave like an ordinary deep reactive ref. Choose it for a reason, such as an external editor instance, not as a universal speed switch."
+      "detail": "Read query inside computed → Vue records that dependency. Change query → computed becomes stale → a dependent render asks for the new value.\n\nSeveral synchronous writes can lead to one DOM update batch.\n\nUse shallowRef when you intentionally treat a large outside object as one replaceable value. Deep mutation will not behave like an ordinary deep reactive ref.\n\nChoose it for a reason, such as an external editor instance, not as a universal speed switch."
     },
     {
       "title": "Try the failure",

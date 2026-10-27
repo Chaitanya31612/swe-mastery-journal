@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -75,15 +75,15 @@
   "trace": [
     {
       "title": "Inspect state",
-      "detail": "Start with the question: what must stay? Working edits, staged changes, published history, and untracked files are different things. Inspect status and diffs, then preserve important work before experimenting."
+      "detail": "# The idea\n\nStart with the question: what must stay? Working edits, staged changes, published history, and untracked files are different things.\n\nInspect status and diffs, then preserve important work before experimenting.\n\nrestore copies selected content into the index or working tree depending on flags. reset can move a branch and, depending on mode, also change the index and working tree. revert creates a new commit that reverses a past change.\n\nThat usually fits a published-history repair better than moving everybody’s history.\n\nThe reflog records recent local reference movements. It can help find an old branch tip after reset or rebase.\n\nIt is local and expires. It is not a backup of every unsaved file or every other developer’s machine."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "A soft reset moves the branch while keeping index/working content. A mixed reset also resets the index. A hard reset can discard tracked working changes. None should be run by habit.\n\nRecovery starts by naming the old reachable commit with a rescue branch. Inspect it separately. A deleted untracked file that was never stored in Git is outside reflog’s promise. Seek editor/filesystem backups instead."
+      "detail": "A soft reset moves the branch while keeping index/working content. A mixed reset also resets the index.\n\nA hard reset can discard tracked working changes. None should be run by habit.\n\nRecovery starts by naming the old reachable commit with a rescue branch. Inspect it separately.\n\nA deleted untracked file that was never stored in Git is outside reflog’s promise. Seek editor/filesystem backups instead."
     },
     {
       "title": "Check the result",
-      "detail": "git clean removes untracked content; reflog may not help. Do not use clean or reset --hard as generic “fix Git” commands. Reverting a merge also needs a deliberate mainline choice and affects future merge behavior."
+      "detail": "git clean removes untracked content; reflog may not help. Do not use clean or reset --hard as generic “fix Git” commands.\n\nReverting a merge also needs a deliberate mainline choice and affects future merge behavior."
     }
   ],
   "recallPrompt": "Without notes: Choose restore, reset, revert, or reflog from what must be preserved. Give a concrete failure example.",

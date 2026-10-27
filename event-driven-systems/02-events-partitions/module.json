@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,7 +72,7 @@
   "trace": [
     {
       "title": "Record key",
-      "detail": "A Kafka topic is split into partitions. Each partition is an ordered append log with offsets. Offset 10 in partition 0 is unrelated to offset 10 in partition 1; it is not a global event number."
+      "detail": "## Understand the idea\n\nA Kafka topic is split into partitions. Each partition is an ordered append log with offsets.\n\nOffset 10 in partition 0 is unrelated to offset 10 in partition 1; it is not a global event number.\n\nA record key helps the partitioner place related records together under a stable configuration. Using ticket identity as the key can keep that ticket’s records on one partition.\n\nIt does not order all tickets globally. A single very hot key can limit useful parallelism.\n\nAdding partitions can change key-to-partition mapping. If per-entity ordering matters across such a change, plan migration/transition semantics rather than assuming the old placement stays unchanged.\n\nAlso keep application version/sequence checks when events can be retried or produced through several paths."
     },
     {
       "title": "Follow one item",
@@ -80,7 +80,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A key is not a global lock. A large number of partitions is not free operationally. Changing keys can scatter one entity’s history."
+      "detail": "A key is not a global lock. A large number of partitions is not free operationally.\n\nChanging keys can scatter one entity’s history."
     }
   ],
   "sources": [

@@ -16,5 +16,4 @@ flowchart TD
  I --> R
  T -->|Failure| Q[Keep old valid version or mark unavailable]
 ```
-
 Remember: **Bad extraction becomes bad evidence. Inspect upstream first.**

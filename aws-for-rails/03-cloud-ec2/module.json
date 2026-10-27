@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Image and instance",
-      "detail": "EC2 gives you virtual machines. You choose an image, instance capacity, network, identity, and storage. You still own operating-system patching, process configuration, application deployment, and much of the recovery plan."
+      "detail": "## Understand the idea\n\nEC2 gives you virtual machines. You choose an image, instance capacity, network, identity, and storage.\n\nYou still own operating-system patching, process configuration, application deployment, and much of the recovery plan.\n\nAn instance is not the same thing as a persistent data store. EBS volumes have their own lifecycle and zone attachment rules; instance-store data is a different contract.\n\nA Rails app should not treat its local upload directory as shared storage across several instances.\n\nTraining setup: select a deliberate image/type, attach a narrow instance role, use controlled management access, configure security groups, supervise the app process, send logs off the machine, and test replacing the instance.\n\nKeep the database and uploads in services with explicit persistence/backup policies."
     },
     {
       "title": "Follow one item",
-      "detail": "Boot image → inject configuration/identity → start supervised process → health check → receive traffic. Replacement should recreate the application from its artifact/configuration, not depend on manual edits left on the old machine.\n\nScale to two instances and follow an upload/read. If only one instance has the file, the storage boundary is wrong for that architecture."
+      "detail": "Boot image → inject configuration/identity → start supervised process → health check → receive traffic.\n\nReplacement should recreate the application from its artifact/configuration, not depend on manual edits left on the old machine.\n\nScale to two instances and follow an upload/read. If only one instance has the file, the storage boundary is wrong for that architecture."
     },
     {
       "title": "Try the failure",
-      "detail": "A manually repaired server becomes hard to reproduce. A successful reboot is not a tested restore. Local logs disappear with the machine if not collected."
+      "detail": "A manually repaired server becomes hard to reproduce. A successful reboot is not a tested restore.\n\nLocal logs disappear with the machine if not collected."
     }
   ],
   "sources": [

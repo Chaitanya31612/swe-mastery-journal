@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Calendar rule and zone",
-      "detail": "“Tomorrow at 9” needs a time zone and a calendar rule. Store an instant for an event that already happened. Store the intended zone/rule as well when scheduling future local-time behavior. Daylight-saving transitions can create missing or repeated local times."
+      "detail": "## Understand the idea\n\n“Tomorrow at 9” needs a time zone and a calendar rule. Store an instant for an event that already happened.\n\nStore the intended zone/rule as well when scheduling future local-time behavior. Daylight-saving transitions can create missing or repeated local times.\n\ncron or a scheduler triggers work. It does not guarantee exactly one business run.\n\nTwo schedulers, retries, or a delayed process can trigger the same logical period more than once. Define a unique run key such as workspace plus report date, backed by a database rule.\n\nA job should load current state, tolerate retry according to its contract, and expose a useful outcome. Passing an ID is usually better than serializing a whole model object.\n\nA scheduled trigger and a durable work record are different things."
     },
     {
       "title": "Follow one item",
-      "detail": "Scheduler tick → compute intended business period → claim unique run → snapshot/request work → job retries → durable completion state. If a process crashes after claiming, define how a stale in-progress run is retried or repaired.\n\nTest a late scheduler, duplicate trigger, a DST boundary, and a provider timeout. “It ran yesterday” is weak evidence for these cases."
+      "detail": "Scheduler tick → compute intended business period → claim unique run → snapshot/request work → job retries → durable completion state.\n\nIf a process crashes after claiming, define how a stale in-progress run is retried or repaired.\n\nTest a late scheduler, duplicate trigger, a DST boundary, and a provider timeout. “It ran yesterday” is weak evidence for these cases."
     },
     {
       "title": "Try the failure",
-      "detail": "A mutex in one Ruby process does not coordinate multiple schedulers. A UTC date and a user-local date can refer to different report periods. A done flag written before the effect can lose work."
+      "detail": "A mutex in one Ruby process does not coordinate multiple schedulers. A UTC date and a user-local date can refer to different report periods.\n\nA done flag written before the effect can lose work."
     }
   ],
   "sources": [

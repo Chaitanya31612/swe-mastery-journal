@@ -8,5 +8,6 @@ git diff --cached        # index versus HEAD
 git log --oneline --graph --decorate -8
 git show HEAD:notes.txt
 ```
+Write A in notes.txt and stage it. Change the file to B without staging again.
 
-Write A in notes.txt and stage it. Change the file to B without staging again. Predict the next commit content before opening either diff.
+Predict the next commit content before opening either diff.

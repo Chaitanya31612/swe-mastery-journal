@@ -18,5 +18,4 @@ class TasksController < ApplicationController
   end
 end
 ```
-
 The example assumes current_user is trustworthy and tasks is the allowed ownership scope. A real app may use a policy/ability layer as well.

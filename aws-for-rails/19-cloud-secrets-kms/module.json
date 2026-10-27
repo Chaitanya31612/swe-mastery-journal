@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Workload identity",
-      "detail": "A secret is a value the app needs, such as a database password. An encryption key protects cryptographic operations/data under a key policy. Secrets Manager and KMS address related but different responsibilities."
+      "detail": "## Understand the idea\n\nA secret is a value the app needs, such as a database password. An encryption key protects cryptographic operations/data under a key policy.\n\nSecrets Manager and KMS address related but different responsibilities.\n\nUse workload identity to retrieve an allowed secret or use a key. Encryption at rest does not prove that the application is allowed to show a record to this user.\n\nSecret rotation also needs client behavior: a long-lived connection/client may keep using an old value until refreshed or reconnected.\n\nSetup: create a training secret, choose its key policy, grant narrow workload retrieval/decryption access as required, choose injection versus runtime retrieval/cache, and test rotation/failure.\n\nKeep secret values out of source, image layers, logs, screenshots, and AI context."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Encrypting a secret in Git does not automatically establish safe key ownership. A successful secret fetch does not prove the DB accepts it. Rotation without refresh can cause intermittent failures."
+      "detail": "Encrypting a secret in Git does not automatically establish safe key ownership. A successful secret fetch does not prove the DB accepts it.\n\nRotation without refresh can cause intermittent failures."
     }
   ],
   "sources": [

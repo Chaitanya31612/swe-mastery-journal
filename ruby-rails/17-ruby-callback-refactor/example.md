@@ -8,5 +8,4 @@ Target: CompleteTicket use case
   transaction: ticket state + one outbox event
   later: dispatcher publishes saved intent
 ```
-
 Not every callback must disappear. Keep local model rules where their behavior and bypass paths are understood.

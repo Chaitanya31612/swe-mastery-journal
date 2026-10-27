@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Task and constraints",
-      "detail": "Start with the operation: classify intent, extract fields, explain supplied facts, retrieve text, inspect an image, or coordinate tools. These may need different model capabilities. An embedding model produces vectors; a generation model produces outputs. A reranker scores query–candidate relevance. They are not interchangeable.\n\nCompare useful quality at an acceptable failure rate, latency, cost, context limit, modality, structured-output/tool support, region, and data-handling constraints. Pricing and model names change, so the course uses configuration placeholders rather than hardcoded “best” choices.\n\nA larger or reasoning-heavy model can help a hard task but also add latency and budget. A small model can work well on a narrow typed task. Start with a measured baseline, then route only cases that justify extra work. A framework or provider switch should preserve the application contract, not hide capability differences."
+      "detail": "## Understand\n\nStart with the operation: classify intent, extract fields, explain supplied facts, retrieve text, inspect an image, or coordinate tools. These may need different model capabilities.\n\nAn embedding model produces vectors; a generation model produces outputs. A reranker scores query–candidate relevance.\n\nThey are not interchangeable.\n\nCompare useful quality at an acceptable failure rate, latency, cost, context limit, modality, structured-output/tool support, region, and data-handling constraints.\n\nPricing and model names change, so the course uses configuration placeholders rather than hardcoded “best” choices.\n\nA larger or reasoning-heavy model can help a hard task but also add latency and budget. A small model can work well on a narrow typed task.\n\nStart with a measured baseline, then route only cases that justify extra work. A framework or provider switch should preserve the application contract, not hide capability differences."
     },
     {
       "title": "Follow one input",
-      "detail": "Create a small capability checklist and representative cases. Measure end-to-end latency, including retrieval and validation. Price the whole operation, including retries, tool steps, and output. Use a provider-independent result type with explicit unsupported/error states."
+      "detail": "Create a small capability checklist and representative cases. Measure end-to-end latency, including retrieval and validation.\n\nPrice the whole operation, including retries, tool steps, and output. Use a provider-independent result type with explicit unsupported/error states."
     },
     {
       "title": "Try the failure",

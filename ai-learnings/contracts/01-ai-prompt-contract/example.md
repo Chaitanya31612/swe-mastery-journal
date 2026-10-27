@@ -8,5 +8,4 @@ instructions = <<~TASK
 TASK
 payload = { instructions: instructions, user_text: text }
 ```
-
 The application still validates keys and resolves depot names. A good prompt reduces mistakes; it does not replace those checks.

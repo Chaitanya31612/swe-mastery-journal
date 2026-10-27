@@ -1,7 +1,37 @@
-## Understand
+# Start with the question your search cannot answer well
 
-A question can need one passage, several linked facts, or a summary across a collection. Different retrieval strategies serve those needs. Query rewriting can improve wording but drift from the task. Multi-query search improves coverage at extra cost. Parent/child and hierarchical retrieval preserve structure. Graph-based methods can represent entities/relations and support broader summaries. Each adds data, evaluation and maintenance requirements.
+Some questions need one passage. Others need several linked facts or a summary of many documents.
 
-Vectorless does not mean indexless or costless. A system such as PageIndex builds structured document indexes and uses model-guided navigation. Its results depend on extraction, tree quality, traversal, model behavior and query type. Conversation awareness, reference traversal and access control are engineering features that can also exist in vector-based systems.
+Those are different retrieval jobs.
 
-Your earlier notes give useful comparisons. Reframe their strongest claims as hypotheses to test: no method is universally better. Keep an exact/lexical/hybrid baseline, relevant query categories, authority metadata and a run budget.
+## Three ways to picture the search
+
+```text
+One passage:        question → relevant excerpt
+Document tree:      question → section → subsection → excerpt
+Linked facts:       question → related entities and evidence → combined answer
+```
+
+A document tree can help with long, structured documents. A graph can help connect facts spread across sources.
+
+Both need useful source data, maintenance, and checks.
+
+## Do not choose a method from a slogan
+
+“Vectorless” does not mean “no index” or “no cost.” A tree is also a maintained search structure.
+
+Vector-based systems can keep metadata, follow references, and use conversation context when you build those features.
+
+No method is best for every question.
+
+## Compare on the same task
+
+Use the same corpus and labelled questions. Compare useful evidence, supported answers, latency, and cost.
+
+Include missing evidence, changed documents, and permission filters.
+
+Add query planning or another retrieval stage only when a measured failure makes it useful.
+
+## Remember
+
+Choose a retrieval method to fix a known search problem. Then check whether it actually fixed it.

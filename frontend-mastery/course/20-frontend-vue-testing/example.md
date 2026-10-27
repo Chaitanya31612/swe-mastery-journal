@@ -9,5 +9,4 @@ await flushPromises()
 expect(wrapper.get('input').element.value).toBe('New')
 expect(wrapper.text()).toContain('Your edits are kept')
 ```
-
 Configure the fake request to reject before asserting this case. Assert the contract and user-visible result rather than every internal ref name.

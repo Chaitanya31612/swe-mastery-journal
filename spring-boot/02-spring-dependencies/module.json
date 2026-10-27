@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Bean definitions",
-      "detail": "Dependency injection means receiving the objects you need instead of finding or creating them inside a method. A constructor makes those needs visible. It also lets a test pass a fake."
+      "detail": "# The idea\n\nDependency injection means receiving the objects you need instead of finding or creating them inside a method. A constructor makes those needs visible.\n\nIt also lets a test pass a fake.\n\nThe default bean scope is singleton: one instance per application context for that bean definition. It is not one instance for the whole internet.\n\nSeveral request threads can call the same service. A mutable field such as currentUser can leak data between requests.\n\nKeep request data in method arguments and local variables.\n\nAn interface is useful when it expresses a real boundary, such as sending messages. You do not need an interface for every small class.\n\nIf two beans satisfy one constructor parameter, choose deliberately with a qualifier or a primary bean. Circular constructors usually signal mixed responsibilities."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "The container sees TaskService needs a Notifier. It creates or finds ConsoleNotifier, then supplies it to the constructor. MVC can now call the same TaskService for many requests.\n\nFor a unit test, Java calls the constructor directly with a fake. No server or application context is needed. A context test answers a different question: did scanning, profiles, and bean selection wire the real graph correctly?"
+      "detail": "The container sees TaskService needs a Notifier. It creates or finds ConsoleNotifier, then supplies it to the constructor.\n\nMVC can now call the same TaskService for many requests.\n\nFor a unit test, Java calls the constructor directly with a fake. No server or application context is needed.\n\nA context test answers a different question: did scanning, profiles, and bean selection wire the real graph correctly?"
     },
     {
       "title": "Check the result",
-      "detail": "A singleton service with a field named lastTask is shared state. Marking the field volatile does not make a multi-step business operation atomic. Avoid the field when the value belongs to one call."
+      "detail": "A singleton service with a field named lastTask is shared state. Marking the field volatile does not make a multi-step business operation atomic.\n\nAvoid the field when the value belongs to one call."
     }
   ],
   "recallPrompt": "Without notes: Trace who creates a service and why singleton fields must be safe across requests. Give a concrete failure example.",

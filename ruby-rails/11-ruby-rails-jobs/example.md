@@ -14,5 +14,6 @@ end
 # After a deliberate commit/outbox boundary:
 # TaskReceiptWorker.perform_async(task.id, event_key)
 ```
+ReceiptSender must define duplicate handling. A unique local sent row alone cannot atomically prove a remote send happened.
 
-ReceiptSender must define duplicate handling. A unique local sent row alone cannot atomically prove a remote send happened. Use a provider key or reconciliation for that gap.
+Use a provider key or reconciliation for that gap.

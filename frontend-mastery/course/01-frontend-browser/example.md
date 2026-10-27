@@ -11,5 +11,4 @@ window.addEventListener('popstate', () => {
   console.log('Back/forward URL:', location.pathname)
 })
 ```
-
 Predict which events need a fresh document request. Use the Network panel with synthetic pages. pushState changes the URL; it does not fetch or render a route for you.

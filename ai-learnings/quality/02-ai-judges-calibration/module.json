@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Explicit rubric",
-      "detail": "A rubric states what counts: supported claims, correct scope, useful uncertainty, allowed actions, and clear next steps. Exact checks should handle exact fields. Human review and model-based judges can help assess prose, but judges can disagree, prefer certain styles, or make the same mistakes as the system being judged.\n\nValidate any judge against a reviewed labelled set. Hide irrelevant model identities where useful, vary order in pairwise comparisons, and inspect disagreements. A judge score is a measurement with limits, not an oracle. Keep severe boundary checks deterministic where possible.\n\nCalibration asks whether stated probabilities match observed frequencies under a defined task and dataset. Thresholding an uncalibrated score does not make it calibrated. Precision asks how many accepted positives are correct; recall asks how many actual positives were accepted. Their tradeoff depends on the cost of mistakes and fallback capacity."
+      "detail": "## Understand\n\nA rubric states what counts: supported claims, correct scope, useful uncertainty, allowed actions, and clear next steps. Exact checks should handle exact fields.\n\nHuman review and model-based judges can help assess prose, but judges can disagree, prefer certain styles, or make the same mistakes as the system being judged.\n\nValidate any judge against a reviewed labelled set. Hide irrelevant model identities where useful, vary order in pairwise comparisons, and inspect disagreements.\n\nA judge score is a measurement with limits, not an oracle. Keep severe boundary checks deterministic where possible.\n\nCalibration asks whether stated probabilities match observed frequencies under a defined task and dataset. Thresholding an uncalibrated score does not make it calibrated.\n\nPrecision asks how many accepted positives are correct; recall asks how many actual positives were accepted. Their tradeoff depends on the cost of mistakes and fallback capacity."
     },
     {
       "title": "Follow one input",
-      "detail": "Define rubric → label sample cases → compare automated judges with reviewers → choose a measured decision policy → evaluate on holdout → monitor drift. Keep calibration evaluation distinct from the generation temperature setting."
+      "detail": "Define rubric → label sample cases → compare automated judges with reviewers → choose a measured decision policy → evaluate on holdout → monitor drift.\n\nKeep calibration evaluation distinct from the generation temperature setting."
     },
     {
       "title": "Try the failure",

@@ -12,5 +12,4 @@ record ReceiptSettings(
 receipts.endpoint=https://example.invalid/receipts
 receipts.max-attempts=3
 ```
-
 Use a clearly fake endpoint in a training environment. Do not send requests to it as if it were a real provider.

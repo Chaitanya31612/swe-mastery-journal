@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Tokenize input",
-      "detail": "For a typical decoder-based text LLM, input is tokenized and converted to numeric representations. Transformer layers combine information across permitted positions using attention and other learned transformations. The result supports a distribution over possible next tokens. The system selects or samples a token, then continues.\n\nAttention is a learned weighting mechanism, not a database query or a reliable explanation of why a claim is true. The original Transformer paper describes a broader architecture; modern production models vary. You do not need to implement a Transformer to design its application boundary.\n\nServing often separates **prefill**, processing the input context, from **decode**, generating further tokens. A key/value cache can reuse intermediate attention state during generation. That cache is neither a business database nor a guarantee that a future independent request will remember the conversation."
+      "detail": "## Understand\n\nFor a typical decoder-based text LLM, input is tokenized and converted to numeric representations. Transformer layers combine information across permitted positions using attention and other learned transformations.\n\nThe result supports a distribution over possible next tokens. The system selects or samples a token, then continues.\n\nAttention is a learned weighting mechanism, not a database query or a reliable explanation of why a claim is true. The original Transformer paper describes a broader architecture; modern production models vary.\n\nYou do not need to implement a Transformer to design its application boundary.\n\nServing often separates **prefill**, processing the input context, from **decode**, generating further tokens. A key/value cache can reuse intermediate attention state during generation.\n\nThat cache is neither a business database nor a guarantee that a future independent request will remember the conversation."
     },
     {
       "title": "Follow one input",
-      "detail": "Follow text → token IDs → contextual representations → next-token scores → selected token → more output. Then add a separate box for data retrieval before the call. Mark which boxes are model internals and which are application responsibilities."
+      "detail": "Follow text → token IDs → contextual representations → next-token scores → selected token → more output. Then add a separate box for data retrieval before the call.\n\nMark which boxes are model internals and which are application responsibilities."
     },
     {
       "title": "Try the failure",

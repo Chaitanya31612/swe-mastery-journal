@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Class declaration",
-      "detail": "Metaprogramming means code that defines or changes program behavior, often methods. Rails uses it to build readable APIs. Start by locating the generated methods rather than assuming the behavior is unknowable."
+      "detail": "# The idea\n\nMetaprogramming means code that defines or changes program behavior, often methods. Rails uses it to build readable APIs.\n\nStart by locating the generated methods rather than assuming the behavior is unknowable.\n\ndefine_method installs an instance method using a block. define_singleton_method installs one on a particular object. class_eval changes the class/module context; instance_eval changes self for a block.\n\nString evaluation also parses code and can be dangerous with outside input. Prefer ordinary methods or explicit tables when they are clearer.\n\nmethod_missing handles failed lookup. If you deliberately support dynamic methods, implement respond_to_missing? too.\n\nNever use an arbitrary request string as a method name to call. public_send restricts visibility, but an allowlist is still needed."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "The class body runs as Ruby code. It iterates over LABELS and adds two instance methods. Calling done_label then uses normal method lookup. No generated source string is needed.\n\nFor a Rails concern or DSL, ask four questions: when does this declaration run, which object is self, which methods get defined, and which hooks are registered? Trace one declaration all the way to a runtime call."
+      "detail": "The class body runs as Ruby code. It iterates over LABELS and adds two instance methods.\n\nCalling done_label then uses normal method lookup. No generated source string is needed.\n\nFor a Rails concern or DSL, ask four questions: when does this declaration run, which object is self, which methods get defined, and which hooks are registered?\n\nTrace one declaration all the way to a runtime call."
     },
     {
       "title": "Check the result",
-      "detail": "The books contain historical patterns such as alias_method_chain and old security assumptions. They are reading exercises, not a recommendation for new code. Rails 4.2 uses classic autoloading; modern Zeitwerk advice is a separate version topic."
+      "detail": "The books contain historical patterns such as alias_method_chain and old security assumptions. They are reading exercises, not a recommendation for new code.\n\nRails 4.2 uses classic autoloading; modern Zeitwerk advice is a separate version topic."
     }
   ],
   "recallPrompt": "Without notes: Explain define_method, dynamic dispatch, and DSLs with an explicit method map. Give a concrete failure example.",

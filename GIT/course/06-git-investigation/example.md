@@ -11,5 +11,4 @@ git bisect good   # or git bisect bad
 git bisect reset
 git worktree list
 ```
-
 The supplied lab makes three tiny commits and a stable check. Write the failure condition before starting bisect.

@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Collection",
-      "detail": "A block is a chunk of behavior passed to a method. Enumerable gives collections common operations. Choose by the result you need: each for an action, map for one output per input, select for a subset, find for one match, and reduce for an accumulated result."
+      "detail": "# The idea\n\nA block is a chunk of behavior passed to a method. Enumerable gives collections common operations.\n\nChoose by the result you need: each for an action, map for one output per input, select for a subset, find for one match, and reduce for an accumulated result.\n\nDo not memorize these as interchangeable loops.\n\nAsk what shape should come back. map preserves the number of items, even if your block returns nil. select keeps original items whose block result is truthy. each normally returns the receiver, not the block results.\n\nEnumerable over an array runs Ruby code now. An ActiveRecord relation can build SQL lazily. relation.select(:id) and array.select { ... } do different work.\n\nCheck the receiver before guessing from a method name."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "For map, write the block result below each input. For select, write keep/drop below each input. For reduce, write the accumulator after each step.\n\nyield calls the provided block. A method that may be called without one can check block_given?. An Enumerator can defer iteration. lazy can avoid creating intermediate arrays, but the work still happens when a terminal operation asks for results."
+      "detail": "For map, write the block result below each input. For select, write keep/drop below each input.\n\nFor reduce, write the accumulator after each step.\n\nyield calls the provided block. A method that may be called without one can check block_given?.\n\nAn Enumerator can defer iteration. lazy can avoid creating intermediate arrays, but the work still happens when a terminal operation asks for results."
     },
     {
       "title": "Check the result",

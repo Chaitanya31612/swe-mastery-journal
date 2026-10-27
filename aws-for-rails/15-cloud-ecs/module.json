@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Task definition",
-      "detail": "ECS orchestrates tasks and services. A task definition describes containers, resources, ports, configuration, and roles. A service maintains a desired task count. Fargate is a capacity option that removes much of the host management; it does not remove application or network responsibility."
+      "detail": "## Understand the idea\n\nECS orchestrates tasks and services. A task definition describes containers, resources, ports, configuration, and roles.\n\nA service maintains a desired task count. Fargate is a capacity option that removes much of the host management; it does not remove application or network responsibility.\n\nUse the same image with different process commands for web and workers when that fits the app.\n\nScale them from their own signals: request pressure for web, backlog/age and safe concurrency for workers.\n\nA DB migration is a deliberate one-off task, not an action every new replica should race to run.\n\nSetup: push an image to ECR, create execution/task roles, define task resources and commands, choose private networking/egress, wire logs and secrets, attach web targets to ALB, configure health/graceful shutdown, then run a smoke path and a worker failure."
     },
     {
       "title": "Follow one item",
-      "detail": "Scheduler starts task → platform pulls image using execution role → app receives workload task role/config → process becomes ready → traffic/work arrives → logs/metrics report progress. On shutdown, stop accepting new work and finish or safely retry current work.\n\nCount DB pools across every web and worker task before scaling. Managed task placement does not expand PostgreSQL capacity."
+      "detail": "Scheduler starts task → platform pulls image using execution role → app receives workload task role/config → process becomes ready → traffic/work arrives → logs/metrics report progress.\n\nOn shutdown, stop accepting new work and finish or safely retry current work.\n\nCount DB pools across every web and worker task before scaling. Managed task placement does not expand PostgreSQL capacity."
     },
     {
       "title": "Try the failure",
-      "detail": "An execution role is not automatically the app’s S3 role. Starting more workers can overload the DB/provider. A task repeatedly failing before logs are configured is hard to diagnose."
+      "detail": "An execution role is not automatically the app’s S3 role. Starting more workers can overload the DB/provider.\n\nA task repeatedly failing before logs are configured is hard to diagnose."
     }
   ],
   "sources": [

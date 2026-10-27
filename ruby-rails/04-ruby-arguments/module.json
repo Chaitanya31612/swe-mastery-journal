@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Positional args",
-      "detail": "A closure carries access to variables from its surrounding scope. It does not take a frozen snapshot of every value. If that variable changes, the closure can see the new value. This is useful for callbacks and risky for long-lived captured state."
+      "detail": "# The idea\n\nA closure carries access to variables from its surrounding scope. It does not take a frozen snapshot of every value.\n\nIf that variable changes, the closure can see the new value. This is useful for callbacks and risky for long-lived captured state.\n\nA lambda behaves like a small method: it checks argument count more strictly and return leaves the lambda.\n\nA non-lambda proc can return from the method where it was defined; after that method has ended, such a return can raise LocalJumpError. Use lambdas when you want method-like callback behavior.\n\nRuby 2.7 is a transition version for keyword arguments. Code that forwards a final hash as keywords may warn there and fail on Ruby 3.\n\nBe explicit about positional arguments, keyword arguments, and a block."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Split the call into three envelopes: positional values in args, named values in kwargs, behavior in block. Forward each explicitly. In Ruby 2.7, warnings are useful migration signals; do not silence them without understanding the call shape.\n\nFor the closure, reader keeps access to the label binding. Reassignment changes what that binding points to. For a snapshot of text, create a separate value deliberately, such as label.dup.freeze when a shallow frozen string is what you need."
+      "detail": "Split the call into three envelopes: positional values in args, named values in kwargs, behavior in block. Forward each explicitly.\n\nIn Ruby 2.7, warnings are useful migration signals; do not silence them without understanding the call shape.\n\nFor the closure, reader keeps access to the label binding. Reassignment changes what that binding points to.\n\nFor a snapshot of text, create a separate value deliberately, such as label.dup.freeze when a shallow frozen string is what you need."
     },
     {
       "title": "Check the result",

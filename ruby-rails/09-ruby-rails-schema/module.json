@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Input validation",
-      "detail": "A model validation gives readable feedback before a save. A database constraint protects stored data even when two requests race or a different code path writes the table. Use both when the rule matters."
+      "detail": "# The idea\n\nA model validation gives readable feedback before a save. A database constraint protects stored data even when two requests race or a different code path writes the table.\n\nUse both when the rule matters.\n\nFor example, task keys unique within a workspace need a composite unique index on workspace_id and key. Decide how blank values and case differences should behave.\n\nPostgreSQL NULL and collation rules are part of that decision. Do not assume the model and database interpret values identically.\n\nA migration changes shared data structures. Think about existing rows and overlapping application versions.\n\nAdding a non-null column to a populated table requires a plan for those rows. A reversible migration method does not mean every business data change is safely reversible."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Two transactions can both pass a uniqueness validator before either inserts. The unique index makes only one conflicting insert succeed. The losing code must handle the database error and return a useful result.\n\nFor a rename, use expand → backfill → switch reads/writes → remove old data later. Verify both versions work during deployment. Test the migration on a disposable database with old-shaped data."
+      "detail": "Two transactions can both pass a uniqueness validator before either inserts. The unique index makes only one conflicting insert succeed.\n\nThe losing code must handle the database error and return a useful result.\n\nFor a rename, use expand → backfill → switch reads/writes → remove old data later. Verify both versions work during deployment.\n\nTest the migration on a disposable database with old-shaped data."
     },
     {
       "title": "Check the result",
-      "detail": "update_all bypasses model callbacks and validations. That can be useful for a deliberate batch update, but database constraints still apply. A rollback that drops a filled column destroys values."
+      "detail": "update_all bypasses model callbacks and validations. That can be useful for a deliberate batch update, but database constraints still apply.\n\nA rollback that drops a filled column destroys values."
     }
   ],
   "recallPrompt": "Without notes: Choose the right layer for uniqueness and evolve a schema safely. Give a concrete failure example.",

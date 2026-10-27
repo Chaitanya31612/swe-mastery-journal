@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Task fixtures",
-      "detail": "An agent can reach a correct answer through an unsafe path. Another can fail one tool gracefully and still give a useful partial result. Evaluate the trajectory: requested tools, argument validity, policy decisions, evidence, stopping reason, effects, cost and latency.\n\nUse scripted tools and deterministic fault injection to test runtime behavior. Use actual model runs on representative held-out tasks to assess planning/tool choice. Keep those two claims separate. A scripted agent passing tests does not establish that a live model will choose the right tool.\n\nCreate adversarial tasks: a document asks to call an unrelated tool, a name is ambiguous, a permission is revoked mid-run, a tool hangs, a write outcome is unknown, or a model loops. Define acceptable partial results and disallowed operations before judging."
+      "detail": "## Understand\n\nAn agent can reach a correct answer through an unsafe path. Another can fail one tool gracefully and still give a useful partial result.\n\nEvaluate the trajectory: requested tools, argument validity, policy decisions, evidence, stopping reason, effects, cost and latency.\n\nUse scripted tools and deterministic fault injection to test runtime behavior. Use actual model runs on representative held-out tasks to assess planning/tool choice.\n\nKeep those two claims separate. A scripted agent passing tests does not establish that a live model will choose the right tool.\n\nCreate adversarial tasks: a document asks to call an unrelated tool, a name is ambiguous, a permission is revoked mid-run, a tool hangs, a write outcome is unknown, or a model loops.\n\nDefine acceptable partial results and disallowed operations before judging."
     },
     {
       "title": "Follow one input",
-      "detail": "Version task fixtures and tool behavior. Capture proposals, gates and outcomes. Report task success separately from forbidden proposals, executed unauthorized actions, unsupported claims, budget overruns and recovery quality."
+      "detail": "Version task fixtures and tool behavior. Capture proposals, gates and outcomes.\n\nReport task success separately from forbidden proposals, executed unauthorized actions, unsupported claims, budget overruns and recovery quality."
     },
     {
       "title": "Try the failure",

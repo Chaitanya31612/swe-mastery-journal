@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "URL context",
-      "detail": "A route is part of the user’s working context. Search, selected workspace, and page often need to survive refresh or be shared. Put those values in a stable URL contract and parse them, including invalid inputs."
+      "detail": "## Understand the idea\n\nA route is part of the user’s working context. Search, selected workspace, and page often need to survive refresh or be shared.\n\nPut those values in a stable URL contract and parse them, including invalid inputs.\n\nA store is useful for shared application state and named actions. It does not automatically solve server cache freshness.\n\nKeep remote data, local drafts, and permissions separate. With Pinia, storeToRefs preserves reactivity when destructuring state/getters; actions can be called from the store normally.\n\nRoute components can be reused when params change. Watching only onMounted can leave the old ticket on screen after navigation.\n\nWatch the relevant ID or use a deliberate route data-loading strategy. A navigation guard improves UX but the server must still enforce access."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A single global editing object can make two open panes overwrite each other. A route guard is not server authorization. Query-string arrays and absent values require parsing."
+      "detail": "A single global editing object can make two open panes overwrite each other. A route guard is not server authorization.\n\nQuery-string arrays and absent values require parsing."
     }
   ],
   "sources": [

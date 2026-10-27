@@ -13,5 +13,4 @@ export default async function Page() {
 // Its server mutation must authenticate, authorize, validate,
 // update data, then apply the chosen revalidation strategy.
 ```
-
 This is a boundary sketch, not a complete runnable app. readAllowedTasks and the mutation must be implemented with the selected version’s APIs and access rules.

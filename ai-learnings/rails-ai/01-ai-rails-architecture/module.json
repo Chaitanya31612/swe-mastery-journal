@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Authenticated request",
-      "detail": "Dispatch Desk is a fictional warehouse operations assistant. It can propose shipment filters, explain a blocked shipment, compare a small selection, and summarize grouped blockers. It is one worked example in this general course, not the definition of AI integration.\n\nKeep model work narrow. Code authenticates, resolves names, filters records, verifies hold rules, counts/group rows, and determines permitted navigation. The model interprets language and drafts explanations using supplied facts. The first version is read-only: a suggested next step is not an executed change.\n\nUse ordinary Rails layers. A controller authenticates and validates request size. A use-case service coordinates work. Provider adapters isolate model formats. Policies/scoped relations control data. Jobs handle longer work. Result validators and presenters keep UI labels honest. Each layer has a focused test."
+      "detail": "# Build one useful Rails feature\n\nDispatch Desk is a fictional assistant for a warehouse team.\n\nIt is one worked example in this course. The same boundaries apply in other domains.\n\n## Four small tasks\n\n- Suggest filters for a list of shipments.\n- Explain a shipment’s current hold reason.\n- Compare a small selection.\n- Summarize grouped hold reasons.\n\nThe first release only reads data. A suggested action does not change a shipment.\n\n## Follow one request\n\n```text\nController → current user and access checks → use-case service\n                                             ↓\n                                  current facts and reviewed rules\n                                             ↓\n                                  optional model call → result checks → UI\n```\n\nCode owns names, filters, rules, counts, and allowed links.\n\nThe model interprets language and drafts explanations using the supplied facts.\n\n## Give each file one job\n\nA controller checks identity and input size. A service coordinates the use case.\n\nA provider adapter handles the model API. Policies and scoped queries decide what data is allowed.\n\nA job handles longer work. Validators check results. A presenter gives facts and generated text clear labels.\n\nTest each boundary separately.\n\n## Remember\n\nAn AI feature still needs ordinary, understandable application code.\n"
     },
     {
       "title": "Follow one input",
-      "detail": "Trace filter, explain, compare and briefing separately. For every output, identify whether it is a current fact, deterministic rule, generated interpretation or unavailable item. Then draw the data flow and no-model path."
+      "detail": "Trace filter, explain, compare and briefing separately. For every output, identify whether it is a current fact, deterministic rule, generated interpretation or unavailable item.\n\nThen draw the data flow and no-model path."
     },
     {
       "title": "Try the failure",

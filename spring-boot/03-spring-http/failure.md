@@ -4,4 +4,6 @@ Returning an entity can trigger lazy queries during JSON serialization or reveal
 
 **Memory cue:** Bind → check → act → reply.
 
-Close this lesson. Draw the five steps. Explain one failure in your own words before opening Practice.
+Close this lesson. Draw the five steps.
+
+Explain one failure in your own words before opening Practice.

@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Server read",
-      "detail": "In the App Router, Server Components can read server-only data without shipping that code to the browser. Client Components support hooks and browser interaction. A use client boundary marks a client module graph; it does not mean that component never participates in server-rendered HTML."
+      "detail": "# The idea\n\nIn the App Router, Server Components can read server-only data without shipping that code to the browser. Client Components support hooks and browser interaction.\n\nA use client boundary marks a client module graph; it does not mean that component never participates in server-rendered HTML.\n\nPass serializable data across the server/client boundary. Keep secrets and database clients on the server.\n\nPut the interactive leaf near the button rather than moving the entire page into the client by habit.\n\nNext.js caching behavior changes across versions. Record the version and make freshness choices explicit.\n\nBrowser/router cache, server data cache, rendered output, and the backing database are different layers. A refresh of one does not automatically invalidate every other one."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Trace page request → allowed server read → serialized props → interactive button → server mutation → permission check → database change → deliberate revalidation → visible result.\n\nrouter.refresh requests a fresh server-component payload, but a server-side cached read may still return old data. Choose revalidatePath/tag or another data policy according to the exact version. Test the mutation then read from a fresh session as well as the current page."
+      "detail": "Trace page request → allowed server read → serialized props → interactive button → server mutation → permission check → database change → deliberate revalidation → visible result.\n\nrouter.refresh requests a fresh server-component payload, but a server-side cached read may still return old data. Choose revalidatePath/tag or another data policy according to the exact version.\n\nTest the mutation then read from a fresh session as well as the current page."
     },
     {
       "title": "Check the result",
-      "detail": "A Server Action is still a server input boundary and needs access checks. Moving a token into a client bundle exposes it. Client directives are not a substitute for a security review of what data is serialized."
+      "detail": "A Server Action is still a server input boundary and needs access checks. Moving a token into a client bundle exposes it.\n\nClient directives are not a substitute for a security review of what data is serialized."
     }
   ],
   "recallPrompt": "Without notes: Place code at a deliberate execution boundary and explain which cache is being refreshed. Give a concrete failure example.",

@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Training updates weights",
-      "detail": "Training updates model parameters from data. Inference uses a trained model to produce outputs. A normal API conversation does not mean your application is updating the model’s weights during that conversation.\n\nPretraining learns broad statistical patterns. Instruction tuning and preference/reward-based post-training shape useful behavior. These stages do not turn the model into your current production database. Provider data-use, logging, and retention policies are separate questions; “not training” does not mean “not stored.”\n\nThere are several places to put knowledge: weights, the current request, a retrieval index, a business database, and a stored conversation. They have different update and deletion paths. Use current scoped queries for live counts. Use retrieval for relevant documents. Consider fine-tuning for a measured behavior gap, not as the first way to keep yesterday’s inventory current."
+      "detail": "## Understand\n\nTraining updates model parameters from data. Inference uses a trained model to produce outputs.\n\nA normal API conversation does not mean your application is updating the model’s weights during that conversation.\n\nPretraining learns broad statistical patterns. Instruction tuning and preference/reward-based post-training shape useful behavior.\n\nThese stages do not turn the model into your current production database. Provider data-use, logging, and retention policies are separate questions; “not training” does not mean “not stored.”\n\nThere are several places to put knowledge: weights, the current request, a retrieval index, a business database, and a stored conversation. They have different update and deletion paths.\n\nUse current scoped queries for live counts. Use retrieval for relevant documents.\n\nConsider fine-tuning for a measured behavior gap, not as the first way to keep yesterday’s inventory current."
     },
     {
       "title": "Follow one input",
-      "detail": "Trace source update → ingestion → index publication → retrieval → answer cache. Separately trace conversation storage. Ask how each place is corrected or deleted. Keep the model snapshot and prompt version in experiment records."
+      "detail": "Trace source update → ingestion → index publication → retrieval → answer cache. Separately trace conversation storage.\n\nAsk how each place is corrected or deleted. Keep the model snapshot and prompt version in experiment records."
     },
     {
       "title": "Try the failure",
-      "detail": "“The model learned it in our chat” can hide application-managed history. A fresh call without that history may behave differently. Outdated indexes and caches can survive a correct source update."
+      "detail": "“The model learned it in our chat” can hide application-managed history. A fresh call without that history may behave differently.\n\nOutdated indexes and caches can survive a correct source update."
     }
   ],
   "sources": [

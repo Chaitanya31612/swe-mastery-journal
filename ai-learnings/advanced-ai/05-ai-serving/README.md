@@ -4,7 +4,9 @@
 
 Explain deployment tradeoffs and the memory/latency costs application developers need to understand.
 
-Read idea → example → trace → failure. Then attempt practice/repair.md and practice/transfer.md. Answers are separate in answers/. The app also provides prediction, quiz, recall, and optional AI review.
+Read idea → example → trace → failure. Then attempt practice/repair.md and practice/transfer.md.
+
+Answers are separate in answers/. The app also provides prediction, quiz, recall, and optional AI review.
 
 ```mermaid
 flowchart TD

@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,7 +72,7 @@
   "trace": [
     {
       "title": "Structured signals",
-      "detail": "Logs explain individual events. Metrics summarize trends. Traces connect steps across boundaries. CloudWatch provides AWS-native observability capabilities; choose the signals and retention you actually need."
+      "detail": "## Understand the idea\n\nLogs explain individual events. Metrics summarize trends.\n\nTraces connect steps across boundaries. CloudWatch provides AWS-native observability capabilities; choose the signals and retention you actually need.\n\nAn alarm should point to user impact or a meaningful precursor, not merely an interesting chart. “Oldest export age is growing” can be more actionable than queue count alone.\n\nInclude scope, threshold/time window, owner, and the first safe checks.\n\nSetup: send structured app/container logs, define bounded metric dimensions, retain data deliberately, add a small dashboard and alarm, then simulate a synthetic failure and follow the runbook.\n\nDo not emit user IDs or event IDs as unbounded metric labels."
     },
     {
       "title": "Follow one item",
@@ -80,7 +80,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "High-cardinality metric dimensions can increase cost and reduce usability. An alert without a runbook can become noise. A green process metric can coexist with no business progress."
+      "detail": "High-cardinality metric dimensions can increase cost and reduce usability. An alert without a runbook can become noise.\n\nA green process metric can coexist with no business progress."
     }
   ],
   "sources": [

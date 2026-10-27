@@ -10,5 +10,4 @@ else
 end
 # Return the serialized result paired with call.call_id, using the provider's format.
 ```
-
 A case/registry allowlist is intentional. Never convert a tool name directly to constantize, send, SQL, a shell command, or an arbitrary URL.

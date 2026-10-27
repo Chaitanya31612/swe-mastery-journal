@@ -19,5 +19,6 @@ interface TaskRepository extends
   java.util.List<Task> pageWithOwners(@org.springframework.data.repository.query.Param("after") long after);
 }
 ```
+This query illustrates a to-one fetch join. It is not a bounded production page: add a limit/Pageable and an explicit order before serving large lists.
 
-This query illustrates a to-one fetch join. It is not a bounded production page: add a limit/Pageable and an explicit order before serving large lists. Collection fetch joins with pagination need special care.
+Collection fetch joins with pagination need special care.

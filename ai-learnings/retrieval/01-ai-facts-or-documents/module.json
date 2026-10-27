@@ -26,22 +26,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -78,7 +78,7 @@
   "trace": [
     {
       "title": "Question type",
-      "detail": "RAG means retrieving relevant material and giving it to a generator. It is an application pattern, not a guarantee of correctness. The original research combines learned generation with retrieved information; modern products implement many variants.\n\nA current delivery count belongs in a scoped database query. A policy explanation may need retrieved documents. A shipment's verified hold reason may come from a deterministic rule over current fields. These sources can appear together in one answer, but keep their authority and freshness visible.\n\nStart with the smallest sufficient retrieval method. Exact IDs, filters, full-text search, and a document table may be enough. Add semantic search when wording varies in a way lexical search misses. Never move access control into similarity scoring or ask a model to infer the user's tenant."
+      "detail": "# First decide where the answer lives\n\nSome answers come from current database records. Others need documents.\n\nChoose the source before choosing an AI tool.\n\n## A small example\n\n- “How many parcels are held?” → run an allowed database query.\n- “What does the dispatch policy say?” → find an allowed policy document.\n- “Why is this parcel held?” → check its current fields and the reviewed hold rules.\n\n```text\nQuestion → current facts, documents, or both → answer with its sources\n```\n\nKeep counts and exact rules in code.\n\n## What RAG adds\n\n**RAG** means finding relevant material and giving it to the model before it answers.\n\nA simple version might search a document table and include the matching passages in the request.\n\nYou can use exact IDs, filters, or full-text search. Add semantic search when differences in wording make those methods miss useful material.\n\n## What RAG does not prove\n\nRetrieved text can be old, irrelevant, or outside the user’s access.\n\nThe model can also write a claim that the text does not support.\n\nKeep permission checks, source versions, and answer checks visible.\n\n## Remember\n\nUse live data for live facts. Use documents for document knowledge. Check both before showing an answer.\n"
     },
     {
       "title": "Follow one input",

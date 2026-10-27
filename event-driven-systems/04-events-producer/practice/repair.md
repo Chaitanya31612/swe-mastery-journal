@@ -1,5 +1,9 @@
 ## Diagnose and repair
 
-The dispatcher marks published immediately after calling produce without waiting. A broker failure loses delivery. Repair the boundary.
+The dispatcher marks published immediately after calling produce without waiting. A broker failure loses delivery.
 
-Before opening a reference, write your prediction, the exact change, how you would verify it, and why it works. Use synthetic data and a separate lab. State clearly which checks you actually ran.
+Repair the boundary.
+
+Before opening a reference, write your prediction, the exact change, how you would verify it, and why it works. Use synthetic data and a separate lab.
+
+State clearly which checks you actually ran.

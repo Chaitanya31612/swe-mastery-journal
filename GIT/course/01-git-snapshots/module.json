@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,15 +76,15 @@
   "trace": [
     {
       "title": "Working tree",
-      "detail": "Git stores snapshots and the links between them. A commit names a tree and parent commits. A branch name points to a commit. HEAD normally names the checked-out branch; in detached mode it points at a commit directly."
+      "detail": "# Start with this\n\nGit saves snapshots of files. A commit records a snapshot and links to its parent commits.\n\nA branch is a movable name for a commit.\n\n## The three places\n\n```text\nWorking tree         Index / staging area         HEAD\nFiles you edit  ───>  Next snapshot you propose ──> Last committed snapshot\n                 add                         commit\n```\n\n`HEAD` normally points to your current branch. In detached mode, it points directly to a commit.\n\n## Try this example\n\nEdit `app.rb`, then run `git add app.rb`. Git stages the file as it looks at that moment.\n\nNow edit it again. The second edit stays in the working tree until you stage it too.\n\n```text\nStaged version:       first edit\nWorking tree version: first edit + second edit\n```\n\n## Why commit IDs change\n\nA commit ID depends on the content and metadata, including its parents.\n\nThe same file change on a different parent usually produces a different commit ID.\n\n## Remember\n\nBefore a commit, compare the working tree, the staged snapshot, and `HEAD`.\n\nA branch is a label. It is not a second full copy of your project directory.\n"
     },
     {
       "title": "Follow the middle steps",
-      "detail": "After add, the index holds A. After editing, the working tree holds B. A commit records A. The remaining A→B difference stays in the working tree.\n\nDraw HEAD → commit → tree → blob, then draw the index as a separate proposed tree. This model explains partial staging, restore, reset, and why a clean diff is not always a clean staged snapshot."
+      "detail": "After add, the index holds A. After editing, the working tree holds B.\n\nA commit records A. The remaining A→B difference stays in the working tree.\n\nDraw HEAD → commit → tree → blob, then draw the index as a separate proposed tree.\n\nThis model explains partial staging, restore, reset, and why a clean diff is not always a clean staged snapshot."
     },
     {
       "title": "Check the result",
-      "detail": "git diff by itself does not show staged changes. An ignored file that was already tracked remains tracked. Ignore rules affect untracked-file discovery, not all past snapshots."
+      "detail": "git diff by itself does not show staged changes. An ignored file that was already tracked remains tracked.\n\nIgnore rules affect untracked-file discovery, not all past snapshots."
     }
   ],
   "recallPrompt": "Without notes: Draw HEAD, the index, and the working tree before running a command. Give a concrete failure example.",

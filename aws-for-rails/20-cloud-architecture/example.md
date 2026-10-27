@@ -10,5 +10,4 @@ Report request → SQS/worker → S3 result
 All paths → request/event identity → CloudWatch/Datadog telemetry
 Workload roles + Secrets Manager/KMS across explicit boundaries
 ```
-
 Draw ECS and EKS as alternatives in your decision sketch, not a mandatory chain.

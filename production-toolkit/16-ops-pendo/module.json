@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Task boundary",
-      "detail": "Pendo supports product analytics/guidance capabilities, including configured Track Events. Define what an event means before instrumenting it. A clicked button, an accepted request, and a completed business action are different events."
+      "detail": "## Understand the idea\n\nPendo supports product analytics/guidance capabilities, including configured Track Events. Define what an event means before instrumenting it.\n\nA clicked button, an accepted request, and a completed business action are different events.\n\nChoose stable names and a minimal property schema. A support app might record TicketAssignmentCompleted with method and outcome category, rather than every typed title or description.\n\nVisitor/account association and data collection settings must match the product’s privacy/access policy.\n\nSetup: choose a training application/configuration, establish identity and collection policy, instrument one deliberate event after the relevant boundary, verify it arrives, and compare it with the actual business outcome.\n\nKeep server-side secrets out of the browser and source. This course sends no analytics to Pendo."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Client telemetry can be absent or repeated. A click funnel can reward confusion. Copying entire form data into event properties creates unnecessary exposure."
+      "detail": "Client telemetry can be absent or repeated. A click funnel can reward confusion.\n\nCopying entire form data into event properties creates unnecessary exposure."
     }
   ],
   "sources": [

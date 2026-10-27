@@ -4,4 +4,6 @@ Using map only to send messages communicates the wrong intent and allocates an u
 
 **Memory cue:** Map changes shape inside. Select changes who stays.
 
-Close this lesson. Draw the five steps. Explain one failure in your own words before opening Practice.
+Close this lesson. Draw the five steps.
+
+Explain one failure in your own words before opening Practice.

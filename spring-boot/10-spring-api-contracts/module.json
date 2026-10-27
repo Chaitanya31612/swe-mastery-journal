@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Validate and authorize",
-      "detail": "An endpoint contract includes more than a URL. Define allowed input, authorization, response shape, errors, ordering, page limits, and retry semantics. A list without a bound can turn an ordinary screen into an accidental bulk export."
+      "detail": "## Understand the idea\n\nAn endpoint contract includes more than a URL. Define allowed input, authorization, response shape, errors, ordering, page limits, and retry semantics.\n\nA list without a bound can turn an ordinary screen into an accidental bulk export.\n\nUse stable ordering for pagination. Offset pages can shift when rows are inserted; a cursor can be more stable for an append-heavy feed.\n\nA cursor must still be scoped to the caller and filter contract.\n\nA retried create can duplicate a ticket. An idempotency key identifies one logical command.\n\nStore the key with a request fingerprint and result under a database uniqueness rule. The same key with a different request should conflict.\n\nA pre-check in a local map does not protect multiple service instances."
     },
     {
       "title": "Follow one item",
-      "detail": "A creates a ticket and commits, but the response is lost. A retry with the same key reads the saved result rather than creating a second ticket. A different payload with that key receives a deliberate conflict.\n\nTest simultaneous same-key requests, a timeout after commit, an invalid cursor, and permission changes. Define key retention; forgetting keys eventually changes retry behavior."
+      "detail": "A creates a ticket and commits, but the response is lost. A retry with the same key reads the saved result rather than creating a second ticket.\n\nA different payload with that key receives a deliberate conflict.\n\nTest simultaneous same-key requests, a timeout after commit, an invalid cursor, and permission changes. Define key retention; forgetting keys eventually changes retry behavior."
     },
     {
       "title": "Try the failure",
-      "detail": "PUT/POST method names alone do not implement idempotence. Cursor encoding is not encryption or access control. A 200 containing an error object confuses clients."
+      "detail": "PUT/POST method names alone do not implement idempotence. Cursor encoding is not encryption or access control.\n\nA 200 containing an error object confuses clients."
     }
   ],
   "sources": [

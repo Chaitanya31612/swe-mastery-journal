@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Command boundary",
-      "detail": "A pipeline batches network operations for efficiency; it does not by itself make them one indivisible business operation. MULTI/EXEC and scripts provide different atomic-execution tools, but Redis transactions do not behave like a relational transaction with automatic rollback of every runtime error."
+      "detail": "## Understand the idea\n\nA pipeline batches network operations for efficiency; it does not by itself make them one indivisible business operation.\n\nMULTI/EXEC and scripts provide different atomic-execution tools, but Redis transactions do not behave like a relational transaction with automatic rollback of every runtime error.\n\nPersistence and replication are separate from command atomicity. RDB snapshots and AOF policies have different recovery/loss/performance tradeoffs.\n\nA replica/failover configuration can still have a data-loss window under its contract. Select it from the role of the data, not the word persistent alone.\n\nA lock with an expiry is a lease. Worker A can pause, its lease expire, and worker B acquire it.\n\nA can resume as a stale owner. Use the authority’s conditional write/version or fencing design where correctness requires excluding stale writers.\n\nA random token and compare-delete protect release ownership, not every business write."
     },
     {
       "title": "Follow one item",
-      "detail": "Trace acquire → pause → expiry → new owner → old owner resumes. Identify which downstream store can reject the old write. Then trace a Redis crash and ask what persisted/replicated data is actually recoverable.\n\nTest the failure model in the isolated lab. Measure the selected durability policy’s behavior, and document what data can be rebuilt versus what needs reconciliation."
+      "detail": "Trace acquire → pause → expiry → new owner → old owner resumes. Identify which downstream store can reject the old write.\n\nThen trace a Redis crash and ask what persisted/replicated data is actually recoverable.\n\nTest the failure model in the isolated lab. Measure the selected durability policy’s behavior, and document what data can be rebuilt versus what needs reconciliation."
     },
     {
       "title": "Try the failure",
-      "detail": "Atomic commands do not make external effects atomic. Pipeline success is not a database commit. A lock release can delete another owner’s lock if token ownership is not checked."
+      "detail": "Atomic commands do not make external effects atomic. Pipeline success is not a database commit.\n\nA lock release can delete another owner’s lock if token ownership is not checked."
     }
   ],
   "sources": [

@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Task and run state",
-      "detail": "Treat an agent run as a state machine. It receives a task and context, asks a model for a proposal, validates a tool call or final answer, executes approved work, records the observation, and either continues or stops. Every transition needs an owner.\n\nBound steps, elapsed time, tokens/cost, tool outputs, and simultaneous work. Decide what happens when the limit is reached: partial result with evidence, clarification, fallback, or failure. Do not let “keep trying until solved” become an unbounded production loop.\n\nStore useful observations, not unrestricted hidden reasoning. A short user-facing explanation of decisions is different from exposing a model's internal chain of thought. Debug by tool proposals, policy decisions, supplied evidence and outcomes."
+      "detail": "## Understand\n\nTreat an agent run as a state machine.\n\nIt receives a task and context, asks a model for a proposal, validates a tool call or final answer, executes approved work, records the observation, and either continues or stops.\n\nEvery transition needs an owner.\n\nBound steps, elapsed time, tokens/cost, tool outputs, and simultaneous work. Decide what happens when the limit is reached: partial result with evidence, clarification, fallback, or failure.\n\nDo not let “keep trying until solved” become an unbounded production loop.\n\nStore useful observations, not unrestricted hidden reasoning. A short user-facing explanation of decisions is different from exposing a model's internal chain of thought.\n\nDebug by tool proposals, policy decisions, supplied evidence and outcomes."
     },
     {
       "title": "Follow one input",
-      "detail": "Trace one normal run, one unsupported tool, one policy denial, one tool error and one endless proposal sequence. Inspect the stopping reason and what the user can still use. Preserve call/result identity across steps."
+      "detail": "Trace one normal run, one unsupported tool, one policy denial, one tool error and one endless proposal sequence. Inspect the stopping reason and what the user can still use.\n\nPreserve call/result identity across steps."
     },
     {
       "title": "Try the failure",

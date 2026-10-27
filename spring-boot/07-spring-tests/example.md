@@ -11,5 +11,6 @@ class AccessTest {
   }
 }
 ```
+For HTTP use MockMvc with the appropriate Boot test configuration. For a full HTTP smoke test use @SpringBootTest(webEnvironment = RANDOM_PORT).
 
-For HTTP use MockMvc with the appropriate Boot test configuration. For a full HTTP smoke test use @SpringBootTest(webEnvironment = RANDOM_PORT). Boot 4 moved several test annotations to new packages: use the pinned sample and matching reference docs rather than pasting old imports.
+Boot 4 moved several test annotations to new packages: use the pinned sample and matching reference docs rather than pasting old imports.

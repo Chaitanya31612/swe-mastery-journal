@@ -4,4 +4,6 @@ A test marked @Transactional may roll back its own work and hide production comm
 
 **Memory cue:** Test at the layer where the bug can live.
 
-Close this lesson. Draw the five steps. Explain one failure in your own words before opening Practice.
+Close this lesson. Draw the five steps.
+
+Explain one failure in your own words before opening Practice.

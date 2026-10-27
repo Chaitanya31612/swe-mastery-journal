@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Dependency graph",
-      "detail": "await describes a dependency: the next line waits for that promise in this function. Two awaits in sequence may waste time when their inputs are independent. Promise.all waits for all successes but rejects when one rejects; it does not automatically cancel the others. allSettled preserves each outcome when partial results are useful."
+      "detail": "## Understand the idea\n\nawait describes a dependency: the next line waits for that promise in this function. Two awaits in sequence may waste time when their inputs are independent.\n\nPromise.all waits for all successes but rejects when one rejects; it does not automatically cancel the others. allSettled preserves each outcome when partial results are useful.\n\nCancellation and acceptance are different. AbortController can stop a supported fetch.\n\nA request number or active flag says whether a result may still update this screen. Guard error and loading state as well as rows.\n\nParallel does not mean unlimited. Launching 10,000 uploads at once can exhaust memory and connections.\n\nUse a bounded worker pool or a queue. Retry only a safe operation and only within a deliberate attempt/time limit."
     },
     {
       "title": "Follow one item",
-      "detail": "Draw the dependency graph. Loading a ticket and a member directory can overlap. Loading comments using an ID returned by a creation request cannot begin before that ID exists.\n\nFor a stale search: A starts, B starts, B succeeds, A fails. The final UI should show B and no stale error. Use controlled promises to reproduce this exact order. Avoid a fixed sleep as proof."
+      "detail": "Draw the dependency graph. Loading a ticket and a member directory can overlap.\n\nLoading comments using an ID returned by a creation request cannot begin before that ID exists.\n\nFor a stale search: A starts, B starts, B succeeds, A fails. The final UI should show B and no stale error.\n\nUse controlled promises to reproduce this exact order. Avoid a fixed sleep as proof."
     },
     {
       "title": "Try the failure",

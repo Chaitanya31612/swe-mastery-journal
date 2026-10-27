@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Exact versions",
-      "detail": "Start by recording exact Ruby, Rails, gem, database, and frontend versions. A fork may differ from upstream. A copied snippet is a hypothesis until the relevant boundary test runs in an authorized isolated environment."
+      "detail": "## Understand the idea\n\nStart by recording exact Ruby, Rails, gem, database, and frontend versions. A fork may differ from upstream.\n\nA copied snippet is a hypothesis until the relevant boundary test runs in an authorized isolated environment.\n\nCommon seams deserve explicit tests: keyword forwarding, autoload/reload, callback order, job serialization, database constraints, request error mapping, and browser component behavior. Keep legacy behavior separate from a deliberate modernized lab.\n\nCharacterization tests record what the system currently does. They are useful before refactoring, but do not make a defect desirable forever.\n\nMark a known bad behavior as a decision to change with a new intended contract."
     },
     {
       "title": "Follow one item",
-      "detail": "Choose one behavior → record current contract → write a failing/characterization test → make a small change → run affected boundary tests → verify deployment compatibility. Keep a matrix of versions only for the seams actually being changed.\n\nDo not run course experiments inside the work checkout. Use synthetic data and a separately authorized test environment. Private source and data do not belong in the AI tutor."
+      "detail": "Choose one behavior → record current contract → write a failing/characterization test → make a small change → run affected boundary tests → verify deployment compatibility.\n\nKeep a matrix of versions only for the seams actually being changed.\n\nDo not run course experiments inside the work checkout. Use synthetic data and a separately authorized test environment.\n\nPrivate source and data do not belong in the AI tutor."
     },
     {
       "title": "Try the failure",
-      "detail": "A full mock suite can hide broken autoload or SQL behavior. A modern Rails guide can use APIs absent in the old app. A test that merely copies implementation conditions adds little evidence."
+      "detail": "A full mock suite can hide broken autoload or SQL behavior. A modern Rails guide can use APIs absent in the old app.\n\nA test that merely copies implementation conditions adds little evidence."
     }
   ],
   "sources": [

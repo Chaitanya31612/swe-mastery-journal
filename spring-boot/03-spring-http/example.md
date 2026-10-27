@@ -20,5 +20,4 @@ class TasksController {
 }
 // TaskCreator is the service boundary; see the runnable sandbox.
 ```
-
 The validation starter must be installed. @Valid without a validation provider is not a substitute for the dependency.

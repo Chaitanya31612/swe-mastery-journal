@@ -6,5 +6,6 @@ pendo.track('TicketAssignmentCompleted', {
   method: 'bulk', outcome: 'partial_success', schemaVersion: 1
 })
 ```
+Do not include private ticket text. Handle SDK loading/failure so analytics does not break the main task.
 
-Do not include private ticket text. Handle SDK loading/failure so analytics does not break the main task. A frontend event can be missed and is not the authoritative assignment record.
+A frontend event can be missed and is not the authoritative assignment record.

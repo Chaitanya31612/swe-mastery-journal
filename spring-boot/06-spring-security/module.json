@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Security filters",
-      "detail": "Authentication identifies the caller. Authorization decides whether that caller may access this specific task. A logged-in user can still be forbidden from editing another user’s data."
+      "detail": "# The idea\n\nAuthentication identifies the caller. Authorization decides whether that caller may access this specific task.\n\nA logged-in user can still be forbidden from editing another user’s data.\n\nSpring Security usually runs in a servlet filter chain before controller handling. It can authenticate a session or bearer token and attach a security context.\n\nRoute rules are a first gate. The service still needs object-level rules when it can be called from another route or job.\n\nCORS controls which browser origins can read responses. It is not an ownership check.\n\nCSRF protects cookie-authenticated actions from unwanted cross-site requests. Do not disable it merely because the endpoint uses JSON.\n\nDecide from the authentication mechanism and browser threat model."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Follow a request with no credentials: the security entry point decides how to challenge or redirect. Follow a valid user requesting somebody else’s task: authentication can succeed while authorization fails.\n\nFor API tests, assert response status and that no write occurred. Check session cookie settings, CSRF expectations, and explicit allowed origins separately. Keep secrets and token contents out of logs."
+      "detail": "Follow a request with no credentials: the security entry point decides how to challenge or redirect. Follow a valid user requesting somebody else’s task: authentication can succeed while authorization fails.\n\nFor API tests, assert response status and that no write occurred. Check session cookie settings, CSRF expectations, and explicit allowed origins separately.\n\nKeep secrets and token contents out of logs."
     },
     {
       "title": "Check the result",
-      "detail": "A hidden Edit button is not protection. The user can send HTTP directly. A valid JWT proves only the claims you actually verify, including signature, issuer, audience, expiry, and your chosen access rules."
+      "detail": "A hidden Edit button is not protection. The user can send HTTP directly.\n\nA valid JWT proves only the claims you actually verify, including signature, issuer, audience, expiry, and your chosen access rules."
     }
   ],
   "recallPrompt": "Without notes: Separate authentication, ownership checks, CSRF, and CORS. Give a concrete failure example.",

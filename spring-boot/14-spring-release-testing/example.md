@@ -9,5 +9,4 @@ Release rehearsal
 5. Stop new app; verify old app still reads the expanded schema.
 6. Record data effects that a code rollback does not reverse.
 ```
-
 Do not let every app replica independently run a risky long backfill on startup.

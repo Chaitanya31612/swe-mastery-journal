@@ -24,22 +24,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,11 +76,11 @@
   "trace": [
     {
       "title": "Source and access metadata",
-      "detail": "A useful retrieval pipeline begins before embeddings. Load permitted sources, parse them, preserve headings/tables and provenance, clean carefully, attach access metadata, create chunks, and publish a versioned index. Each step can lose information.\n\nKeep source ID, source version, location/page/section, tenant/access class, parser version, chunking version, and embedding version. Make ingestion idempotent by source/version identity. Publish a complete new index or source revision deliberately so queries do not see half an update.\n\nDeletion and permission changes need a propagation path. A document removed from the file browser may still exist in an index or answer cache. Recheck current authorization before returning evidence. Track ingestion lag and failures as product freshness signals, not only background-job errors."
+      "detail": "## Understand\n\nA useful retrieval pipeline begins before embeddings. Load permitted sources, parse them, preserve headings/tables and provenance, clean carefully, attach access metadata, create chunks, and publish a versioned index.\n\nEach step can lose information.\n\nKeep source ID, source version, location/page/section, tenant/access class, parser version, chunking version, and embedding version. Make ingestion idempotent by source/version identity.\n\nPublish a complete new index or source revision deliberately so queries do not see half an update.\n\nDeletion and permission changes need a propagation path. A document removed from the file browser may still exist in an index or answer cache.\n\nRecheck current authorization before returning evidence. Track ingestion lag and failures as product freshness signals, not only background-job errors."
     },
     {
       "title": "Follow one input",
-      "detail": "Source revision → parse artifact → chunks with provenance → embeddings/index → publication marker → query. Simulate a parser error and a retry. The old complete version should remain available or the product should show a clear unavailable state."
+      "detail": "Source revision → parse artifact → chunks with provenance → embeddings/index → publication marker → query. Simulate a parser error and a retry.\n\nThe old complete version should remain available or the product should show a clear unavailable state."
     },
     {
       "title": "Try the failure",

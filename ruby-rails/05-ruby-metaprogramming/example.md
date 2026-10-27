@@ -15,5 +15,4 @@ def run_command(name)
   command.call
 end
 ```
-
 Use obj.method(:done_label).source_location and .owner to locate the definition. This is a small internal DSL: a limited language for declaring labels.

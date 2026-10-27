@@ -1,7 +1,36 @@
-## Understand the idea
+# Start with the user’s job
 
-A screen is a means to finish a task. “Add a dashboard” is not yet a task. “Find the oldest urgent ticket and assign it before the shift ends” is. Name the user, their goal, what they already know, and what interrupts them.
+A screen helps someone finish a task.
 
-Separate the user’s mental model from your database model. An agent thinks in tickets, queues, and follow-ups. They may not think in foreign keys or internal service names. Labels should help them predict what an action does.
+“Add a dashboard” describes a screen. It does not explain the task yet.
 
-A journey includes entry, action, feedback, completion, and recovery. It also includes returning later. Ask what context survives a refresh and what happens if the user is interrupted midway. A good design reduces the amount they must remember between those steps.
+## Make the goal concrete
+
+> **Example**
+>
+> “Find the oldest urgent ticket and assign it before the shift ends.”
+
+Now ask: Who is doing this? What do they already know? What might interrupt them?
+
+## Use the user’s words
+
+A support agent thinks about tickets, queues, and follow-ups.
+
+They should not need to understand foreign keys or internal service names to use the screen.
+
+Choose labels that help them predict what an action will do.
+
+```text
+Enter → find the item → act → see feedback → finish
+                 ↖ recover or return later ↙
+```
+
+## Plan for an interruption
+
+Suppose the user refreshes halfway through an edit. What survives? What must they repeat?
+
+Keep the context they need. Avoid asking them to remember details from a previous screen.
+
+## Remember
+
+Design around the job the user wants to finish. Then choose the screen that helps them finish it.

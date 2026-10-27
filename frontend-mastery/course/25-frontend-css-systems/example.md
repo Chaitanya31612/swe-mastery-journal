@@ -9,5 +9,4 @@
   .progress-pulse { animation: none; }
 }
 ```
-
 Keep destructive color separate from ordinary selection. Give errors text and a field association, not only a red border.

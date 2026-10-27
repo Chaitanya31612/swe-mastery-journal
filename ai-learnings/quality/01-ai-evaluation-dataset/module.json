@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,7 +77,7 @@
   "trace": [
     {
       "title": "Task contract",
-      "detail": "An evaluation is a repeatable comparison between expected behavior and observed behavior. Start with the task contract. For an intent parser, check fields, ambiguity and unsupported requests. For an explanation, check supplied fact use and support. For an agent, also inspect tool decisions and budgets.\n\nCreate representative synthetic cases and add reviewed failure cases over time. Keep prompt-development examples separate from a held-out release set. Label expected alternatives, not only one exact sentence. Include no-answer and clarification states so the system is not rewarded for guessing.\n\nUse hard gates for unauthorized data or actions. Report quality by meaningful category rather than a single reassuring average. A high overall score can hide that every unusual name or exception fails. Record model/prompt/index/tool versions and run conditions so results are interpretable."
+      "detail": "# Compare what you expected with what happened\n\nThat is the core of an **evaluation**.\n\nStart with the job the feature must do. Then choose checks that show whether it did that job.\n\n## A small example\n\n```text\nInput:    “Held parcels at East”\nProblem:  two depots match that name\nExpected: ask which depot\nWrong:    guess one and show a confident answer\n```\n\nFor a filter, check the allowed fields and unclear requests.\n\nFor an explanation, check the facts and whether they support the claims.\n\nFor an agent, also check tool choices and execution limits.\n\n## Build a useful set of cases\n\nInclude normal requests, unclear requests, missing evidence, and known failures.\n\nUse synthetic data. Label valid alternatives rather than requiring one exact sentence.\n\nKeep some cases out of prompt development. This **held-out set** gives you a less rehearsed release check.\n\n## An average can hide the problem\n\nA high score is not reassuring if the system fails every access-control case.\n\nReport results by failure type. Treat forbidden data or actions as release blockers under your agreed rules.\n\nRecord the model, prompt, index, and tool versions so you know what you compared.\n\n## Remember\n\nMeasure the decision you care about. Do not let a good average hide a serious failure.\n"
     },
     {
       "title": "Follow one input",

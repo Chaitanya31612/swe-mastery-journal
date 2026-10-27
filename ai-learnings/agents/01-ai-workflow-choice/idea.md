@@ -1,7 +1,33 @@
-## Understand
+# Who chooses the next step?
 
-A workflow follows code-defined paths. An agentic loop lets a model propose some next steps or tools based on observations. The distinction is who chooses the next operation, not whether the product has a chat box.
+In a **workflow**, code chooses the path.
 
-Many useful features are workflows: classify request → validate filter → fetch facts → explain. Fixed paths are easier to test, budget, and reason about. An agent becomes useful when the necessary sequence depends on what it discovers, such as inspecting several permitted sources before forming a comparison.
+In an **agent loop**, the model can suggest a next step based on what it finds.
 
-Use the simplest path that meets the task. Adding autonomy adds possible tool sequences, latency, cost, and failure modes. The host must still enforce capabilities, budgets and stopping. A framework can help orchestration but cannot decide your product's trust model for you.
+## Start with a workflow
+
+```text
+Understand request → check filter → fetch facts → draft explanation → validate
+```
+
+Code already knows these steps. A workflow is usually easier to test and limit.
+
+A chat box does not automatically make the system an agent.
+
+## When a loop may help
+
+Suppose the task needs several sources. The model may need to inspect one result before choosing the next useful source.
+
+That can justify a loop. It does not justify unlimited access or unlimited retries.
+
+## Keep the application in charge
+
+Limit tools, steps, time, and spending.
+
+Check every proposed operation before running it. Stop with a useful partial result when a limit is reached.
+
+A framework can coordinate steps. It cannot choose the application’s trust rules for you.
+
+## Remember
+
+Use fixed steps when the path is known. Add model-chosen steps only when they help the task.

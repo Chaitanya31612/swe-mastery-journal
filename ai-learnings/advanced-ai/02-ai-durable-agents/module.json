@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Durable step identity",
-      "detail": "A durable agent stores enough explicit state to survive process loss. Model proposals, tool identities, effect status, evidence versions, budgets, approvals and stopping reason need deliberate persistence. Replaying a run is not the same as repeating every external operation.\n\nUse step identities and state transitions. A worker can claim a step under a lease, but a paused worker may resume after another worker takes over. Protect state changes with versions/fencing as appropriate. Business effects require stable idempotency and reconciliation; a lease alone does not make an external action exactly once.\n\nOn resume, recheck current access, evidence and approval. A checkpoint from last week cannot authorize today's changed record. Separate pure computation/read replay from irreversible effects. Store minimal useful observations rather than unrestricted reasoning or private documents forever."
+      "detail": "## Understand\n\nA durable agent stores enough explicit state to survive process loss. Model proposals, tool identities, effect status, evidence versions, budgets, approvals and stopping reason need deliberate persistence.\n\nReplaying a run is not the same as repeating every external operation.\n\nUse step identities and state transitions. A worker can claim a step under a lease, but a paused worker may resume after another worker takes over.\n\nProtect state changes with versions/fencing as appropriate. Business effects require stable idempotency and reconciliation; a lease alone does not make an external action exactly once.\n\nOn resume, recheck current access, evidence and approval. A checkpoint from last week cannot authorize today's changed record.\n\nSeparate pure computation/read replay from irreversible effects. Store minimal useful observations rather than unrestricted reasoning or private documents forever."
     },
     {
       "title": "Follow one input",
-      "detail": "Claim step → record intent → execute idempotent/reconcilable action → store observed outcome → checkpoint → resume under current policy. Inject a crash before/after each boundary and inspect whether an effect repeats or a completed action is lost."
+      "detail": "Claim step → record intent → execute idempotent/reconcilable action → store observed outcome → checkpoint → resume under current policy.\n\nInject a crash before/after each boundary and inspect whether an effect repeats or a completed action is lost."
     },
     {
       "title": "Try the failure",

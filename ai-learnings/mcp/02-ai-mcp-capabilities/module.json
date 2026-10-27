@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Needed interaction",
-      "detail": "A tool exposes a callable operation with a schema. A resource exposes identifiable context that a host can read through the protocol. A prompt exposes a reusable message/workflow template. They serve different interaction patterns; none automatically authorizes a user to see its underlying data.\n\nA host may also support capabilities such as sampling or elicitation under a selected revision/SDK. These are negotiated features, not assumptions every peer supports. Sampling can introduce server-initiated model work; elicitation can request user input. Keep cost, consent, and data boundaries explicit.\n\nTool annotations can hint that an operation is read-only or idempotent. They are advisory metadata. The implementation and host/server policy must enforce actual behavior. Likewise, resource URIs and filesystem roots are not substitutes for an application access check or OS sandbox."
+      "detail": "## Understand\n\nA tool exposes a callable operation with a schema. A resource exposes identifiable context that a host can read through the protocol.\n\nA prompt exposes a reusable message/workflow template. They serve different interaction patterns; none automatically authorizes a user to see its underlying data.\n\nA host may also support capabilities such as sampling or elicitation under a selected revision/SDK. These are negotiated features, not assumptions every peer supports.\n\nSampling can introduce server-initiated model work; elicitation can request user input. Keep cost, consent, and data boundaries explicit.\n\nTool annotations can hint that an operation is read-only or idempotent. They are advisory metadata.\n\nThe implementation and host/server policy must enforce actual behavior. Likewise, resource URIs and filesystem roots are not substitutes for an application access check or OS sandbox."
     },
     {
       "title": "Follow one input",
-      "detail": "List the data and operations needed. Select tools/resources/prompts deliberately. Check peer capabilities before use. Test missing capability, inaccessible resource, and inaccurate annotations. Keep the actual side-effect boundary in code."
+      "detail": "List the data and operations needed. Select tools/resources/prompts deliberately.\n\nCheck peer capabilities before use. Test missing capability, inaccessible resource, and inaccurate annotations.\n\nKeep the actual side-effect boundary in code."
     },
     {
       "title": "Try the failure",

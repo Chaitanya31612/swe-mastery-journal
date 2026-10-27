@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Measured resources",
-      "detail": "Startup, readiness, and liveness ask different questions. Startup protects a slow initialization phase. Readiness controls traffic eligibility. Liveness can trigger a restart when the process is stuck under the chosen health contract."
+      "detail": "## Understand the idea\n\nStartup, readiness, and liveness ask different questions. Startup protects a slow initialization phase.\n\nReadiness controls traffic eligibility. Liveness can trigger a restart when the process is stuck under the chosen health contract.\n\nDo not make liveness depend on every remote service; an outage can cause a restart storm. A worker also needs a progress/processing health model, not necessarily the web app’s HTTP probe.\n\nResource requests affect scheduling; limits affect runtime behavior under the selected resource type. CPU throttling and memory termination can look like app bugs.\n\nA rollout needs compatible schema, ready new pods, graceful old-pod shutdown, and an explicit rollback/data plan."
     },
     {
       "title": "Follow one item",
-      "detail": "New specification → new pods start → startup check → readiness allows traffic → old pods drain → process receives termination signal → unfinished work completes or becomes safely retryable. Observe rollout and user-level error/latency.\n\nIf a worker is terminated after DB commit but before offset/queue acknowledgement, its replacement may repeat the item. Infrastructure shutdown and business idempotence must cooperate."
+      "detail": "New specification → new pods start → startup check → readiness allows traffic → old pods drain → process receives termination signal → unfinished work completes or becomes safely retryable.\n\nObserve rollout and user-level error/latency.\n\nIf a worker is terminated after DB commit but before offset/queue acknowledgement, its replacement may repeat the item. Infrastructure shutdown and business idempotence must cooperate."
     },
     {
       "title": "Try the failure",
-      "detail": "A probe that requires login can fail every pod. Tight memory limits can cause repeated OOM termination. A code rollback does not reverse a destructive migration."
+      "detail": "A probe that requires login can fail every pod. Tight memory limits can cause repeated OOM termination.\n\nA code rollback does not reverse a destructive migration."
     }
   ],
   "sources": [

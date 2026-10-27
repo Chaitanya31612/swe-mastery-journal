@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Saved intent",
-      "detail": "A remote call crosses a failure boundary. The provider can reject, respond slowly, complete and lose the response, or return malformed data. A timeout says you did not get an answer in time; it does not prove no side effect occurred."
+      "detail": "## Understand the idea\n\nA remote call crosses a failure boundary. The provider can reject, respond slowly, complete and lose the response, or return malformed data.\n\nA timeout says you did not get an answer in time; it does not prove no side effect occurred.\n\nChoose connection/response timeouts and an overall request budget. Limit attempts and use backoff with jitter where appropriate.\n\nRetry only failures and operations whose semantics allow it. A circuit breaker can stop repeated pressure on a failing dependency; it does not repair correctness or replace a timeout.\n\nKeep an adapter around the provider so your use case works with a small result contract.\n\nRecord correlation ID, logical command key, attempt number, duration, and outcome category without logging secrets or whole payloads."
     },
     {
       "title": "Follow one item",
-      "detail": "Business change commits with a receipt intent. A worker sends it with eventKey E. The provider accepts E but the response is lost. A retry uses E again under the provider’s documented key contract, or reconciliation resolves uncertainty when such a contract is absent.\n\nDo not retry an entire use case if that repeats unrelated writes. Put the retry around the boundary you actually intend to repeat."
+      "detail": "Business change commits with a receipt intent. A worker sends it with eventKey E.\n\nThe provider accepts E but the response is lost. A retry uses E again under the provider’s documented key contract, or reconciliation resolves uncertainty when such a contract is absent.\n\nDo not retry an entire use case if that repeats unrelated writes. Put the retry around the boundary you actually intend to repeat."
     },
     {
       "title": "Try the failure",
-      "detail": "Nested retries multiply attempts. A 3-attempt client inside a 3-attempt job can make nine calls. A fallback that reports success without performing the required effect is a false result."
+      "detail": "Nested retries multiply attempts. A 3-attempt client inside a 3-attempt job can make nine calls.\n\nA fallback that reports success without performing the required effect is a false result."
     }
   ],
   "sources": [

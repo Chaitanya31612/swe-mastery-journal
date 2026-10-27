@@ -7,5 +7,6 @@ WHERE tenant_id = $1 AND published = true
 ORDER BY embedding <=> $2::vector
 LIMIT 5;
 ```
+Here $1 comes from the authenticated actor and $2 from a validated vector. The operator is cosine distance.
 
-Here $1 comes from the authenticated actor and $2 from a validated vector. The operator is cosine distance. Lower distance ranks earlier. The exact query plan and model/distance compatibility still need measurement.
+Lower distance ranks earlier. The exact query plan and model/distance compatibility still need measurement.

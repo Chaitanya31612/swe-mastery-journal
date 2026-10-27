@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Domain delegation",
-      "detail": "DNS resolves a name to a destination. It does not forward each HTTP request through a Rails controller. Route 53 can manage DNS records and health/routing policies. Cached answers mean a record change is not an instantaneous global traffic switch."
+      "detail": "## Understand the idea\n\nDNS resolves a name to a destination. It does not forward each HTTP request through a Rails controller.\n\nRoute 53 can manage DNS records and health/routing policies. Cached answers mean a record change is not an instantaneous global traffic switch.\n\nTLS certificates connect a name to a trusted identity under certificate rules. ACM can manage supported certificates, but you still configure validation and attach the certificate to the right service.\n\nServices can have specific certificate-region requirements; verify those for ALB versus CloudFront.\n\nSetup: own/control the domain, establish the hosted zone and registrar delegation, create/validate the certificate, attach it to the selected listener/distribution, create the deliberate alias/record, and test DNS plus HTTPS separately.\n\nKeep domain renewal and validation records in the ownership map."
     },
     {
       "title": "Follow one item",

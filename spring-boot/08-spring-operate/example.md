@@ -6,5 +6,6 @@ management.endpoints.web.exposure.include=health,info
 management.endpoint.health.show-details=never
 spring.jpa.open-in-view=false
 ```
+Capstone: build POST /tasks, GET /tasks/{id}, and POST /tasks/{id}/complete in the sandbox. Use request DTOs, a service, persistence, ownership, tests, and a fake notification boundary.
 
-Capstone: build POST /tasks, GET /tasks/{id}, and POST /tasks/{id}/complete in the sandbox. Use request DTOs, a service, persistence, ownership, tests, and a fake notification boundary. Read the SQL count for the list endpoint. Add one failure at a time.
+Read the SQL count for the list endpoint. Add one failure at a time.

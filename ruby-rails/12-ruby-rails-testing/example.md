@@ -14,5 +14,6 @@ class CompleteTask
   end
 end
 ```
+This unit seam teaches behavior, not transaction safety. The capstone also needs database and request tests in a separate training app.
 
-This unit seam teaches behavior, not transaction safety. The capstone also needs database and request tests in a separate training app. Use synthetic rows. Never run course commands in the work repository.
+Use synthetic rows. Never run course commands in the work repository.

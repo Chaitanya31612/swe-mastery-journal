@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Request ID",
-      "detail": "A useful service needs more than a happy-path endpoint. Ask how it starts, how you know it is healthy, how it behaves when a dependency slows down, and how you undo a release."
+      "detail": "# The idea\n\nA useful service needs more than a happy-path endpoint.\n\nAsk how it starts, how you know it is healthy, how it behaves when a dependency slows down, and how you undo a release.\n\nLogs explain individual events. Metrics show trends such as error rate and latency.\n\nTraces connect work across services. Give every request a correlation ID, but do not log passwords or whole request bodies.\n\nA liveness check asks if the process should be restarted. Readiness asks whether it should receive traffic.\n\nSet connection and response timeouts on outbound calls. Retry only failures that can safely be retried.\n\nUse limited attempts and backoff. A retry without an idempotency rule may multiply writes.\n\nA queue also needs backlog monitoring and a recovery plan."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Start with a reported symptom: POST /complete takes 12 seconds. Find the request ID, then time the database step and provider step. Check whether timeouts and retries explain the total duration. A bigger thread pool may only increase pressure on the slow dependency.\n\nRelease a database change in compatible steps when old and new app versions overlap. Keep a rollback path. A feature flag cannot undo data already deleted. Write a short runbook: symptom, check, safe action, verification."
+      "detail": "Start with a reported symptom: POST /complete takes 12 seconds. Find the request ID, then time the database step and provider step.\n\nCheck whether timeouts and retries explain the total duration. A bigger thread pool may only increase pressure on the slow dependency.\n\nRelease a database change in compatible steps when old and new app versions overlap. Keep a rollback path.\n\nA feature flag cannot undo data already deleted. Write a short runbook: symptom, check, safe action, verification."
     },
     {
       "title": "Check the result",
-      "detail": "Health endpoints may expose internals if published without access control. Retry loops can create a traffic storm. A benchmark with one request does not measure a saturated connection pool."
+      "detail": "Health endpoints may expose internals if published without access control. Retry loops can create a traffic storm.\n\nA benchmark with one request does not measure a saturated connection pool."
     }
   ],
   "recallPrompt": "Without notes: Trace a failed request and explain configuration, timeouts, retries, and safe operation. Give a concrete failure example.",

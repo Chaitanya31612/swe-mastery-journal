@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Explicit input",
-      "detail": "A composable is a function that packages reusable stateful logic. It is not simply any helper with use in its name. A pure formatter is often just a function."
+      "detail": "## Understand the idea\n\nA composable is a function that packages reusable stateful logic. It is not simply any helper with use in its name.\n\nA pure formatter is often just a function.\n\nChoose where state is created. A ref inside useSelection gives each call its own selection.\n\nA ref at module scope is shared by every caller in that JavaScript runtime. That can be deliberate for a store, but dangerous for per-request state in server rendering.\n\nReturn refs when callers need to destructure reactive values. Accept a getter/ref when the input should remain live, and watch that input explicitly.\n\nRegister lifecycle cleanup while the component context is available. Detached listeners, intervals, and subscriptions must have a lifetime owner."
     },
     {
       "title": "Follow one item",
-      "detail": "Two components call useSelection. Each call allocates one ref, so they can select different tickets. Move the ref above the function and both callers now share it. Neither version is automatically better; the intended ownership decides.\n\nTest composables with pure seams when possible. For lifecycle-dependent behavior, mount a small component and verify listeners are removed when it unmounts."
+      "detail": "Two components call useSelection. Each call allocates one ref, so they can select different tickets.\n\nMove the ref above the function and both callers now share it. Neither version is automatically better; the intended ownership decides.\n\nTest composables with pure seams when possible. For lifecycle-dependent behavior, mount a small component and verify listeners are removed when it unmounts."
     },
     {
       "title": "Try the failure",

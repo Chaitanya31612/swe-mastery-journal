@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Intended base",
-      "detail": "Before review, compare against the intended base and inspect the actual outgoing patch. Explain the trigger, resulting behavior, test evidence, and known limitation. A long commit list is not a substitute for that explanation."
+      "detail": "## Understand the idea\n\nBefore review, compare against the intended base and inspect the actual outgoing patch. Explain the trigger, resulting behavior, test evidence, and known limitation.\n\nA long commit list is not a substitute for that explanation.\n\nFetch updates your remote-tracking knowledge. Integration is a separate decision.\n\nA rejected push means the remote state changed; inspect before deciding how to integrate. force-with-lease is a check against an expected tip, not permission to surprise collaborators.\n\nFor a release, name the exact commit/artifact, schema compatibility assumptions, and rollback/data-recovery plan. Keep hotfix backports traceable.\n\nA Git tag names a version but does not prove the deployed container matches it; connect it to an image digest or build record."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A tag can be moved unless policy protects it. A branch diff on the wrong base can hide important changes. A passing working-tree test may include uncommitted content."
+      "detail": "A tag can be moved unless policy protects it. A branch diff on the wrong base can hide important changes.\n\nA passing working-tree test may include uncommitted content."
     }
   ],
   "sources": [

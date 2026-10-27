@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Authorized candidates",
-      "detail": "Lexical search is useful for exact identifiers, rare terms, and matching words. Dense vector search can help with paraphrases. Hybrid search combines candidate signals. A reranker examines a query and candidate more directly to improve ordering. Each adds a different cost and failure mode.\n\nDo not add raw scores from unrelated systems without a defined, evaluated normalization. Rank fusion, such as reciprocal-rank fusion, combines positions rather than assuming scores share units. Rerank only permitted candidates and keep collection sizes bounded.\n\nSeparate candidate recall from final ranking. If the correct document never enters the candidate pool, a reranker cannot recover it. If it appears but is discarded during context assembly, retrieval itself may be fine. Trace the stage where evidence disappears."
+      "detail": "## Understand\n\nLexical search is useful for exact identifiers, rare terms, and matching words. Dense vector search can help with paraphrases.\n\nHybrid search combines candidate signals. A reranker examines a query and candidate more directly to improve ordering.\n\nEach adds a different cost and failure mode.\n\nDo not add raw scores from unrelated systems without a defined, evaluated normalization. Rank fusion, such as reciprocal-rank fusion, combines positions rather than assuming scores share units.\n\nRerank only permitted candidates and keep collection sizes bounded.\n\nSeparate candidate recall from final ranking. If the correct document never enters the candidate pool, a reranker cannot recover it.\n\nIf it appears but is discarded during context assembly, retrieval itself may be fine. Trace the stage where evidence disappears."
     },
     {
       "title": "Follow one input",
-      "detail": "Authorized corpus → lexical candidates + vector candidates → deduplicate/fuse → rerank → fit context budget → answer. Log safe candidate IDs and stage ranks. Evaluate exact-ID, paraphrase, ambiguous, and no-answer cases separately."
+      "detail": "Authorized corpus → lexical candidates + vector candidates → deduplicate/fuse → rerank → fit context budget → answer. Log safe candidate IDs and stage ranks.\n\nEvaluate exact-ID, paraphrase, ambiguous, and no-answer cases separately."
     },
     {
       "title": "Try the failure",

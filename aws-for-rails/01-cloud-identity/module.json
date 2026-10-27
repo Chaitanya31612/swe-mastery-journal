@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Training account",
-      "detail": "An AWS request is made by a principal under a permission context. Human sign-in and application identity should be separate. Use a dedicated training account/profile and temporary credentials. A workload normally receives a role instead of a permanent access key baked into its image."
+      "detail": "# Start with one question: who is making this request?\n\nAWS checks an identity and its permissions before allowing an operation.\n\nThat identity is called a **principal**. It might represent a person or an application.\n\n## Keep people and applications separate\n\nUse your own sign-in flow for human access.\n\nGive an application a role with the permissions it needs. Avoid putting a permanent access key inside its container image.\n\n```text\nPerson or workload → identity → permission checks → allowed AWS action\n```\n\n## A role has two important parts\n\n- **Trust policy:** who may use this role?\n- **Permission policies:** what actions and resources may it use?\n\nAn explicit deny or another policy boundary can still block a request.\n\nThe account and region also matter. Check them before you create or change resources.\n\n## A small training exercise\n\nUse a separate training account or profile. Sign in with temporary credentials and check the current identity and region.\n\nCreate a narrow workload role. Test one action it allows and one it must deny.\n\n## Remember\n\n“Who are you?” and “What may you do?” are different checks.\n\nBudget alerts help you notice spending. They do not impose a hard spending limit.\n"
     },
     {
       "title": "Follow one item",
-      "detail": "Human signs in → temporary credentials identify a principal → workload assumes its permitted role → SDK signs a request → AWS evaluates action/resource/context → result or denial. For an AccessDenied, record the caller ARN, action, resource, and request ID without secrets.\n\nFor ECS, distinguish the task role used by app code from the execution role used for platform tasks such as image/secret retrieval. In EKS, use the supported pod identity mechanism rather than giving every pod the node’s broad privileges."
+      "detail": "Human signs in → temporary credentials identify a principal → workload assumes its permitted role → SDK signs a request → AWS evaluates action/resource/context → result or denial.\n\nFor an AccessDenied, record the caller ARN, action, resource, and request ID without secrets.\n\nFor ECS, distinguish the task role used by app code from the execution role used for platform tasks such as image/secret retrieval.\n\nIn EKS, use the supported pod identity mechanism rather than giving every pod the node’s broad privileges."
     },
     {
       "title": "Try the failure",

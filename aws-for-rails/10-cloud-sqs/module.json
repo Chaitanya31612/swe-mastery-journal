@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Queue message",
-      "detail": "A queue hands work to consumers. Receiving an SQS message does not remove it; visibility temporarily hides it under the queue’s contract. Successful processing is followed by deliberate deletion using the receipt handle. If processing fails or times out, work can be seen again."
+      "detail": "## Understand the idea\n\nA queue hands work to consumers. Receiving an SQS message does not remove it; visibility temporarily hides it under the queue’s contract.\n\nSuccessful processing is followed by deliberate deletion using the receipt handle. If processing fails or times out, work can be seen again.\n\nStandard and FIFO queues have different ordering/deduplication options, but neither makes your external side effect universally exactly once. A worker can commit to PostgreSQL and crash before deletion.\n\nDesign the business effect to handle repetition.\n\nSetup: choose queue type from the required ordering/throughput semantics, configure visibility/retention, a DLQ redrive policy, narrow producer/consumer permissions, and long polling.\n\nTest duplicate delivery, a poison message, and a job longer than the visibility window."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Deleting before processing can lose work. A too-short visibility window can overlap processing. A long visibility value can delay recovery after a real crash."
+      "detail": "Deleting before processing can lose work. A too-short visibility window can overlap processing.\n\nA long visibility value can delay recovery after a real crash."
     }
   ],
   "sources": [

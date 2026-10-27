@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,15 +72,15 @@
   "trace": [
     {
       "title": "Build context",
-      "detail": "A Dockerfile records image construction. Layer caching can speed repeated builds when stable dependency steps occur before frequently changing app files. A .dockerignore keeps unnecessary/private content out of the build context."
+      "detail": "## Understand the idea\n\nA Dockerfile records image construction. Layer caching can speed repeated builds when stable dependency steps occur before frequently changing app files.\n\nA .dockerignore keeps unnecessary/private content out of the build context.\n\nUse a deliberately selected base and dependency lockfile. Multi-stage builds can keep compilers out of the runtime image.\n\nRun the app with a non-root user when its runtime needs permit. Pass secrets through supported build/runtime mechanisms rather than copying them into layers.\n\nThe main process needs signal handling and graceful shutdown. Shell wrappers can change how signals reach the app.\n\nUse an exec-style command or an entrypoint that execs the application. Image size matters, but a tiny unmaintainable image is not the goal."
     },
     {
       "title": "Follow one item",
-      "detail": "Build context → dependency layers → app layer → runtime command → registry digest. Change only a source file and inspect which layers rebuild. Then change a gem lock and predict the invalidation.\n\nDuring stop, SIGTERM should reach the process so it can stop taking work and finish or abandon it safely within the orchestrator’s grace period."
+      "detail": "Build context → dependency layers → app layer → runtime command → registry digest. Change only a source file and inspect which layers rebuild.\n\nThen change a gem lock and predict the invalidation.\n\nDuring stop, SIGTERM should reach the process so it can stop taking work and finish or abandon it safely within the orchestrator’s grace period."
     },
     {
       "title": "Try the failure",
-      "detail": "Deleting a secret in a later layer does not erase it from earlier layers. A mutable base/tag can change rebuild output. A shell that does not exec can interfere with signal forwarding."
+      "detail": "Deleting a secret in a later layer does not erase it from earlier layers. A mutable base/tag can change rebuild output.\n\nA shell that does not exec can interfere with signal forwarding."
     }
   ],
   "sources": [

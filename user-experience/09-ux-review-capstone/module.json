@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Task walkthrough",
-      "detail": "Use your reading of The Design of Everyday Things and Don’t Make Me Think as a starting point, then apply a repeatable review. Look for a mismatch between what users intend, what the interface suggests, what the system does, and what feedback explains."
+      "detail": "## Understand the idea\n\nUse your reading of The Design of Everyday Things and Don’t Make Me Think as a starting point, then apply a repeatable review.\n\nLook for a mismatch between what users intend, what the interface suggests, what the system does, and what feedback explains.\n\nSeparate severity from personal dislike. A lost draft or wrong audience can block or harm the task.\n\nA spacing inconsistency may be less urgent. Rate impact, frequency/context, and recoverability with evidence, then state uncertainty.\n\nCreate a before/after argument: observed task problem → smallest design change → mechanism expected to help → validation plan. Include empty, slow, failed, partial-success, and permission states.\n\nReview the implementation with keyboard, zoom, real data shapes, and realistic wording."
     },
     {
       "title": "Follow one item",
-      "detail": "First walk the task yourself. Then inspect controls, grouping, language, feedback, recovery, and access. Then observe another person attempting it. Turn the most consequential finding into a prototype and a focused test.\n\nKeep a small review checklist in daily work: task, context, next action, current state, error prevention, recovery, access, and evidence. Use heuristics to ask questions, not as decorative law names in a design review."
+      "detail": "First walk the task yourself. Then inspect controls, grouping, language, feedback, recovery, and access.\n\nThen observe another person attempting it. Turn the most consequential finding into a prototype and a focused test.\n\nKeep a small review checklist in daily work: task, context, next action, current state, error prevention, recovery, access, and evidence.\n\nUse heuristics to ask questions, not as decorative law names in a design review."
     },
     {
       "title": "Try the failure",
-      "detail": "A beautiful mockup can hide missing system states. A law name does not prove a design. A new interaction can increase learning cost even if it looks cleaner."
+      "detail": "A beautiful mockup can hide missing system states. A law name does not prove a design.\n\nA new interaction can increase learning cost even if it looks cleaner."
     }
   ],
   "sources": [

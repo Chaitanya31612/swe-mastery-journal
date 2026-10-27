@@ -14,5 +14,4 @@ services:
       POSTGRES_PASSWORD: learning-only
       POSTGRES_DB: tickets
 ```
-
 This small fragment omits persistence/health to make those decisions visible. Use the complete event lab for the tested setup; credentials here are synthetic local training values.

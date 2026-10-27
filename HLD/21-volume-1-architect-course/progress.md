@@ -1,6 +1,10 @@
 # Personal progress and recall record
 
-Prepared 6 October 2026. This course has been authored; **your proficiency is unassessed** until attempts exist. Nothing below starts marked complete. Save attempts in an `attempts/` folder you create here, or in your existing journal convention. Preserve first attempts separately from repairs.
+Prepared 6 October 2026. This course has been authored; **your proficiency is unassessed** until attempts exist.
+
+Nothing below starts marked complete. Save attempts in an `attempts/` folder you create here, or in your existing journal convention.
+
+Preserve first attempts separately from repairs.
 
 ## Foundation checkpoint — 1 November 2026
 
@@ -13,11 +17,15 @@ Prepared 6 October 2026. This course has been authored; **your proficiency is un
 - [ ] One unfamiliar 45-minute design plus feedback, repair, and reattempt within a two-hour block.
 - [ ] Foundation result recorded from the rubric, not reading status.
 
-These allocate about 26 hours from 6 October. Prior completed work can substitute only when you can retrieve and apply it. If less time is available, record unfinished work and the level actually demonstrated.
+These allocate about 26 hours from 6 October. Prior completed work can substitute only when you can retrieve and apply it.
+
+If less time is available, record unfinished work and the level actually demonstrated.
 
 ## Full-course sequence — six module hours plus one review hour/week
 
-The following packs 72 module hours into twelve weeks. “Week” is a progress block; it need not start on a fixed calendar day. The foundation checkpoint above may reorder module 05 earlier. Afterwards resume the remaining sequence without double-counting completed work.
+The following packs 72 module hours into twelve weeks. “Week” is a progress block; it need not start on a fixed calendar day.
+
+The foundation checkpoint above may reorder module 05 earlier. Afterwards resume the remaining sequence without double-counting completed work.
 
 - Week 1: module 00, 4 h; module 01, 2 h; mixed review, 1 h.
 - Week 2: module 01, 2 h; module 02, 4 h; mixed review, 1 h.
@@ -81,4 +89,6 @@ Record decision question, original attempt date, next due date, result (retrieve
 - Demonstrated level and remaining gaps:
 - Next maintenance session:
 
-Completion statement: “I demonstrated ___ through ___. My unresolved mechanisms are ___. My next targeted practice is ___.”
+Completion statement: “I demonstrated ___ through ___. My unresolved mechanisms are ___.
+
+My next targeted practice is ___.”

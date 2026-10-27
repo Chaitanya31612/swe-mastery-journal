@@ -13,5 +13,6 @@ class ReserveStock
   end
 end
 ```
+The lock serializes competing writes to that row while the transaction runs. It does not serialize all inventory worldwide.
 
-The lock serializes competing writes to that row while the transaction runs. It does not serialize all inventory worldwide. Keep slow network calls outside the row-lock window.
+Keep slow network calls outside the row-lock window.

@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "HTTP proxy",
-      "detail": "Nginx can accept HTTP traffic and proxy it to application servers, serve suitable static content, and enforce selected request/timeout rules. It is not a database pool or application permission layer. Managed ALB/CDN choices may cover some needs differently."
+      "detail": "## Understand the idea\n\nNginx can accept HTTP traffic and proxy it to application servers, serve suitable static content, and enforce selected request/timeout rules. It is not a database pool or application permission layer.\n\nManaged ALB/CDN choices may cover some needs differently.\n\nPgBouncer pools PostgreSQL connections. Its pooling mode changes how long a client is associated with a server connection.\n\nTransaction pooling can conflict with assumptions about session state or certain prepared-statement/client behaviors unless the selected versions/configuration support them.\n\nAdd either tool for a measured boundary. A proxy timeout, app timeout, and provider timeout should form a coherent budget.\n\nA pool should protect capacity, not hide long transactions forever. Verify Rails/pg compatibility with the chosen mode in a separate test environment."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Adding more pools can create more waiting layers. A proxy can buffer or time out large requests differently from the app. Session assumptions can break under a different pooling mode."
+      "detail": "Adding more pools can create more waiting layers. A proxy can buffer or time out large requests differently from the app.\n\nSession assumptions can break under a different pooling mode."
     }
   ],
   "sources": [

@@ -4,7 +4,9 @@
 
 Render partial output without treating it as a validated final answer.
 
-Read idea → example → trace → failure. Then attempt practice/repair.md and practice/transfer.md. Answers are separate in answers/. The app also provides prediction, quiz, recall, and optional AI review.
+Read idea → example → trace → failure. Then attempt practice/repair.md and practice/transfer.md.
+
+Answers are separate in answers/. The app also provides prediction, quiz, recall, and optional AI review.
 
 ```mermaid
 flowchart TD

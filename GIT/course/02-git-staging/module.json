@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -75,15 +75,15 @@
   "trace": [
     {
       "title": "Mixed edits",
-      "detail": "A good commit captures one reviewable reason for change. Files are not always the right unit: one file may contain a bug fix and an unrelated cleanup. Partial staging chooses hunks or lines for the proposed snapshot."
+      "detail": "# The idea\n\nA good commit captures one reviewable reason for change. Files are not always the right unit: one file may contain a bug fix and an unrelated cleanup.\n\nPartial staging chooses hunks or lines for the proposed snapshot.\n\nRead both diffs before committing. The unstaged diff explains what you have not selected.\n\nThe cached diff explains what you are about to publish. A test in the working tree may use unstaged changes; that does not prove the staged snapshot works alone.\n\nKeep temporary work with a deliberate stash or local commit before switching context. Stashes can include different combinations of tracked and untracked work depending on flags.\n\nInspect their contents rather than assuming every file was saved."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Partial staging updates only the chosen parts of the index. The file in your editor can still contain both changes. Unstaging copies the HEAD version back into the index while keeping the working edit for this command form.\n\nBefore claiming a staged commit passes tests, inspect it in a disposable clean checkout or worktree after committing locally. Do not run a destructive cleanup on your active work just to get a clean test environment."
+      "detail": "Partial staging updates only the chosen parts of the index. The file in your editor can still contain both changes.\n\nUnstaging copies the HEAD version back into the index while keeping the working edit for this command form.\n\nBefore claiming a staged commit passes tests, inspect it in a disposable clean checkout or worktree after committing locally.\n\nDo not run a destructive cleanup on your active work just to get a clean test environment."
     },
     {
       "title": "Check the result",
-      "detail": "git add . can include an unrelated change or secret. Ignore rules do not remove a secret from existing history. Stash pop can conflict and should not be treated as a guaranteed clean restore."
+      "detail": "git add . can include an unrelated change or secret. Ignore rules do not remove a secret from existing history.\n\nStash pop can conflict and should not be treated as a guaranteed clean restore."
     }
   ],
   "recallPrompt": "Without notes: Separate changes with partial staging and verify exactly what a commit will contain. Give a concrete failure example.",

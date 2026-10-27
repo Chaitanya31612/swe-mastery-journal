@@ -10,5 +10,6 @@ response = client.responses.create(
 )
 # Inspect completion/refusal state, parse output, then validate domain meaning.
 ```
+Optional provider example; no API key is needed for the offline lab. A schema variable and business parser are defined in its files.
 
-Optional provider example; no API key is needed for the offline lab. A schema variable and business parser are defined in its files. Model and SDK compatibility must be checked before an online call.
+Model and SDK compatibility must be checked before an online call.

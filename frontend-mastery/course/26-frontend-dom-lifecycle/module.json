@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Mount owner",
-      "detail": "An event travels through capture, target, and bubble phases when the event supports propagation. target is where it originated; currentTarget is the element whose handler is running. Event delegation puts a handler on a stable ancestor and checks the relevant descendant. It is useful for dynamic lists, but needs a precise match and containment check."
+      "detail": "## Understand the idea\n\nAn event travels through capture, target, and bubble phases when the event supports propagation. target is where it originated; currentTarget is the element whose handler is running.\n\nEvent delegation puts a handler on a stable ancestor and checks the relevant descendant. It is useful for dynamic lists, but needs a precise match and containment check.\n\npreventDefault cancels a supported default action. stopPropagation changes event propagation. They solve different problems.\n\nA button inside a form defaults to submit unless its type says otherwise. Correct HTML often avoids a JavaScript workaround.\n\nEvery long-lived resource needs an owner: window listener, timer, ResizeObserver, WebSocket, and subscription. Vue watchers created synchronously in setup are linked to the component; manually created resources still need cleanup.\n\nA watcher created later outside that scope may need explicit disposal."
     },
     {
       "title": "Follow one item",
-      "detail": "Open a screen → register resource → use it → navigate away → cleanup → reopen. Observe that only one listener/subscription remains active. Repeated mounting should not multiply calls.\n\nFor a nested icon click, compare target with currentTarget before reading dataset values. A handler attached to the button can use currentTarget for the button's data. Do not trust DOM attributes as server authorization."
+      "detail": "Open a screen → register resource → use it → navigate away → cleanup → reopen. Observe that only one listener/subscription remains active.\n\nRepeated mounting should not multiply calls.\n\nFor a nested icon click, compare target with currentTarget before reading dataset values. A handler attached to the button can use currentTarget for the button's data.\n\nDo not trust DOM attributes as server authorization."
     },
     {
       "title": "Try the failure",

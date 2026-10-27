@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Query category and failure",
-      "detail": "A question can need one passage, several linked facts, or a summary across a collection. Different retrieval strategies serve those needs. Query rewriting can improve wording but drift from the task. Multi-query search improves coverage at extra cost. Parent/child and hierarchical retrieval preserve structure. Graph-based methods can represent entities/relations and support broader summaries. Each adds data, evaluation and maintenance requirements.\n\nVectorless does not mean indexless or costless. A system such as PageIndex builds structured document indexes and uses model-guided navigation. Its results depend on extraction, tree quality, traversal, model behavior and query type. Conversation awareness, reference traversal and access control are engineering features that can also exist in vector-based systems.\n\nYour earlier notes give useful comparisons. Reframe their strongest claims as hypotheses to test: no method is universally better. Keep an exact/lexical/hybrid baseline, relevant query categories, authority metadata and a run budget."
+      "detail": "# Start with the question your search cannot answer well\n\nSome questions need one passage. Others need several linked facts or a summary of many documents.\n\nThose are different retrieval jobs.\n\n## Three ways to picture the search\n\n```text\nOne passage:        question → relevant excerpt\nDocument tree:      question → section → subsection → excerpt\nLinked facts:       question → related entities and evidence → combined answer\n```\n\nA document tree can help with long, structured documents. A graph can help connect facts spread across sources.\n\nBoth need useful source data, maintenance, and checks.\n\n## Do not choose a method from a slogan\n\n“Vectorless” does not mean “no index” or “no cost.” A tree is also a maintained search structure.\n\nVector-based systems can keep metadata, follow references, and use conversation context when you build those features.\n\nNo method is best for every question.\n\n## Compare on the same task\n\nUse the same corpus and labelled questions. Compare useful evidence, supported answers, latency, and cost.\n\nInclude missing evidence, changed documents, and permission filters.\n\nAdd query planning or another retrieval stage only when a measured failure makes it useful.\n\n## Remember\n\nChoose a retrieval method to fix a known search problem. Then check whether it actually fixed it.\n"
     },
     {
       "title": "Follow one input",
-      "detail": "Identify the failure → choose one retrieval enhancement → preserve original intent/access → inspect intermediate sources → compare to baseline → evaluate on held-out query categories. Keep traversal depth and evidence size bounded."
+      "detail": "Identify the failure → choose one retrieval enhancement → preserve original intent/access → inspect intermediate sources → compare to baseline → evaluate on held-out query categories.\n\nKeep traversal depth and evidence size bounded."
     },
     {
       "title": "Try the failure",
-      "detail": "An LLM-guided search can spend many calls on the wrong branch. A graph can preserve mistaken extracted relationships. “No vectors” does not remove authorization or hallucination risk."
+      "detail": "An LLM-guided search can spend many calls on the wrong branch. A graph can preserve mistaken extracted relationships.\n\n“No vectors” does not remove authorization or hallucination risk."
     }
   ],
   "sources": [

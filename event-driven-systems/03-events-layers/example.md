@@ -6,5 +6,4 @@ Rails → Ruby client → metadata discovery → partition leader
 Reporting client ← fetch records ← partition log
 KRaft controller quorum → cluster metadata/leadership
 ```
-
 Distinguish data-plane record traffic from control-plane metadata decisions. A controller outage and a consumer bug are different failure classes.

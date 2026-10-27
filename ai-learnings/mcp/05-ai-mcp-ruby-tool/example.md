@@ -12,5 +12,4 @@ class ReadShipmentFactsTool < MCP::Tool
   end
 end
 ```
-
 The complete lab supplies the service, context binding, routes, fixtures and checks. This fragment alone is not an authenticated server.

@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Permitted bounded selection",
-      "detail": "Comparing several records is a different task from looking up one. Code must verify access to every selected record, align the same fields, preserve missing values, and derive exact differences. The model can explain which supplied differences appear relevant, but it cannot create new facts or decide authorization.\n\nFor a work-queue briefing, compute groups and counts in code under the same active filter/scope. A narrative can suggest an order of attention, but its counts and labels must match the supplied aggregates. Keep “not available” distinct from zero and “same” distinct from “not compared.”\n\nBound selection size and context. The user should be able to inspect the underlying comparison or group table without the generated text. That deterministic view is useful when AI is unavailable or unhelpful."
+      "detail": "## Understand\n\nComparing several records is a different task from looking up one. Code must verify access to every selected record, align the same fields, preserve missing values, and derive exact differences.\n\nThe model can explain which supplied differences appear relevant, but it cannot create new facts or decide authorization.\n\nFor a work-queue briefing, compute groups and counts in code under the same active filter/scope.\n\nA narrative can suggest an order of attention, but its counts and labels must match the supplied aggregates. Keep “not available” distinct from zero and “same” distinct from “not compared.”\n\nBound selection size and context. The user should be able to inspect the underlying comparison or group table without the generated text.\n\nThat deterministic view is useful when AI is unavailable or unhelpful."
     },
     {
       "title": "Follow one input",
-      "detail": "Selection/filter → access check for all records → aligned facts or exact groups → bounded context → generated draft → field/number checks → inspectable deterministic table. Test a mixed-authority selection and an empty result."
+      "detail": "Selection/filter → access check for all records → aligned facts or exact groups → bounded context → generated draft → field/number checks → inspectable deterministic table.\n\nTest a mixed-authority selection and an empty result."
     },
     {
       "title": "Try the failure",

@@ -1,12 +1,20 @@
 ## One complete reference design
 
-This is a design reference. The Dispatch Desk lab runs the same narrow boundaries in a different domain. This answer does not claim a deployed support application.
+This is a design reference. The Dispatch Desk lab runs the same narrow boundaries in a different domain.
+
+This answer does not claim a deployed support application.
 
 ### 1. Define the task and its truth owners
 
-Finding tickets needs a proposed filter, not generated SQL. Explaining a delay needs current reviewed reasons. Comparing selected tickets needs code to align the same fields. Answering a policy question needs permitted document versions. Treat these as four small use cases.
+Finding tickets needs a proposed filter, not generated SQL. Explaining a delay needs current reviewed reasons.
 
-Keep organization, actor, permission checks, counts, dates, reason codes and links in code. The model can map language to an allowlisted intent or draft a short explanation. No write tool is exposed. A manual filter and reviewed reason card remain useful when generation fails.
+Comparing selected tickets needs code to align the same fields. Answering a policy question needs permitted document versions.
+
+Treat these as four small use cases.
+
+Keep organization, actor, permission checks, counts, dates, reason codes and links in code. The model can map language to an allowlisted intent or draft a short explanation.
+
+No write tool is exposed. A manual filter and reviewed reason card remain useful when generation fails.
 
 ```mermaid
 flowchart TD
@@ -43,9 +51,17 @@ flowchart TD
 
 ### 3. Trace a delayed explanation
 
-Request arrives → authenticate → check selected ticket → create queued run → return 202. Worker claims it → rechecks actor and ticket → builds versioned facts → calls adapter under a deadline → validates result → saves completed/fallback/unavailable. The UI polls an owned run. The read path rechecks access and compares current source version. Changed data produces a stale state and a refresh action.
+Request arrives → authenticate → check selected ticket → create queued run → return 202.
 
-Do not hold a database lock during a remote model call. A worker crash after a claim needs a bounded lease or reconciliation process. A completed-job guard alone does not recover abandoned work. A retry policy needs a budget and should avoid replaying effects blindly. This release has no business write effects, which keeps recovery simpler.
+Worker claims it → rechecks actor and ticket → builds versioned facts → calls adapter under a deadline → validates result → saves completed/fallback/unavailable. The UI polls an owned run.
+
+The read path rechecks access and compares current source version. Changed data produces a stale state and a refresh action.
+
+Do not hold a database lock during a remote model call. A worker crash after a claim needs a bounded lease or reconciliation process.
+
+A completed-job guard alone does not recover abandoned work. A retry policy needs a budget and should avoid replaying effects blindly.
+
+This release has no business write effects, which keeps recovery simpler.
 
 ### 4. Demonstrate specific failures
 
@@ -65,18 +81,36 @@ The expected outcome is a testable contract, not a particular class name. Record
 
 ### 5. Evaluate quality separately
 
-Create synthetic questions with expected decisions and required supporting facts. Compare a deterministic baseline, then a model-assisted version on the same held-out cases. Track unauthorized disclosure and unsupported typed facts separately from helpfulness, clarification quality, latency and cost. Break results down by failure category; an average can hide a serious access defect.
+Create synthetic questions with expected decisions and required supporting facts. Compare a deterministic baseline, then a model-assisted version on the same held-out cases.
 
-Human-review ambiguous explanations and judge disagreements. A model judge is a fallible measurement aid. Keep its rubric and version fixed for comparisons. Do not let it declare a missing test executed.
+Track unauthorized disclosure and unsupported typed facts separately from helpfulness, clarification quality, latency and cost. Break results down by failure category; an average can hide a serious access defect.
+
+Human-review ambiguous explanations and judge disagreements. A model judge is a fallible measurement aid.
+
+Keep its rubric and version fixed for comparisons. Do not let it declare a missing test executed.
 
 ### 6. Make a release decision
 
-Choose pass/fail criteria before reviewing outputs. For a small internal pilot, require no known access-boundary failures in the test set, correct typed results, acceptable unsupported-claim rates under human review, a working fallback, and latency/spend within agreed limits. These sample criteria do not prove zero future failures. Define the actual thresholds with the task owner.
+Choose pass/fail criteria before reviewing outputs.
 
-Release behind a feature flag to a small group. Monitor failures, source freshness, latency, cost and manual fallback use. Roll back to the deterministic path when a boundary fails or budgets are exceeded. Keep prompt/model/schema/retrieval versions on traces without routinely logging sensitive payloads.
+For a small internal pilot, require no known access-boundary failures in the test set, correct typed results, acceptable unsupported-claim rates under human review, a working fallback, and latency/spend within agreed limits.
+
+These sample criteria do not prove zero future failures. Define the actual thresholds with the task owner.
+
+Release behind a feature flag to a small group. Monitor failures, source freshness, latency, cost and manual fallback use.
+
+Roll back to the deterministic path when a boundary fails or budgets are exceeded. Keep prompt/model/schema/retrieval versions on traces without routinely logging sensitive payloads.
 
 ### Review your own submission
 
-Use four dimensions, each 0–3. Predict: follow a concrete input and failure. Change: produce a coherent boundary and valid code/design. Verify: show observed expected/actual checks, or score a proposed-only plan at most 1. Explain: justify a tradeoff and a changed requirement. A total is provisional. A missing authorization or truth boundary is a reason to repair the design even if other areas score well.
+Use four dimensions, each 0–3. Predict: follow a concrete input and failure.
 
-Return a week later. Solve a similar task for equipment maintenance or school library operations from a blank page. Keep the structure; reconsider the facts, permissions and failure costs.
+Change: produce a coherent boundary and valid code/design. Verify: show observed expected/actual checks, or score a proposed-only plan at most 1.
+
+Explain: justify a tradeoff and a changed requirement. A total is provisional.
+
+A missing authorization or truth boundary is a reason to repair the design even if other areas score well.
+
+Return a week later. Solve a similar task for equipment maintenance or school library operations from a blank page.
+
+Keep the structure; reconsider the facts, permissions and failure costs.

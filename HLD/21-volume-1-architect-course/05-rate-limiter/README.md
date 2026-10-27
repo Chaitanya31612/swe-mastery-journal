@@ -1,6 +1,8 @@
 # 05 — Distributed rate limiting and overload control
 
-Budget: **4 hours** including local feedback/retrieval. Prerequisites: modules 00–02; 04 useful. Book connection: Chapter 4; PDF pages 51–70.
+Budget: **4 hours** including local feedback/retrieval. Prerequisites: modules 00–02; 04 useful.
+
+Book connection: Chapter 4; PDF pages 51–70.
 
 Outcome: Choose an algorithm from the exact admission contract, enforce an atomic decision, and handle store/region failure.
 
@@ -12,4 +14,6 @@ Outcome: Choose an algorithm from the exact admission contract, enforce an atomi
 4. Only after submitting your attempt, open [solutions](answers/01-solutions.md). Compare consequences, not diagram appearance.
 5. Schedule delayed recall: Compare exact rolling limits with bursty token refill. Trace a last-token race and global-budget isolation.
 
-Use [the rubric](../assessment-rubric.md) and [the learning protocol](../learning-protocol.md). A focused local exercise may leave rubric dimensions unassessed; use full designs to establish overall independence. Sources are optional verification in [the source map](../sources.md). The lesson includes the mechanisms needed for these exercises.
+Use [the rubric](../assessment-rubric.md) and [the learning protocol](../learning-protocol.md). A focused local exercise may leave rubric dimensions unassessed; use full designs to establish overall independence.
+
+Sources are optional verification in [the source map](../sources.md). The lesson includes the mechanisms needed for these exercises.

@@ -1,7 +1,35 @@
-# The idea
+# Start with this
 
-Spring Boot builds on Spring. Spring manages objects called beans. Boot supplies useful defaults when the required classes and settings are present. This is auto-configuration. It can step aside when you define your own bean.
+You write Java classes. Spring creates and connects some of their objects for you.
 
-Your main method starts an application context. The context finds component classes, creates beans, and connects dependencies. A web application also starts an embedded server. A Java object created with new is still an ordinary object; Spring does not manage it automatically.
+A Spring-managed object is called a **bean**. Spring Boot adds useful defaults so you need less setup.
 
-Start small: one application class, one controller, one request. Keep the main class above your feature packages so component scanning can find them. A green startup log only says startup succeeded. It does not prove every request or database query works.
+## A small picture
+
+```text
+main() starts Spring
+       ↓
+Spring finds your components
+       ↓
+Spring creates beans and connects them
+       ↓
+The web server starts accepting requests
+```
+
+## Try this example
+
+You add a controller for `GET /tasks`. Spring must find that controller before it can handle the request.
+
+Keep the main application class above your feature packages. That gives component scanning a useful place to start.
+
+Creating an object with `new` does not automatically make it a Spring bean.
+
+## What Boot adds
+
+Boot checks the classes and settings available to the app. It can then set up common parts, such as a web server.
+
+This is **auto-configuration**. Your own bean can replace a default when the auto-configuration conditions allow it.
+
+## Remember
+
+A successful startup means the app started. Send a real request to check that the route and its dependencies work.

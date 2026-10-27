@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Built artifact",
-      "detail": "A unit suite can pass while the real application has the wrong bean, migration, permission, or SQL behavior. Keep focused integration tests for the boundaries you rely on. Use a disposable real database when engine behavior matters."
+      "detail": "## Understand the idea\n\nA unit suite can pass while the real application has the wrong bean, migration, permission, or SQL behavior. Keep focused integration tests for the boundaries you rely on.\n\nUse a disposable real database when engine behavior matters.\n\nA release changes code, configuration, and sometimes data. Old and new instances may overlap.\n\nA migration should remain compatible during that overlap. A code rollback does not restore deleted data or unsend messages.\n\nRehearse a small release with a known failure. Observe readiness, startup migration ownership, graceful shutdown, in-flight requests, and a rollback decision.\n\nA runbook is a short path from symptom to check to safe action to verification."
     },
     {
       "title": "Follow one item",
-      "detail": "Build an immutable artifact → verify its configuration → apply a deliberate migration → start and check readiness → send a smoke request → observe → promote or roll back. Keep migration execution separate from ordinary request scaling.\n\nTests should show both permitted and denied behavior, transaction rollback, and an adapter failure. A green health endpoint alone does not prove the feature works."
+      "detail": "Build an immutable artifact → verify its configuration → apply a deliberate migration → start and check readiness → send a smoke request → observe → promote or roll back.\n\nKeep migration execution separate from ordinary request scaling.\n\nTests should show both permitted and denied behavior, transaction rollback, and an adapter failure. A green health endpoint alone does not prove the feature works."
     },
     {
       "title": "Try the failure",
-      "detail": "Tests wrapped in a transaction can hide after-commit behavior. A fake repository cannot prove a unique index. A rollback button cannot undo every data effect."
+      "detail": "Tests wrapped in a transaction can hide after-commit behavior. A fake repository cannot prove a unique index.\n\nA rollback button cannot undo every data effect."
     }
   ],
   "sources": [

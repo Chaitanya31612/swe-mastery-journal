@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "HTTPS listener",
-      "detail": "An ALB accepts HTTP(S) traffic and forwards it according to listeners/rules to target groups. The target group knows where application targets live and how health is checked. A listening app port alone does not prove the app should receive traffic."
+      "detail": "## Understand the idea\n\nAn ALB accepts HTTP(S) traffic and forwards it according to listeners/rules to target groups. The target group knows where application targets live and how health is checked.\n\nA listening app port alone does not prove the app should receive traffic.\n\nTLS termination, forwarded headers, idle timeouts, and target health affect Rails behavior. Configure trusted proxy/host handling deliberately.\n\nA bad redirect rule can create an HTTPS loop when the app misinterprets the original scheme.\n\nSetup: create the ALB in suitable subnets, attach an allowed ingress group, add an HTTPS listener/certificate, create a target group with the correct app port and readiness path, allow only the ALB-to-app path, register targets, and observe a request and a failed target."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A health path that requires user login can mark every target unhealthy. A constant OK may hide failed startup dependencies. Sticky sessions can conceal session/storage assumptions rather than repair them."
+      "detail": "A health path that requires user login can mark every target unhealthy. A constant OK may hide failed startup dependencies.\n\nSticky sessions can conceal session/storage assumptions rather than repair them."
     }
   ],
   "sources": [

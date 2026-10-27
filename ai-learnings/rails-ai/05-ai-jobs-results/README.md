@@ -19,5 +19,4 @@ stateDiagram-v2
  Design it before using a durable worker.
  end note
 ```
-
 Remember: **A run has an owner, a snapshot, and an honest state.**

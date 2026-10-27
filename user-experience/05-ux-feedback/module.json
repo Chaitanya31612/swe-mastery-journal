@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Action acknowledged",
-      "detail": "After an action, people need to know whether the system heard them, whether work is still running, and what changed. “Saved” means something different from “Queued.” A progress indicator must describe the boundary it actually observes."
+      "detail": "## Understand the idea\n\nAfter an action, people need to know whether the system heard them, whether work is still running, and what changed.\n\n“Saved” means something different from “Queued.” A progress indicator must describe the boundary it actually observes.\n\nUse a determinate bar only when you know a meaningful total. Use a clear waiting state otherwise.\n\nApproximate response-time heuristics can help thinking, but no single threshold fits every network and task. Tell people what they can safely do while waiting.\n\nPrevent predictable errors where possible. For reversible actions, an understandable Undo can be less disruptive than repeated confirmation dialogs.\n\nFor irreversible or high-consequence actions, make the target and consequence explicit. A confirm dialog that says only “Are you sure?” adds interruption without understanding."
     },
     {
       "title": "Follow one item",
-      "detail": "Trace click → acknowledged request → accepted job → processing → result or failure. Map each message to a real backend state. An optimistic UI should explain pending state when the result is not yet confirmed.\n\nFor partial success, show successful and failed items separately with a retry policy. Do not make users reconstruct a 50-item selection from memory."
+      "detail": "Trace click → acknowledged request → accepted job → processing → result or failure. Map each message to a real backend state.\n\nAn optimistic UI should explain pending state when the result is not yet confirmed.\n\nFor partial success, show successful and failed items separately with a retry policy. Do not make users reconstruct a 50-item selection from memory."
     },
     {
       "title": "Try the failure",
-      "detail": "A spinner with no timeout/recovery can feel abandoned. A percentage based only on elapsed time can be misleading. Toasts that vanish before users read them are poor error storage."
+      "detail": "A spinner with no timeout/recovery can feel abandoned. A percentage based only on elapsed time can be misleading.\n\nToasts that vanish before users read them are poor error storage."
     }
   ],
   "sources": [

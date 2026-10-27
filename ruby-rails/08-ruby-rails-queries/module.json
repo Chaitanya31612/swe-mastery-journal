@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "where and order",
-      "detail": "An ActiveRecord relation is a description of a query. where, order, and limit can build it. Iteration often executes it. Once you call to_a, later filtering is usually Ruby work over loaded rows."
+      "detail": "# The idea\n\nAn ActiveRecord relation is a description of a query. where, order, and limit can build it. Iteration often executes it.\n\nOnce you call to_a, later filtering is usually Ruby work over loaded rows.\n\nAssociations can issue queries too. A list of tasks followed by task.owner.name can create one extra query for each task.\n\nPreloading brings the required owners in a bounded set of queries. includes may choose different SQL strategies depending on how the relation is used.\n\nInspect the actual SQL instead of assuming a fixed count.\n\nFor large lists, choose a stable order and bounded pages. pluck reads selected column values without building full model objects. find_each batches records but has version-specific ordering behavior; do not use it when its order conflicts with a user-facing sequence."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Draw the relation-building calls before the first SQL. Then draw the initial task query and the association-loading query. With a simple belongs_to preload, adding more tasks should not add one owner query per task.\n\nCompare one task and twenty tasks. Confirm the response needs each loaded field. An association cache on already loaded objects can make a repeated access look cheap; start the measurement with fresh records."
+      "detail": "Draw the relation-building calls before the first SQL. Then draw the initial task query and the association-loading query.\n\nWith a simple belongs_to preload, adding more tasks should not add one owner query per task.\n\nCompare one task and twenty tasks. Confirm the response needs each loaded field.\n\nAn association cache on already loaded objects can make a repeated access look cheap; start the measurement with fresh records."
     },
     {
       "title": "Check the result",

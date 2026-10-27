@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,15 +72,15 @@
   "trace": [
     {
       "title": "Calendar and timezone",
-      "detail": "cron evaluates calendar schedules and starts commands in its environment. It does not ensure the previous run finished, that the command succeeded, or that a missed business period is repaired. Environment variables, working directory, shell, and timezone can differ from your interactive terminal."
+      "detail": "## Understand the idea\n\ncron evaluates calendar schedules and starts commands in its environment. It does not ensure the previous run finished, that the command succeeded, or that a missed business period is repaired.\n\nEnvironment variables, working directory, shell, and timezone can differ from your interactive terminal.\n\nMake the logical run explicit: daily-report(workspace, business_date). A unique database key and retry-safe use case protect duplicate triggers.\n\nDecide catch-up behavior after downtime and how DST/local-time rules apply.\n\nFor distributed deployments, choose one scheduler ownership strategy or an orchestrator schedule with a documented concurrency/missed-run policy. Still keep business deduplication.\n\nLogs/exit status and oldest expected-run age should reveal silent failures."
     },
     {
       "title": "Follow one item",
-      "detail": "Calendar tick → process environment → command → unique business run → durable work → completion/failure. On restart after a day of downtime, decide whether the app enumerates missing periods or intentionally skips them.\n\nTest overlap, duplicate scheduler instances, failed exit, and late starts. A log saying command started is not proof a report completed."
+      "detail": "Calendar tick → process environment → command → unique business run → durable work → completion/failure.\n\nOn restart after a day of downtime, decide whether the app enumerates missing periods or intentionally skips them.\n\nTest overlap, duplicate scheduler instances, failed exit, and late starts. A log saying command started is not proof a report completed."
     },
     {
       "title": "Try the failure",
-      "detail": "Two replicas can run the same schedule. A local file lock does not necessarily coordinate separate hosts. DST can make a local scheduled time absent or repeated."
+      "detail": "Two replicas can run the same schedule. A local file lock does not necessarily coordinate separate hosts.\n\nDST can make a local scheduled time absent or repeated."
     }
   ],
   "sources": [

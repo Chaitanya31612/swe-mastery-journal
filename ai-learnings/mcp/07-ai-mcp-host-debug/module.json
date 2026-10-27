@@ -26,22 +26,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -78,11 +78,11 @@
   "trace": [
     {
       "title": "Initialized client",
-      "detail": "A Rails application can act as a host as well as a capability server. Its client initializes a connection, inspects capabilities/tools, and calls permitted operations. A model is optional for testing that connection. Start with a known synthetic request and prove the protocol path before adding generated tool choice.\n\nMap only reviewed tool definitions into the model's visible tool set. Bound tool descriptions and results. Preserve both provider call IDs and protocol request IDs in the run trace without treating either as business approval. Close connections/processes under the chosen transport lifecycle.\n\nDebug by boundary: DNS/TLS/network, HTTP identity, protocol negotiation, tool schema, domain permission, tool execution, then final model interpretation. A failure in one layer should not be reported as a generic hallucination."
+      "detail": "## Understand\n\nA Rails application can act as a host as well as a capability server. Its client initializes a connection, inspects capabilities/tools, and calls permitted operations.\n\nA model is optional for testing that connection. Start with a known synthetic request and prove the protocol path before adding generated tool choice.\n\nMap only reviewed tool definitions into the model's visible tool set. Bound tool descriptions and results.\n\nPreserve both provider call IDs and protocol request IDs in the run trace without treating either as business approval. Close connections/processes under the chosen transport lifecycle.\n\nDebug by boundary: DNS/TLS/network, HTTP identity, protocol negotiation, tool schema, domain permission, tool execution, then final model interpretation. A failure in one layer should not be reported as a generic hallucination."
     },
     {
       "title": "Follow one input",
-      "detail": "Known client fixture → initialized connection → actual tool discovery → allowed call → forbidden call → classified output. Then let a model propose from that reviewed tool set and run the same policy checks."
+      "detail": "Known client fixture → initialized connection → actual tool discovery → allowed call → forbidden call → classified output.\n\nThen let a model propose from that reviewed tool set and run the same policy checks."
     },
     {
       "title": "Try the failure",

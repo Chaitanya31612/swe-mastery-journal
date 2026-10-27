@@ -26,22 +26,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -78,11 +78,11 @@
   "trace": [
     {
       "title": "Authenticated context",
-      "detail": "Keep domain work in an ordinary service that can be tested without MCP. The MCP tool validates its contract, obtains trusted actor context, calls that service, and serializes a small result. This avoids duplicating business rules across protocol adapters.\n\nUse the pinned official mcp gem in a separate modern training app. SDK APIs and supported Ruby/protocol versions change; the lab lockfile and tests identify the executable baseline. A code fragment against a newer SDK should not be assumed to work in a legacy Rails runtime.\n\nReturn meaningful bounded errors without exposing internal exception messages or forbidden record existence. Tool descriptions help the model select a capability; they should not contain secrets or imply powers beyond the implementation."
+      "detail": "## Understand\n\nKeep domain work in an ordinary service that can be tested without MCP. The MCP tool validates its contract, obtains trusted actor context, calls that service, and serializes a small result.\n\nThis avoids duplicating business rules across protocol adapters.\n\nUse the pinned official mcp gem in a separate modern training app. SDK APIs and supported Ruby/protocol versions change; the lab lockfile and tests identify the executable baseline.\n\nA code fragment against a newer SDK should not be assumed to work in a legacy Rails runtime.\n\nReturn meaningful bounded errors without exposing internal exception messages or forbidden record existence. Tool descriptions help the model select a capability; they should not contain secrets or imply powers beyond the implementation."
     },
     {
       "title": "Follow one input",
-      "detail": "Authenticate → create request-local context → SDK input validation → tool adapter → scoped domain service → bounded result. Compare direct service tests with real SDK call tests; both are useful and prove different boundaries."
+      "detail": "Authenticate → create request-local context → SDK input validation → tool adapter → scoped domain service → bounded result.\n\nCompare direct service tests with real SDK call tests; both are useful and prove different boundaries."
     },
     {
       "title": "Try the failure",

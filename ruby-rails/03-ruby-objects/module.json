@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Receiver",
-      "detail": "Every ordinary Ruby method call has a receiver. self is the current receiver. An instance method lives on a class or module; each instance supplies its own instance variables. A class is also an object, so def self.build defines a singleton method on that class object."
+      "detail": "# The idea\n\nEvery ordinary Ruby method call has a receiver. self is the current receiver. An instance method lives on a class or module; each instance supplies its own instance variables.\n\nA class is also an object, so def self.build defines a singleton method on that class object.\n\ninclude adds a module to instance-method lookup. extend adds module methods to one object’s singleton lookup. prepend puts a module before the class, so a wrapper can call super to continue the chain.\n\nOrder matters.\n\nClass variables written @@name can be shared across an inheritance tree in surprising ways.\n\nA class instance variable written @name on the class object is different from an instance variable on an instance. Avoid shared mutable class state when the value belongs to one request."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "For prepend, begin at the wrapper module. Its super calls the next matching implementation, Task#label. With include, the class method normally wins before the included module.\n\nTo debug a surprising method, inspect obj.method(:name).owner and .source_location. Inspect Class.ancestors for included/prepended modules. This turns “Ruby magic” into a path you can follow."
+      "detail": "For prepend, begin at the wrapper module. Its super calls the next matching implementation, Task#label.\n\nWith include, the class method normally wins before the included module.\n\nTo debug a surprising method, inspect obj.method(:name).owner and .source_location. Inspect Class.ancestors for included/prepended modules.\n\nThis turns “Ruby magic” into a path you can follow."
     },
     {
       "title": "Check the result",
-      "detail": "A concern can quietly add callbacks and class methods. Naming a module does not isolate its side effects. A singleton method defined on one object does not automatically become an instance method for every object."
+      "detail": "A concern can quietly add callbacks and class methods. Naming a module does not isolate its side effects.\n\nA singleton method defined on one object does not automatically become an instance method for every object."
     }
   ],
   "recallPrompt": "Without notes: Find which method runs before changing an inheritance or mixin chain. Give a concrete failure example.",

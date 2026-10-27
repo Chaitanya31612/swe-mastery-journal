@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,7 +73,7 @@
   "trace": [
     {
       "title": "Structured event",
-      "detail": "EventBridge connects event sources and targets with routing/filtering features. It is useful when you integrate AWS/service events or route application facts by a structured envelope. Choose the actual bus/pipe offering and its documented retention/ordering/replay behavior; newer offerings can differ from classic rule-based examples."
+      "detail": "## Understand the idea\n\nEventBridge connects event sources and targets with routing/filtering features. It is useful when you integrate AWS/service events or route application facts by a structured envelope.\n\nChoose the actual bus/pipe offering and its documented retention/ordering/replay behavior; newer offerings can differ from classic rule-based examples.\n\nThis chapter’s setup uses a deliberate classic-style custom bus, event pattern, and target such as SQS. An event pattern selects meaning from fields such as source and detail-type.\n\nIt does not validate every business rule inside detail.\n\nSetup: choose the supported bus type, define a small event schema, create a matching rule and target permission, configure delivery failure handling, and send one matching and one non-matching event.\n\nInspect the producer response for per-entry failure rather than treating the HTTP request alone as success."
     },
     {
       "title": "Follow one item",
@@ -81,7 +81,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "A successful batch API call can include failed entries. A pattern mismatch is different from a consumer crash. Bus products and ordering/replay features must not be generalized from an old diagram."
+      "detail": "A successful batch API call can include failed entries. A pattern mismatch is different from a consumer crash.\n\nBus products and ordering/replay features must not be generalized from an old diagram."
     }
   ],
   "sources": [

@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Injected bean call",
-      "detail": "A transaction groups database changes so they commit or roll back together. It does not automatically group a database write with an email or an external API call."
+      "detail": "# The idea\n\nA transaction groups database changes so they commit or roll back together. It does not automatically group a database write with an email or an external API call.\n\nSpring commonly applies @Transactional through a proxy: a wrapper around the real bean. A call that enters through that proxy can start a transaction.\n\nCalling this.otherMethod() inside the object usually skips that proxy. Private methods are also unsuitable boundaries for this common setup.\n\nBy default, unchecked exceptions and Error trigger rollback; checked exceptions do not unless configured. A caught exception may not escape to the wrapper at all.\n\nAlso, two valid transactions can still race. Use a database constraint, conditional update, or appropriate lock for the rule you need."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Controller → proxy → begin → service → SQL → commit → return. If an unchecked exception leaves the service, the wrapper rolls back instead.\n\nFor a race, draw A reads 1, B reads 1, A writes 0, B writes 0. Both callers may believe they won. A transaction annotation alone does not prevent this lost update. Conditional updates or optimistic version checks turn the second attempt into a visible conflict."
+      "detail": "Controller → proxy → begin → service → SQL → commit → return. If an unchecked exception leaves the service, the wrapper rolls back instead.\n\nFor a race, draw A reads 1, B reads 1, A writes 0, B writes 0. Both callers may believe they won.\n\nA transaction annotation alone does not prevent this lost update. Conditional updates or optimistic version checks turn the second attempt into a visible conflict."
     },
     {
       "title": "Check the result",
-      "detail": "A unit test using new CompleteTask(...) bypasses the proxy. It can test business decisions but cannot prove transaction interception. A transaction-wrapped test can also hide a missing production boundary."
+      "detail": "A unit test using new CompleteTask(...) bypasses the proxy. It can test business decisions but cannot prove transaction interception.\n\nA transaction-wrapped test can also hide a missing production boundary."
     }
   ],
   "recallPrompt": "Without notes: Predict whether a transaction starts and design one test that catches a race. Give a concrete failure example.",

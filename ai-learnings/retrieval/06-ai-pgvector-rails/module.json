@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Actor and vector validation",
-      "detail": "pgvector adds vector types and distance operations to PostgreSQL. By default, nearest-neighbor search can be exact. Approximate indexes such as HNSW trade some recall for speed. Choose that tradeoff after measuring the data and query pattern.\n\nUse tenant/publication/access conditions in the query. With approximate indexes, filtering can leave fewer results because candidate search and filtering interact. Iterative scans in supported versions can improve filtered search, but do not replace authorization. Validate dimensions, numeric values, model version, and query size before executing SQL.\n\nA Rails relation should own the actor scope. Bind outside values and build only deliberate SQL fragments. Never interpolate model-generated SQL, column names, or vector strings directly. The local lab uses PostgreSQL with pgvector and tiny hand-made vectors to test storage, ordering, and access boundaries; it does not benchmark real embedding quality."
+      "detail": "## Understand\n\npgvector adds vector types and distance operations to PostgreSQL. By default, nearest-neighbor search can be exact.\n\nApproximate indexes such as HNSW trade some recall for speed. Choose that tradeoff after measuring the data and query pattern.\n\nUse tenant/publication/access conditions in the query. With approximate indexes, filtering can leave fewer results because candidate search and filtering interact.\n\nIterative scans in supported versions can improve filtered search, but do not replace authorization. Validate dimensions, numeric values, model version, and query size before executing SQL.\n\nA Rails relation should own the actor scope. Bind outside values and build only deliberate SQL fragments.\n\nNever interpolate model-generated SQL, column names, or vector strings directly.\n\nThe local lab uses PostgreSQL with pgvector and tiny hand-made vectors to test storage, ordering, and access boundaries; it does not benchmark real embedding quality."
     },
     {
       "title": "Follow one input",
-      "detail": "Validate input → create actor-scoped relation → apply publication/version conditions → rank/limit → recheck current access → attach provenance. Test a foreign-tenant document that would be the closest vector if scope were missing."
+      "detail": "Validate input → create actor-scoped relation → apply publication/version conditions → rank/limit → recheck current access → attach provenance.\n\nTest a foreign-tenant document that would be the closest vector if scope were missing."
     },
     {
       "title": "Try the failure",

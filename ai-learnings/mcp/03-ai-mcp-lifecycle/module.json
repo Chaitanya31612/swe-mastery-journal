@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Initialize and version",
-      "detail": "MCP uses JSON-RPC 2.0 messages under a versioned lifecycle. Initialization exchanges protocol/version and capability information. The client then signals readiness. Normal operations follow the negotiated rules. The course pins the 2025-11-25 specification as a reference; check a peer's supported revision rather than treating it as permanently latest.\n\nRequests have IDs so responses can be correlated. Notifications do not request a response. A protocol error and a tool execution failure are different outcomes. Keep request IDs, model tool call IDs, application run IDs, and business idempotency keys distinct.\n\nUse an SDK for supported protocol behavior, but understand the messages well enough to debug a connection. Do not build a partial imitation and label it fully compliant. The lab includes a small local client trace against the pinned Ruby SDK, plus separate tests for the domain service."
+      "detail": "## Understand\n\nMCP uses JSON-RPC 2.0 messages under a versioned lifecycle. Initialization exchanges protocol/version and capability information.\n\nThe client then signals readiness. Normal operations follow the negotiated rules.\n\nThe course pins the 2025-11-25 specification as a reference; check a peer's supported revision rather than treating it as permanently latest.\n\nRequests have IDs so responses can be correlated. Notifications do not request a response.\n\nA protocol error and a tool execution failure are different outcomes. Keep request IDs, model tool call IDs, application run IDs, and business idempotency keys distinct.\n\nUse an SDK for supported protocol behavior, but understand the messages well enough to debug a connection. Do not build a partial imitation and label it fully compliant.\n\nThe lab includes a small local client trace against the pinned Ruby SDK, plus separate tests for the domain service."
     },
     {
       "title": "Follow one input",
-      "detail": "Initialize → negotiate → initialized notification → list tools → validate/select tool → call → correlate response → close/cancel appropriately. Inspect the actual server-advertised names; do not guess tool names from class names."
+      "detail": "Initialize → negotiate → initialized notification → list tools → validate/select tool → call → correlate response → close/cancel appropriately.\n\nInspect the actual server-advertised names; do not guess tool names from class names."
     },
     {
       "title": "Try the failure",

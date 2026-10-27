@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,15 +76,15 @@
   "trace": [
     {
       "title": "Known good and bad",
-      "detail": "Use history tools to answer a question, not to assign blame. log finds commits, show reads a patch, and blame points to the last change for a line. That line may have moved during a refactor, so inspect context."
+      "detail": "# The idea\n\nUse history tools to answer a question, not to assign blame. log finds commits, show reads a patch, and blame points to the last change for a line.\n\nThat line may have moved during a refactor, so inspect context.\n\nbisect narrows a regression between a known good and bad commit by testing intermediate commits. The test must be repeatable and its good/bad meaning clear.\n\nA commit that cannot build may need to be skipped. A flaky test gives a misleading culprit.\n\nA worktree is another checkout sharing the repository’s objects. It is useful for a review, a clean committed-snapshot test, or a hotfix while your current edits stay in place.\n\nEach checkout still has its own working files and index. Respect branch checkout restrictions."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "For eight ordered candidate changes, binary search can often narrow the culprit with only a few checks. The exact sequence follows commit ancestry, not wall-clock guesses.\n\nIf the first bad commit is a dependency update, that identifies a trigger, not the whole root cause. Reproduce the behavior and explain why the change activates it. Keep the regression test after the investigation."
+      "detail": "For eight ordered candidate changes, binary search can often narrow the culprit with only a few checks. The exact sequence follows commit ancestry, not wall-clock guesses.\n\nIf the first bad commit is a dependency update, that identifies a trigger, not the whole root cause. Reproduce the behavior and explain why the change activates it.\n\nKeep the regression test after the investigation."
     },
     {
       "title": "Check the result",
-      "detail": "A bisect script with reversed exit meanings gives a confident wrong result. Cleaning a worktree by deleting directories manually can leave registration behind; use git worktree remove for a clean managed checkout after saving needed files."
+      "detail": "A bisect script with reversed exit meanings gives a confident wrong result.\n\nCleaning a worktree by deleting directories manually can leave registration behind; use git worktree remove for a clean managed checkout after saving needed files."
     }
   ],
   "recallPrompt": "Without notes: Use evidence to locate a bad change while keeping active work intact. Give a concrete failure example.",

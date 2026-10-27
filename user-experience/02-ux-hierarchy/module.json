@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Primary question",
-      "detail": "People scan before they read closely. Visual grouping suggests relationships. Nearby controls look related. Similar styling suggests similar purpose. A border around a group can imply a shared context. These are useful perceptual tendencies, not rules that override every task."
+      "detail": "## Understand the idea\n\nPeople scan before they read closely. Visual grouping suggests relationships.\n\nNearby controls look related. Similar styling suggests similar purpose.\n\nA border around a group can imply a shared context. These are useful perceptual tendencies, not rules that override every task.\n\nGive the page a primary question. A ticket page might answer “What needs attention now?” Use headings and spacing to distinguish queue context, the main record, and secondary details.\n\nIf every element is bright and bold, none has priority.\n\nVisual order and keyboard/reading order should agree. CSS can move a button visually while leaving its document position confusing.\n\nUse semantic headings and a sensible source order. Do not make color the only signal for priority or failure."
     },
     {
       "title": "Follow one item",
-      "detail": "Ask a person to point to the current queue, the selected ticket, the primary next action, and unsaved state. Do they infer the intended relationships without a tutorial?\n\nThen remove color from the sketch and test reading order by keyboard. Grouping should still be understandable. A decorative divider is not a replacement for a meaningful heading."
+      "detail": "Ask a person to point to the current queue, the selected ticket, the primary next action, and unsaved state. Do they infer the intended relationships without a tutorial?\n\nThen remove color from the sketch and test reading order by keyboard. Grouping should still be understandable.\n\nA decorative divider is not a replacement for a meaningful heading."
     },
     {
       "title": "Try the failure",

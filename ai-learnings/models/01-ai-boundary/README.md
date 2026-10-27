@@ -14,5 +14,4 @@ flowchart TD
  C --> P[Show facts and labelled interpretation]
  I -. No direct SQL or writes .-> X[Application owns authority]
 ```
-
 Remember: **Model proposes. Code checks. The application decides.**

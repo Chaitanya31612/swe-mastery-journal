@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Deterministic service fixtures",
-      "detail": "Business tests use controlled provider outputs to prove the application accepts and rejects the right states. Adapter tests check request mapping, completion/refusal handling and transport failures. Live evaluations measure how a chosen model behaves on representative tasks. A passing test in one layer does not replace the other two.\n\nUse adversarial fixtures: extra filter fields, cross-tenant IDs, unknown evidence IDs, correct numbers with wrong categories, ambiguous names, oversized context, stale results, permission revocation, provider timeout and an agent step limit. Keep private records out of fixtures; synthetic counterexamples are often clearer.\n\nTest no-model behavior as a first-class path. The ordinary filter/table and reviewed rule guidance should remain useful. Verify that generated text is escaped, source labels are honest and long/mobile content does not hide controls."
+      "detail": "## Understand\n\nBusiness tests use controlled provider outputs to prove the application accepts and rejects the right states. Adapter tests check request mapping, completion/refusal handling and transport failures.\n\nLive evaluations measure how a chosen model behaves on representative tasks. A passing test in one layer does not replace the other two.\n\nUse adversarial fixtures: extra filter fields, cross-tenant IDs, unknown evidence IDs, correct numbers with wrong categories, ambiguous names, oversized context, stale results, permission revocation, provider timeout and an agent step limit.\n\nKeep private records out of fixtures; synthetic counterexamples are often clearer.\n\nTest no-model behavior as a first-class path. The ordinary filter/table and reviewed rule guidance should remain useful.\n\nVerify that generated text is escaped, source labels are honest and long/mobile content does not hide controls."
     },
     {
       "title": "Follow one input",
-      "detail": "Run the local suite and inspect actual assertions. Then run the live local API/MCP smoke. Finally define an optional online evaluation protocol with frozen cases and no private data. Record which layers were actually executed."
+      "detail": "Run the local suite and inspect actual assertions. Then run the live local API/MCP smoke.\n\nFinally define an optional online evaluation protocol with frozen cases and no private data. Record which layers were actually executed."
     },
     {
       "title": "Try the failure",

@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "API values",
-      "detail": "A browser receives values, not intentions. A missing field can mean “leave unchanged.” null can mean “clear it.” false and zero can be valid choices. Decide those meanings in the API contract before choosing a default operator."
+      "detail": "## Understand the idea\n\nA browser receives values, not intentions. A missing field can mean “leave unchanged.” null can mean “clear it.” false and zero can be valid choices.\n\nDecide those meanings in the API contract before choosing a default operator.\n\nUse ?? when the fallback should apply to null or undefined. Use || only when all falsey values should trigger the fallback.\n\nDestructuring and spread copy one level. A new outer object may still share nested objects with the original.\n\nThat can make Cancel accidentally change the saved record.\n\nTreat JSON as outside input. JSON.parse proves that text is valid JSON; it does not prove that the result has a ticket ID, an allowed status, or a sensible array shape.\n\nValidate at the boundary, then pass a stable internal shape to components."
     },
     {
       "title": "Follow one item",
-      "detail": "Trace load → validate → adapt → edit draft → submit → accept server result. Keep server data separate from unsaved edits. Test an absent field, explicit null, false, zero, and an empty string. They are five distinct cases.\n\nIf a nested structure is complex, copy the fields the form actually edits rather than cloning an entire model graph. structuredClone supports many values but not functions or every host object; it is not a universal serialization protocol."
+      "detail": "Trace load → validate → adapt → edit draft → submit → accept server result. Keep server data separate from unsaved edits.\n\nTest an absent field, explicit null, false, zero, and an empty string. They are five distinct cases.\n\nIf a nested structure is complex, copy the fields the form actually edits rather than cloning an entire model graph. structuredClone supports many values but not functions or every host object; it is not a universal serialization protocol."
     },
     {
       "title": "Try the failure",
-      "detail": "Using value || default can silently change a valid zero. Copying only the outer object can leak draft changes. Parsing valid JSON can still produce the wrong type."
+      "detail": "Using value || default can silently change a valid zero. Copying only the outer object can leak draft changes.\n\nParsing valid JSON can still produce the wrong type."
     }
   ],
   "sources": [

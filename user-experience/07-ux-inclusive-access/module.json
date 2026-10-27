@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "Semantic structure",
-      "detail": "Accessibility is not a final color check. A person must be able to perceive the state, operate controls, understand the result, and use compatible assistive technology. Native HTML gives many behaviors that a clickable div does not."
+      "detail": "## Understand the idea\n\nAccessibility is not a final color check. A person must be able to perceive the state, operate controls, understand the result, and use compatible assistive technology.\n\nNative HTML gives many behaviors that a clickable div does not.\n\nEvery interactive control needs an understandable name. Focus must be visible and move predictably.\n\nA modal needs a labelled dialog context, a deliberate focus path, and a way to close it. Errors and async status should be announced appropriately without narrating every keystroke.\n\nUse WCAG 2.2 success criteria as requirements to check, with their exact scope and exceptions.\n\nAutomated tools catch some issues; they cannot tell whether the action name makes sense or whether a real task is understandable. Combine automated checks, keyboard use, zoom, and assistive-technology testing."
     },
     {
       "title": "Follow one item",
-      "detail": "Complete the same task without a mouse. Can you reach every control, see focus, understand its name, operate it, and recover from failure? Then zoom the page and inspect reflow. Then test the key path with a screen reader.\n\nRespect reduced-motion preferences for unnecessary animation. Avoid information conveyed only by color, hover, or movement."
+      "detail": "Complete the same task without a mouse. Can you reach every control, see focus, understand its name, operate it, and recover from failure?\n\nThen zoom the page and inspect reflow. Then test the key path with a screen reader.\n\nRespect reduced-motion preferences for unnecessary animation. Avoid information conveyed only by color, hover, or movement."
     },
     {
       "title": "Try the failure",

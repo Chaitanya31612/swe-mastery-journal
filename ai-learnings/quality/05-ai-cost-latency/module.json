@@ -25,22 +25,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,11 +77,11 @@
   "trace": [
     {
       "title": "Whole-run usage",
-      "detail": "The cost of a feature can include embeddings, retrieval/reranking, input/output/reasoning usage, retries, multi-step tools, storage, and operator review. Measure cost per accepted task at the required quality. Current prices vary, so use configuration and actual usage rather than memorizing course numbers.\n\nSeparate latency stages and distributions. A fast median can hide a slow tail. Concurrent long requests can exhaust worker threads, DB connections, queue capacity or provider quotas. Use backpressure, concurrency limits, deadlines and tenant/user budgets with an explicit over-limit state.\n\nOptimize from evidence. Reduce irrelevant context, avoid unnecessary steps, cache under correct authority/version boundaries, route tasks deliberately and use asynchronous work when the user benefit permits it. Always compare the quality regression risk and fallback behavior."
+      "detail": "## Understand\n\nThe cost of a feature can include embeddings, retrieval/reranking, input/output/reasoning usage, retries, multi-step tools, storage, and operator review. Measure cost per accepted task at the required quality.\n\nCurrent prices vary, so use configuration and actual usage rather than memorizing course numbers.\n\nSeparate latency stages and distributions. A fast median can hide a slow tail.\n\nConcurrent long requests can exhaust worker threads, DB connections, queue capacity or provider quotas. Use backpressure, concurrency limits, deadlines and tenant/user budgets with an explicit over-limit state.\n\nOptimize from evidence. Reduce irrelevant context, avoid unnecessary steps, cache under correct authority/version boundaries, route tasks deliberately and use asynchronous work when the user benefit permits it.\n\nAlways compare the quality regression risk and fallback behavior."
     },
     {
       "title": "Follow one input",
-      "detail": "Trace one slow/expensive run. Break it into queue, retrieval, provider, tools and validation. Count all attempts. Compare accepted quality and cost before/after one repair. Inspect per-tenant fairness and burst behavior."
+      "detail": "Trace one slow/expensive run. Break it into queue, retrieval, provider, tools and validation.\n\nCount all attempts. Compare accepted quality and cost before/after one repair.\n\nInspect per-tenant fairness and burst behavior."
     },
     {
       "title": "Try the failure",

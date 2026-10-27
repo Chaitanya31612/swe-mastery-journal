@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,11 +73,11 @@
   "trace": [
     {
       "title": "HTTP service",
-      "detail": "The local lab uses fresh support-ticket code. It borrows broad production patterns—service objects, transactions, workers, and projections—without copying private application code or data. It uses Ruby 3.3/Rails 7.2 with a pinned Kafka client; that is separate from the Ruby 2.7/Rails 4.2 work baseline."
+      "detail": "## Understand the idea\n\nThe local lab uses fresh support-ticket code. It borrows broad production patterns—service objects, transactions, workers, and projections—without copying private application code or data.\n\nIt uses Ruby 3.3/Rails 7.2 with a pinned Kafka client; that is separate from the Ruby 2.7/Rails 4.2 work baseline.\n\nRead in this order: routes/controller, CompleteTicket service, migrations/models, envelope builder, Kafka producer adapter, outbox dispatcher, reporting projector, consumer loop, and tests. Each file owns one boundary.\n\nInfrastructure/config files explain how the processes find one another.\n\nRun the smoke script and failure drills with synthetic data. Do not merely watch logs scroll.\n\nPredict the ticket, outbox, topic, inbox, and projection state at each stop point. The app contains no real email, analytics, or cloud credentials."
     },
     {
       "title": "Follow one item",
-      "detail": "Create one synthetic ticket. Complete it twice: the business transition should create one logical completion event. Wait for reporting: one inbox/effect appears. Re-publish the saved envelope: Kafka can contain another record with the same event_id, while the local projection effect remains one.\n\nStop the dispatcher before completion, then restart it. Saved intent should still be found. Stop the consumer, publish, then restart it. Retained history and group progress should let it catch up within retention."
+      "detail": "Create one synthetic ticket. Complete it twice: the business transition should create one logical completion event.\n\nWait for reporting: one inbox/effect appears. Re-publish the saved envelope: Kafka can contain another record with the same event_id, while the local projection effect remains one.\n\nStop the dispatcher before completion, then restart it. Saved intent should still be found.\n\nStop the consumer, publish, then restart it. Retained history and group progress should let it catch up within retention."
     },
     {
       "title": "Try the failure",

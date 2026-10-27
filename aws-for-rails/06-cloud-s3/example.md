@@ -9,5 +9,4 @@ url = signer.presigned_url(:get_object,
   bucket: ENV.fetch('ATTACHMENT_BUCKET'),
   key: "workspaces/7/tickets/42/attachment-uuid", expires_in: 300)
 ```
-
 Use generated object identities, deliberate content rules, and post-upload validation. A successful PUT does not automatically create the correct Rails metadata row.

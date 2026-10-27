@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Variable name",
-      "detail": "A Ruby variable holds a reference to an object. Assignment copies the reference, not the whole object. If two names point to one array, changing that array is visible through both names. Reassigning one name points it somewhere else."
+      "detail": "# Start with this\n\nA Ruby variable points to an object. Assigning it to another variable usually copies the reference, not the object.\n\n## See the difference\n\n```ruby\na = [1]\nb = a\nb << 2\n# a and b both see [1, 2]\n\nb = [9]\n# b now points somewhere else. a still sees [1, 2].\n```\n\n```text\nBefore reassignment:   a ─┐\n                         ├──> [1, 2]\n                      b ─┘\nAfter reassignment:    a ────> [1, 2]\n                      b ────> [9]\n```\n\n## One Ruby rule that surprises Java developers\n\nOnly `nil` and `false` are false in a condition.\n\n`0`, `\"\"`, and `[]` are all true.\n\nA setting may correctly contain `false`. `settings[:enabled] || true` loses that choice.\n\nUse `settings.fetch(:enabled, true)` when the default should apply only if the key is missing.\n\n## Names and values\n\nA symbol often acts as a label: `:status`. A string holds text: `\"waiting\"`.\n\nNeither one is a security check.\n\nOlder books mention `Fixnum` and `Bignum`. In Ruby 2.7, their shared public class is `Integer`.\n\n## Remember\n\nAsk two questions: “Did I change the object?” and “Did I point this variable at another object?”\n"
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Draw two arrows to the same array before the append. After second is reassigned, draw its arrow to a new array. The first arrow did not move.\n\nHash.new([]) uses one shared default object and does not insert missing keys when you read them. The block form above creates and stores a separate array for each new key. dup copies only one level; nested arrays can still be shared."
+      "detail": "Draw two arrows to the same array before the append. After second is reassigned, draw its arrow to a new array.\n\nThe first arrow did not move.\n\nHash.new([]) uses one shared default object and does not insert missing keys when you read them.\n\nThe block form above creates and stores a separate array for each new key. dup copies only one level; nested arrays can still be shared."
     },
     {
       "title": "Check the result",
-      "detail": "A method ending in ! often warns about a surprising or dangerous variant; it is not a universal promise of mutation. Read the method contract. freeze is also shallow unless you freeze nested objects yourself."
+      "detail": "A method ending in ! often warns about a surprising or dangerous variant; it is not a universal promise of mutation.\n\nRead the method contract. freeze is also shallow unless you freeze nested objects yourself."
     }
   ],
   "recallPrompt": "Without notes: Predict Ruby truthiness and explain when two names share one object. Give a concrete failure example.",

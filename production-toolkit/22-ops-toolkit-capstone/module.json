@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Requirement and tool role",
-      "detail": "A production architecture is a set of responsibilities. Packaging, orchestration, storage, messaging, observation, delivery, scheduling, and product analytics are different jobs. Several products can cover overlapping parts. Choose a coherent minimum and justify each additional tool."
+      "detail": "## Understand the idea\n\nA production architecture is a set of responsibilities. Packaging, orchestration, storage, messaging, observation, delivery, scheduling, and product analytics are different jobs.\n\nSeveral products can cover overlapping parts. Choose a coherent minimum and justify each additional tool.\n\nFor the support app, Docker packages; Compose runs the local lab; ECS or Kubernetes orchestrates; PostgreSQL owns business data; Redis may cache; Kafka carries retained events; Debezium can replace the polling outbox publisher; observability helps investigate; SendGrid/Pendo are optional external integrations with different data policies.\n\nPractice one incident: reports are late, database connections are full, and users repeatedly click Export. Trace the oldest pending work, retries, DB waits, provider latency, and UI status.\n\nA full diagram is useful only if you can follow one item through it."
     },
     {
       "title": "Follow one item",
-      "detail": "Begin at user impact. Identify the authority and each queued/retained copy. Find the oldest uncompleted item and its event/run ID. Distinguish delivery, processing, and UI problems. Repair the smallest broken boundary and verify both backlog recovery and user-visible completion.\n\nFinish the cumulative toolkit quiz, then explain why a plausible alternative tool is a poor fit for three scenarios. Selection reasoning matters more than logo recognition."
+      "detail": "Begin at user impact. Identify the authority and each queued/retained copy.\n\nFind the oldest uncompleted item and its event/run ID. Distinguish delivery, processing, and UI problems.\n\nRepair the smallest broken boundary and verify both backlog recovery and user-visible completion.\n\nFinish the cumulative toolkit quiz, then explain why a plausible alternative tool is a poor fit for three scenarios. Selection reasoning matters more than logo recognition."
     },
     {
       "title": "Try the failure",
-      "detail": "Adding capacity to a poison-message loop can worsen the DB incident. Installing every monitoring stack can duplicate cost without improving a question. Product analytics cannot substitute for a durable business audit trail."
+      "detail": "Adding capacity to a poison-message loop can worsen the DB incident. Installing every monitoring stack can duplicate cost without improving a question.\n\nProduct analytics cannot substitute for a durable business audit trail."
     }
   ],
   "sources": [

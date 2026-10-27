@@ -8,5 +8,6 @@
 <button type="button">Save task</button>
 <p role="status" aria-live="polite">Saving…</p>
 ```
+Show the error/status only when relevant. Do not announce every keystroke.
 
-Show the error/status only when relevant. Do not announce every keystroke. In the capstone, test keyboard use, small screens, slow responses, and failed saves.
+In the capstone, test keyboard use, small screens, slow responses, and failed saves.

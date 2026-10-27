@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Use-case service",
-      "detail": "Use a service object to name one business action, such as ReserveStock. Use a transaction when its database changes must commit together. A service object by itself supplies no transaction, retry, or permission guarantee."
+      "detail": "# The idea\n\nUse a service object to name one business action, such as ReserveStock. Use a transaction when its database changes must commit together.\n\nA service object by itself supplies no transaction, retry, or permission guarantee.\n\nsave returns false when validations fail. save! raises, which can make a failure visible to the transaction boundary. An ordinary false result is not automatically a rollback of earlier successful writes.\n\nActiveRecord::Rollback requests a rollback without propagating like an ordinary error from the transaction block.\n\nafter_commit runs after a successful database commit. It avoids publishing from a transaction that later rolls back.\n\nIt still leaves a gap: the process can crash after commit and before enqueue. A transactional outbox stores delivery intent with the change, then a worker dispatches it."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "A enters the transaction and locks the stock row. B waits for that row. A checks and writes, then commits. B continues and sees the new quantity before deciding. Test with independent connections so the overlap is real.\n\nCallbacks are hidden control flow. A concern can install one when included. Draw callback order and side effects before moving them. A clear use-case method often makes orchestration easier to test."
+      "detail": "A enters the transaction and locks the stock row. B waits for that row.\n\nA checks and writes, then commits. B continues and sees the new quantity before deciding.\n\nTest with independent connections so the overlap is real.\n\nCallbacks are hidden control flow. A concern can install one when included.\n\nDraw callback order and side effects before moving them. A clear use-case method often makes orchestration easier to test."
     },
     {
       "title": "Check the result",
-      "detail": "Catching an exception inside the transaction and continuing may commit earlier work. Nested transactions are not necessarily independent commits. Read savepoint behavior before promising that an inner rollback undoes everything."
+      "detail": "Catching an exception inside the transaction and continuing may commit earlier work. Nested transactions are not necessarily independent commits.\n\nRead savepoint behavior before promising that an inner rollback undoes everything."
     }
   ],
   "recallPrompt": "Without notes: Trace a Rails transaction and explain what after_commit does and does not promise. Give a concrete failure example.",

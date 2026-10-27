@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Input boundary",
-      "detail": "Rescue exceptions where you can add useful context or recover. Do not turn every failure into nil. rescue without an explicit class normally catches StandardError; it does not mean every possible process failure. Catching Exception broadly can swallow interrupts and system exits."
+      "detail": "# The idea\n\nRescue exceptions where you can add useful context or recover.\n\nDo not turn every failure into nil. rescue without an explicit class normally catches StandardError; it does not mean every possible process failure. Catching Exception broadly can swallow interrupts and system exits.\n\nUse block forms for files so cleanup happens when the block finishes, including on ordinary exceptions. ensure is useful for cleanup, but a return in ensure can accidentally replace the original result or failure.\n\nBundler selects gem versions from a Gemfile and lockfile. bundle exec runs under that dependency selection. An installed global gem is not proof of what an application uses.\n\nRuby threads can overlap I/O. MRI’s global VM lock limits parallel Ruby execution for CPU-bound work; it is not a database lock or a guarantee against races."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Classify the failure: missing file, invalid JSON, or valid but wrong settings shape. They are different contracts. The block closes the file. The rescue above handles only invalid JSON; it leaves missing-file behavior visible to the caller.\n\nWrite one test for a valid input, one malformed input, and one legitimate false value. A unit test can prove the parser contract. It cannot prove Rails boot, Sidekiq delivery, or production permissions."
+      "detail": "Classify the failure: missing file, invalid JSON, or valid but wrong settings shape. They are different contracts.\n\nThe block closes the file. The rescue above handles only invalid JSON; it leaves missing-file behavior visible to the caller.\n\nWrite one test for a valid input, one malformed input, and one legitimate false value. A unit test can prove the parser contract.\n\nIt cannot prove Rails boot, Sidekiq delivery, or production permissions."
     },
     {
       "title": "Check the result",
-      "detail": "Logging the whole settings file may leak secrets. Tests should use synthetic temporary files. A retry around a non-idempotent side effect can repeat work after a timeout."
+      "detail": "Logging the whole settings file may leak secrets. Tests should use synthetic temporary files.\n\nA retry around a non-idempotent side effect can repeat work after a timeout."
     }
   ],
   "recallPrompt": "Without notes: Write a reliable boundary around failure and know what a passing Ruby test proves. Give a concrete failure example.",

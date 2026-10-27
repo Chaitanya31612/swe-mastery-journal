@@ -24,5 +24,6 @@ class PingController {
 # application.properties: change just this setting to try another port.
 server.port=8081
 ```
+Run the supplied Spring sandbox with Maven. Request GET /ping.
 
-Run the supplied Spring sandbox with Maven. Request GET /ping. Read the startup log and find the actual port. Change the port with --server.port=8082 and predict which value wins.
+Read the startup log and find the actual port. Change the port with --server.port=8082 and predict which value wins.

@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Question",
-      "detail": "Start with a question: can an agent find and assign the oldest urgent ticket? Give a realistic task without teaching the intended path. Observe hesitation, wrong turns, recovery, and completion. Ask neutral questions; “Was the new button easy?” biases the answer."
+      "detail": "## Understand the idea\n\nStart with a question: can an agent find and assign the oldest urgent ticket? Give a realistic task without teaching the intended path.\n\nObserve hesitation, wrong turns, recovery, and completion. Ask neutral questions; “Was the new button easy?” biases the answer.\n\nUsability sessions reveal problems and reasoning. They do not automatically estimate population-wide percentages.\n\nSmall samples can find useful issues, but “five users” is not a universal sample-size guarantee. Include people and contexts relevant to the task.\n\nProduct analytics records behavior under an event definition. A click is not task success.\n\nDefine a funnel with a denominator, time window, identity scope, and outcome. Segment carefully.\n\nAn A/B test needs a decision rule and guardrails; more clicks can mean confusion rather than improvement."
     },
     {
       "title": "Follow one item",
-      "detail": "Hypothesis → task or event definition → collect evidence → distinguish observation from interpretation → choose a repair → test again. Keep quotes and observed behavior separate from your explanation of the cause.\n\nFor a funnel, ask who is excluded, whether events can duplicate, and whether missing telemetry correlates with failure. A rising completion rate can reflect a changed denominator rather than a better interface."
+      "detail": "Hypothesis → task or event definition → collect evidence → distinguish observation from interpretation → choose a repair → test again.\n\nKeep quotes and observed behavior separate from your explanation of the cause.\n\nFor a funnel, ask who is excluded, whether events can duplicate, and whether missing telemetry correlates with failure. A rising completion rate can reflect a changed denominator rather than a better interface."
     },
     {
       "title": "Try the failure",
-      "detail": "Leading tasks teach the answer. Vanity metrics reward activity without outcome. Changing several things at once makes attribution difficult. Analytics may miss the people who could not even start."
+      "detail": "Leading tasks teach the answer. Vanity metrics reward activity without outcome.\n\nChanging several things at once makes attribution difficult. Analytics may miss the people who could not even start."
     }
   ],
   "sources": [

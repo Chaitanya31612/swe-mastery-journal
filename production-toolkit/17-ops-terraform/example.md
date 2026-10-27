@@ -10,5 +10,4 @@ provider "aws" { region = var.region }
 # Resource examples belong in the selected training account,
 # with a reviewed backend, variables, tags, and cleanup plan.
 ```
-
 This fragment is a configuration shape, not a complete production template.

@@ -24,22 +24,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,11 +76,11 @@
   "trace": [
     {
       "title": "Versioned fixtures",
-      "detail": "Generation may select among possible continuations. Temperature and other sampling controls influence the distribution on models that support them. They are not truth, permission, or safety settings. Some reasoning models do not support the same controls; inspect the selected API’s capabilities.\n\nEven a nominally deterministic setting may not make an entire hosted workflow reproducible across infrastructure, model updates, tools, and retrieved data. Record model/snapshot, prompt version, input fixture, retrieval version, parameters, and tool outputs.\n\nCompare a change on a fixed set of cases. Repeat uncertain cases when needed. Keep a held-out set separate from prompt development. A single good demo establishes that a task can succeed once; it does not estimate how often it succeeds."
+      "detail": "## Understand\n\nGeneration may select among possible continuations. Temperature and other sampling controls influence the distribution on models that support them.\n\nThey are not truth, permission, or safety settings. Some reasoning models do not support the same controls; inspect the selected API’s capabilities.\n\nEven a nominally deterministic setting may not make an entire hosted workflow reproducible across infrastructure, model updates, tools, and retrieved data.\n\nRecord model/snapshot, prompt version, input fixture, retrieval version, parameters, and tool outputs.\n\nCompare a change on a fixed set of cases. Repeat uncertain cases when needed.\n\nKeep a held-out set separate from prompt development. A single good demo establishes that a task can succeed once; it does not estimate how often it succeeds."
     },
     {
       "title": "Follow one input",
-      "detail": "Freeze a representative dataset and versioned configuration. Run baseline and candidate; compare category-level results and costs. Inspect changed cases rather than only the overall score. Check whether the benefit survives a second run or a fresh holdout."
+      "detail": "Freeze a representative dataset and versioned configuration. Run baseline and candidate; compare category-level results and costs.\n\nInspect changed cases rather than only the overall score. Check whether the benefit survives a second run or a fresh holdout."
     },
     {
       "title": "Try the failure",

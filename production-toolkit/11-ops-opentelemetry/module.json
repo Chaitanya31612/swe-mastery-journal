@@ -20,22 +20,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -72,7 +72,7 @@
   "trace": [
     {
       "title": "Application signal",
-      "detail": "OpenTelemetry supplies standards, APIs/SDKs, instrumentation, and collection/export tools. It is not by itself the long-term observability database or dashboard. You still choose where telemetry is stored and how it is queried/retained."
+      "detail": "## Understand the idea\n\nOpenTelemetry supplies standards, APIs/SDKs, instrumentation, and collection/export tools. It is not by itself the long-term observability database or dashboard.\n\nYou still choose where telemetry is stored and how it is queried/retained.\n\nA trace has spans describing work and relationships. Propagated context connects work across HTTP boundaries.\n\nAn asynchronous event may carry context or link separate work under an explicit policy. Avoid putting sensitive business data into baggage that travels broadly.\n\nSetup: select compatible instrumentation, stable resource attributes, a collector/exporter path, sampling/retention policy, and a test trace. Verify every hop and failure behavior.\n\nTelemetry failure should not accidentally block the main business operation without a deliberate reason."
     },
     {
       "title": "Follow one item",
@@ -80,7 +80,7 @@
     },
     {
       "title": "Try the failure",
-      "detail": "Choosing OTel does not eliminate backend cost. Baggage can spread sensitive values. A trace ID does not enforce exactly-once processing."
+      "detail": "Choosing OTel does not eliminate backend cost. Baggage can spread sensitive values.\n\nA trace ID does not enforce exactly-once processing."
     }
   ],
   "sources": [

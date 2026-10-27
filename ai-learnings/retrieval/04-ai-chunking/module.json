@@ -24,22 +24,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Walk through an example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and remember",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -76,11 +76,11 @@
   "trace": [
     {
       "title": "Supporting span",
-      "detail": "Chunking divides content into retrievable units. A tiny chunk can lose the heading, exception, or table row that gives it meaning. A huge chunk can include too much unrelated text, cost more, and crowd out other evidence. There is no universally best token size.\n\nStart with the document's structure: section headings, paragraphs, lists, tables, code blocks, and references. Keep useful context such as a document title and section path. Overlap can preserve boundary context but also duplicate evidence and inflate counts. Parent/child retrieval can search a smaller unit and return a larger supporting section.\n\nEvaluate retrieval and answer support on questions that cross boundaries. Keep chunking version with the index. Do not quietly combine exact counts from duplicated overlapping text; business aggregates still belong in authoritative code."
+      "detail": "## Understand\n\nChunking divides content into retrievable units. A tiny chunk can lose the heading, exception, or table row that gives it meaning.\n\nA huge chunk can include too much unrelated text, cost more, and crowd out other evidence. There is no universally best token size.\n\nStart with the document's structure: section headings, paragraphs, lists, tables, code blocks, and references. Keep useful context such as a document title and section path.\n\nOverlap can preserve boundary context but also duplicate evidence and inflate counts. Parent/child retrieval can search a smaller unit and return a larger supporting section.\n\nEvaluate retrieval and answer support on questions that cross boundaries. Keep chunking version with the index.\n\nDo not quietly combine exact counts from duplicated overlapping text; business aggregates still belong in authoritative code."
     },
     {
       "title": "Follow one input",
-      "detail": "Question → expected supporting span → candidate chunks → retrieved unit → expanded context → answer. Inspect whether the full supporting condition and exception survived. Compare chunking strategies on the same query set and context budget."
+      "detail": "Question → expected supporting span → candidate chunks → retrieved unit → expanded context → answer. Inspect whether the full supporting condition and exception survived.\n\nCompare chunking strategies on the same query set and context budget."
     },
     {
       "title": "Try the failure",

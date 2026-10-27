@@ -21,22 +21,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "Understand the idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "Follow a concrete example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Trace the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "Break it and reason about the repair",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -73,15 +73,15 @@
   "trace": [
     {
       "title": "Create function",
-      "detail": "A function can keep access to variables from the scope where it was created. That is a closure. It captures a binding, not always a frozen copy of the value. A later mutation can change what a callback reads. Each function call can also create a separate binding, which is why a factory can give each widget private state."
+      "detail": "## Understand the idea\n\nA function can keep access to variables from the scope where it was created. That is a closure.\n\nIt captures a binding, not always a frozen copy of the value. A later mutation can change what a callback reads.\n\nEach function call can also create a separate binding, which is why a factory can give each widget private state.\n\nFor a normal function, this depends on how it is called. obj.method() supplies obj. Taking const fn=obj.method and calling fn() loses that receiver in strict mode.\n\nAn arrow keeps this from its enclosing scope; it does not acquire a new receiver through obj.arrow().\n\nObjects have their own properties and a prototype chain. A missing own property can still be found on the prototype.\n\nUse Object.hasOwn when ownership matters. Prefer Map for arbitrary key/value lookup when object-prototype behavior would be surprising.\n\nThese rules explain callbacks and objects; you rarely need to build a custom inheritance tree for a Vue page."
     },
     {
       "title": "Follow one item",
-      "detail": "Trace creation → retained binding → callback invocation. Distinguish the value at registration from the value at execution. Then trace the call expression to find this.\n\nFor object lookup, check own properties first, then the prototype chain. Object.create(null) has no usual Object prototype; it also lacks methods such as hasOwnProperty. Object.hasOwn(obj,key) works without calling a method from untrusted input."
+      "detail": "Trace creation → retained binding → callback invocation. Distinguish the value at registration from the value at execution.\n\nThen trace the call expression to find this.\n\nFor object lookup, check own properties first, then the prototype chain. Object.create(null) has no usual Object prototype; it also lacks methods such as hasOwnProperty.\n\nObject.hasOwn(obj,key) works without calling a method from untrusted input."
     },
     {
       "title": "Try the failure",
-      "detail": "A callback can keep large objects alive after the screen closes. A detached method can lose this. Checking obj[key] alone can confuse absent values with inherited properties or valid falsey values."
+      "detail": "A callback can keep large objects alive after the screen closes. A detached method can lose this.\n\nChecking obj[key] alone can confuse absent values with inherited properties or valid falsey values."
     }
   ],
   "sources": [

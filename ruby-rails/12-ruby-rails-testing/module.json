@@ -12,22 +12,22 @@
   "sections": [
     {
       "id": "idea",
-      "title": "The idea",
+      "title": "Start with this",
       "file": "idea.md"
     },
     {
       "id": "example",
-      "title": "A small example",
+      "title": "See a small example",
       "file": "example.md"
     },
     {
       "id": "trace",
-      "title": "Follow the execution",
+      "title": "Follow it step by step",
       "file": "trace.md"
     },
     {
       "id": "failure",
-      "title": "What can go wrong",
+      "title": "What can go wrong?",
       "file": "failure.md"
     }
   ],
@@ -77,15 +77,15 @@
   "trace": [
     {
       "title": "Route entry",
-      "detail": "Start a legacy feature investigation at its entry point. Find the route, controller action, service, model/query, callbacks, worker, and response presenter. Draw only the path relevant to the reported behavior. Search for callers before changing a method contract."
+      "detail": "# The idea\n\nStart a legacy feature investigation at its entry point. Find the route, controller action, service, model/query, callbacks, worker, and response presenter.\n\nDraw only the path relevant to the reported behavior. Search for callers before changing a method contract.\n\nRails 4.2 uses classic autoloading. File paths, constant names, and development reload behavior matter.\n\nModern Zeitwerk rules cannot be pasted in as if they already run here. Concerns can install callbacks; a method body alone may not show the whole action.\n\nUse model tests for domain rules, request/controller tests for the HTTP boundary, and job/service tests for failure and duplicate handling.\n\nThe course examples are new task-tracker examples informed by broad patterns such as services, concerns, SQL boundaries, and workers.\n\nNo private work code or real data belongs in these lessons or AI chat."
     },
     {
       "title": "Follow the middle steps",
-      "detail": "Capstone: a task can be completed by an allowed member. It creates a receipt intent once. A worker sends it later. Add a list page with owner names. Show access denial, validation failure, concurrent completion, provider timeout, and a bounded query count.\n\nWrite a two-minute explanation: what enters, what rule holds, which writes commit together, what can repeat, and how you verified it. Keep a bug diary with symptom → cause → smallest fix → regression test."
+      "detail": "Capstone: a task can be completed by an allowed member. It creates a receipt intent once.\n\nA worker sends it later. Add a list page with owner names.\n\nShow access denial, validation failure, concurrent completion, provider timeout, and a bounded query count.\n\nWrite a two-minute explanation: what enters, what rule holds, which writes commit together, what can repeat, and how you verified it.\n\nKeep a bug diary with symptom → cause → smallest fix → regression test."
     },
     {
       "title": "Check the result",
-      "detail": "A broad rescue in a controller can hide a service failure as a 200. A mocked model can make a callback-heavy feature look simpler than it is. Read the callback registrations and SQL behavior before judging coverage."
+      "detail": "A broad rescue in a controller can hide a service failure as a 200. A mocked model can make a callback-heavy feature look simpler than it is.\n\nRead the callback registrations and SQL behavior before judging coverage."
     }
   ],
   "recallPrompt": "Without notes: Map a production-style feature, write behavior tests, and explain a change without copying work code. Give a concrete failure example.",
