@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Examples teach behavior at boundaries, not only ideal wording."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Formatting does not enforce permissions."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Versioned prompts make changes reviewable."
+  }
+}

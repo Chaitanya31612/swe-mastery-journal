@@ -1,0 +1,34 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "The integration is a versioned system."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Shadowing needs explicit boundaries."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Use the failure to improve the measured boundary."
+  },
+  "review-ai-evaluation-dataset": {
+    "correctIndex": 1,
+    "explanation": "A holdout helps expose overfitting to known feedback."
+  },
+  "review-ai-judges-calibration": {
+    "correctIndex": 1,
+    "explanation": "A decision threshold and probability calibration are different."
+  },
+  "review-ai-prompt-injection": {
+    "correctIndex": 1,
+    "explanation": "Outside content cannot grant capabilities."
+  },
+  "review-ai-privacy-boundary": {
+    "correctIndex": 0,
+    "explanation": "Retention, access, purpose and derived copies remain separate."
+  },
+  "review-ai-cost-latency": {
+    "correctIndex": 1,
+    "explanation": "Whole-run outcomes and retries matter."
+  }
+}

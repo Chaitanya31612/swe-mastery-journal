@@ -1,0 +1,103 @@
+{
+  "id": "ai-tool-permissions",
+  "track": "agents",
+  "number": 3,
+  "sequence": 3,
+  "globalSequence": 25,
+  "title": "Tools are capabilities with a policy boundary",
+  "level": "intermediate",
+  "outcome": "Design narrow tools and authorize every execution against current application state.",
+  "hours": 2,
+  "cue": "A tool name describes a door. Policy decides who may open it.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-bounded-loop",
+  "tags": [
+    "agents",
+    "intermediate",
+    "tool",
+    "permissions"
+  ],
+  "useCase": "Design narrow tools and authorize every execution against current application state.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A broad “read database” tool can become a disclosure tool. Read-only is not the same as harmless or authorized.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Narrow capability\"]\n N1[\"Arguments as outside input\"]\n N2[\"Current actor policy\"]\n N3[\"Scoped minimal result\"]\n N4[\"Output and egress limits\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Narrow capability\"]\n N1[\"Arguments as outside input\"]\n N2[\"Current actor policy\"]\n N3[\"Scoped minimal result\"]\n N4[\"Output and egress limits\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Narrow capability",
+      "detail": "A tool grants a possible capability to the host application, not an entitlement to every requested resource. Choose names and schemas that describe a specific operation. Read_shipment_facts is easier to constrain than run_query or execute_code.\n\nBind the actor, tenant, role and request purpose outside model-supplied arguments. Validate IDs through current scoped data. Recheck access at execution time, because a tool proposal can outlive the permission or record version it was based on.\n\nKeep tools read-only until a product requirement justifies writes. Even read tools can reveal sensitive information or cause external effects, such as fetching a URL that logs access. Restrict egress, output size, query cost and result fields. Tool annotations/descriptions are useful metadata; they do not enforce behavior."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Tool proposal → schema check → current actor resolution → scoped lookup → selected fields → bounded result. Test a foreign ID, revoked role, costly limit, unexpected field and URL argument. Confirm forbidden text never reaches provider input."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A broad “read database” tool can become a disclosure tool. Read-only is not the same as harmless or authorized."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Function calling",
+      "url": "https://developers.openai.com/api/docs/guides/function-calling"
+    },
+    {
+      "title": "MCP security boundaries",
+      "url": "https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Design narrow tools and authorize every execution against current application state. Give a concrete example, one failure, and the check that catches it."
+}

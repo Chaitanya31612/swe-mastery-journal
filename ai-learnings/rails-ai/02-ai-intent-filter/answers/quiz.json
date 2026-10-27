@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "A narrow filter is easier to authorize and test."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Preserve intent and access boundaries."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "One deterministic contract reduces drift."
+  }
+}

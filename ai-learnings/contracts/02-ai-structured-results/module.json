@@ -1,0 +1,99 @@
+{
+  "id": "ai-structured-results",
+  "track": "contracts",
+  "number": 2,
+  "sequence": 2,
+  "globalSequence": 9,
+  "title": "Structured output: syntax is the first gate",
+  "level": "beginner",
+  "outcome": "Validate shape and business meaning before using a model result.",
+  "hours": 2,
+  "cue": "Shape → meaning → permission → use.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-prompt-contract",
+  "tags": [
+    "contracts",
+    "beginner",
+    "structured",
+    "results"
+  ],
+  "useCase": "Validate shape and business meaning before using a model result.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "An output can satisfy every schema rule and still select the wrong valid record. Retrying a semantic error indefinitely can repeat the same wrong answer and increase cost.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Raw response or refusal\"]\n N1[\"Parse and schema\"]\n N2[\"Resolve business meaning\"]\n N3[\"Check permission\"]\n N4[\"Accepted result or fallback\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Raw response or refusal\"]\n N1[\"Parse and schema\"]\n N2[\"Resolve business meaning\"]\n N3[\"Check permission\"]\n N4[\"Accepted result or fallback\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Raw response or refusal",
+      "detail": "JSON mode asks for JSON. Structured output can constrain a supported model to a supported JSON Schema. These are different guarantees. Valid syntax and schema adherence still do not prove that a depot exists, a citation supports a claim, or an operation is allowed.\n\nTreat the model response as outside input. Handle refusal, incomplete output, provider error, schema failure, semantic failure, and accepted result as separate states. Avoid parsing with eval or silently accepting extra fields. Bound string lengths and collections before they reach expensive application work.\n\nUse required fields and explicit enums for supported decisions. A status such as needs_clarification is useful data. Keep unknown or missing separate from a false or zero value. Your Rails service should return a domain result rather than handing a raw provider object to every controller."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Provider bytes → JSON parse → schema validation → domain validation → authorization → execution or fallback. Put each rejection on a trace with a safe error code. Do not include raw sensitive payloads in logs just to diagnose formatting."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "An output can satisfy every schema rule and still select the wrong valid record. Retrying a semantic error indefinitely can repeat the same wrong answer and increase cost."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Structured outputs",
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Validate shape and business meaning before using a model result. Give a concrete example, one failure, and the check that catches it."
+}

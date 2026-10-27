@@ -1,0 +1,103 @@
+{
+  "id": "ai-mcp-capabilities",
+  "track": "mcp",
+  "number": 2,
+  "sequence": 2,
+  "globalSequence": 30,
+  "title": "Tools, resources, prompts, and other capabilities",
+  "level": "beginner",
+  "outcome": "Choose the correct MCP primitive and understand that descriptions are not enforcement.",
+  "hours": 1.5,
+  "cue": "A primitive describes the interaction. Policy governs the data and effect.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-mcp-map",
+  "tags": [
+    "mcp",
+    "beginner",
+    "mcp",
+    "capabilities"
+  ],
+  "useCase": "Choose the correct MCP primitive and understand that descriptions are not enforcement.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Treating all server-provided prompts as system authority creates an injection path. Assuming a read-only hint is enforced can surprise the host with effects.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Needed interaction\"]\n N1[\"Tool resource or prompt\"]\n N2[\"Negotiated capability\"]\n N3[\"Scoped implementation\"]\n N4[\"Reviewed host behavior\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Needed interaction\"]\n N1[\"Tool resource or prompt\"]\n N2[\"Negotiated capability\"]\n N3[\"Scoped implementation\"]\n N4[\"Reviewed host behavior\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Needed interaction",
+      "detail": "A tool exposes a callable operation with a schema. A resource exposes identifiable context that a host can read through the protocol. A prompt exposes a reusable message/workflow template. They serve different interaction patterns; none automatically authorizes a user to see its underlying data.\n\nA host may also support capabilities such as sampling or elicitation under a selected revision/SDK. These are negotiated features, not assumptions every peer supports. Sampling can introduce server-initiated model work; elicitation can request user input. Keep cost, consent, and data boundaries explicit.\n\nTool annotations can hint that an operation is read-only or idempotent. They are advisory metadata. The implementation and host/server policy must enforce actual behavior. Likewise, resource URIs and filesystem roots are not substitutes for an application access check or OS sandbox."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "List the data and operations needed. Select tools/resources/prompts deliberately. Check peer capabilities before use. Test missing capability, inaccessible resource, and inaccurate annotations. Keep the actual side-effect boundary in code."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Treating all server-provided prompts as system authority creates an injection path. Assuming a read-only hint is enforced can surprise the host with effects."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MCP specification 2025-11-25",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25"
+    },
+    {
+      "title": "MCP security boundaries",
+      "url": "https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose the correct MCP primitive and understand that descriptions are not enforcement. Give a concrete example, one failure, and the check that catches it."
+}

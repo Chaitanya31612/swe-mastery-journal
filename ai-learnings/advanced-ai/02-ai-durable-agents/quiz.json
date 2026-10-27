@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does a worker lease imply exactly-once external effects?",
+    "options": [
+      "Yes",
+      "Only if it is in Redis",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should happen to old approvals on resume?",
+    "options": [
+      "Let the model renew them",
+      "Trust them forever",
+      "Revalidate their exact operation, policy and freshness"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Which replay is safest to separate?",
+    "options": [
+      "Only UI refreshes",
+      "Pure projections/computation from irreversible effects",
+      "All operations treated identically"
+    ]
+  }
+]

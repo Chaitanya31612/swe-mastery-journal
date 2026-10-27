@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Who supplies tenant identity?",
+    "options": [
+      "A tool description",
+      "Authenticated host context",
+      "The model’s arguments"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does read-only mean permission-free?",
+    "options": [
+      "Yes",
+      "No",
+      "Only for small results"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "When should permission be rechecked?",
+    "options": [
+      "Only after the answer is displayed",
+      "At execution/result access under current policy",
+      "Only when the chat opened"
+    ]
+  }
+]

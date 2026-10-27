@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Geometry and epistemic correctness differ."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "The learned coordinate systems may differ."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Ranking alone does not establish sufficiency."
+  }
+}

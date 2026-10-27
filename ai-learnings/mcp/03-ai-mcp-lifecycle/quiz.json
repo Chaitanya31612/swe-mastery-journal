@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does a notification require a response?",
+    "options": [
+      "Only for tools/list",
+      "No",
+      "Yes, always with the same ID"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Which IDs should be kept distinct?",
+    "options": [
+      "Protocol request, model call, run and business operation IDs",
+      "Only timestamps matter",
+      "All can safely be the user ID"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Initialization establishes what?",
+    "options": [
+      "All future authorization decisions",
+      "Truth of tool results",
+      "Supported protocol and capabilities"
+    ]
+  }
+]

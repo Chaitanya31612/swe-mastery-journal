@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Tree/index construction and reasoning still have costs."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Match the query shape and measure."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Those are not exclusive properties of one retrieval brand."
+  }
+}

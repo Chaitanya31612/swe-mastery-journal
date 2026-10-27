@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "They reuse different artifacts at different boundaries."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Access must be checked under current policy."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Cache only results valid for the product contract."
+  }
+}

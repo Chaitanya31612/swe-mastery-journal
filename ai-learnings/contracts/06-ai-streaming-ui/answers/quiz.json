@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Partial delivery is not a validated product result."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Partial arguments must not trigger side effects."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Progress needs accessible, bounded announcements."
+  }
+}

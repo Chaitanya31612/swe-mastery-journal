@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which metadata is needed for a citation?",
+    "options": [
+      "Only vector dimensions",
+      "Source identity, revision and location",
+      "Only a model confidence"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should happen after a half-built revision fails?",
+    "options": [
+      "Publish half the chunks as if complete",
+      "Keep a complete published version or show unavailable",
+      "Duplicate every source"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Deleting a source automatically deletes its caches?",
+    "options": [
+      "Always",
+      "Only for PDFs",
+      "No; derived-store cleanup is explicit"
+    ]
+  }
+]

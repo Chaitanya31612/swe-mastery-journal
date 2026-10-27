@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Who owns exact blocker counts?",
+    "options": [
+      "Application code over authoritative data",
+      "The prose generator",
+      "The model tokenizer"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "A suggested fix is what in the first version?",
+    "options": [
+      "An automatic state change",
+      "Guidance, not an executed write",
+      "An approval token"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is the purpose of separate services?",
+    "options": [
+      "More files by itself",
+      "Visible contracts and focused failure tests",
+      "Replacing all Rails conventions"
+    ]
+  }
+]

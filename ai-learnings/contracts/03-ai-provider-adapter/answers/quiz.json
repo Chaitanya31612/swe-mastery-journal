@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "The adapter isolates the provider boundary."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Fixtures test deterministic behavior, not live model quality."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Keep runtime compatibility explicit."
+  }
+}

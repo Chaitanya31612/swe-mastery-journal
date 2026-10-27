@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does tools:read authorize every tenant?",
+    "options": [
+      "Only for JSON-RPC",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Is a session ID an access token?",
+    "options": [
+      "Yes",
+      "Only over HTTP",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Can an incoming token be forwarded to any downstream tool URL?",
+    "options": [
+      "Yes if the model requested it",
+      "Only with a long context",
+      "No; audience and destination boundaries matter"
+    ]
+  }
+]

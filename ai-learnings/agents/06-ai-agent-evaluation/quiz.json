@@ -1,0 +1,79 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Can a correct final answer hide an unsafe path?",
+    "options": [
+      "No",
+      "Only with small models",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What does fault injection test?",
+    "options": [
+      "Runtime response to specified failures",
+      "All future model behavior",
+      "A provider’s internal training"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "How should unauthorized execution appear in metrics?",
+    "options": [
+      "As extra recall",
+      "As an explicit boundary failure",
+      "Buried in an average score"
+    ]
+  },
+  {
+    "id": "review-ai-workflow-choice",
+    "prompt": "Revisit Workflow or agent: choose who controls the next step: What distinguishes a model-directed agent here?",
+    "options": [
+      "A vector database",
+      "A chat-shaped UI",
+      "The model proposes next operations from observations"
+    ],
+    "covers": "ai-workflow-choice"
+  },
+  {
+    "id": "review-ai-bounded-loop",
+    "prompt": "Revisit A bounded agent loop you can trace: Where should step limits be enforced?",
+    "options": [
+      "In host code",
+      "Only in the UI timer",
+      "Only in a prompt"
+    ],
+    "covers": "ai-bounded-loop"
+  },
+  {
+    "id": "review-ai-tool-permissions",
+    "prompt": "Revisit Tools are capabilities with a policy boundary: Who supplies tenant identity?",
+    "options": [
+      "A tool description",
+      "Authenticated host context",
+      "The model’s arguments"
+    ],
+    "covers": "ai-tool-permissions"
+  },
+  {
+    "id": "review-ai-memory-context",
+    "prompt": "Revisit Memory is application data with a lifetime: A stored conversation is what?",
+    "options": [
+      "Always harmless context",
+      "Application/provider data with a retention policy",
+      "Automatically new model weights"
+    ],
+    "covers": "ai-memory-context"
+  },
+  {
+    "id": "review-ai-approval-actions",
+    "prompt": "Revisit Write actions: preview, approval, and stale state: Who can approve a consequential action?",
+    "options": [
+      "The authorized user through the application flow",
+      "Any retrieved document",
+      "The proposing model itself"
+    ],
+    "covers": "ai-approval-actions"
+  }
+]

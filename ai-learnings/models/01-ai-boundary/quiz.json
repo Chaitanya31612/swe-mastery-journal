@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A user says “only my warehouse.” Where does that scope come from?",
+    "options": [
+      "The authenticated actor and application policy",
+      "The nearest embedding",
+      "The model’s interpretation of “my”"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Which is the best first model responsibility?",
+    "options": [
+      "Replace ownership checks",
+      "Choose and run arbitrary SQL",
+      "Propose an allowlisted filter"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Which result should code calculate?",
+    "options": [
+      "A guessed confidence label",
+      "Only the friendly wording",
+      "The exact matching-row count"
+    ]
+  }
+]

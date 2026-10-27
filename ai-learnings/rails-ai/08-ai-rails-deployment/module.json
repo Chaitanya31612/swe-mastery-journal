@@ -1,0 +1,103 @@
+{
+  "id": "ai-rails-deployment",
+  "track": "rails-ai",
+  "number": 8,
+  "sequence": 8,
+  "globalSequence": 43,
+  "title": "From local Rails lab to a production boundary",
+  "level": "intermediate",
+  "outcome": "Plan deployment, runtime compatibility, credentials, egress, and feature rollout without copying a demo into production.",
+  "hours": 2.5,
+  "cue": "Deploy the boundary, not just the prompt.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-rails-checks",
+  "tags": [
+    "rails-ai",
+    "intermediate",
+    "rails",
+    "deployment"
+  ],
+  "useCase": "Plan deployment, runtime compatibility, credentials, egress, and feature rollout without copying a demo into production.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A local localhost demo identity is not production authentication. A provider choice does not eliminate your own access, retention and evaluation responsibilities.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Current actor and minimized facts\"]\n N1[\"Supported runtime or gateway\"]\n N2[\"Approved provider and budgets\"]\n N3[\"Durable runs and observability\"]\n N4[\"Gated rollout and rollback\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Current actor and minimized facts\"]\n N1[\"Supported runtime or gateway\"]\n N2[\"Approved provider and budgets\"]\n N3[\"Durable runs and observability\"]\n N4[\"Gated rollout and rollback\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Current actor and minimized facts",
+      "detail": "A production deployment needs an explicit data boundary, identity flow, durable queue/run store, provider configuration, budgets, observability and rollback. The model call is one dependency inside that system. Keep secrets in approved runtime configuration; never expose provider keys to the browser or MCP tool arguments.\n\nFor a legacy Rails runtime, a separate modern AI gateway can isolate newer SDKs. The application authenticates the user, sends a minimal permitted request to the gateway, and validates the returned domain result. A gateway should not become an unscoped database administrator. Decide which service owns record access and keep that policy enforceable.\n\nBedrock, direct APIs and self-hosted models differ in operations, capabilities, region and data-handling settings. Use current provider documentation and your actual organizational policy. The course does not claim a particular provider/configuration is universally compliant or safe for private work data."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Trace request identity, data egress, credentials, result storage and deletion. Deploy behind a feature flag with a manual fallback, a small allowed cohort, quality/error thresholds and a rollback switch. Verify through the actual proxy/queue/provider path."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A local localhost demo identity is not production authentication. A provider choice does not eliminate your own access, retention and evaluation responsibilities."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Amazon Bedrock tool use",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html"
+    },
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Plan deployment, runtime compatibility, credentials, egress, and feature rollout without copying a demo into production. Give a concrete example, one failure, and the check that catches it."
+}

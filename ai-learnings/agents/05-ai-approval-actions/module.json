@@ -1,0 +1,103 @@
+{
+  "id": "ai-approval-actions",
+  "track": "agents",
+  "number": 5,
+  "sequence": 5,
+  "globalSequence": 27,
+  "title": "Write actions: preview, approval, and stale state",
+  "level": "intermediate",
+  "outcome": "Bind approval to an exact operation and recheck it before an effect.",
+  "hours": 2,
+  "cue": "Approve this operation, not this conversation.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-memory-context",
+  "tags": [
+    "agents",
+    "intermediate",
+    "approval",
+    "actions"
+  ],
+  "useCase": "Bind approval to an exact operation and recheck it before an effect.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A conversation-level approved=true flag can authorize unrelated future actions. A model-generated idempotency key may change on every retry.",
+  "lab": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Exact proposed action\"]\n N1[\"Readable preview\"]\n N2[\"Scoped approval\"]\n N3[\"Current policy and version\"]\n N4[\"Idempotent effect and outcome\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Exact proposed action\"]\n N1[\"Readable preview\"]\n N2[\"Scoped approval\"]\n N3[\"Current policy and version\"]\n N4[\"Idempotent effect and outcome\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Exact proposed action",
+      "detail": "A user approving “update this note” should not approve a later, different payload. Bind approval to an exact operation: actor, target, normalized arguments, relevant record version, scope, and expiry. Make the preview readable in ordinary language.\n\nAt execution, reauthorize, compare the current record/version, check the approval identity, and apply a stable business idempotency key. If the operation changed or became stale, require a new preview. The model cannot approve its own proposal.\n\nSeparate proposal, approval and execution status. A UI confirmation is not a database lock. An approved write can still fail or have an unknown outcome. Keep an audit trail and reconciliation path. The main course example remains read-only; the action sandbox illustrates these boundaries using synthetic in-memory data."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Proposal → normalized preview → user approval → current authorization/version check → idempotent effect → recorded outcome. Test changed arguments, expired approval, a revoked actor, duplicate execution and acknowledgment loss."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A conversation-level approved=true flag can authorize unrelated future actions. A model-generated idempotency key may change on every retry."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MCP security boundaries",
+      "url": "https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices"
+    },
+    {
+      "title": "Composable agent patterns",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Bind approval to an exact operation and recheck it before an effect. Give a concrete example, one failure, and the check that catches it."
+}

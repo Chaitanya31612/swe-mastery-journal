@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What belongs in a held-out set?",
+    "options": [
+      "Only the prompt examples",
+      "Cases not repeatedly used to tune the prompt",
+      "Only easy happy paths"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "How should valid alternative wording be judged?",
+    "options": [
+      "Against task decisions and evidence",
+      "By word count",
+      "Always as an exact-string failure"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Where should unauthorized actions appear?",
+    "options": [
+      "Hidden inside the mean score",
+      "As a creativity bonus",
+      "As an explicit hard failure gate"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A tool annotation enforces what by itself?",
+    "options": [
+      "No application authorization or side-effect policy",
+      "A complete security sandbox",
+      "A database read-only transaction"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What is a resource useful for?",
+    "options": [
+      "Automatic unrestricted filesystem access",
+      "Identifiable readable context under access policy",
+      "Training new weights"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Can every peer be assumed to support sampling?",
+    "options": [
+      "No; inspect negotiated capabilities",
+      "Yes",
+      "Only on localhost"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does vectorless mean no index or model cost?",
+    "options": [
+      "Yes",
+      "Only for PDFs",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "When is a graph approach worth trying?",
+    "options": [
+      "For every exact live count",
+      "Only because it is newer",
+      "When its relation/global-query structure addresses a measured failure"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Can vector RAG include conversation context and reference traversal?",
+    "options": [
+      "Never",
+      "Only after fine-tuning",
+      "Yes, with application design"
+    ]
+  }
+]

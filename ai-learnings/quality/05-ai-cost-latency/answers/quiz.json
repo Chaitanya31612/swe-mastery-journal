@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Whole-run outcomes and retries matter."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Moving work does not create unlimited capacity."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Availability includes clear states and deterministic work."
+  }
+}

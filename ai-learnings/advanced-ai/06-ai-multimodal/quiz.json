@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Do image inputs remove prompt-injection concerns?",
+    "options": [
+      "No",
+      "Yes",
+      "Only for scans"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should blurred critical data produce?",
+    "options": [
+      "An uncertain/review state",
+      "A plausible automatic correction",
+      "A global record lookup"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Why preserve page/region/time provenance?",
+    "options": [
+      "To avoid authorization",
+      "To guarantee perfect extraction",
+      "To inspect and correct upstream evidence"
+    ]
+  }
+]

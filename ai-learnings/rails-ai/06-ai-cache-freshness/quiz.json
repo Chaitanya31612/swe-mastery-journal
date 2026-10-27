@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Prompt caching is automatically final-answer caching?",
+    "options": [
+      "No",
+      "Only for Rails",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Can a TTL authorize a revoked user until expiry?",
+    "options": [
+      "Only for read tools",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Should invalid partial output become a completed cache entry?",
+    "options": [
+      "No",
+      "Only with a citation",
+      "Yes if it arrived quickly"
+    ]
+  }
+]

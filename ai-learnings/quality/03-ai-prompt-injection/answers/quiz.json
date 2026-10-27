@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Outside content cannot grant capabilities."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Prevent exposure at the data boundary."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Attack surfaces and variants require layered controls and ongoing evaluation."
+  }
+}

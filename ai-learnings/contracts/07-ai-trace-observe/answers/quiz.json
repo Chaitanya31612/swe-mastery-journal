@@ -1,0 +1,38 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Product quality needs its own measurements."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Debuggability does not require unrestricted raw-content logs."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Freshness is an application data-flow property."
+  },
+  "review-ai-prompt-contract": {
+    "correctIndex": 2,
+    "explanation": "Examples teach behavior at boundaries, not only ideal wording."
+  },
+  "review-ai-structured-results": {
+    "correctIndex": 1,
+    "explanation": "Business semantics and permissions require separate checks."
+  },
+  "review-ai-provider-adapter": {
+    "correctIndex": 2,
+    "explanation": "The adapter isolates the provider boundary."
+  },
+  "review-ai-tool-cycle": {
+    "correctIndex": 1,
+    "explanation": "A proposal cannot grant privileges."
+  },
+  "review-ai-timeouts-retries": {
+    "correctIndex": 0,
+    "explanation": "Latency accumulates across the whole workflow."
+  },
+  "review-ai-streaming-ui": {
+    "correctIndex": 1,
+    "explanation": "Partial delivery is not a validated product result."
+  }
+}

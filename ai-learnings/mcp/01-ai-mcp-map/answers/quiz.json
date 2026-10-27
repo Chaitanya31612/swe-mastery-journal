@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Hosts own the integration experience."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Retrieval is a capability/application design, not a protocol guarantee."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Provider and MCP message formats are separate."
+  }
+}

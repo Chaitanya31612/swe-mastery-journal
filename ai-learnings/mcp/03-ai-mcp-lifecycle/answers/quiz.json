@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "JSON-RPC distinguishes notifications from requests."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Each identifies a different boundary."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Negotiation is not a permission grant."
+  }
+}

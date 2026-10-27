@@ -1,0 +1,104 @@
+{
+  "id": "ai-facts-or-documents",
+  "track": "retrieval",
+  "number": 1,
+  "sequence": 1,
+  "globalSequence": 15,
+  "title": "Choose SQL facts, search, or RAG",
+  "level": "beginner",
+  "outcome": "Choose the right source before choosing a vector database.",
+  "hours": 1.5,
+  "cue": "Find the authority first. Retrieve second. Generate only if useful.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": null,
+  "tags": [
+    "retrieval",
+    "beginner",
+    "facts",
+    "or",
+    "documents"
+  ],
+  "useCase": "Choose the right source before choosing a vector database.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "RAG over yesterday’s exported table can answer a live-count question incorrectly. A vector index is not automatically a source of truth.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n Q[User question] --> D{What truth does it require?}\n D -->|Current count or state| S[Scoped SQL and reviewed rules]\n D -->|Policy explanation| R[Permitted versioned document evidence]\n D -->|Both| B[Join facts and evidence with provenance]\n S --> C[Typed current facts]\n R --> E[Retrieved source excerpts]\n C --> G[Optional generated explanation]\n E --> G\n B --> G\n G --> V[Check supported claims or abstain]",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "flowchart TD\n Q[User question] --> D{What truth does it require?}\n D -->|Current count or state| S[Scoped SQL and reviewed rules]\n D -->|Policy explanation| R[Permitted versioned document evidence]\n D -->|Both| B[Join facts and evidence with provenance]\n S --> C[Typed current facts]\n R --> E[Retrieved source excerpts]\n C --> G[Optional generated explanation]\n E --> G\n B --> G\n G --> V[Check supported claims or abstain]",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Question type",
+      "detail": "RAG means retrieving relevant material and giving it to a generator. It is an application pattern, not a guarantee of correctness. The original research combines learned generation with retrieved information; modern products implement many variants.\n\nA current delivery count belongs in a scoped database query. A policy explanation may need retrieved documents. A shipment's verified hold reason may come from a deterministic rule over current fields. These sources can appear together in one answer, but keep their authority and freshness visible.\n\nStart with the smallest sufficient retrieval method. Exact IDs, filters, full-text search, and a document table may be enough. Add semantic search when wording varies in a way lexical search misses. Never move access control into similarity scoring or ask a model to infer the user's tenant."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Classify the question, identify the authoritative source, enforce access, retrieve the minimum data, then decide whether generation adds value. If a question mixes live facts and policy, record the time/version of each."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "RAG over yesterday’s exported table can answer a live-count question incorrectly. A vector index is not automatically a source of truth."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2005.11401"
+    },
+    {
+      "title": "Your AI journal",
+      "url": "https://github.com/Chaitanya31612/ai-mastery-journal"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose the right source before choosing a vector database. Give a concrete example, one failure, and the check that catches it."
+}

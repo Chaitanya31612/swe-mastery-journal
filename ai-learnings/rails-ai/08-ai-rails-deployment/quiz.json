@@ -1,0 +1,99 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does a gateway service credential establish?",
+    "options": [
+      "Model correctness",
+      "Automatic global database permission",
+      "Service identity, not all end-user record rights"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should provider API keys live?",
+    "options": [
+      "Approved server-side runtime configuration",
+      "Generated tool arguments",
+      "Browser JavaScript"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What makes a rollout reversible?",
+    "options": [
+      "Only a green model call",
+      "Feature flags, measured gates and a useful fallback",
+      "No version records"
+    ]
+  },
+  {
+    "id": "review-ai-rails-architecture",
+    "prompt": "Revisit Dispatch Desk: the whole Rails architecture: Who owns exact blocker counts?",
+    "options": [
+      "Application code over authoritative data",
+      "The prose generator",
+      "The model tokenizer"
+    ],
+    "covers": "ai-rails-architecture"
+  },
+  {
+    "id": "review-ai-intent-filter",
+    "prompt": "Revisit From user language to an allowlisted Rails query: Should generated SQL reach ActiveRecord?",
+    "options": [
+      "Only for SELECT",
+      "Yes after JSON.parse",
+      "No; use a validated domain filter"
+    ],
+    "covers": "ai-intent-filter"
+  },
+  {
+    "id": "review-ai-verified-facts",
+    "prompt": "Revisit Build a fact bundle before explaining a cause: What should a verified rule result include?",
+    "options": [
+      "An arbitrary model chain of thought",
+      "Only a friendly adjective",
+      "Rule/source version and its tested scope"
+    ],
+    "covers": "ai-verified-facts"
+  },
+  {
+    "id": "review-ai-compare-brief",
+    "prompt": "Revisit Comparisons and briefings: code aligns, AI explains: Who aligns comparison fields?",
+    "options": [
+      "Application code",
+      "The model by guessing",
+      "The embedding index"
+    ],
+    "covers": "ai-compare-brief"
+  },
+  {
+    "id": "review-ai-jobs-results",
+    "prompt": "Revisit Rails jobs, run state, and result ownership: Does an async adapter guarantee durable jobs?",
+    "options": [
+      "Only with JSON schemas",
+      "No, an in-process adapter may lose work",
+      "Yes"
+    ],
+    "covers": "ai-jobs-results"
+  },
+  {
+    "id": "review-ai-cache-freshness",
+    "prompt": "Revisit Cache answers without caching the wrong authority: Prompt caching is automatically final-answer caching?",
+    "options": [
+      "No",
+      "Only for Rails",
+      "Yes"
+    ],
+    "covers": "ai-cache-freshness"
+  },
+  {
+    "id": "review-ai-rails-checks",
+    "prompt": "Revisit Test the Rails feature at three different layers: What does a fixed fake model test establish?",
+    "options": [
+      "Handling of those specified outputs",
+      "Remote MCP OAuth correctness",
+      "Real model accuracy"
+    ],
+    "covers": "ai-rails-checks"
+  }
+]

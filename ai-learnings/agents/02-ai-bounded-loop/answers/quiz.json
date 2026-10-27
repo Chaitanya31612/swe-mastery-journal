@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "The runtime owns enforcement."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Observable boundaries are enough for many debugging tasks."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Stop states must be honest and usable."
+  }
+}

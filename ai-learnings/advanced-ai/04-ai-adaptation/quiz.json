@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What is LoRA at a useful high level?",
+    "options": [
+      "A parameter-efficient learned adaptation",
+      "A live SQL cache",
+      "A document permission protocol"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should live statuses remain?",
+    "options": [
+      "The authoritative scoped data source",
+      "Only in tuned weights",
+      "In a model confidence sentence"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Can distillation copy teacher errors?",
+    "options": [
+      "Only with vectors",
+      "No",
+      "Yes"
+    ]
+  }
+]

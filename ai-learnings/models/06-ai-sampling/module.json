@@ -1,0 +1,98 @@
+{
+  "id": "ai-sampling",
+  "track": "models",
+  "number": 6,
+  "sequence": 6,
+  "globalSequence": 6,
+  "title": "Sampling and reproducible experiments",
+  "level": "intermediate",
+  "outcome": "Explain temperature and evaluate changes without mistaking one lucky output for reliability.",
+  "hours": 2,
+  "cue": "One good answer is an example. Repeated measured behavior is evidence.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-uncertainty",
+  "tags": [
+    "models",
+    "intermediate",
+    "sampling"
+  ],
+  "useCase": "Explain temperature and evaluate changes without mistaking one lucky output for reliability.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Lower temperature cannot repair a bad authority boundary. Testing only examples that helped write the prompt can overstate reliability.",
+  "lab": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Versioned fixtures\"]\n N1[\"Fixed baseline\"]\n N2[\"One deliberate change\"]\n N3[\"Category-level comparison\"]\n N4[\"Held-out release check\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Versioned fixtures\"]\n N1[\"Fixed baseline\"]\n N2[\"One deliberate change\"]\n N3[\"Category-level comparison\"]\n N4[\"Held-out release check\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Versioned fixtures",
+      "detail": "Generation may select among possible continuations. Temperature and other sampling controls influence the distribution on models that support them. They are not truth, permission, or safety settings. Some reasoning models do not support the same controls; inspect the selected API’s capabilities.\n\nEven a nominally deterministic setting may not make an entire hosted workflow reproducible across infrastructure, model updates, tools, and retrieved data. Record model/snapshot, prompt version, input fixture, retrieval version, parameters, and tool outputs.\n\nCompare a change on a fixed set of cases. Repeat uncertain cases when needed. Keep a held-out set separate from prompt development. A single good demo establishes that a task can succeed once; it does not estimate how often it succeeds."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Freeze a representative dataset and versioned configuration. Run baseline and candidate; compare category-level results and costs. Inspect changed cases rather than only the overall score. Check whether the benefit survives a second run or a fresh holdout."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Lower temperature cannot repair a bad authority boundary. Testing only examples that helped write the prompt can overstate reliability."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain temperature and evaluate changes without mistaking one lucky output for reliability. Give a concrete example, one failure, and the check that catches it."
+}

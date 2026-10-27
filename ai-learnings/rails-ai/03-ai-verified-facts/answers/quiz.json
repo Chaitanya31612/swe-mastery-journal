@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Verification has assumptions and provenance."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Minimize context and data exposure."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Coverage limits should be visible."
+  }
+}

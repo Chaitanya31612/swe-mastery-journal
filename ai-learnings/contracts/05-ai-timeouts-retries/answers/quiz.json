@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Latency accumulates across the whole workflow."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Acknowledgment loss and effect failure are different."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Retries need one deliberate ownership policy."
+  }
+}

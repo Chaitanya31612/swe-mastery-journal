@@ -30,3 +30,10 @@ bin/
 !ruby-rails/18-ruby-compatibility-tests/**
 !frontend-mastery/course/20-frontend-vue-testing/
 !frontend-mastery/course/20-frontend-vue-testing/**
+
+# AI course training checks and Rails entrypoint.
+!ai-learnings/labs/dispatch-desk/test/
+!ai-learnings/labs/dispatch-desk/test/**
+!ai-learnings/labs/dispatch-desk/bin/
+!ai-learnings/labs/dispatch-desk/bin/**
+!ai-learnings/labs/dispatch-desk/config/environments/test.rb

@@ -1,0 +1,32 @@
+name: ai-learning-lab
+x-env: &env
+  DATABASE_URL: postgresql://learner:training_only@db:5432/ai_learning
+  SECRET_KEY_BASE: synthetic_local_training_only_not_a_production_secret
+  RAILS_ENV: development
+services:
+  db:
+    image: pgvector/pgvector:0.8.1-pg16
+    environment:
+      POSTGRES_USER: learner
+      POSTGRES_PASSWORD: training_only
+      POSTGRES_DB: ai_learning
+    volumes: [ai_db:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U learner -d ai_learning"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+  setup:
+    build: .
+    environment: *env
+    depends_on:
+      db: {condition: service_healthy}
+    command: ["sh", "-c", "bundle exec rails db:prepare && bundle exec rails db:seed"]
+  web:
+    build: .
+    environment: *env
+    depends_on:
+      setup: {condition: service_completed_successfully}
+    ports: ["127.0.0.1:3310:3000"]
+volumes:
+  ai_db:

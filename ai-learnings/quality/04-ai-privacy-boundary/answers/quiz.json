@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Retention, access, purpose and derived copies remain separate."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Minimization precedes generation."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Deployment and user authorization are independent."
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A stored conversation is what?",
+    "options": [
+      "Always harmless context",
+      "Application/provider data with a retention policy",
+      "Automatically new model weights"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Should yesterday’s access authorize today’s answer?",
+    "options": [
+      "Only if summarized",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What can a summary lose?",
+    "options": [
+      "Negation, exceptions and uncertainty",
+      "Nothing if it is short",
+      "Only punctuation"
+    ]
+  }
+]

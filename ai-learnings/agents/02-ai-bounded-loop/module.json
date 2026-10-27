@@ -1,0 +1,103 @@
+{
+  "id": "ai-bounded-loop",
+  "track": "agents",
+  "number": 2,
+  "sequence": 2,
+  "globalSequence": 24,
+  "title": "A bounded agent loop you can trace",
+  "level": "intermediate",
+  "outcome": "Implement proposal, policy, execution, observation, and stopping as explicit states.",
+  "hours": 2,
+  "cue": "Every loop needs a limit and a useful exit.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-workflow-choice",
+  "tags": [
+    "agents",
+    "intermediate",
+    "bounded",
+    "loop"
+  ],
+  "useCase": "Implement proposal, policy, execution, observation, and stopping as explicit states.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A final-looking sentence can arrive before required evidence exists. A second model call must not erase a policy denial from application state.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Task and run state\"]\n N1[\"Model proposal\"]\n N2[\"Policy and schema gate\"]\n N3[\"Bounded tool observation\"]\n N4[\"Final check or explicit stop\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Task and run state\"]\n N1[\"Model proposal\"]\n N2[\"Policy and schema gate\"]\n N3[\"Bounded tool observation\"]\n N4[\"Final check or explicit stop\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Task and run state",
+      "detail": "Treat an agent run as a state machine. It receives a task and context, asks a model for a proposal, validates a tool call or final answer, executes approved work, records the observation, and either continues or stops. Every transition needs an owner.\n\nBound steps, elapsed time, tokens/cost, tool outputs, and simultaneous work. Decide what happens when the limit is reached: partial result with evidence, clarification, fallback, or failure. Do not let “keep trying until solved” become an unbounded production loop.\n\nStore useful observations, not unrestricted hidden reasoning. A short user-facing explanation of decisions is different from exposing a model's internal chain of thought. Debug by tool proposals, policy decisions, supplied evidence and outcomes."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Trace one normal run, one unsupported tool, one policy denial, one tool error and one endless proposal sequence. Inspect the stopping reason and what the user can still use. Preserve call/result identity across steps."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A final-looking sentence can arrive before required evidence exists. A second model call must not erase a policy denial from application state."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Composable agent patterns",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    },
+    {
+      "title": "ReAct research",
+      "url": "https://arxiv.org/abs/2210.03629"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Implement proposal, policy, execution, observation, and stopping as explicit states. Give a concrete example, one failure, and the check that catches it."
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which changes can alter AI behavior?",
+    "options": [
+      "Model, prompt, tools, rules and retrieval versions",
+      "Only the UI theme",
+      "Only the model weights"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does shadow mode have no data/cost impact?",
+    "options": [
+      "Yes",
+      "Only for tool calls",
+      "No; it still processes data and consumes resources"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should an incident leave behind?",
+    "options": [
+      "A reviewed reproduction and regression check",
+      "No version evidence",
+      "Only a more forceful prompt"
+    ]
+  },
+  {
+    "id": "review-ai-evaluation-dataset",
+    "prompt": "Revisit Build an evaluation dataset before a success story: What belongs in a held-out set?",
+    "options": [
+      "Only the prompt examples",
+      "Cases not repeatedly used to tune the prompt",
+      "Only easy happy paths"
+    ],
+    "covers": "ai-evaluation-dataset"
+  },
+  {
+    "id": "review-ai-judges-calibration",
+    "prompt": "Revisit Rubrics, judges, confidence, and calibration: Does thresholding prove calibration?",
+    "options": [
+      "Yes",
+      "No",
+      "Only for JSON"
+    ],
+    "covers": "ai-judges-calibration"
+  },
+  {
+    "id": "review-ai-prompt-injection",
+    "prompt": "Revisit Prompt injection is an application trust problem: Can a retrieved document authorize a new tool?",
+    "options": [
+      "Only if it has citations",
+      "No",
+      "Yes if it says system"
+    ],
+    "covers": "ai-prompt-injection"
+  },
+  {
+    "id": "review-ai-privacy-boundary",
+    "prompt": "Revisit Data minimization, retention, and identity: Does “not used for training” answer every privacy question?",
+    "options": [
+      "No",
+      "Yes",
+      "Only for embeddings"
+    ],
+    "covers": "ai-privacy-boundary"
+  },
+  {
+    "id": "review-ai-cost-latency",
+    "prompt": "Revisit Cost, latency, capacity, and useful fallbacks: Which cost metric reflects the product better?",
+    "options": [
+      "Only number of prompts",
+      "Cost per accepted task at required quality",
+      "Only price per input token"
+    ],
+    "covers": "ai-cost-latency"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does thresholding prove calibration?",
+    "options": [
+      "Yes",
+      "No",
+      "Only for JSON"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What if no predictions are accepted?",
+    "options": [
+      "Recall must be 100%",
+      "Precision is undefined under that denominator",
+      "Precision is automatically 100%"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "How should an LLM judge be used?",
+    "options": [
+      "Validated against reviewed task labels",
+      "As unquestionable ground truth",
+      "Only by rewarding long answers"
+    ]
+  }
+]

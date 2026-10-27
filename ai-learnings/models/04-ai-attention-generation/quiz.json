@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does attention operate over here?",
+    "options": [
+      "The supplied representations and permitted context positions",
+      "Every row in your DB automatically",
+      "Only exact keyword matches"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What does a KV cache store?",
+    "options": [
+      "Your permission policy",
+      "Intermediate attention keys/values for serving",
+      "Verified business facts forever"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Can plausible continuation invent a cause?",
+    "options": [
+      "No, grammar prevents it",
+      "Yes, plausibility is not verification",
+      "Only with a small context"
+    ]
+  }
+]

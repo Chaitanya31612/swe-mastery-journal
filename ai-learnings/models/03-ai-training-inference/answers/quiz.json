@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Inference and training are different operations."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Current business state needs an authoritative source."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Data use and storage must be checked independently."
+  }
+}

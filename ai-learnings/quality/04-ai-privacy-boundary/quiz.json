@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does “not used for training” answer every privacy question?",
+    "options": [
+      "No",
+      "Yes",
+      "Only for embeddings"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should provider context contain?",
+    "options": [
+      "The entire account object by default",
+      "Minimum permitted fields for the task",
+      "Credentials so the model can fetch more"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does self-hosting remove tenant policy?",
+    "options": [
+      "Only on a private network",
+      "No",
+      "Yes"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Where should stdio diagnostic logs go?",
+    "options": [
+      "Away from protocol stdout, commonly stderr",
+      "Into model arguments",
+      "Mixed into every JSON message"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What must HTTP requests carry through the app boundary?",
+    "options": [
+      "A model-generated admin flag",
+      "Only raw prompt text",
+      "Current authenticated context and transport metadata"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does stateless mean no authorization?",
+    "options": [
+      "Yes",
+      "Only in Rails",
+      "No"
+    ]
+  }
+]

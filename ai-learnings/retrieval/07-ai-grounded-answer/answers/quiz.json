@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Category, relation and context can still be wrong."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Labels must match the actual evidence."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Conflict resolution is a product rule."
+  }
+}

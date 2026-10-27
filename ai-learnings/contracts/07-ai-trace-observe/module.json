@@ -1,0 +1,99 @@
+{
+  "id": "ai-trace-observe",
+  "track": "contracts",
+  "number": 7,
+  "sequence": 7,
+  "globalSequence": 14,
+  "title": "Trace the integration, not private conversations",
+  "level": "intermediate",
+  "outcome": "Record the boundaries needed to debug quality, latency, and cost without dumping sensitive text.",
+  "hours": 2,
+  "cue": "Trace identities and decisions before collecting content.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-streaming-ui",
+  "tags": [
+    "contracts",
+    "intermediate",
+    "trace",
+    "observe"
+  ],
+  "useCase": "Record the boundaries needed to debug quality, latency, and cost without dumping sensitive text.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Logging prompts for convenience can create a second sensitive-data store. A latency dashboard cannot by itself measure answer support or permission leakage.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Run and version IDs\"]\n N1[\"Retrieval and tool spans\"]\n N2[\"Validation decisions\"]\n N3[\"User-visible outcome\"]\n N4[\"Restricted feedback and evaluation\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Run and version IDs\"]\n N1[\"Retrieval and tool spans\"]\n N2[\"Validation decisions\"]\n N3[\"User-visible outcome\"]\n N4[\"Restricted feedback and evaluation\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Run and version IDs",
+      "detail": "A useful trace shows task, run ID, prompt/model versions, retrieval version, tool calls, validation decisions, fallback reason, durations, token usage, and outcome. It does not require storing every raw conversation or document.\n\nSeparate operational telemetry from a deliberately reviewed evaluation dataset. Minimize inputs, redact where appropriate, restrict access, and define retention. A hash is useful for correlation in some cases, but is not automatically anonymous or safe for low-entropy sensitive values.\n\nBreak end-to-end latency into retrieval, queueing, provider time, tool work, and validation. Track accepted answers and meaningful task outcomes, not only request success. A 200 response with an unsupported explanation is still a product failure. Cost accounting should include retries and multi-step work."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Start with “the user saw a stale answer.” Find its run, evidence/source version, completion time, cache key, and validation outcome. Compare to the current record version. You can often locate the fault without exposing the full text to every operator."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Logging prompts for convenience can create a second sensitive-data store. A latency dashboard cannot by itself measure answer support or permission leakage."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Record the boundaries needed to debug quality, latency, and cost without dumping sensitive text. Give a concrete example, one failure, and the check that catches it."
+}

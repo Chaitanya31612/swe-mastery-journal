@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Business semantics and permissions require separate checks."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Model text must remain data."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Unknown fields must not expand capabilities."
+  }
+}

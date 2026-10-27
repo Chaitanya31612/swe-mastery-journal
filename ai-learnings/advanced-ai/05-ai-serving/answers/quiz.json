@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "KV cache and runtime/concurrency overhead also matter."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Throughput and per-user delay are different metrics."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Artifact availability does not settle operational or policy questions."
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does the first streamed token mean success?",
+    "options": [
+      "Only for JSON",
+      "No; final completion and validation are separate",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "When can streamed tool arguments execute?",
+    "options": [
+      "After the first valid-looking brace",
+      "After a complete proposal passes validation and policy",
+      "Whenever text mentions a tool"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should screen readers hear?",
+    "options": [
+      "Every byte",
+      "Nothing at all",
+      "Useful state updates, not every generated token"
+    ]
+  }
+]

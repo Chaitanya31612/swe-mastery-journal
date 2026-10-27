@@ -1,0 +1,38 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "A deterministic client fixture isolates protocol behavior."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Capability surface changes need deliberate policy."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Classify the boundary before choosing a repair."
+  },
+  "review-ai-mcp-map": {
+    "correctIndex": 2,
+    "explanation": "Hosts own the integration experience."
+  },
+  "review-ai-mcp-capabilities": {
+    "correctIndex": 0,
+    "explanation": "Hints and enforcement differ."
+  },
+  "review-ai-mcp-lifecycle": {
+    "correctIndex": 1,
+    "explanation": "JSON-RPC distinguishes notifications from requests."
+  },
+  "review-ai-mcp-transports": {
+    "correctIndex": 0,
+    "explanation": "Keep the protocol channel parseable."
+  },
+  "review-ai-mcp-ruby-tool": {
+    "correctIndex": 1,
+    "explanation": "The model must not choose its identity."
+  },
+  "review-ai-mcp-auth": {
+    "correctIndex": 1,
+    "explanation": "API scopes do not replace record policy."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Language intent does not establish identity or permission."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "A bounded proposal is easier to validate and evaluate."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Use authoritative data for exact business facts."
+  }
+}

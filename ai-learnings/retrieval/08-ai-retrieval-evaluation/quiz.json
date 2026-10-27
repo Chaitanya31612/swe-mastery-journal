@@ -1,0 +1,99 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Is recall@k the same as answer accuracy?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with a reranker"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should a permission leak be treated as?",
+    "options": [
+      "A separate boundary failure",
+      "A useful source of extra recall",
+      "Just a small relevance penalty"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Why use an exact/lexical baseline?",
+    "options": [
+      "To identify whether added machinery actually helps",
+      "To guarantee perfect answers",
+      "To avoid all evaluation"
+    ]
+  },
+  {
+    "id": "review-ai-facts-or-documents",
+    "prompt": "Revisit Choose SQL facts, search, or RAG: A current exact count should come from where?",
+    "options": [
+      "Model memory",
+      "An authorized current query",
+      "The nearest text chunk"
+    ],
+    "covers": "ai-facts-or-documents"
+  },
+  {
+    "id": "review-ai-embeddings",
+    "prompt": "Revisit Embeddings: useful geometry, limited meaning: A similarity score is automatically what?",
+    "options": [
+      "Not a truth probability",
+      "A calibrated correctness probability",
+      "A tenant authorization decision"
+    ],
+    "covers": "ai-embeddings"
+  },
+  {
+    "id": "review-ai-ingestion",
+    "prompt": "Revisit Ingestion is a versioned data pipeline: Which metadata is needed for a citation?",
+    "options": [
+      "Only vector dimensions",
+      "Source identity, revision and location",
+      "Only a model confidence"
+    ],
+    "covers": "ai-ingestion"
+  },
+  {
+    "id": "review-ai-chunking",
+    "prompt": "Revisit Chunk for an answerable unit: What determines a useful chunk size?",
+    "options": [
+      "Only file size",
+      "Document structure, questions and measured results",
+      "A universal 512-token rule"
+    ],
+    "covers": "ai-chunking"
+  },
+  {
+    "id": "review-ai-hybrid-ranking",
+    "prompt": "Revisit Lexical, vector, hybrid, and reranking: Can reranking recover a document absent from candidates?",
+    "options": [
+      "No",
+      "Only with JSON mode",
+      "Always"
+    ],
+    "covers": "ai-hybrid-ranking"
+  },
+  {
+    "id": "review-ai-pgvector-rails",
+    "prompt": "Revisit PostgreSQL and pgvector in a Rails data boundary: What does HNSW change?",
+    "options": [
+      "The actor’s identity",
+      "The search speed/recall tradeoff",
+      "The truth of the document"
+    ],
+    "covers": "ai-pgvector-rails"
+  },
+  {
+    "id": "review-ai-grounded-answer",
+    "prompt": "Revisit Grounding, citations, and the support gap: A valid citation plus matching number proves the prose is supported?",
+    "options": [
+      "Yes",
+      "Only at temperature zero",
+      "No"
+    ],
+    "covers": "ai-grounded-answer"
+  }
+]

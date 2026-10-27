@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Leases and external effect identity solve different problems."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Durability does not preserve authorization indefinitely."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Effects need their own recovery semantics."
+  }
+}

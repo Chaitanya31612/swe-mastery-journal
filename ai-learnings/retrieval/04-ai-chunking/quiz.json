@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What determines a useful chunk size?",
+    "options": [
+      "Only file size",
+      "Document structure, questions and measured results",
+      "A universal 512-token rule"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does overlap create independent corroboration?",
+    "options": [
+      "Yes",
+      "No; duplicated text is still one source",
+      "Only with cosine search"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What can parent expansion help recover?",
+    "options": [
+      "Tenant permission automatically",
+      "A lost original document",
+      "The surrounding rule and exceptions"
+    ]
+  }
+]

@@ -1,0 +1,103 @@
+{
+  "id": "ai-rails-architecture",
+  "track": "rails-ai",
+  "number": 1,
+  "sequence": 1,
+  "globalSequence": 36,
+  "title": "Dispatch Desk: the whole Rails architecture",
+  "level": "intermediate",
+  "outcome": "Map a useful AI feature onto ordinary Rails boundaries and separate its four user tasks.",
+  "hours": 2.5,
+  "cue": "A useful AI feature still looks like a well-structured application.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": null,
+  "tags": [
+    "rails-ai",
+    "intermediate",
+    "rails",
+    "architecture"
+  ],
+  "useCase": "Map a useful AI feature onto ordinary Rails boundaries and separate its four user tasks.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "One giant “AI service” can hide access, retry and fact-validation responsibilities. A chat UI can also imply powers the backend does not have.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n U[Operator] --> C[Training assistant controller]\n C --> A[Current actor from identity boundary]\n A --> F[Intent service validates filter proposal]\n F --> DB[(Scoped shipment relation)]\n A --> R[Rules fact builder]\n R --> DB\n R --> V[Minimal verified fact snapshot]\n V --> J[Owned explanation run and job]\n J --> P[Provider adapter]\n P --> E[Explanation result checks]\n E -->|Invalid or unavailable| G[Reviewed rule guidance]\n E -->|Accepted| D[Labelled AI draft]\n G --> UI[Presenter with source version]\n D --> UI\n UI --> U",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "flowchart TD\n U[Operator] --> C[Training assistant controller]\n C --> A[Current actor from identity boundary]\n A --> F[Intent service validates filter proposal]\n F --> DB[(Scoped shipment relation)]\n A --> R[Rules fact builder]\n R --> DB\n R --> V[Minimal verified fact snapshot]\n V --> J[Owned explanation run and job]\n J --> P[Provider adapter]\n P --> E[Explanation result checks]\n E -->|Invalid or unavailable| G[Reviewed rule guidance]\n E -->|Accepted| D[Labelled AI draft]\n G --> UI[Presenter with source version]\n D --> UI\n UI --> U",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Authenticated request",
+      "detail": "Dispatch Desk is a fictional warehouse operations assistant. It can propose shipment filters, explain a blocked shipment, compare a small selection, and summarize grouped blockers. It is one worked example in this general course, not the definition of AI integration.\n\nKeep model work narrow. Code authenticates, resolves names, filters records, verifies hold rules, counts/group rows, and determines permitted navigation. The model interprets language and drafts explanations using supplied facts. The first version is read-only: a suggested next step is not an executed change.\n\nUse ordinary Rails layers. A controller authenticates and validates request size. A use-case service coordinates work. Provider adapters isolate model formats. Policies/scoped relations control data. Jobs handle longer work. Result validators and presenters keep UI labels honest. Each layer has a focused test."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Trace filter, explain, compare and briefing separately. For every output, identify whether it is a current fact, deterministic rule, generated interpretation or unavailable item. Then draw the data flow and no-model path."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "One giant “AI service” can hide access, retry and fact-validation responsibilities. A chat UI can also imply powers the backend does not have."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Composable agent patterns",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    },
+    {
+      "title": "Rails Active Job",
+      "url": "https://guides.rubyonrails.org/v7.2/active_job_basics.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Map a useful AI feature onto ordinary Rails boundaries and separate its four user tasks. Give a concrete example, one failure, and the check that catches it."
+}

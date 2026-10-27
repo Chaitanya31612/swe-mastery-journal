@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Who can approve a consequential action?",
+    "options": [
+      "The authorized user through the application flow",
+      "Any retrieved document",
+      "The proposing model itself"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should approval bind to?",
+    "options": [
+      "The exact operation and relevant version",
+      "A model confidence score",
+      "The whole conversation forever"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What if relevant state changed after preview?",
+    "options": [
+      "Revalidate and refresh approval as needed",
+      "Blindly repeat the old write",
+      "Ignore the version"
+    ]
+  }
+]

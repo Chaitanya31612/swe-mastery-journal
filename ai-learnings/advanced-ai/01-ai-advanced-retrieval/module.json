@@ -1,0 +1,107 @@
+{
+  "id": "ai-advanced-retrieval",
+  "track": "advanced-ai",
+  "number": 1,
+  "sequence": 1,
+  "globalSequence": 50,
+  "title": "Advanced retrieval: hierarchy, graphs, and query planning",
+  "level": "advanced",
+  "outcome": "Choose advanced retrieval from a query failure pattern rather than a trend.",
+  "hours": 2.5,
+  "cue": "Choose retrieval by the question shape and measured failure.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": null,
+  "tags": [
+    "advanced-ai",
+    "advanced",
+    "advanced",
+    "retrieval"
+  ],
+  "useCase": "Choose advanced retrieval from a query failure pattern rather than a trend.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "An LLM-guided search can spend many calls on the wrong branch. A graph can preserve mistaken extracted relationships. “No vectors” does not remove authorization or hallucination risk.",
+  "lab": "retrieval-lab",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Query category and failure\"]\n N1[\"Simple measured baseline\"]\n N2[\"One advanced strategy\"]\n N3[\"Bounded permitted evidence\"]\n N4[\"Support cost and freshness comparison\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Query category and failure\"]\n N1[\"Simple measured baseline\"]\n N2[\"One advanced strategy\"]\n N3[\"Bounded permitted evidence\"]\n N4[\"Support cost and freshness comparison\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Query category and failure",
+      "detail": "A question can need one passage, several linked facts, or a summary across a collection. Different retrieval strategies serve those needs. Query rewriting can improve wording but drift from the task. Multi-query search improves coverage at extra cost. Parent/child and hierarchical retrieval preserve structure. Graph-based methods can represent entities/relations and support broader summaries. Each adds data, evaluation and maintenance requirements.\n\nVectorless does not mean indexless or costless. A system such as PageIndex builds structured document indexes and uses model-guided navigation. Its results depend on extraction, tree quality, traversal, model behavior and query type. Conversation awareness, reference traversal and access control are engineering features that can also exist in vector-based systems.\n\nYour earlier notes give useful comparisons. Reframe their strongest claims as hypotheses to test: no method is universally better. Keep an exact/lexical/hybrid baseline, relevant query categories, authority metadata and a run budget."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Identify the failure → choose one retrieval enhancement → preserve original intent/access → inspect intermediate sources → compare to baseline → evaluate on held-out query categories. Keep traversal depth and evidence size bounded."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "An LLM-guided search can spend many calls on the wrong branch. A graph can preserve mistaken extracted relationships. “No vectors” does not remove authorization or hallucination risk."
+    }
+  ],
+  "sources": [
+    {
+      "title": "GraphRAG research",
+      "url": "https://arxiv.org/abs/2404.16130"
+    },
+    {
+      "title": "PageIndex implementation",
+      "url": "https://github.com/VectifyAI/PageIndex"
+    },
+    {
+      "title": "Your AI journal",
+      "url": "https://github.com/Chaitanya31612/ai-mastery-journal"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose advanced retrieval from a query failure pattern rather than a trend. Give a concrete example, one failure, and the check that catches it."
+}

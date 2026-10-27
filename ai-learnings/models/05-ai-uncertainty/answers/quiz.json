@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Confidence wording is not calibration."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Clarification preserves the user’s intended scope."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Provenance, support, freshness, and authority are different checks."
+  }
+}

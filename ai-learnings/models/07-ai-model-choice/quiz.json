@@ -1,0 +1,89 @@
+[
+  {
+    "id": "q1",
+    "prompt": "An embedding model is primarily used for what?",
+    "options": [
+      "A permission policy",
+      "Numeric representations for comparison/retrieval",
+      "Exact SQL counts"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Which cost comparison is meaningful?",
+    "options": [
+      "Only parameter count",
+      "Only input token price",
+      "Total cost per accepted task at required quality"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What survives a provider change?",
+    "options": [
+      "Your application contract, if deliberately maintained",
+      "Every sampling parameter unchanged",
+      "Automatically identical outputs"
+    ]
+  },
+  {
+    "id": "review-ai-boundary",
+    "prompt": "Revisit AI is a component, not the whole application: A user says “only my warehouse.” Where does that scope come from?",
+    "options": [
+      "The authenticated actor and application policy",
+      "The nearest embedding",
+      "The model’s interpretation of “my”"
+    ],
+    "covers": "ai-boundary"
+  },
+  {
+    "id": "review-ai-tokens-context",
+    "prompt": "Revisit Tokens, context, and the request budget: What consumes context besides a question?",
+    "options": [
+      "Only previous answers",
+      "Instructions, tools, history and evidence",
+      "Only database rows"
+    ],
+    "covers": "ai-tokens-context"
+  },
+  {
+    "id": "review-ai-training-inference",
+    "prompt": "Revisit Training, inference, and where knowledge lives: A normal inference call updates which weights?",
+    "options": [
+      "Usually none; context is supplied to inference",
+      "The model automatically retrains on every request",
+      "Only the vector index weights"
+    ],
+    "covers": "ai-training-inference"
+  },
+  {
+    "id": "review-ai-attention-generation",
+    "prompt": "Revisit Inside the black box: attention, prefill, and decode: What does attention operate over here?",
+    "options": [
+      "The supplied representations and permitted context positions",
+      "Every row in your DB automatically",
+      "Only exact keyword matches"
+    ],
+    "covers": "ai-attention-generation"
+  },
+  {
+    "id": "review-ai-uncertainty",
+    "prompt": "Revisit Fluency, hallucination, and honest uncertainty: A generated 95% confidence means what by default?",
+    "options": [
+      "A text claim requiring validation",
+      "95% empirical correctness",
+      "A permission grant"
+    ],
+    "covers": "ai-uncertainty"
+  },
+  {
+    "id": "review-ai-sampling",
+    "prompt": "Revisit Sampling and reproducible experiments: Temperature is primarily what?",
+    "options": [
+      "A truthfulness guarantee",
+      "A sampling control on supported models",
+      "A database isolation level"
+    ],
+    "covers": "ai-sampling"
+  }
+]

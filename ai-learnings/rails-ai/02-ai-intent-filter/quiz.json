@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Should generated SQL reach ActiveRecord?",
+    "options": [
+      "Only for SELECT",
+      "Yes after JSON.parse",
+      "No; use a validated domain filter"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "A depot name has two permitted matches. What next?",
+    "options": [
+      "Drop the tenant scope",
+      "Pick one silently",
+      "Clarify"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "How can manual and AI filters stay consistent?",
+    "options": [
+      "Use unrelated conditions",
+      "Trust only the AI path",
+      "Share the same domain filter contract"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Hints and enforcement differ."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Resource access remains scoped."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Capability negotiation is part of protocol correctness."
+  }
+}

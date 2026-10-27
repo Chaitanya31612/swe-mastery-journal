@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What is the MCP host?",
+    "options": [
+      "Always the database",
+      "The model weights",
+      "The application coordinating model and connections"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does MCP automatically provide RAG?",
+    "options": [
+      "No",
+      "Only with HTTP",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Who maps a provider tool call to MCP?",
+    "options": [
+      "The host/client integration",
+      "The database tokenizer",
+      "The vector distance function"
+    ]
+  }
+]

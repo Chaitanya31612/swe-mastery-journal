@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "2026-10-27-ai",
+  "title": "AI Learnings",
+  "tracks": [
+    {
+      "id": "models",
+      "title": "1 \u00b7 Understand the model",
+      "description": "Tokens, context, training, attention, uncertainty, and choosing a useful model.",
+      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "hours": 11.5
+    },
+    {
+      "id": "contracts",
+      "title": "2 \u00b7 Build a reliable model boundary",
+      "description": "Prompts, schemas, provider adapters, tool calls, timeouts, streams, and traces.",
+      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "hours": 13.5
+    },
+    {
+      "id": "retrieval",
+      "title": "3 \u00b7 Give it the right knowledge",
+      "description": "SQL facts, document ingestion, embeddings, hybrid search, grounded answers, and retrieval checks.",
+      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "hours": 15.0
+    },
+    {
+      "id": "agents",
+      "title": "4 \u00b7 Control tools and workflows",
+      "description": "Choose a workflow, run a bounded agent loop, own memory, and protect actions.",
+      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "hours": 11.5
+    },
+    {
+      "id": "mcp",
+      "title": "5 \u00b7 Connect through MCP",
+      "description": "Understand hosts, clients, servers, lifecycle, transports, authorization, and Ruby integration.",
+      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "hours": 13.0
+    },
+    {
+      "id": "rails-ai",
+      "title": "6 \u00b7 Build a complete Rails feature",
+      "description": "Trace a fictional operations assistant through controllers, jobs, services, facts, and fallback UI.",
+      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "hours": 20.0
+    },
+    {
+      "id": "quality",
+      "title": "7 \u00b7 Measure and operate it",
+      "description": "Evaluation, red teams, access boundaries, privacy, cost, observability, and release gates.",
+      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "hours": 12
+    },
+    {
+      "id": "advanced-ai",
+      "title": "8 \u00b7 Make production decisions",
+      "description": "Advanced retrieval, durable agents, framework tradeoffs, tuning, serving, multimodal work, and the final capstone.",
+      "version": "Application engineering \u00b7 checked 2026-10-27 \u00b7 see chapter references",
+      "hours": 18.0
+    }
+  ],
+  "modules": [
+    {
+      "id": "ai-boundary",
+      "directory": "ai-learnings/models/01-ai-boundary"
+    },
+    {
+      "id": "ai-tokens-context",
+      "directory": "ai-learnings/models/02-ai-tokens-context"
+    },
+    {
+      "id": "ai-training-inference",
+      "directory": "ai-learnings/models/03-ai-training-inference"
+    },
+    {
+      "id": "ai-attention-generation",
+      "directory": "ai-learnings/models/04-ai-attention-generation"
+    },
+    {
+      "id": "ai-uncertainty",
+      "directory": "ai-learnings/models/05-ai-uncertainty"
+    },
+    {
+      "id": "ai-sampling",
+      "directory": "ai-learnings/models/06-ai-sampling"
+    },
+    {
+      "id": "ai-model-choice",
+      "directory": "ai-learnings/models/07-ai-model-choice"
+    },
+    {
+      "id": "ai-prompt-contract",
+      "directory": "ai-learnings/contracts/01-ai-prompt-contract"
+    },
+    {
+      "id": "ai-structured-results",
+      "directory": "ai-learnings/contracts/02-ai-structured-results"
+    },
+    {
+      "id": "ai-provider-adapter",
+      "directory": "ai-learnings/contracts/03-ai-provider-adapter"
+    },
+    {
+      "id": "ai-tool-cycle",
+      "directory": "ai-learnings/contracts/04-ai-tool-cycle"
+    },
+    {
+      "id": "ai-timeouts-retries",
+      "directory": "ai-learnings/contracts/05-ai-timeouts-retries"
+    },
+    {
+      "id": "ai-streaming-ui",
+      "directory": "ai-learnings/contracts/06-ai-streaming-ui"
+    },
+    {
+      "id": "ai-trace-observe",
+      "directory": "ai-learnings/contracts/07-ai-trace-observe"
+    },
+    {
+      "id": "ai-facts-or-documents",
+      "directory": "ai-learnings/retrieval/01-ai-facts-or-documents"
+    },
+    {
+      "id": "ai-embeddings",
+      "directory": "ai-learnings/retrieval/02-ai-embeddings"
+    },
+    {
+      "id": "ai-ingestion",
+      "directory": "ai-learnings/retrieval/03-ai-ingestion"
+    },
+    {
+      "id": "ai-chunking",
+      "directory": "ai-learnings/retrieval/04-ai-chunking"
+    },
+    {
+      "id": "ai-hybrid-ranking",
+      "directory": "ai-learnings/retrieval/05-ai-hybrid-ranking"
+    },
+    {
+      "id": "ai-pgvector-rails",
+      "directory": "ai-learnings/retrieval/06-ai-pgvector-rails"
+    },
+    {
+      "id": "ai-grounded-answer",
+      "directory": "ai-learnings/retrieval/07-ai-grounded-answer"
+    },
+    {
+      "id": "ai-retrieval-evaluation",
+      "directory": "ai-learnings/retrieval/08-ai-retrieval-evaluation"
+    },
+    {
+      "id": "ai-workflow-choice",
+      "directory": "ai-learnings/agents/01-ai-workflow-choice"
+    },
+    {
+      "id": "ai-bounded-loop",
+      "directory": "ai-learnings/agents/02-ai-bounded-loop"
+    },
+    {
+      "id": "ai-tool-permissions",
+      "directory": "ai-learnings/agents/03-ai-tool-permissions"
+    },
+    {
+      "id": "ai-memory-context",
+      "directory": "ai-learnings/agents/04-ai-memory-context"
+    },
+    {
+      "id": "ai-approval-actions",
+      "directory": "ai-learnings/agents/05-ai-approval-actions"
+    },
+    {
+      "id": "ai-agent-evaluation",
+      "directory": "ai-learnings/agents/06-ai-agent-evaluation"
+    },
+    {
+      "id": "ai-mcp-map",
+      "directory": "ai-learnings/mcp/01-ai-mcp-map"
+    },
+    {
+      "id": "ai-mcp-capabilities",
+      "directory": "ai-learnings/mcp/02-ai-mcp-capabilities"
+    },
+    {
+      "id": "ai-mcp-lifecycle",
+      "directory": "ai-learnings/mcp/03-ai-mcp-lifecycle"
+    },
+    {
+      "id": "ai-mcp-transports",
+      "directory": "ai-learnings/mcp/04-ai-mcp-transports"
+    },
+    {
+      "id": "ai-mcp-ruby-tool",
+      "directory": "ai-learnings/mcp/05-ai-mcp-ruby-tool"
+    },
+    {
+      "id": "ai-mcp-auth",
+      "directory": "ai-learnings/mcp/06-ai-mcp-auth"
+    },
+    {
+      "id": "ai-mcp-host-debug",
+      "directory": "ai-learnings/mcp/07-ai-mcp-host-debug"
+    },
+    {
+      "id": "ai-rails-architecture",
+      "directory": "ai-learnings/rails-ai/01-ai-rails-architecture"
+    },
+    {
+      "id": "ai-intent-filter",
+      "directory": "ai-learnings/rails-ai/02-ai-intent-filter"
+    },
+    {
+      "id": "ai-verified-facts",
+      "directory": "ai-learnings/rails-ai/03-ai-verified-facts"
+    },
+    {
+      "id": "ai-compare-brief",
+      "directory": "ai-learnings/rails-ai/04-ai-compare-brief"
+    },
+    {
+      "id": "ai-jobs-results",
+      "directory": "ai-learnings/rails-ai/05-ai-jobs-results"
+    },
+    {
+      "id": "ai-cache-freshness",
+      "directory": "ai-learnings/rails-ai/06-ai-cache-freshness"
+    },
+    {
+      "id": "ai-rails-checks",
+      "directory": "ai-learnings/rails-ai/07-ai-rails-checks"
+    },
+    {
+      "id": "ai-rails-deployment",
+      "directory": "ai-learnings/rails-ai/08-ai-rails-deployment"
+    },
+    {
+      "id": "ai-evaluation-dataset",
+      "directory": "ai-learnings/quality/01-ai-evaluation-dataset"
+    },
+    {
+      "id": "ai-judges-calibration",
+      "directory": "ai-learnings/quality/02-ai-judges-calibration"
+    },
+    {
+      "id": "ai-prompt-injection",
+      "directory": "ai-learnings/quality/03-ai-prompt-injection"
+    },
+    {
+      "id": "ai-privacy-boundary",
+      "directory": "ai-learnings/quality/04-ai-privacy-boundary"
+    },
+    {
+      "id": "ai-cost-latency",
+      "directory": "ai-learnings/quality/05-ai-cost-latency"
+    },
+    {
+      "id": "ai-regression-rollout",
+      "directory": "ai-learnings/quality/06-ai-regression-rollout"
+    },
+    {
+      "id": "ai-advanced-retrieval",
+      "directory": "ai-learnings/advanced-ai/01-ai-advanced-retrieval"
+    },
+    {
+      "id": "ai-durable-agents",
+      "directory": "ai-learnings/advanced-ai/02-ai-durable-agents"
+    },
+    {
+      "id": "ai-frameworks-multiagent",
+      "directory": "ai-learnings/advanced-ai/03-ai-frameworks-multiagent"
+    },
+    {
+      "id": "ai-adaptation",
+      "directory": "ai-learnings/advanced-ai/04-ai-adaptation"
+    },
+    {
+      "id": "ai-serving",
+      "directory": "ai-learnings/advanced-ai/05-ai-serving"
+    },
+    {
+      "id": "ai-multimodal",
+      "directory": "ai-learnings/advanced-ai/06-ai-multimodal"
+    },
+    {
+      "id": "ai-final-capstone",
+      "directory": "ai-learnings/advanced-ai/07-ai-final-capstone"
+    }
+  ]
+}

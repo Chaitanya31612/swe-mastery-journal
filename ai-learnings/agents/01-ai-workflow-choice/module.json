@@ -1,0 +1,103 @@
+{
+  "id": "ai-workflow-choice",
+  "track": "agents",
+  "number": 1,
+  "sequence": 1,
+  "globalSequence": 23,
+  "title": "Workflow or agent: choose who controls the next step",
+  "level": "beginner",
+  "outcome": "Choose fixed orchestration for known paths and model-directed steps only when they earn their cost.",
+  "hours": 1.5,
+  "cue": "Autonomy is a cost to justify, not a badge to collect.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": null,
+  "tags": [
+    "agents",
+    "beginner",
+    "workflow",
+    "choice"
+  ],
+  "useCase": "Choose fixed orchestration for known paths and model-directed steps only when they earn their cost.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Calling a single prompt an agent can obscure missing orchestration. An unconstrained loop can keep investigating after the user already has enough evidence.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Task variability\"]\n N1[\"Known workflow baseline\"]\n N2[\"Measured need for tool choice\"]\n N3[\"Bounded agent option\"]\n N4[\"Compare success and operating cost\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Task variability\"]\n N1[\"Known workflow baseline\"]\n N2[\"Measured need for tool choice\"]\n N3[\"Bounded agent option\"]\n N4[\"Compare success and operating cost\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Task variability",
+      "detail": "A workflow follows code-defined paths. An agentic loop lets a model propose some next steps or tools based on observations. The distinction is who chooses the next operation, not whether the product has a chat box.\n\nMany useful features are workflows: classify request → validate filter → fetch facts → explain. Fixed paths are easier to test, budget, and reason about. An agent becomes useful when the necessary sequence depends on what it discovers, such as inspecting several permitted sources before forming a comparison.\n\nUse the simplest path that meets the task. Adding autonomy adds possible tool sequences, latency, cost, and failure modes. The host must still enforce capabilities, budgets and stopping. A framework can help orchestration but cannot decide your product's trust model for you."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Draw the steps and mark each chooser: code, user, or model. List all possible tools and side effects. Compare a workflow baseline with an agent on the same tasks, including failures and cost."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Calling a single prompt an agent can obscure missing orchestration. An unconstrained loop can keep investigating after the user already has enough evidence."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Composable agent patterns",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    },
+    {
+      "title": "ReAct research",
+      "url": "https://arxiv.org/abs/2210.03629"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose fixed orchestration for known paths and model-directed steps only when they earn their cost. Give a concrete example, one failure, and the check that catches it."
+}

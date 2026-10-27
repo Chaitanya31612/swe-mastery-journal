@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Outside content can carry instructions in several modalities."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Do not invent missing identity-bearing values."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Provenance helps review, not automatic truth."
+  }
+}

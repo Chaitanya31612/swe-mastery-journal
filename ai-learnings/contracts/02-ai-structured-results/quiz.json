@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A schema-valid output proves what?",
+    "options": [
+      "The actor may access its IDs",
+      "It has the permitted shape under the schema",
+      "Its claims are true"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What is the right parser for model JSON?",
+    "options": [
+      "eval",
+      "JSON parsing plus explicit validation",
+      "A TypeScript cast alone"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should an unsupported field do?",
+    "options": [
+      "Be rejected or explicitly handled by the contract",
+      "Become an admin option",
+      "Be silently executed"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "A holdout helps expose overfitting to known feedback."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Task correctness is often not one sentence."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Boundary failures need separate visibility."
+  }
+}

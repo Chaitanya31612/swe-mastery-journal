@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Can reranking recover a document absent from candidates?",
+    "options": [
+      "No",
+      "Only with JSON mode",
+      "Always"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Why not add unrelated raw scores blindly?",
+    "options": [
+      "They can have incompatible scales and meanings",
+      "All scores are probabilities",
+      "SQL disallows addition"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Where must permissions apply?",
+    "options": [
+      "Only after the answer is shown",
+      "Before candidates become model context and on result access",
+      "Inside the similarity formula alone"
+    ]
+  }
+]

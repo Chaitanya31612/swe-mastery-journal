@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "A proposal cannot grant privileges."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Preserve valid call/result relationships."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Dispatch must not create new capabilities from untrusted text."
+  }
+}

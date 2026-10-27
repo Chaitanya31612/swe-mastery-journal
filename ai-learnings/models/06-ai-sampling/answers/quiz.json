@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "It changes generation behavior, not business correctness."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Development feedback can bias the prompt toward known examples."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Failures need enough non-sensitive context to reproduce the boundary."
+  }
+}

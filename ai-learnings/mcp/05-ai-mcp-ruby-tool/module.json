@@ -1,0 +1,104 @@
+{
+  "id": "ai-mcp-ruby-tool",
+  "track": "mcp",
+  "number": 5,
+  "sequence": 5,
+  "globalSequence": 33,
+  "title": "A Ruby MCP tool around a Rails use case",
+  "level": "intermediate",
+  "outcome": "Expose a narrow Rails read without moving business policy into a model or SDK class.",
+  "hours": 2,
+  "cue": "Wrap a safe service. Do not wrap an unsafe lookup and call it safe.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-mcp-transports",
+  "tags": [
+    "mcp",
+    "intermediate",
+    "mcp",
+    "ruby",
+    "tool"
+  ],
+  "useCase": "Expose a narrow Rails read without moving business policy into a model or SDK class.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A thin protocol wrapper can still call an unscoped service. Input schema validation cannot fix a domain lookup that ignores actor permissions.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Authenticated context\"]\n N1[\"Typed tool arguments\"]\n N2[\"Shared domain service\"]\n N3[\"Scoped facts\"]\n N4[\"Protocol response\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Authenticated context\"]\n N1[\"Typed tool arguments\"]\n N2[\"Shared domain service\"]\n N3[\"Scoped facts\"]\n N4[\"Protocol response\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Authenticated context",
+      "detail": "Keep domain work in an ordinary service that can be tested without MCP. The MCP tool validates its contract, obtains trusted actor context, calls that service, and serializes a small result. This avoids duplicating business rules across protocol adapters.\n\nUse the pinned official mcp gem in a separate modern training app. SDK APIs and supported Ruby/protocol versions change; the lab lockfile and tests identify the executable baseline. A code fragment against a newer SDK should not be assumed to work in a legacy Rails runtime.\n\nReturn meaningful bounded errors without exposing internal exception messages or forbidden record existence. Tool descriptions help the model select a capability; they should not contain secrets or imply powers beyond the implementation."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Authenticate → create request-local context → SDK input validation → tool adapter → scoped domain service → bounded result. Compare direct service tests with real SDK call tests; both are useful and prove different boundaries."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A thin protocol wrapper can still call an unscoped service. Input schema validation cannot fix a domain lookup that ignores actor permissions."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Official Ruby MCP SDK",
+      "url": "https://ruby.sdk.modelcontextprotocol.io/server/"
+    },
+    {
+      "title": "MCP security boundaries",
+      "url": "https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Expose a narrow Rails read without moving business policy into a model or SDK class. Give a concrete example, one failure, and the check that catches it."
+}

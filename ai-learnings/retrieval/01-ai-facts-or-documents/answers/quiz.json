@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Choose the authority that owns the fact."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Vector search is one retrieval technique."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Relevance cannot substitute for permission."
+  }
+}

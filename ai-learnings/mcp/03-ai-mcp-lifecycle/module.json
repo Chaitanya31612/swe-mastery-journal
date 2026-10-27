@@ -1,0 +1,103 @@
+{
+  "id": "ai-mcp-lifecycle",
+  "track": "mcp",
+  "number": 3,
+  "sequence": 3,
+  "globalSequence": 31,
+  "title": "JSON-RPC and the MCP lifecycle",
+  "level": "intermediate",
+  "outcome": "Trace initialization, capabilities, request IDs, tool calls, errors, and notifications.",
+  "hours": 2,
+  "cue": "Negotiate first. Correlate carefully. Classify the failure.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-mcp-capabilities",
+  "tags": [
+    "mcp",
+    "intermediate",
+    "mcp",
+    "lifecycle"
+  ],
+  "useCase": "Trace initialization, capabilities, request IDs, tool calls, errors, and notifications.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Skipping lifecycle can work against a permissive toy server and fail elsewhere. Mixing request IDs with business operation IDs can break correlation or duplicate effects.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "sequenceDiagram\n participant H as Host MCP client\n participant S as MCP server\n H->>S: initialize with version and capabilities\n S-->>H: Selected version and server capabilities\n H->>S: notifications/initialized\n H->>S: tools/list\n S-->>H: Tool names and input schemas\n H->>H: Choose whether to expose tools to model\n H->>S: tools/call with request ID and arguments\n S->>S: Validate current actor and object access\n S-->>H: Tool result or error\n H->>H: Correlate result and apply execution budget",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "sequenceDiagram\n participant H as Host MCP client\n participant S as MCP server\n H->>S: initialize with version and capabilities\n S-->>H: Selected version and server capabilities\n H->>S: notifications/initialized\n H->>S: tools/list\n S-->>H: Tool names and input schemas\n H->>H: Choose whether to expose tools to model\n H->>S: tools/call with request ID and arguments\n S->>S: Validate current actor and object access\n S-->>H: Tool result or error\n H->>H: Correlate result and apply execution budget",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Initialize and version",
+      "detail": "MCP uses JSON-RPC 2.0 messages under a versioned lifecycle. Initialization exchanges protocol/version and capability information. The client then signals readiness. Normal operations follow the negotiated rules. The course pins the 2025-11-25 specification as a reference; check a peer's supported revision rather than treating it as permanently latest.\n\nRequests have IDs so responses can be correlated. Notifications do not request a response. A protocol error and a tool execution failure are different outcomes. Keep request IDs, model tool call IDs, application run IDs, and business idempotency keys distinct.\n\nUse an SDK for supported protocol behavior, but understand the messages well enough to debug a connection. Do not build a partial imitation and label it fully compliant. The lab includes a small local client trace against the pinned Ruby SDK, plus separate tests for the domain service."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Initialize → negotiate → initialized notification → list tools → validate/select tool → call → correlate response → close/cancel appropriately. Inspect the actual server-advertised names; do not guess tool names from class names."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Skipping lifecycle can work against a permissive toy server and fail elsewhere. Mixing request IDs with business operation IDs can break correlation or duplicate effects."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MCP specification 2025-11-25",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25"
+    },
+    {
+      "title": "Official Ruby MCP SDK",
+      "url": "https://ruby.sdk.modelcontextprotocol.io/server/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Trace initialization, capabilities, request IDs, tool calls, errors, and notifications. Give a concrete example, one failure, and the check that catches it."
+}

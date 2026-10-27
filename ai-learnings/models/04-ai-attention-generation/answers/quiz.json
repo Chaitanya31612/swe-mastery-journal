@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "External state must be supplied through an integration."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Serving state and product memory differ."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "The application must supply and validate authoritative evidence."
+  }
+}

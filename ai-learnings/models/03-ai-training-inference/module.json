@@ -1,0 +1,103 @@
+{
+  "id": "ai-training-inference",
+  "track": "models",
+  "number": 3,
+  "sequence": 3,
+  "globalSequence": 3,
+  "title": "Training, inference, and where knowledge lives",
+  "level": "beginner",
+  "outcome": "Distinguish learned weights, request context, retrieved knowledge, and application memory.",
+  "hours": 1.5,
+  "cue": "Weights learn patterns. Context carries this task. Your system owns current facts.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-tokens-context",
+  "tags": [
+    "models",
+    "beginner",
+    "training",
+    "inference"
+  ],
+  "useCase": "Distinguish learned weights, request context, retrieved knowledge, and application memory.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "“The model learned it in our chat” can hide application-managed history. A fresh call without that history may behave differently. Outdated indexes and caches can survive a correct source update.",
+  "lab": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n D[Training examples] --> T[Training computes weight updates]\n T --> W[Saved model weights]\n W --> I[Inference uses these weights]\n P[Prompt and selected context] --> I\n I --> O[Generated output]\n N[New company fact] --> C[Database or retrieved context]\n C --> P\n O -. Not normally a weight update .-> W",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "flowchart TD\n D[Training examples] --> T[Training computes weight updates]\n T --> W[Saved model weights]\n W --> I[Inference uses these weights]\n P[Prompt and selected context] --> I\n I --> O[Generated output]\n N[New company fact] --> C[Database or retrieved context]\n C --> P\n O -. Not normally a weight update .-> W",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Training updates weights",
+      "detail": "Training updates model parameters from data. Inference uses a trained model to produce outputs. A normal API conversation does not mean your application is updating the model’s weights during that conversation.\n\nPretraining learns broad statistical patterns. Instruction tuning and preference/reward-based post-training shape useful behavior. These stages do not turn the model into your current production database. Provider data-use, logging, and retention policies are separate questions; “not training” does not mean “not stored.”\n\nThere are several places to put knowledge: weights, the current request, a retrieval index, a business database, and a stored conversation. They have different update and deletion paths. Use current scoped queries for live counts. Use retrieval for relevant documents. Consider fine-tuning for a measured behavior gap, not as the first way to keep yesterday’s inventory current."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Trace source update → ingestion → index publication → retrieval → answer cache. Separately trace conversation storage. Ask how each place is corrected or deleted. Keep the model snapshot and prompt version in experiment records."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "“The model learned it in our chat” can hide application-managed history. A fresh call without that history may behave differently. Outdated indexes and caches can survive a correct source update."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Language models are few-shot learners",
+      "url": "https://arxiv.org/abs/2005.14165"
+    },
+    {
+      "title": "Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2005.11401"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Distinguish learned weights, request context, retrieved knowledge, and application memory. Give a concrete example, one failure, and the check that catches it."
+}

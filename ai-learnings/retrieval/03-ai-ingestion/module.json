@@ -1,0 +1,102 @@
+{
+  "id": "ai-ingestion",
+  "track": "retrieval",
+  "number": 3,
+  "sequence": 3,
+  "globalSequence": 17,
+  "title": "Ingestion is a versioned data pipeline",
+  "level": "intermediate",
+  "outcome": "Parse documents with provenance, access metadata, and a recoverable publication step.",
+  "hours": 2,
+  "cue": "Bad extraction becomes bad evidence. Inspect upstream first.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-embeddings",
+  "tags": [
+    "retrieval",
+    "intermediate",
+    "ingestion"
+  ],
+  "useCase": "Parse documents with provenance, access metadata, and a recoverable publication step.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A partial index update can mix old and new policy. A deletion that affects only source storage leaves stale derived copies.",
+  "lab": "retrieval-lab",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n S[Approved source and access policy] --> E[Extract and normalize]\n E --> C[Split with headings and source IDs]\n C --> B[Embed a complete new source version]\n B --> T[Validate count, errors and permissions]\n T --> P[Publish version atomically]\n P --> R[Retrieve active permitted chunks]\n D[Source deleted or access revoked] --> I[Invalidate chunks, vectors and cached answers]\n I --> R\n T -->|Failure| Q[Keep old valid version or mark unavailable]",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "flowchart TD\n S[Approved source and access policy] --> E[Extract and normalize]\n E --> C[Split with headings and source IDs]\n C --> B[Embed a complete new source version]\n B --> T[Validate count, errors and permissions]\n T --> P[Publish version atomically]\n P --> R[Retrieve active permitted chunks]\n D[Source deleted or access revoked] --> I[Invalidate chunks, vectors and cached answers]\n I --> R\n T -->|Failure| Q[Keep old valid version or mark unavailable]",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Source and access metadata",
+      "detail": "A useful retrieval pipeline begins before embeddings. Load permitted sources, parse them, preserve headings/tables and provenance, clean carefully, attach access metadata, create chunks, and publish a versioned index. Each step can lose information.\n\nKeep source ID, source version, location/page/section, tenant/access class, parser version, chunking version, and embedding version. Make ingestion idempotent by source/version identity. Publish a complete new index or source revision deliberately so queries do not see half an update.\n\nDeletion and permission changes need a propagation path. A document removed from the file browser may still exist in an index or answer cache. Recheck current authorization before returning evidence. Track ingestion lag and failures as product freshness signals, not only background-job errors."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Source revision → parse artifact → chunks with provenance → embeddings/index → publication marker → query. Simulate a parser error and a retry. The old complete version should remain available or the product should show a clear unavailable state."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A partial index update can mix old and new policy. A deletion that affects only source storage leaves stale derived copies."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2005.11401"
+    },
+    {
+      "title": "Your AI journal",
+      "url": "https://github.com/Chaitanya31612/ai-mastery-journal"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Parse documents with provenance, access metadata, and a recoverable publication step. Give a concrete example, one failure, and the check that catches it."
+}

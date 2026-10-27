@@ -1,0 +1,89 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Do you need an LLM to test an MCP connection?",
+    "options": [
+      "Only for stdio",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "A new server tool should be what?",
+    "options": [
+      "Reviewed before exposure to the planner",
+      "Treated as a system instruction",
+      "Automatically trusted"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What distinguishes a protocol failure from a tool failure?",
+    "options": [
+      "Only the final answer wording",
+      "Their layer, response form and trace evidence",
+      "The model’s confidence"
+    ]
+  },
+  {
+    "id": "review-ai-mcp-map",
+    "prompt": "Revisit MCP: host, client, server, and model: What is the MCP host?",
+    "options": [
+      "Always the database",
+      "The model weights",
+      "The application coordinating model and connections"
+    ],
+    "covers": "ai-mcp-map"
+  },
+  {
+    "id": "review-ai-mcp-capabilities",
+    "prompt": "Revisit Tools, resources, prompts, and other capabilities: A tool annotation enforces what by itself?",
+    "options": [
+      "No application authorization or side-effect policy",
+      "A complete security sandbox",
+      "A database read-only transaction"
+    ],
+    "covers": "ai-mcp-capabilities"
+  },
+  {
+    "id": "review-ai-mcp-lifecycle",
+    "prompt": "Revisit JSON-RPC and the MCP lifecycle: Does a notification require a response?",
+    "options": [
+      "Only for tools/list",
+      "No",
+      "Yes, always with the same ID"
+    ],
+    "covers": "ai-mcp-lifecycle"
+  },
+  {
+    "id": "review-ai-mcp-transports",
+    "prompt": "Revisit Stdio and Streamable HTTP are different deployments: Where should stdio diagnostic logs go?",
+    "options": [
+      "Away from protocol stdout, commonly stderr",
+      "Into model arguments",
+      "Mixed into every JSON message"
+    ],
+    "covers": "ai-mcp-transports"
+  },
+  {
+    "id": "review-ai-mcp-ruby-tool",
+    "prompt": "Revisit A Ruby MCP tool around a Rails use case: Where should the actor come from?",
+    "options": [
+      "The resource title",
+      "Trusted server context",
+      "The model tool arguments"
+    ],
+    "covers": "ai-mcp-ruby-tool"
+  },
+  {
+    "id": "review-ai-mcp-auth",
+    "prompt": "Revisit Remote MCP authorization and tenant policy: Does tools:read authorize every tenant?",
+    "options": [
+      "Only for JSON-RPC",
+      "No",
+      "Yes"
+    ],
+    "covers": "ai-mcp-auth"
+  }
+]

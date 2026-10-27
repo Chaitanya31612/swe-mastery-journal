@@ -1,0 +1,103 @@
+{
+  "id": "ai-tool-cycle",
+  "track": "contracts",
+  "number": 4,
+  "sequence": 4,
+  "globalSequence": 11,
+  "title": "Tool calling is a proposal–execution loop",
+  "level": "intermediate",
+  "outcome": "Follow tool arguments, host execution, call IDs, and results without giving the model unrestricted access.",
+  "hours": 2,
+  "cue": "The model asks. The host validates and runs.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-provider-adapter",
+  "tags": [
+    "contracts",
+    "intermediate",
+    "tool",
+    "cycle"
+  ],
+  "useCase": "Follow tool arguments, host execution, call IDs, and results without giving the model unrestricted access.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Schema-valid arguments can still be unauthorized. A tool can return injected instructions. A timeout after a write can have an unknown outcome, so a blind retry can duplicate effects.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "sequenceDiagram\n participant H as Application host\n participant M as Model\n participant P as Policy and validator\n participant T as Domain tool\n H->>M: Task plus allowed tool schemas\n M-->>H: Proposed tool name and arguments\n H->>P: Validate arguments and current actor\n alt Denied or invalid\n P-->>H: Safe error without hidden data\n else Permitted\n H->>T: Execute bounded operation\n T-->>H: Typed result with source version\n end\n H->>M: Tool result correlated to call ID\n M-->>H: Draft or next proposed call\n H->>H: Enforce total steps, time and spend",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "sequenceDiagram\n participant H as Application host\n participant M as Model\n participant P as Policy and validator\n participant T as Domain tool\n H->>M: Task plus allowed tool schemas\n M-->>H: Proposed tool name and arguments\n H->>P: Validate arguments and current actor\n alt Denied or invalid\n P-->>H: Safe error without hidden data\n else Permitted\n H->>T: Execute bounded operation\n T-->>H: Typed result with source version\n end\n H->>M: Tool result correlated to call ID\n M-->>H: Draft or next proposed call\n H->>H: Enforce total steps, time and spend",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Declared tools",
+      "detail": "The model can emit a request to use a declared tool. In a client-side integration, your host application receives that proposal, validates it, executes permitted code, and returns a tool result. The model does not obtain the function's privileges merely by generating its name.\n\nA tool definition describes name, purpose, and argument shape. Keep descriptions narrow and schemas small. Resolve identity outside arguments. Treat arguments as outside input and results as potentially untrusted content. Return bounded data with explicit errors.\n\nThe host maintains the conversation item linking a call ID to its result. A second model step can use the result to answer or propose another call. Put limits on steps, time, output size, and total cost. Some platforms can execute tools server-side; their execution boundary and authorization still need an explicit design."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "User input → model tool proposal → schema and policy checks → bounded function → safe result with matching call ID → model continuation. Trace the real tool name, duration, result status, and policy decision without logging private arguments by default."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Schema-valid arguments can still be unauthorized. A tool can return injected instructions. A timeout after a write can have an unknown outcome, so a blind retry can duplicate effects."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Function calling",
+      "url": "https://developers.openai.com/api/docs/guides/function-calling"
+    },
+    {
+      "title": "Amazon Bedrock tool use",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Follow tool arguments, host execution, call IDs, and results without giving the model unrestricted access. Give a concrete example, one failure, and the check that catches it."
+}

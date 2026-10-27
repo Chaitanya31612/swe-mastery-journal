@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does HNSW change?",
+    "options": [
+      "The actor’s identity",
+      "The search speed/recall tradeoff",
+      "The truth of the document"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should tenant_id come from?",
+    "options": [
+      "Authenticated application context",
+      "The model’s requested arguments",
+      "The nearest document"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Which baseline helps diagnose ANN filtering?",
+    "options": [
+      "An exact scoped search",
+      "A longer generated answer",
+      "An unscoped global search shown to users"
+    ]
+  }
+]

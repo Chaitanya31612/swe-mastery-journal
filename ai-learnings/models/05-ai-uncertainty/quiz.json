@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A generated 95% confidence means what by default?",
+    "options": [
+      "A text claim requiring validation",
+      "95% empirical correctness",
+      "A permission grant"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Two authorized names match. Best next state?",
+    "options": [
+      "Clarify the intended record",
+      "Pick the first result",
+      "Expand to all tenants"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does a valid citation ID prove?",
+    "options": [
+      "Every claim is true",
+      "The cited source was supplied",
+      "The source is current and authoritative"
+    ]
+  }
+]

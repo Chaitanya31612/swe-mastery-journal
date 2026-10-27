@@ -1,0 +1,103 @@
+{
+  "id": "ai-hybrid-ranking",
+  "track": "retrieval",
+  "number": 5,
+  "sequence": 5,
+  "globalSequence": 19,
+  "title": "Lexical, vector, hybrid, and reranking",
+  "level": "intermediate",
+  "outcome": "Choose a search pipeline and measure which stage loses the answer.",
+  "hours": 2,
+  "cue": "Find candidates. Order candidates. Pack evidence. Debug each separately.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-chunking",
+  "tags": [
+    "retrieval",
+    "intermediate",
+    "hybrid",
+    "ranking"
+  ],
+  "useCase": "Choose a search pipeline and measure which stage loses the answer.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "More retrieved documents can reduce useful signal. A reranker is not an authorization system, and a generated query rewrite can drift away from the original task.",
+  "lab": "retrieval-lab",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart LR\n Q[Question] --> L[Lexical candidates]\n Q --> E[Embedding candidates]\n A[Authenticated scope] --> L\n A --> E\n L --> F[Merge candidates by rank]\n E --> F\n F --> R[Optional reranker]\n R --> P[Recheck access and current source version]\n P --> B[Select diverse evidence within budget]\n B --> G[Answer or missing evidence]",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "flowchart LR\n Q[Question] --> L[Lexical candidates]\n Q --> E[Embedding candidates]\n A[Authenticated scope] --> L\n A --> E\n L --> F[Merge candidates by rank]\n E --> F\n F --> R[Optional reranker]\n R --> P[Recheck access and current source version]\n P --> B[Select diverse evidence within budget]\n B --> G[Answer or missing evidence]",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Authorized candidates",
+      "detail": "Lexical search is useful for exact identifiers, rare terms, and matching words. Dense vector search can help with paraphrases. Hybrid search combines candidate signals. A reranker examines a query and candidate more directly to improve ordering. Each adds a different cost and failure mode.\n\nDo not add raw scores from unrelated systems without a defined, evaluated normalization. Rank fusion, such as reciprocal-rank fusion, combines positions rather than assuming scores share units. Rerank only permitted candidates and keep collection sizes bounded.\n\nSeparate candidate recall from final ranking. If the correct document never enters the candidate pool, a reranker cannot recover it. If it appears but is discarded during context assembly, retrieval itself may be fine. Trace the stage where evidence disappears."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Authorized corpus → lexical candidates + vector candidates → deduplicate/fuse → rerank → fit context budget → answer. Log safe candidate IDs and stage ranks. Evaluate exact-ID, paraphrase, ambiguous, and no-answer cases separately."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "More retrieved documents can reduce useful signal. A reranker is not an authorization system, and a generated query rewrite can drift away from the original task."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2005.11401"
+    },
+    {
+      "title": "pgvector reference",
+      "url": "https://github.com/pgvector/pgvector"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose a search pipeline and measure which stage loses the answer. Give a concrete example, one failure, and the check that catches it."
+}

@@ -1,0 +1,103 @@
+{
+  "id": "ai-prompt-injection",
+  "track": "quality",
+  "number": 3,
+  "sequence": 3,
+  "globalSequence": 46,
+  "title": "Prompt injection is an application trust problem",
+  "level": "intermediate",
+  "outcome": "Keep outside instructions from acquiring tools, data, or execution authority.",
+  "hours": 2,
+  "cue": "Outside text may inform the answer. It must not acquire authority.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-judges-calibration",
+  "tags": [
+    "quality",
+    "intermediate",
+    "prompt",
+    "injection"
+  ],
+  "useCase": "Keep outside instructions from acquiring tools, data, or execution authority.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Prompt wording alone cannot protect data already sent to a provider. A model refusing one attack does not prove it will refuse every reformulation.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Context origins\"]\n N1[\"Minimal data and capabilities\"]\n N2[\"Untrusted instruction attempt\"]\n N3[\"Host/server policy gates\"]\n N4[\"Bounded safe result or refusal\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Context origins\"]\n N1[\"Minimal data and capabilities\"]\n N2[\"Untrusted instruction attempt\"]\n N3[\"Host/server policy gates\"]\n N4[\"Bounded safe result or refusal\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Context origins",
+      "detail": "Prompt injection places hostile or irrelevant instructions in user text, retrieved documents, tool results, or other context. The goal may be to override the task, reveal data, trigger a tool, or change the answer. A document can contain both useful facts and an instruction the application must not obey.\n\nUse layered controls: minimize capabilities, scope data before exposure, separate trusted instructions from outside content, validate tool proposals and output, restrict egress, and require precise approval for consequential actions. A detector or sanitizing prompt can help some cases but is not a complete boundary.\n\nTreat model output as outside input too. Do not execute generated HTML, SQL, shell commands or URLs without a separate deliberate contract. A retrieved page cannot grant the user new privileges. Test indirect instructions across multiple turns and tool results, not only “ignore previous instructions” typed directly by the user."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Mark every context segment's origin. Follow a malicious instruction from document to model proposal to host policy. Verify that forbidden data never entered context and unapproved actions never executed. Log safe failure categories, not the full sensitive attempted payload."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Prompt wording alone cannot protect data already sent to a provider. A model refusing one attack does not prove it will refuse every reformulation."
+    }
+  ],
+  "sources": [
+    {
+      "title": "OWASP prompt injection guidance",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "title": "MCP security boundaries",
+      "url": "https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Keep outside instructions from acquiring tools, data, or execution authority. Give a concrete example, one failure, and the check that catches it."
+}

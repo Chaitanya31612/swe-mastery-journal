@@ -1,0 +1,103 @@
+{
+  "id": "ai-compare-brief",
+  "track": "rails-ai",
+  "number": 4,
+  "sequence": 4,
+  "globalSequence": 39,
+  "title": "Comparisons and briefings: code aligns, AI explains",
+  "level": "intermediate",
+  "outcome": "Build exact comparison and grouping inputs before asking for a useful narrative.",
+  "hours": 2.5,
+  "cue": "Code lines up the evidence. AI can make it easier to read.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-verified-facts",
+  "tags": [
+    "rails-ai",
+    "intermediate",
+    "compare",
+    "brief"
+  ],
+  "useCase": "Build exact comparison and grouping inputs before asking for a useful narrative.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Dropping inaccessible selected records silently can produce a misleading comparison. A narrative may also relabel a correct number to the wrong category.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Permitted bounded selection\"]\n N1[\"Aligned facts or scoped aggregates\"]\n N2[\"Explicit missing states\"]\n N3[\"Optional narrative\"]\n N4[\"Inspectable exact view\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Permitted bounded selection\"]\n N1[\"Aligned facts or scoped aggregates\"]\n N2[\"Explicit missing states\"]\n N3[\"Optional narrative\"]\n N4[\"Inspectable exact view\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Permitted bounded selection",
+      "detail": "Comparing several records is a different task from looking up one. Code must verify access to every selected record, align the same fields, preserve missing values, and derive exact differences. The model can explain which supplied differences appear relevant, but it cannot create new facts or decide authorization.\n\nFor a work-queue briefing, compute groups and counts in code under the same active filter/scope. A narrative can suggest an order of attention, but its counts and labels must match the supplied aggregates. Keep “not available” distinct from zero and “same” distinct from “not compared.”\n\nBound selection size and context. The user should be able to inspect the underlying comparison or group table without the generated text. That deterministic view is useful when AI is unavailable or unhelpful."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Selection/filter → access check for all records → aligned facts or exact groups → bounded context → generated draft → field/number checks → inspectable deterministic table. Test a mixed-authority selection and an empty result."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Dropping inaccessible selected records silently can produce a misleading comparison. A narrative may also relabel a correct number to the wrong category."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Structured outputs",
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs"
+    },
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Build exact comparison and grouping inputs before asking for a useful narrative. Give a concrete example, one failure, and the check that catches it."
+}

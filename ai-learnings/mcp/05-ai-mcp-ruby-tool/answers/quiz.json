@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "The model must not choose its identity."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Protocol reuse should not duplicate authority."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Different test layers establish different claims."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "API scopes do not replace record policy."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Correlation/session state is not identity proof."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Token passthrough can create a confused deputy."
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "id": "ai-jobs-results",
+  "track": "rails-ai",
+  "number": 5,
+  "sequence": 5,
+  "globalSequence": 40,
+  "title": "Rails jobs, run state, and result ownership",
+  "level": "intermediate",
+  "outcome": "Build a durable result contract and prevent cross-user or stale background answers.",
+  "hours": 2.5,
+  "cue": "A run has an owner, a snapshot, and an honest state.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-compare-brief",
+  "tags": [
+    "rails-ai",
+    "intermediate",
+    "jobs",
+    "results"
+  ],
+  "useCase": "Build a durable result contract and prevent cross-user or stale background answers.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A background result can be correctly generated for yesterday's scope and wrong to show today. A successful job does not automatically authorize result access.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "stateDiagram-v2\n [*] --> queued: persist owned run\n queued --> running: atomic claim\n running --> completed: valid draft\n running --> fallback: provider or validation failure\n running --> unavailable: access or source missing\n completed --> stale: source version changed on read\n fallback --> stale: source version changed on read\n completed --> completed: duplicate completed delivery does nothing\n note right of running\n Local lab has no crash lease recovery.\n Design it before using a durable worker.\n end note",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "stateDiagram-v2\n [*] --> queued: persist owned run\n queued --> running: atomic claim\n running --> completed: valid draft\n running --> fallback: provider or validation failure\n running --> unavailable: access or source missing\n completed --> stale: source version changed on read\n fallback --> stale: source version changed on read\n completed --> completed: duplicate completed delivery does nothing\n note right of running\n Local lab has no crash lease recovery.\n Design it before using a durable worker.\n end note",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Owned run record",
+      "detail": "A longer explanation should have an application run ID and explicit state. Store actor/scope, task identity, source version, prompt/model version and outcome metadata. A job loads that run, rechecks current access, obtains facts, calls the provider, validates the result, and stores an allowed terminal state.\n\nPersisting a run and enqueueing a job are separate boundaries unless the chosen queue/database mechanism unifies them. For important work, use a durable enqueue strategy or an outbox/recovery process. Rails' in-process async adapter is useful for a local demonstration but loses queued work on process exit.\n\nResult access needs its own authorization. A user should not fetch another user's run by guessing its ID. A job started while access was valid may finish after revocation. Recheck the evidence version and current access before displaying stored results."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Trace enqueue failure, duplicate execution, process crash, permission revocation and source change. Avoid holding a DB lock during a slow model request. Use a claim/lease and attempt identity where needed for concurrent durable workers."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A background result can be correctly generated for yesterday's scope and wrong to show today. A successful job does not automatically authorize result access."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rails Active Job",
+      "url": "https://guides.rubyonrails.org/v7.2/active_job_basics.html"
+    },
+    {
+      "title": "Conversation state",
+      "url": "https://developers.openai.com/api/docs/guides/conversation-state"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Build a durable result contract and prevent cross-user or stale background answers. Give a concrete example, one failure, and the check that catches it."
+}

@@ -1,0 +1,103 @@
+{
+  "id": "ai-frameworks-multiagent",
+  "track": "advanced-ai",
+  "number": 3,
+  "sequence": 3,
+  "globalSequence": 52,
+  "title": "Frameworks and multiple agents: earn the complexity",
+  "level": "advanced",
+  "outcome": "Compare explicit orchestration, framework runtimes, and specialized agents using task evidence.",
+  "hours": 2.5,
+  "cue": "More agents create more boundaries, not automatic expertise.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-durable-agents",
+  "tags": [
+    "advanced-ai",
+    "advanced",
+    "frameworks",
+    "multiagent"
+  ],
+  "useCase": "Compare explicit orchestration, framework runtimes, and specialized agents using task evidence.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Delegating can multiply the same hallucination. A shared memory store can also bypass the access isolation you kept in each individual tool.",
+  "lab": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Simple orchestration baseline\"]\n N1[\"Needed runtime capability\"]\n N2[\"Restricted specialist handoff\"]\n N3[\"Validated synthesis and review\"]\n N4[\"Measured benefit and cost\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Simple orchestration baseline\"]\n N1[\"Needed runtime capability\"]\n N2[\"Restricted specialist handoff\"]\n N3[\"Validated synthesis and review\"]\n N4[\"Measured benefit and cost\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Simple orchestration baseline",
+      "detail": "An agent framework can provide tool registration, state graphs, retries, tracing or persistence. It can reduce wiring, but it can also hide control flow and defaults. Start by drawing the underlying state machine and identifying which guarantees the framework actually supplies in the selected version.\n\nMultiple agents can divide work by expertise, source or independent review. They also add context handoffs, correlated errors, coordination cost and a larger capability surface. Two models agreeing is not independent proof if both saw the same bad evidence. A reviewer agent needs a rubric and authority limits too.\n\nKeep shared state typed and provenance-aware. Do not pass every private context field to every agent. Bound delegation depth, fan-out, time and cost. Compare a single-agent or deterministic workflow baseline on the same held-out tasks before adopting the extra machinery."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Explicit workflow baseline → identify a bottleneck → add one framework capability or specialist → trace context/capability handoff → measure outcome/cost → review new failures. Inspect retries and side-effect defaults rather than assuming names imply guarantees."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Delegating can multiply the same hallucination. A shared memory store can also bypass the access isolation you kept in each individual tool."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Composable agent patterns",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    },
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Compare explicit orchestration, framework runtimes, and specialized agents using task evidence. Give a concrete example, one failure, and the check that catches it."
+}

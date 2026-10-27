@@ -1,0 +1,579 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A valid citation ID accompanies the wrong category count. Which gate failed?",
+    "options": [
+      "Only JSON parsing",
+      "Only provider uptime",
+      "Semantic/exact claim support, despite provenance membership"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "A revoked actor requests a previously cached answer. What should happen?",
+    "options": [
+      "The model decides",
+      "The TTL grants temporary access",
+      "Current authorization blocks reuse"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What demonstrates advanced integration ability best?",
+    "options": [
+      "A working slice, negative evidence, measured model limits and a clear recovery explanation",
+      "A perfect copied diagram",
+      "A long list of AI tool names"
+    ]
+  },
+  {
+    "id": "review-ai-boundary",
+    "prompt": "Revisit AI is a component, not the whole application: A user says “only my warehouse.” Where does that scope come from?",
+    "options": [
+      "The authenticated actor and application policy",
+      "The nearest embedding",
+      "The model’s interpretation of “my”"
+    ],
+    "covers": "ai-boundary"
+  },
+  {
+    "id": "review-ai-tokens-context",
+    "prompt": "Revisit Tokens, context, and the request budget: What consumes context besides a question?",
+    "options": [
+      "Only previous answers",
+      "Instructions, tools, history and evidence",
+      "Only database rows"
+    ],
+    "covers": "ai-tokens-context"
+  },
+  {
+    "id": "review-ai-training-inference",
+    "prompt": "Revisit Training, inference, and where knowledge lives: A normal inference call updates which weights?",
+    "options": [
+      "Usually none; context is supplied to inference",
+      "The model automatically retrains on every request",
+      "Only the vector index weights"
+    ],
+    "covers": "ai-training-inference"
+  },
+  {
+    "id": "review-ai-attention-generation",
+    "prompt": "Revisit Inside the black box: attention, prefill, and decode: What does attention operate over here?",
+    "options": [
+      "The supplied representations and permitted context positions",
+      "Every row in your DB automatically",
+      "Only exact keyword matches"
+    ],
+    "covers": "ai-attention-generation"
+  },
+  {
+    "id": "review-ai-uncertainty",
+    "prompt": "Revisit Fluency, hallucination, and honest uncertainty: A generated 95% confidence means what by default?",
+    "options": [
+      "A text claim requiring validation",
+      "95% empirical correctness",
+      "A permission grant"
+    ],
+    "covers": "ai-uncertainty"
+  },
+  {
+    "id": "review-ai-sampling",
+    "prompt": "Revisit Sampling and reproducible experiments: Temperature is primarily what?",
+    "options": [
+      "A truthfulness guarantee",
+      "A sampling control on supported models",
+      "A database isolation level"
+    ],
+    "covers": "ai-sampling"
+  },
+  {
+    "id": "review-ai-model-choice",
+    "prompt": "Revisit Choose a model for a task, not a leaderboard: An embedding model is primarily used for what?",
+    "options": [
+      "A permission policy",
+      "Numeric representations for comparison/retrieval",
+      "Exact SQL counts"
+    ],
+    "covers": "ai-model-choice"
+  },
+  {
+    "id": "review-ai-prompt-contract",
+    "prompt": "Revisit Prompts as small, testable specifications: What should few-shot examples include?",
+    "options": [
+      "Only perfect happy paths",
+      "Private records from production",
+      "Normal, ambiguous and unknown cases"
+    ],
+    "covers": "ai-prompt-contract"
+  },
+  {
+    "id": "review-ai-structured-results",
+    "prompt": "Revisit Structured output: syntax is the first gate: A schema-valid output proves what?",
+    "options": [
+      "The actor may access its IDs",
+      "It has the permitted shape under the schema",
+      "Its claims are true"
+    ],
+    "covers": "ai-structured-results"
+  },
+  {
+    "id": "review-ai-provider-adapter",
+    "prompt": "Revisit A Rails provider adapter you can replace: What belongs in the adapter?",
+    "options": [
+      "Every controller’s UI layout",
+      "Tenant-wide authorization policy decided by the model",
+      "Vendor response mapping and transport failures"
+    ],
+    "covers": "ai-provider-adapter"
+  },
+  {
+    "id": "review-ai-tool-cycle",
+    "prompt": "Revisit Tool calling is a proposal–execution loop: Who authorizes a client-side tool execution?",
+    "options": [
+      "The model’s tool name",
+      "The host/application policy",
+      "The JSON parser"
+    ],
+    "covers": "ai-tool-cycle"
+  },
+  {
+    "id": "review-ai-timeouts-retries",
+    "prompt": "Revisit Timeouts, retries, and whole-run budgets: Which budget matters to the user?",
+    "options": [
+      "The end-to-end run budget",
+      "Only one token limit",
+      "Only the last HTTP timeout"
+    ],
+    "covers": "ai-timeouts-retries"
+  },
+  {
+    "id": "review-ai-streaming-ui",
+    "prompt": "Revisit Streaming with honest UI states: Does the first streamed token mean success?",
+    "options": [
+      "Only for JSON",
+      "No; final completion and validation are separate",
+      "Yes"
+    ],
+    "covers": "ai-streaming-ui"
+  },
+  {
+    "id": "review-ai-trace-observe",
+    "prompt": "Revisit Trace the integration, not private conversations: What is a 200 response evidence of?",
+    "options": [
+      "A safe authorization boundary",
+      "Verified business truth",
+      "Transport/API success, not necessarily a correct answer"
+    ],
+    "covers": "ai-trace-observe"
+  },
+  {
+    "id": "review-ai-facts-or-documents",
+    "prompt": "Revisit Choose SQL facts, search, or RAG: A current exact count should come from where?",
+    "options": [
+      "Model memory",
+      "An authorized current query",
+      "The nearest text chunk"
+    ],
+    "covers": "ai-facts-or-documents"
+  },
+  {
+    "id": "review-ai-embeddings",
+    "prompt": "Revisit Embeddings: useful geometry, limited meaning: A similarity score is automatically what?",
+    "options": [
+      "Not a truth probability",
+      "A calibrated correctness probability",
+      "A tenant authorization decision"
+    ],
+    "covers": "ai-embeddings"
+  },
+  {
+    "id": "review-ai-ingestion",
+    "prompt": "Revisit Ingestion is a versioned data pipeline: Which metadata is needed for a citation?",
+    "options": [
+      "Only vector dimensions",
+      "Source identity, revision and location",
+      "Only a model confidence"
+    ],
+    "covers": "ai-ingestion"
+  },
+  {
+    "id": "review-ai-chunking",
+    "prompt": "Revisit Chunk for an answerable unit: What determines a useful chunk size?",
+    "options": [
+      "Only file size",
+      "Document structure, questions and measured results",
+      "A universal 512-token rule"
+    ],
+    "covers": "ai-chunking"
+  },
+  {
+    "id": "review-ai-hybrid-ranking",
+    "prompt": "Revisit Lexical, vector, hybrid, and reranking: Can reranking recover a document absent from candidates?",
+    "options": [
+      "No",
+      "Only with JSON mode",
+      "Always"
+    ],
+    "covers": "ai-hybrid-ranking"
+  },
+  {
+    "id": "review-ai-pgvector-rails",
+    "prompt": "Revisit PostgreSQL and pgvector in a Rails data boundary: What does HNSW change?",
+    "options": [
+      "The actor’s identity",
+      "The search speed/recall tradeoff",
+      "The truth of the document"
+    ],
+    "covers": "ai-pgvector-rails"
+  },
+  {
+    "id": "review-ai-grounded-answer",
+    "prompt": "Revisit Grounding, citations, and the support gap: A valid citation plus matching number proves the prose is supported?",
+    "options": [
+      "Yes",
+      "Only at temperature zero",
+      "No"
+    ],
+    "covers": "ai-grounded-answer"
+  },
+  {
+    "id": "review-ai-retrieval-evaluation",
+    "prompt": "Revisit Evaluate retrieval before polishing answers: Is recall@k the same as answer accuracy?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with a reranker"
+    ],
+    "covers": "ai-retrieval-evaluation"
+  },
+  {
+    "id": "review-ai-workflow-choice",
+    "prompt": "Revisit Workflow or agent: choose who controls the next step: What distinguishes a model-directed agent here?",
+    "options": [
+      "A vector database",
+      "A chat-shaped UI",
+      "The model proposes next operations from observations"
+    ],
+    "covers": "ai-workflow-choice"
+  },
+  {
+    "id": "review-ai-bounded-loop",
+    "prompt": "Revisit A bounded agent loop you can trace: Where should step limits be enforced?",
+    "options": [
+      "In host code",
+      "Only in the UI timer",
+      "Only in a prompt"
+    ],
+    "covers": "ai-bounded-loop"
+  },
+  {
+    "id": "review-ai-tool-permissions",
+    "prompt": "Revisit Tools are capabilities with a policy boundary: Who supplies tenant identity?",
+    "options": [
+      "A tool description",
+      "Authenticated host context",
+      "The model’s arguments"
+    ],
+    "covers": "ai-tool-permissions"
+  },
+  {
+    "id": "review-ai-memory-context",
+    "prompt": "Revisit Memory is application data with a lifetime: A stored conversation is what?",
+    "options": [
+      "Always harmless context",
+      "Application/provider data with a retention policy",
+      "Automatically new model weights"
+    ],
+    "covers": "ai-memory-context"
+  },
+  {
+    "id": "review-ai-approval-actions",
+    "prompt": "Revisit Write actions: preview, approval, and stale state: Who can approve a consequential action?",
+    "options": [
+      "The authorized user through the application flow",
+      "Any retrieved document",
+      "The proposing model itself"
+    ],
+    "covers": "ai-approval-actions"
+  },
+  {
+    "id": "review-ai-agent-evaluation",
+    "prompt": "Revisit Evaluate the path, not only the final sentence: Can a correct final answer hide an unsafe path?",
+    "options": [
+      "No",
+      "Only with small models",
+      "Yes"
+    ],
+    "covers": "ai-agent-evaluation"
+  },
+  {
+    "id": "review-ai-mcp-map",
+    "prompt": "Revisit MCP: host, client, server, and model: What is the MCP host?",
+    "options": [
+      "Always the database",
+      "The model weights",
+      "The application coordinating model and connections"
+    ],
+    "covers": "ai-mcp-map"
+  },
+  {
+    "id": "review-ai-mcp-capabilities",
+    "prompt": "Revisit Tools, resources, prompts, and other capabilities: A tool annotation enforces what by itself?",
+    "options": [
+      "No application authorization or side-effect policy",
+      "A complete security sandbox",
+      "A database read-only transaction"
+    ],
+    "covers": "ai-mcp-capabilities"
+  },
+  {
+    "id": "review-ai-mcp-lifecycle",
+    "prompt": "Revisit JSON-RPC and the MCP lifecycle: Does a notification require a response?",
+    "options": [
+      "Only for tools/list",
+      "No",
+      "Yes, always with the same ID"
+    ],
+    "covers": "ai-mcp-lifecycle"
+  },
+  {
+    "id": "review-ai-mcp-transports",
+    "prompt": "Revisit Stdio and Streamable HTTP are different deployments: Where should stdio diagnostic logs go?",
+    "options": [
+      "Away from protocol stdout, commonly stderr",
+      "Into model arguments",
+      "Mixed into every JSON message"
+    ],
+    "covers": "ai-mcp-transports"
+  },
+  {
+    "id": "review-ai-mcp-ruby-tool",
+    "prompt": "Revisit A Ruby MCP tool around a Rails use case: Where should the actor come from?",
+    "options": [
+      "The resource title",
+      "Trusted server context",
+      "The model tool arguments"
+    ],
+    "covers": "ai-mcp-ruby-tool"
+  },
+  {
+    "id": "review-ai-mcp-auth",
+    "prompt": "Revisit Remote MCP authorization and tenant policy: Does tools:read authorize every tenant?",
+    "options": [
+      "Only for JSON-RPC",
+      "No",
+      "Yes"
+    ],
+    "covers": "ai-mcp-auth"
+  },
+  {
+    "id": "review-ai-mcp-host-debug",
+    "prompt": "Revisit Rails as an MCP host: inspect, call, and debug: Do you need an LLM to test an MCP connection?",
+    "options": [
+      "Only for stdio",
+      "Yes",
+      "No"
+    ],
+    "covers": "ai-mcp-host-debug"
+  },
+  {
+    "id": "review-ai-rails-architecture",
+    "prompt": "Revisit Dispatch Desk: the whole Rails architecture: Who owns exact blocker counts?",
+    "options": [
+      "Application code over authoritative data",
+      "The prose generator",
+      "The model tokenizer"
+    ],
+    "covers": "ai-rails-architecture"
+  },
+  {
+    "id": "review-ai-intent-filter",
+    "prompt": "Revisit From user language to an allowlisted Rails query: Should generated SQL reach ActiveRecord?",
+    "options": [
+      "Only for SELECT",
+      "Yes after JSON.parse",
+      "No; use a validated domain filter"
+    ],
+    "covers": "ai-intent-filter"
+  },
+  {
+    "id": "review-ai-verified-facts",
+    "prompt": "Revisit Build a fact bundle before explaining a cause: What should a verified rule result include?",
+    "options": [
+      "An arbitrary model chain of thought",
+      "Only a friendly adjective",
+      "Rule/source version and its tested scope"
+    ],
+    "covers": "ai-verified-facts"
+  },
+  {
+    "id": "review-ai-compare-brief",
+    "prompt": "Revisit Comparisons and briefings: code aligns, AI explains: Who aligns comparison fields?",
+    "options": [
+      "Application code",
+      "The model by guessing",
+      "The embedding index"
+    ],
+    "covers": "ai-compare-brief"
+  },
+  {
+    "id": "review-ai-jobs-results",
+    "prompt": "Revisit Rails jobs, run state, and result ownership: Does an async adapter guarantee durable jobs?",
+    "options": [
+      "Only with JSON schemas",
+      "No, an in-process adapter may lose work",
+      "Yes"
+    ],
+    "covers": "ai-jobs-results"
+  },
+  {
+    "id": "review-ai-cache-freshness",
+    "prompt": "Revisit Cache answers without caching the wrong authority: Prompt caching is automatically final-answer caching?",
+    "options": [
+      "No",
+      "Only for Rails",
+      "Yes"
+    ],
+    "covers": "ai-cache-freshness"
+  },
+  {
+    "id": "review-ai-rails-checks",
+    "prompt": "Revisit Test the Rails feature at three different layers: What does a fixed fake model test establish?",
+    "options": [
+      "Handling of those specified outputs",
+      "Remote MCP OAuth correctness",
+      "Real model accuracy"
+    ],
+    "covers": "ai-rails-checks"
+  },
+  {
+    "id": "review-ai-rails-deployment",
+    "prompt": "Revisit From local Rails lab to a production boundary: What does a gateway service credential establish?",
+    "options": [
+      "Model correctness",
+      "Automatic global database permission",
+      "Service identity, not all end-user record rights"
+    ],
+    "covers": "ai-rails-deployment"
+  },
+  {
+    "id": "review-ai-evaluation-dataset",
+    "prompt": "Revisit Build an evaluation dataset before a success story: What belongs in a held-out set?",
+    "options": [
+      "Only the prompt examples",
+      "Cases not repeatedly used to tune the prompt",
+      "Only easy happy paths"
+    ],
+    "covers": "ai-evaluation-dataset"
+  },
+  {
+    "id": "review-ai-judges-calibration",
+    "prompt": "Revisit Rubrics, judges, confidence, and calibration: Does thresholding prove calibration?",
+    "options": [
+      "Yes",
+      "No",
+      "Only for JSON"
+    ],
+    "covers": "ai-judges-calibration"
+  },
+  {
+    "id": "review-ai-prompt-injection",
+    "prompt": "Revisit Prompt injection is an application trust problem: Can a retrieved document authorize a new tool?",
+    "options": [
+      "Only if it has citations",
+      "No",
+      "Yes if it says system"
+    ],
+    "covers": "ai-prompt-injection"
+  },
+  {
+    "id": "review-ai-privacy-boundary",
+    "prompt": "Revisit Data minimization, retention, and identity: Does “not used for training” answer every privacy question?",
+    "options": [
+      "No",
+      "Yes",
+      "Only for embeddings"
+    ],
+    "covers": "ai-privacy-boundary"
+  },
+  {
+    "id": "review-ai-cost-latency",
+    "prompt": "Revisit Cost, latency, capacity, and useful fallbacks: Which cost metric reflects the product better?",
+    "options": [
+      "Only number of prompts",
+      "Cost per accepted task at required quality",
+      "Only price per input token"
+    ],
+    "covers": "ai-cost-latency"
+  },
+  {
+    "id": "review-ai-regression-rollout",
+    "prompt": "Revisit Regression gates, shadow mode, and incident response: Which changes can alter AI behavior?",
+    "options": [
+      "Model, prompt, tools, rules and retrieval versions",
+      "Only the UI theme",
+      "Only the model weights"
+    ],
+    "covers": "ai-regression-rollout"
+  },
+  {
+    "id": "review-ai-advanced-retrieval",
+    "prompt": "Revisit Advanced retrieval: hierarchy, graphs, and query planning: Does vectorless mean no index or model cost?",
+    "options": [
+      "Yes",
+      "Only for PDFs",
+      "No"
+    ],
+    "covers": "ai-advanced-retrieval"
+  },
+  {
+    "id": "review-ai-durable-agents",
+    "prompt": "Revisit Durable agents: resume without repeating effects: Does a worker lease imply exactly-once external effects?",
+    "options": [
+      "Yes",
+      "Only if it is in Redis",
+      "No"
+    ],
+    "covers": "ai-durable-agents"
+  },
+  {
+    "id": "review-ai-frameworks-multiagent",
+    "prompt": "Revisit Frameworks and multiple agents: earn the complexity: Does model agreement prove truth?",
+    "options": [
+      "No; errors and evidence may be correlated",
+      "Yes with three agents",
+      "Only with a graph"
+    ],
+    "covers": "ai-frameworks-multiagent"
+  },
+  {
+    "id": "review-ai-adaptation",
+    "prompt": "Revisit RAG, fine-tuning, LoRA, and distillation: What is LoRA at a useful high level?",
+    "options": [
+      "A parameter-efficient learned adaptation",
+      "A live SQL cache",
+      "A document permission protocol"
+    ],
+    "covers": "ai-adaptation"
+  },
+  {
+    "id": "review-ai-serving",
+    "prompt": "Revisit Managed APIs, self-hosting, quantization, and serving budgets: Does packed weight size equal total serving memory?",
+    "options": [
+      "Only with quantization",
+      "No",
+      "Yes"
+    ],
+    "covers": "ai-serving"
+  },
+  {
+    "id": "review-ai-multimodal",
+    "prompt": "Revisit Multimodal integration: documents, images, and audio: Do image inputs remove prompt-injection concerns?",
+    "options": [
+      "No",
+      "Yes",
+      "Only for scans"
+    ],
+    "covers": "ai-multimodal"
+  }
+]

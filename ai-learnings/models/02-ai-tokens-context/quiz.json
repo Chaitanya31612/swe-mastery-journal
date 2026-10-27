@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What consumes context besides a question?",
+    "options": [
+      "Only previous answers",
+      "Instructions, tools, history and evidence",
+      "Only database rows"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does a bigger context window guarantee better recall?",
+    "options": [
+      "Only when temperature is zero",
+      "No; relevance and placement still matter",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "How should you shorten a tool conversation?",
+    "options": [
+      "Remove all tool results but retain calls",
+      "Preserve relevant state and valid call/result pairs",
+      "Cut raw characters anywhere"
+    ]
+  }
+]

@@ -1,0 +1,234 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Check the relationship and value, not only the source ID."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Cache lifetime cannot preserve revoked permission."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Confidence should rest on observable work and transferable reasoning."
+  },
+  "review-ai-boundary": {
+    "correctIndex": 0,
+    "explanation": "Language intent does not establish identity or permission."
+  },
+  "review-ai-tokens-context": {
+    "correctIndex": 1,
+    "explanation": "The whole request competes for the context budget."
+  },
+  "review-ai-training-inference": {
+    "correctIndex": 0,
+    "explanation": "Inference and training are different operations."
+  },
+  "review-ai-attention-generation": {
+    "correctIndex": 0,
+    "explanation": "External state must be supplied through an integration."
+  },
+  "review-ai-uncertainty": {
+    "correctIndex": 0,
+    "explanation": "Confidence wording is not calibration."
+  },
+  "review-ai-sampling": {
+    "correctIndex": 1,
+    "explanation": "It changes generation behavior, not business correctness."
+  },
+  "review-ai-model-choice": {
+    "correctIndex": 1,
+    "explanation": "Its output is a representation, not a final business answer."
+  },
+  "review-ai-prompt-contract": {
+    "correctIndex": 2,
+    "explanation": "Examples teach behavior at boundaries, not only ideal wording."
+  },
+  "review-ai-structured-results": {
+    "correctIndex": 1,
+    "explanation": "Business semantics and permissions require separate checks."
+  },
+  "review-ai-provider-adapter": {
+    "correctIndex": 2,
+    "explanation": "The adapter isolates the provider boundary."
+  },
+  "review-ai-tool-cycle": {
+    "correctIndex": 1,
+    "explanation": "A proposal cannot grant privileges."
+  },
+  "review-ai-timeouts-retries": {
+    "correctIndex": 0,
+    "explanation": "Latency accumulates across the whole workflow."
+  },
+  "review-ai-streaming-ui": {
+    "correctIndex": 1,
+    "explanation": "Partial delivery is not a validated product result."
+  },
+  "review-ai-trace-observe": {
+    "correctIndex": 2,
+    "explanation": "Product quality needs its own measurements."
+  },
+  "review-ai-facts-or-documents": {
+    "correctIndex": 1,
+    "explanation": "Choose the authority that owns the fact."
+  },
+  "review-ai-embeddings": {
+    "correctIndex": 0,
+    "explanation": "Geometry and epistemic correctness differ."
+  },
+  "review-ai-ingestion": {
+    "correctIndex": 1,
+    "explanation": "Readers need traceable provenance."
+  },
+  "review-ai-chunking": {
+    "correctIndex": 1,
+    "explanation": "Chunking is a task-specific tradeoff."
+  },
+  "review-ai-hybrid-ranking": {
+    "correctIndex": 0,
+    "explanation": "Candidate generation is a separate recall boundary."
+  },
+  "review-ai-pgvector-rails": {
+    "correctIndex": 1,
+    "explanation": "An index is a retrieval mechanism, not a policy."
+  },
+  "review-ai-grounded-answer": {
+    "correctIndex": 2,
+    "explanation": "Category, relation and context can still be wrong."
+  },
+  "review-ai-retrieval-evaluation": {
+    "correctIndex": 0,
+    "explanation": "Evidence retrieval and generation are distinct stages."
+  },
+  "review-ai-workflow-choice": {
+    "correctIndex": 2,
+    "explanation": "Control of the next step is the key distinction."
+  },
+  "review-ai-bounded-loop": {
+    "correctIndex": 0,
+    "explanation": "The runtime owns enforcement."
+  },
+  "review-ai-tool-permissions": {
+    "correctIndex": 1,
+    "explanation": "Identity is not untrusted generated data."
+  },
+  "review-ai-memory-context": {
+    "correctIndex": 1,
+    "explanation": "Memory has owners, scopes and deletion paths."
+  },
+  "review-ai-approval-actions": {
+    "correctIndex": 0,
+    "explanation": "Tool proposals are not authorization."
+  },
+  "review-ai-agent-evaluation": {
+    "correctIndex": 2,
+    "explanation": "Tool proposals/execution need independent evaluation."
+  },
+  "review-ai-mcp-map": {
+    "correctIndex": 2,
+    "explanation": "Hosts own the integration experience."
+  },
+  "review-ai-mcp-capabilities": {
+    "correctIndex": 0,
+    "explanation": "Hints and enforcement differ."
+  },
+  "review-ai-mcp-lifecycle": {
+    "correctIndex": 1,
+    "explanation": "JSON-RPC distinguishes notifications from requests."
+  },
+  "review-ai-mcp-transports": {
+    "correctIndex": 0,
+    "explanation": "Keep the protocol channel parseable."
+  },
+  "review-ai-mcp-ruby-tool": {
+    "correctIndex": 1,
+    "explanation": "The model must not choose its identity."
+  },
+  "review-ai-mcp-auth": {
+    "correctIndex": 1,
+    "explanation": "API scopes do not replace record policy."
+  },
+  "review-ai-mcp-host-debug": {
+    "correctIndex": 2,
+    "explanation": "A deterministic client fixture isolates protocol behavior."
+  },
+  "review-ai-rails-architecture": {
+    "correctIndex": 0,
+    "explanation": "Use deterministic aggregates."
+  },
+  "review-ai-intent-filter": {
+    "correctIndex": 2,
+    "explanation": "A narrow filter is easier to authorize and test."
+  },
+  "review-ai-verified-facts": {
+    "correctIndex": 2,
+    "explanation": "Verification has assumptions and provenance."
+  },
+  "review-ai-compare-brief": {
+    "correctIndex": 0,
+    "explanation": "Alignment and missing-state meaning must be deterministic."
+  },
+  "review-ai-jobs-results": {
+    "correctIndex": 1,
+    "explanation": "Queue durability depends on the actual adapter/design."
+  },
+  "review-ai-cache-freshness": {
+    "correctIndex": 0,
+    "explanation": "They reuse different artifacts at different boundaries."
+  },
+  "review-ai-rails-checks": {
+    "correctIndex": 0,
+    "explanation": "Controlled fixtures have a bounded claim."
+  },
+  "review-ai-rails-deployment": {
+    "correctIndex": 2,
+    "explanation": "Preserve user policy across the boundary."
+  },
+  "review-ai-evaluation-dataset": {
+    "correctIndex": 1,
+    "explanation": "A holdout helps expose overfitting to known feedback."
+  },
+  "review-ai-judges-calibration": {
+    "correctIndex": 1,
+    "explanation": "A decision threshold and probability calibration are different."
+  },
+  "review-ai-prompt-injection": {
+    "correctIndex": 1,
+    "explanation": "Outside content cannot grant capabilities."
+  },
+  "review-ai-privacy-boundary": {
+    "correctIndex": 0,
+    "explanation": "Retention, access, purpose and derived copies remain separate."
+  },
+  "review-ai-cost-latency": {
+    "correctIndex": 1,
+    "explanation": "Whole-run outcomes and retries matter."
+  },
+  "review-ai-regression-rollout": {
+    "correctIndex": 0,
+    "explanation": "The integration is a versioned system."
+  },
+  "review-ai-advanced-retrieval": {
+    "correctIndex": 2,
+    "explanation": "Tree/index construction and reasoning still have costs."
+  },
+  "review-ai-durable-agents": {
+    "correctIndex": 2,
+    "explanation": "Leases and external effect identity solve different problems."
+  },
+  "review-ai-frameworks-multiagent": {
+    "correctIndex": 0,
+    "explanation": "Agreement needs an independent reference or validated rubric."
+  },
+  "review-ai-adaptation": {
+    "correctIndex": 0,
+    "explanation": "It changes model behavior through a learned update."
+  },
+  "review-ai-serving": {
+    "correctIndex": 1,
+    "explanation": "KV cache and runtime/concurrency overhead also matter."
+  },
+  "review-ai-multimodal": {
+    "correctIndex": 0,
+    "explanation": "Outside content can carry instructions in several modalities."
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A similarity score is automatically what?",
+    "options": [
+      "Not a truth probability",
+      "A calibrated correctness probability",
+      "A tenant authorization decision"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Can equal-dimensional vectors from different models be mixed safely by default?",
+    "options": [
+      "No",
+      "Only when stored in JSON",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is the nearest result when all candidates are bad?",
+    "options": [
+      "Guaranteed relevant",
+      "Still potentially a bad result",
+      "No result by mathematical necessity"
+    ]
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Evidence retrieval and generation are distinct stages."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Averages must not hide unauthorized disclosure."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "A simpler measured baseline makes tradeoffs visible."
+  },
+  "review-ai-facts-or-documents": {
+    "correctIndex": 1,
+    "explanation": "Choose the authority that owns the fact."
+  },
+  "review-ai-embeddings": {
+    "correctIndex": 0,
+    "explanation": "Geometry and epistemic correctness differ."
+  },
+  "review-ai-ingestion": {
+    "correctIndex": 1,
+    "explanation": "Readers need traceable provenance."
+  },
+  "review-ai-chunking": {
+    "correctIndex": 1,
+    "explanation": "Chunking is a task-specific tradeoff."
+  },
+  "review-ai-hybrid-ranking": {
+    "correctIndex": 0,
+    "explanation": "Candidate generation is a separate recall boundary."
+  },
+  "review-ai-pgvector-rails": {
+    "correctIndex": 1,
+    "explanation": "An index is a retrieval mechanism, not a policy."
+  },
+  "review-ai-grounded-answer": {
+    "correctIndex": 2,
+    "explanation": "Category, relation and context can still be wrong."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Its output is a representation, not a final business answer."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Retries, output, orchestration and failure rates affect real cost."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Adapters preserve boundaries, not identical model behavior."
+  },
+  "review-ai-boundary": {
+    "correctIndex": 0,
+    "explanation": "Language intent does not establish identity or permission."
+  },
+  "review-ai-tokens-context": {
+    "correctIndex": 1,
+    "explanation": "The whole request competes for the context budget."
+  },
+  "review-ai-training-inference": {
+    "correctIndex": 0,
+    "explanation": "Inference and training are different operations."
+  },
+  "review-ai-attention-generation": {
+    "correctIndex": 0,
+    "explanation": "External state must be supplied through an integration."
+  },
+  "review-ai-uncertainty": {
+    "correctIndex": 0,
+    "explanation": "Confidence wording is not calibration."
+  },
+  "review-ai-sampling": {
+    "correctIndex": 1,
+    "explanation": "It changes generation behavior, not business correctness."
+  }
+}

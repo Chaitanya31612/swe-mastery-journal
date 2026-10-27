@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Readers need traceable provenance."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Publication is a data-consistency boundary."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Derived data has its own lifetime."
+  }
+}

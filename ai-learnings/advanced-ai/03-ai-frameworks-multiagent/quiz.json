@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does model agreement prove truth?",
+    "options": [
+      "No; errors and evidence may be correlated",
+      "Yes with three agents",
+      "Only with a graph"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should cross agent boundaries?",
+    "options": [
+      "Minimal permitted typed context with provenance",
+      "Only a vague goal with unlimited tools",
+      "Every conversation and secret"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "How should framework value be judged?",
+    "options": [
+      "By how many agents can run",
+      "Against a measured simpler baseline and needed guarantees",
+      "By the longest feature list"
+    ]
+  }
+]

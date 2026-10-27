@@ -1,0 +1,103 @@
+{
+  "id": "ai-provider-adapter",
+  "track": "contracts",
+  "number": 3,
+  "sequence": 3,
+  "globalSequence": 10,
+  "title": "A Rails provider adapter you can replace",
+  "level": "intermediate",
+  "outcome": "Keep provider request formats outside the business use case and normalize failures.",
+  "hours": 2,
+  "cue": "Keep the business contract yours; keep vendor details at the edge.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-structured-results",
+  "tags": [
+    "contracts",
+    "intermediate",
+    "provider",
+    "adapter"
+  ],
+  "useCase": "Keep provider request formats outside the business use case and normalize failures.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A fake adapter test does not prove a live model behaves correctly. A “provider-compatible” endpoint can differ in schema support, tool IDs, errors, and response item types.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Rails use case\"]\n N1[\"Application adapter interface\"]\n N2[\"Provider-specific request\"]\n N3[\"Normalized result\"]\n N4[\"Business validation and UI\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Rails use case\"]\n N1[\"Application adapter interface\"]\n N2[\"Provider-specific request\"]\n N3[\"Normalized result\"]\n N4[\"Business validation and UI\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Rails use case",
+      "detail": "Define a small application-owned interface such as propose_filter or explain_facts. A provider adapter builds the vendor request, sets deadlines, maps response items, and returns your own result/error type. Controllers should not know whether a provider calls something input, messages, output, or toolResult.\n\nCapabilities still differ. Do not hide missing schema, tool, streaming, or modality support behind a uniform method name. Validate the selected combination at configuration time. Keep model identifiers in environment/configuration and record the effective version used in evaluations.\n\nThe official OpenAI Ruby SDK used in this course requires modern Ruby. The isolated lab uses Ruby 3.3 and Rails 7.2. A Ruby 2.7 / Rails 4.2 application may use a supported HTTP boundary or a separate modern gateway. Do not install this lab's gems into an existing legacy application."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Controller → use case → adapter interface → provider response → normalized result → domain validator. Use a fake adapter for deterministic business tests. Use separate adapter contract tests for request/response mapping and separate labelled online evaluation for model behavior."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A fake adapter test does not prove a live model behaves correctly. A “provider-compatible” endpoint can differ in schema support, tool IDs, errors, and response item types."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Structured outputs",
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs"
+    },
+    {
+      "title": "Amazon Bedrock tool use",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Keep provider request formats outside the business use case and normalize failures. Give a concrete example, one failure, and the check that catches it."
+}

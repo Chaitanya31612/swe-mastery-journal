@@ -1,0 +1,103 @@
+{
+  "id": "ai-rails-checks",
+  "track": "rails-ai",
+  "number": 7,
+  "sequence": 7,
+  "globalSequence": 42,
+  "title": "Test the Rails feature at three different layers",
+  "level": "intermediate",
+  "outcome": "Separate deterministic application checks, adapter contract checks, and live model evaluations.",
+  "hours": 2.5,
+  "cue": "Test the code. Check the adapter. Evaluate the model. Name each claim.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-cache-freshness",
+  "tags": [
+    "rails-ai",
+    "intermediate",
+    "rails",
+    "checks"
+  ],
+  "useCase": "Separate deterministic application checks, adapter contract checks, and live model evaluations.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A demo with fixture outputs can be mistaken for a working live LLM integration. A green suite can also miss network and provider-specific behavior.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Deterministic service fixtures\"]\n N1[\"Provider contract stubs\"]\n N2[\"API and MCP smoke\"]\n N3[\"Separate live model evaluation\"]\n N4[\"Honest report and fallback checks\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Deterministic service fixtures\"]\n N1[\"Provider contract stubs\"]\n N2[\"API and MCP smoke\"]\n N3[\"Separate live model evaluation\"]\n N4[\"Honest report and fallback checks\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Deterministic service fixtures",
+      "detail": "Business tests use controlled provider outputs to prove the application accepts and rejects the right states. Adapter tests check request mapping, completion/refusal handling and transport failures. Live evaluations measure how a chosen model behaves on representative tasks. A passing test in one layer does not replace the other two.\n\nUse adversarial fixtures: extra filter fields, cross-tenant IDs, unknown evidence IDs, correct numbers with wrong categories, ambiguous names, oversized context, stale results, permission revocation, provider timeout and an agent step limit. Keep private records out of fixtures; synthetic counterexamples are often clearer.\n\nTest no-model behavior as a first-class path. The ordinary filter/table and reviewed rule guidance should remain useful. Verify that generated text is escaped, source labels are honest and long/mobile content does not hide controls."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Run the local suite and inspect actual assertions. Then run the live local API/MCP smoke. Finally define an optional online evaluation protocol with frozen cases and no private data. Record which layers were actually executed."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A demo with fixture outputs can be mistaken for a working live LLM integration. A green suite can also miss network and provider-specific behavior."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    },
+    {
+      "title": "Rails Active Job",
+      "url": "https://guides.rubyonrails.org/v7.2/active_job_basics.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Separate deterministic application checks, adapter contract checks, and live model evaluations. Give a concrete example, one failure, and the check that catches it."
+}

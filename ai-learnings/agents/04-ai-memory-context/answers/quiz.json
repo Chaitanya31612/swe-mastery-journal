@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Memory has owners, scopes and deletion paths."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Revalidate current permissions."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Compression can alter meaning."
+  }
+}

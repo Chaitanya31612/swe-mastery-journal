@@ -1,0 +1,103 @@
+{
+  "id": "ai-grounded-answer",
+  "track": "retrieval",
+  "number": 7,
+  "sequence": 7,
+  "globalSequence": 21,
+  "title": "Grounding, citations, and the support gap",
+  "level": "intermediate",
+  "outcome": "Distinguish source membership, claim support, freshness, and authority.",
+  "hours": 2,
+  "cue": "A citation points. A support check proves a narrower claim.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-pgvector-rails",
+  "tags": [
+    "retrieval",
+    "intermediate",
+    "grounded",
+    "answer"
+  ],
+  "useCase": "Distinguish source membership, claim support, freshness, and authority.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Citations can create false confidence. A correct number attached to the wrong category is still wrong. “All facts verified” is too strong if only IDs and numbers were checked.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Claim and source ID\"]\n N1[\"Source membership\"]\n N2[\"Exact fact checks\"]\n N3[\"Semantic support and freshness\"]\n N4[\"Honest result labels\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Claim and source ID\"]\n N1[\"Source membership\"]\n N2[\"Exact fact checks\"]\n N3[\"Semantic support and freshness\"]\n N4[\"Honest result labels\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Claim and source ID",
+      "detail": "Grounding means relating an answer to supplied evidence. A good answer makes that relation inspectable: source identity, version/location, and the claim it supports. Still ask four separate questions: was the source supplied, does it support this claim, is it current enough, and is it authoritative for this task?\n\nCode can check many narrow facts exactly. A reported count can equal the supplied aggregate. A claim about a rule code can match a verified rule result. A free-form explanation needs a different support check. A source-ID membership validator cannot prove arbitrary prose is entailed by a passage.\n\nDesign partial or unavailable answers when evidence is incomplete or conflicting. Do not merge conflicting document revisions into a confident single instruction. Keep generated interpretation visibly distinct from code-verified facts and reviewed guidance."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Extract claims → map to supplied source IDs → check exact fields where possible → assess semantic support → check freshness/authority → render the supported parts with clear labels. Evaluate contradictions and misleading-but-valid citations explicitly."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Citations can create false confidence. A correct number attached to the wrong category is still wrong. “All facts verified” is too strong if only IDs and numbers were checked."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2005.11401"
+    },
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Distinguish source membership, claim support, freshness, and authority. Give a concrete example, one failure, and the check that catches it."
+}

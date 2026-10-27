@@ -1,0 +1,34 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Tool proposals/execution need independent evaluation."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Deterministic runtime tests have a bounded claim."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Severe failures must stay visible."
+  },
+  "review-ai-workflow-choice": {
+    "correctIndex": 2,
+    "explanation": "Control of the next step is the key distinction."
+  },
+  "review-ai-bounded-loop": {
+    "correctIndex": 0,
+    "explanation": "The runtime owns enforcement."
+  },
+  "review-ai-tool-permissions": {
+    "correctIndex": 1,
+    "explanation": "Identity is not untrusted generated data."
+  },
+  "review-ai-memory-context": {
+    "correctIndex": 1,
+    "explanation": "Memory has owners, scopes and deletion paths."
+  },
+  "review-ai-approval-actions": {
+    "correctIndex": 0,
+    "explanation": "Tool proposals are not authorization."
+  }
+}

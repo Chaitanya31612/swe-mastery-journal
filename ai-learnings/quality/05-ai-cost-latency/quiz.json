@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which cost metric reflects the product better?",
+    "options": [
+      "Only number of prompts",
+      "Cost per accepted task at required quality",
+      "Only price per input token"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does async work eliminate overload?",
+    "options": [
+      "No; queues and workers still need limits",
+      "Yes",
+      "Only with Rails"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should a deadline failure preserve?",
+    "options": [
+      "An honest useful fallback where possible",
+      "A fake success",
+      "An endless spinner"
+    ]
+  }
+]

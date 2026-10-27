@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Candidate generation is a separate recall boundary."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Score calibration must be defined and measured."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Ranking cannot authorize disclosure."
+  }
+}

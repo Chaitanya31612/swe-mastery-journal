@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Can a retrieved document authorize a new tool?",
+    "options": [
+      "Only if it has citations",
+      "No",
+      "Yes if it says system"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What protects data before a model sees it?",
+    "options": [
+      "A later refusal message",
+      "Scoped/minimized retrieval and application policy",
+      "Only a markdown delimiter"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Is passing one injection test a complete defense?",
+    "options": [
+      "Only at temperature zero",
+      "No",
+      "Yes"
+    ]
+  }
+]

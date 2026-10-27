@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "The whole request competes for the context budget."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Capacity and effective use are separate."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Malformed or misleading context can break continuation."
+  }
+}

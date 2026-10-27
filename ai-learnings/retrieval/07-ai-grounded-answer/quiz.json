@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A valid citation plus matching number proves the prose is supported?",
+    "options": [
+      "Yes",
+      "Only at temperature zero",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Which label is justified by exact field checks?",
+    "options": [
+      "The model’s entire knowledge",
+      "Only the checked facts, with their scope",
+      "Every generated explanation"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Conflicting revisions require what?",
+    "options": [
+      "An authority/version policy or an honest conflict state",
+      "A random winner",
+      "More confident wording"
+    ]
+  }
+]

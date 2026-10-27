@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What should a verified rule result include?",
+    "options": [
+      "An arbitrary model chain of thought",
+      "Only a friendly adjective",
+      "Rule/source version and its tested scope"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Should a full model object be sent by default?",
+    "options": [
+      "No; project minimal permitted fields",
+      "Yes for convenience",
+      "Only if JSON is small"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Unknown rule coverage should produce what?",
+    "options": [
+      "A fabricated verified cause",
+      "An honest unresolved or labelled interpretation state",
+      "A random fix"
+    ]
+  }
+]

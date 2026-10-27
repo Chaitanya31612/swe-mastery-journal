@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Where should step limits be enforced?",
+    "options": [
+      "In host code",
+      "Only in the UI timer",
+      "Only in a prompt"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What is a useful run trace?",
+    "options": [
+      "Unrestricted private reasoning text",
+      "Only the final answer",
+      "Proposals, policy decisions, tool outcomes and stop reason"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "A step budget is exhausted. What is valid?",
+    "options": [
+      "An invented success",
+      "An invisible infinite retry",
+      "An explicitly partial result"
+    ]
+  }
+]

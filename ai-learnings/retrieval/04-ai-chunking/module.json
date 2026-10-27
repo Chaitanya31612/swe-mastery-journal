@@ -1,0 +1,102 @@
+{
+  "id": "ai-chunking",
+  "track": "retrieval",
+  "number": 4,
+  "sequence": 4,
+  "globalSequence": 18,
+  "title": "Chunk for an answerable unit",
+  "level": "intermediate",
+  "outcome": "Choose chunk boundaries from document structure and test the tradeoff.",
+  "hours": 2,
+  "cue": "Retrieve the condition with its exception.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-ingestion",
+  "tags": [
+    "retrieval",
+    "intermediate",
+    "chunking"
+  ],
+  "useCase": "Choose chunk boundaries from document structure and test the tradeoff.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A top-k increase can hide a broken chunking scheme while increasing cost. Overlap may make one source look like many independent pieces of evidence.",
+  "lab": "retrieval-lab",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Supporting span\"]\n N1[\"Structure-aware boundary\"]\n N2[\"Searchable unit\"]\n N3[\"Parent and provenance context\"]\n N4[\"Rule-and-exception checks\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Supporting span\"]\n N1[\"Structure-aware boundary\"]\n N2[\"Searchable unit\"]\n N3[\"Parent and provenance context\"]\n N4[\"Rule-and-exception checks\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Supporting span",
+      "detail": "Chunking divides content into retrievable units. A tiny chunk can lose the heading, exception, or table row that gives it meaning. A huge chunk can include too much unrelated text, cost more, and crowd out other evidence. There is no universally best token size.\n\nStart with the document's structure: section headings, paragraphs, lists, tables, code blocks, and references. Keep useful context such as a document title and section path. Overlap can preserve boundary context but also duplicate evidence and inflate counts. Parent/child retrieval can search a smaller unit and return a larger supporting section.\n\nEvaluate retrieval and answer support on questions that cross boundaries. Keep chunking version with the index. Do not quietly combine exact counts from duplicated overlapping text; business aggregates still belong in authoritative code."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Question → expected supporting span → candidate chunks → retrieved unit → expanded context → answer. Inspect whether the full supporting condition and exception survived. Compare chunking strategies on the same query set and context budget."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A top-k increase can hide a broken chunking scheme while increasing cost. Overlap may make one source look like many independent pieces of evidence."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2005.11401"
+    },
+    {
+      "title": "Lost in the Middle",
+      "url": "https://arxiv.org/abs/2307.03172"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose chunk boundaries from document structure and test the tradeoff. Give a concrete example, one failure, and the check that catches it."
+}

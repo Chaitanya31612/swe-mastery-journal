@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which budget matters to the user?",
+    "options": [
+      "The end-to-end run budget",
+      "Only one token limit",
+      "Only the last HTTP timeout"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "A timed-out write means what?",
+    "options": [
+      "It definitely did not happen",
+      "It is always safe to repeat",
+      "Its outcome may be unknown"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Why avoid independent retry loops at every layer?",
+    "options": [
+      "They make JSON invalid",
+      "They can multiply attempts and load",
+      "They disable auth"
+    ]
+  }
+]

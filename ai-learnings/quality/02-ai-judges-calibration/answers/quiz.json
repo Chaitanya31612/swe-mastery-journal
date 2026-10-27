@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "A decision threshold and probability calibration are different."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Report denominators and coverage honestly."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Judges need evaluation too."
+  }
+}

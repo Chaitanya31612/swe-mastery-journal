@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What distinguishes a model-directed agent here?",
+    "options": [
+      "A vector database",
+      "A chat-shaped UI",
+      "The model proposes next operations from observations"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What is a good baseline for a known path?",
+    "options": [
+      "An explicit workflow",
+      "An unlimited loop",
+      "A separate model for every function"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does adding a framework establish safe tool policy?",
+    "options": [
+      "Yes",
+      "No",
+      "Only with RAG"
+    ]
+  }
+]

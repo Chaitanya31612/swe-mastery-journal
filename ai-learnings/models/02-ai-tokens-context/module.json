@@ -1,0 +1,103 @@
+{
+  "id": "ai-tokens-context",
+  "track": "models",
+  "number": 2,
+  "sequence": 2,
+  "globalSequence": 2,
+  "title": "Tokens, context, and the request budget",
+  "level": "beginner",
+  "outcome": "Explain tokens and build an input budget that leaves room for the answer.",
+  "hours": 1.5,
+  "cue": "Count the whole suitcase, not just the question.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-boundary",
+  "tags": [
+    "models",
+    "beginner",
+    "tokens",
+    "context"
+  ],
+  "useCase": "Explain tokens and build an input budget that leaves room for the answer.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Truncating the last 20,000 characters can remove a key rule or citation. A large allowed request can also be slow and expensive even when it fits.",
+  "lab": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart LR\n I[Instructions] --> B[Finite context budget]\n T[Tool definitions] --> B\n H[Selected conversation history] --> B\n E[Retrieved evidence] --> B\n Q[Current question] --> B\n B --> R[Reserve space for output and provider needs]\n R --> F{Fits?}\n F -->|No| S[Select or shorten evidence and history]\n S --> B\n F -->|Yes| M[Model request]",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "flowchart LR\n I[Instructions] --> B[Finite context budget]\n T[Tool definitions] --> B\n H[Selected conversation history] --> B\n E[Retrieved evidence] --> B\n Q[Current question] --> B\n B --> R[Reserve space for output and provider needs]\n R --> F{Fits?}\n F -->|No| S[Select or shorten evidence and history]\n S --> B\n F -->|Yes| M[Model request]",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Instructions and schemas",
+      "detail": "A token is a model-specific unit of text or other encoded input. It may be a word fragment, punctuation, or bytes. Token count is not character count. Different languages, code, and tokenizers produce different counts.\n\nThe context window bounds what a request can process under the selected model’s rules. Instructions, user messages, conversation history, tool definitions, retrieved passages, and tool results all compete for space. Output and, on some models, internal reasoning also have limits or budget implications. Check the selected API rather than assuming one universal formula.\n\nA model call does not automatically remember every previous request. The application or a provider conversation service supplies the context. Keep essential policy and current evidence. Trim stale content deliberately; do not split a tool request from its result. A long window is capacity, not proof that the model will use every detail correctly."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Draw each context contributor as a box. Add input counts, output reserve, and any provider-specific reasoning budget. If evidence does not fit, retrieve fewer relevant passages or summarize with provenance. Never fix overflow by dropping authorization or instruction boundaries."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Truncating the last 20,000 characters can remove a key rule or citation. A large allowed request can also be slow and expensive even when it fits."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Conversation state",
+      "url": "https://developers.openai.com/api/docs/guides/conversation-state"
+    },
+    {
+      "title": "Lost in the Middle",
+      "url": "https://arxiv.org/abs/2307.03172"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain tokens and build an input budget that leaves room for the answer. Give a concrete example, one failure, and the check that catches it."
+}

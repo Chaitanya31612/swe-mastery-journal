@@ -1,0 +1,89 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What is a 200 response evidence of?",
+    "options": [
+      "A safe authorization boundary",
+      "Verified business truth",
+      "Transport/API success, not necessarily a correct answer"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should be logged by default?",
+    "options": [
+      "Safe structured boundary metadata",
+      "Provider credentials",
+      "All private prompts and documents"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What helps explain a stale answer?",
+    "options": [
+      "Only total tokens",
+      "Source version, run identity and cache/retrieval versions",
+      "Only a confidence adjective"
+    ]
+  },
+  {
+    "id": "review-ai-prompt-contract",
+    "prompt": "Revisit Prompts as small, testable specifications: What should few-shot examples include?",
+    "options": [
+      "Only perfect happy paths",
+      "Private records from production",
+      "Normal, ambiguous and unknown cases"
+    ],
+    "covers": "ai-prompt-contract"
+  },
+  {
+    "id": "review-ai-structured-results",
+    "prompt": "Revisit Structured output: syntax is the first gate: A schema-valid output proves what?",
+    "options": [
+      "The actor may access its IDs",
+      "It has the permitted shape under the schema",
+      "Its claims are true"
+    ],
+    "covers": "ai-structured-results"
+  },
+  {
+    "id": "review-ai-provider-adapter",
+    "prompt": "Revisit A Rails provider adapter you can replace: What belongs in the adapter?",
+    "options": [
+      "Every controller’s UI layout",
+      "Tenant-wide authorization policy decided by the model",
+      "Vendor response mapping and transport failures"
+    ],
+    "covers": "ai-provider-adapter"
+  },
+  {
+    "id": "review-ai-tool-cycle",
+    "prompt": "Revisit Tool calling is a proposal–execution loop: Who authorizes a client-side tool execution?",
+    "options": [
+      "The model’s tool name",
+      "The host/application policy",
+      "The JSON parser"
+    ],
+    "covers": "ai-tool-cycle"
+  },
+  {
+    "id": "review-ai-timeouts-retries",
+    "prompt": "Revisit Timeouts, retries, and whole-run budgets: Which budget matters to the user?",
+    "options": [
+      "The end-to-end run budget",
+      "Only one token limit",
+      "Only the last HTTP timeout"
+    ],
+    "covers": "ai-timeouts-retries"
+  },
+  {
+    "id": "review-ai-streaming-ui",
+    "prompt": "Revisit Streaming with honest UI states: Does the first streamed token mean success?",
+    "options": [
+      "Only for JSON",
+      "No; final completion and validation are separate",
+      "Yes"
+    ],
+    "covers": "ai-streaming-ui"
+  }
+]

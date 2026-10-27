@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Queue durability depends on the actual adapter/design."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Stored output is still protected application data."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Long locks increase contention and do not solve external uncertainty."
+  }
+}

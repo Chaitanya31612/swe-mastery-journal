@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Alignment and missing-state meaning must be deterministic."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Missingness is a separate contract state."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Narrative should consume authoritative values."
+  }
+}

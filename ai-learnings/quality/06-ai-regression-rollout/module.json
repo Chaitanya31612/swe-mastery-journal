@@ -1,0 +1,103 @@
+{
+  "id": "ai-regression-rollout",
+  "track": "quality",
+  "number": 6,
+  "sequence": 6,
+  "globalSequence": 49,
+  "title": "Regression gates, shadow mode, and incident response",
+  "level": "intermediate",
+  "outcome": "Release model, prompt, tool, and index changes as versioned application changes.",
+  "hours": 2,
+  "cue": "Release an evaluated combination, with a way back.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-cost-latency",
+  "tags": [
+    "quality",
+    "intermediate",
+    "regression",
+    "rollout"
+  ],
+  "useCase": "Release model, prompt, tool, and index changes as versioned application changes.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A feature flag without a working manual path can leave users stranded. A static model alias string is not a complete version record.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Versioned change\"]\n N1[\"Runtime and held-out checks\"]\n N2[\"Bounded shadow or cohort\"]\n N3[\"Monitor product outcomes\"]\n N4[\"Rollback and regression fixture\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Versioned change\"]\n N1[\"Runtime and held-out checks\"]\n N2[\"Bounded shadow or cohort\"]\n N3[\"Monitor product outcomes\"]\n N4[\"Rollback and regression fixture\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Versioned change",
+      "detail": "An AI integration has several changing dependencies: model snapshot/alias, prompt, schema, tools, retrieval corpus/index, rules, SDK, policy and UI. A change to any can alter behavior. Record the effective combination and run regression checks before enabling it broadly.\n\nShadow mode can run a candidate without letting its output control user-visible behavior. It still consumes data and budget, so use approved inputs and explicit limits. A limited cohort rollout should have success/failure thresholds, monitoring and a rollback owner. Compare practical task outcomes, not only a provider uptime chart.\n\nDuring an incident, identify the affected versions and boundary. Disable optional generation or a specific capability while deterministic work continues. Preserve minimal diagnostic evidence, reconcile uncertain effects, and turn a reviewed reproduction into a new regression case."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Candidate version → offline/runtime tests → held-out model evaluation → permitted shadow/cohort run → monitored acceptance → rollback or wider release. Exercise a rollback once before relying on it."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A feature flag without a working manual path can leave users stranded. A static model alias string is not a complete version record."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    },
+    {
+      "title": "Composable agent patterns",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Release model, prompt, tool, and index changes as versioned application changes. Give a concrete example, one failure, and the check that catches it."
+}

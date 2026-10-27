@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Control of the next step is the key distinction."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Start with a path you can test and budget."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Application policy remains your responsibility."
+  }
+}

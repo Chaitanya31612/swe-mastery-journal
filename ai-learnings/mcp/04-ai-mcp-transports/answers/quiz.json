@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Keep the protocol channel parseable."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Transport and identity both matter."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Every operation still needs current policy."
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does packed weight size equal total serving memory?",
+    "options": [
+      "Only with quantization",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Can batching create latency tradeoffs?",
+    "options": [
+      "Only for embeddings",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does open weights automatically guarantee?",
+    "options": [
+      "Unlimited authorized data access",
+      "Neither unrestricted licensing nor production readiness",
+      "Perfect task accuracy"
+    ]
+  }
+]

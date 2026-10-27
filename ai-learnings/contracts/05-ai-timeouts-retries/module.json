@@ -1,0 +1,103 @@
+{
+  "id": "ai-timeouts-retries",
+  "track": "contracts",
+  "number": 5,
+  "sequence": 5,
+  "globalSequence": 12,
+  "title": "Timeouts, retries, and whole-run budgets",
+  "level": "intermediate",
+  "outcome": "Distinguish failed requests from unknown outcomes and bound the entire integration.",
+  "hours": 2,
+  "cue": "Retry a known-safe step. Reconcile an unknown effect.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-tool-cycle",
+  "tags": [
+    "contracts",
+    "intermediate",
+    "timeouts",
+    "retries"
+  ],
+  "useCase": "Distinguish failed requests from unknown outcomes and bound the entire integration.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Retries improve some availability failures and amplify some correctness failures. An indefinitely retrying job is also a capacity and cost problem.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Whole-run deadline\"]\n N1[\"Failure classification\"]\n N2[\"One retry owner\"]\n N3[\"Bounded attempts and concurrency\"]\n N4[\"Fallback or reconciliation\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Whole-run deadline\"]\n N1[\"Failure classification\"]\n N2[\"One retry owner\"]\n N3[\"Bounded attempts and concurrency\"]\n N4[\"Fallback or reconciliation\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Whole-run deadline",
+      "detail": "A deadline should cover the user-visible operation, not only one network call. A run may include retrieval, multiple model calls, tool work, validation, and retries. Layering SDK retries inside job retries inside agent retries can multiply cost and delay.\n\nClassify failures. Authentication and invalid-schema errors usually need a configuration/code repair. Rate limits and transient connectivity may justify bounded backoff with jitter. A timeout after a side-effect request can mean the effect happened but its acknowledgment was lost. Do not blindly repeat it.\n\nSet attempt limits and a remaining time/cost budget. Honor provider retry guidance when applicable. Protect shared capacity with concurrency limits and a circuit breaker or fallback policy. Cancellation of a browser request does not prove that provider work or an external write stopped."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Write the timeline with timestamps and owners. Count the maximum number of provider attempts across every layer. Simulate a 429, invalid schema, timeout before processing, and timeout after an external effect. Expected user states differ."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Retries improve some availability failures and amplify some correctness failures. An indefinitely retrying job is also a capacity and cost problem."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Function calling",
+      "url": "https://developers.openai.com/api/docs/guides/function-calling"
+    },
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Distinguish failed requests from unknown outcomes and bound the entire integration. Give a concrete example, one failure, and the check that catches it."
+}

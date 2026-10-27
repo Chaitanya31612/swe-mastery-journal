@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What belongs in the adapter?",
+    "options": [
+      "Every controller’s UI layout",
+      "Tenant-wide authorization policy decided by the model",
+      "Vendor response mapping and transport failures"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What does an offline fake prove?",
+    "options": [
+      "Real cloud access",
+      "Live model accuracy",
+      "Your business path handles those specified outputs"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "How should a legacy runtime use a modern-only SDK?",
+    "options": [
+      "Ignore the Ruby requirement",
+      "Copy the new gems into production",
+      "Use a compatible boundary or plan a separate runtime"
+    ]
+  }
+]

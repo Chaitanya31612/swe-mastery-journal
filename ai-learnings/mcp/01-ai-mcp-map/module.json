@@ -1,0 +1,103 @@
+{
+  "id": "ai-mcp-map",
+  "track": "mcp",
+  "number": 1,
+  "sequence": 1,
+  "globalSequence": 29,
+  "title": "MCP: host, client, server, and model",
+  "level": "beginner",
+  "outcome": "Draw the MCP boundary without confusing the protocol with the model or application policy.",
+  "hours": 1.5,
+  "cue": "MCP connects capabilities. Your application still owns the decisions.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": null,
+  "tags": [
+    "mcp",
+    "beginner",
+    "mcp",
+    "map"
+  ],
+  "useCase": "Draw the MCP boundary without confusing the protocol with the model or application policy.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Calling an HTTP endpoint “MCP” does not implement the protocol. A trusted server name does not mean every tool result or document is trusted instruction.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart LR\n U[User] --> H[AI host application]\n H --> M[Model provider]\n H --> C1[MCP client connection A]\n H --> C2[MCP client connection B]\n C1 <-->|MCP messages| S1[Shipment MCP server]\n C2 <-->|MCP messages| S2[Document MCP server]\n S1 --> P1[Application policy and shipment tools]\n S2 --> P2[Permitted documents]\n P1 --> D1[(Shipment database)]\n P2 --> D2[(Document store)]",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "flowchart LR\n U[User] --> H[AI host application]\n H --> M[Model provider]\n H --> C1[MCP client connection A]\n H --> C2[MCP client connection B]\n C1 <-->|MCP messages| S1[Shipment MCP server]\n C2 <-->|MCP messages| S2[Document MCP server]\n S1 --> P1[Application policy and shipment tools]\n S2 --> P2[Permitted documents]\n P1 --> D1[(Shipment database)]\n P2 --> D2[(Document store)]",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Host and model",
+      "detail": "Model Context Protocol standardizes how an AI application connects to tools and context providers. The host is the application coordinating the experience. A client connection inside the host talks to an MCP server. The server exposes capabilities such as tools, resources, and prompts. The model is a separate participant in the host's overall workflow.\n\nA provider function call and an MCP tool call are not the same wire message. The host can translate between its model provider's tool proposal and an MCP client's request. It must still decide which tools to expose, which result data may enter context, and whether an operation is authorized.\n\nMCP does not train a model, provide RAG by itself, or grant database permissions. It is useful when several hosts need a standard interface to the same capabilities. A single Rails service can begin with an ordinary internal interface; use MCP where interoperability adds value."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Draw user → host/model boundary → MCP client → transport → MCP server → application service → DB. Label two independent gates: host policy and server authorization. Identify where provider credentials and service access tokens belong."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Calling an HTTP endpoint “MCP” does not implement the protocol. A trusted server name does not mean every tool result or document is trusted instruction."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MCP specification 2025-11-25",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25"
+    },
+    {
+      "title": "Official Ruby MCP SDK",
+      "url": "https://ruby.sdk.modelcontextprotocol.io/server/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Draw the MCP boundary without confusing the protocol with the model or application policy. Give a concrete example, one failure, and the check that catches it."
+}

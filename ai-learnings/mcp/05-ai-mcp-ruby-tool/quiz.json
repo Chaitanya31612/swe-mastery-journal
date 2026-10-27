@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Where should the actor come from?",
+    "options": [
+      "The resource title",
+      "Trusted server context",
+      "The model tool arguments"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should reusable business rules live?",
+    "options": [
+      "In a domain service/policy layer",
+      "Only in tool descriptions",
+      "Repeated differently in every adapter"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does a real SDK call test add?",
+    "options": [
+      "Proof of live model intelligence",
+      "Automatic cloud authentication",
+      "Protocol/schema/serialization coverage"
+    ]
+  }
+]

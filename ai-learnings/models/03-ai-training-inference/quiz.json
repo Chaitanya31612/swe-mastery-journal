@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A normal inference call updates which weights?",
+    "options": [
+      "Usually none; context is supplied to inference",
+      "The model automatically retrains on every request",
+      "Only the vector index weights"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should a live stock count come from?",
+    "options": [
+      "The model’s self-reported confidence",
+      "A fine-tuned memory of last week",
+      "A current authorized DB query"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does “not used for training” imply no retention?",
+    "options": [
+      "Only for JSON",
+      "No; retention is a separate provider/product setting",
+      "Yes"
+    ]
+  }
+]

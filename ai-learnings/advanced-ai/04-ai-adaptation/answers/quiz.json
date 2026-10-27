@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "It changes model behavior through a learned update."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Fresh facts need a current data boundary."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Teacher-generated targets still need quality controls."
+  }
+}

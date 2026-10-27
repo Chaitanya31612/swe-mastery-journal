@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "An index is a retrieval mechanism, not a policy."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Identity is not generated input."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Compare retrieval behavior without weakening access."
+  }
+}

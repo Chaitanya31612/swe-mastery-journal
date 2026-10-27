@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Chunking is a task-specific tradeoff."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Evidence independence must not be inferred from chunk count."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Larger context can restore meaning but still costs budget."
+  }
+}

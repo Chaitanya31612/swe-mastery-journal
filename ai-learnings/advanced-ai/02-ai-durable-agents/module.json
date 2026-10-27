@@ -1,0 +1,103 @@
+{
+  "id": "ai-durable-agents",
+  "track": "advanced-ai",
+  "number": 2,
+  "sequence": 2,
+  "globalSequence": 51,
+  "title": "Durable agents: resume without repeating effects",
+  "level": "advanced",
+  "outcome": "Design run checkpoints, claims, leases, approval freshness, and uncertain-effect recovery.",
+  "hours": 2.5,
+  "cue": "Resume the state machine. Reconcile the effects.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-advanced-retrieval",
+  "tags": [
+    "advanced-ai",
+    "advanced",
+    "durable",
+    "agents"
+  ],
+  "useCase": "Design run checkpoints, claims, leases, approval freshness, and uncertain-effect recovery.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "At-least-once job delivery can repeat a model call or effect. A database transaction cannot atomically commit an arbitrary external provider action.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Durable step identity\"]\n N1[\"Claim and intent\"]\n N2[\"Idempotent or uncertain effect\"]\n N3[\"Observed outcome checkpoint\"]\n N4[\"Current-policy resume\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Durable step identity\"]\n N1[\"Claim and intent\"]\n N2[\"Idempotent or uncertain effect\"]\n N3[\"Observed outcome checkpoint\"]\n N4[\"Current-policy resume\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Durable step identity",
+      "detail": "A durable agent stores enough explicit state to survive process loss. Model proposals, tool identities, effect status, evidence versions, budgets, approvals and stopping reason need deliberate persistence. Replaying a run is not the same as repeating every external operation.\n\nUse step identities and state transitions. A worker can claim a step under a lease, but a paused worker may resume after another worker takes over. Protect state changes with versions/fencing as appropriate. Business effects require stable idempotency and reconciliation; a lease alone does not make an external action exactly once.\n\nOn resume, recheck current access, evidence and approval. A checkpoint from last week cannot authorize today's changed record. Separate pure computation/read replay from irreversible effects. Store minimal useful observations rather than unrestricted reasoning or private documents forever."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Claim step → record intent → execute idempotent/reconcilable action → store observed outcome → checkpoint → resume under current policy. Inject a crash before/after each boundary and inspect whether an effect repeats or a completed action is lost."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "At-least-once job delivery can repeat a model call or effect. A database transaction cannot atomically commit an arbitrary external provider action."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Composable agent patterns",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    },
+    {
+      "title": "MCP security boundaries",
+      "url": "https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Design run checkpoints, claims, leases, approval freshness, and uncertain-effect recovery. Give a concrete example, one failure, and the check that catches it."
+}

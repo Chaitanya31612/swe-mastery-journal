@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Identity is not untrusted generated data."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Read access can disclose sensitive information."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Proposals can become stale."
+  }
+}

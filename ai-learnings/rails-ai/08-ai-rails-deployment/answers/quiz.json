@@ -1,0 +1,42 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Preserve user policy across the boundary."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Credentials must not be supplied by or exposed to the model/browser."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Operational control is part of the integration."
+  },
+  "review-ai-rails-architecture": {
+    "correctIndex": 0,
+    "explanation": "Use deterministic aggregates."
+  },
+  "review-ai-intent-filter": {
+    "correctIndex": 2,
+    "explanation": "A narrow filter is easier to authorize and test."
+  },
+  "review-ai-verified-facts": {
+    "correctIndex": 2,
+    "explanation": "Verification has assumptions and provenance."
+  },
+  "review-ai-compare-brief": {
+    "correctIndex": 0,
+    "explanation": "Alignment and missing-state meaning must be deterministic."
+  },
+  "review-ai-jobs-results": {
+    "correctIndex": 1,
+    "explanation": "Queue durability depends on the actual adapter/design."
+  },
+  "review-ai-cache-freshness": {
+    "correctIndex": 0,
+    "explanation": "They reuse different artifacts at different boundaries."
+  },
+  "review-ai-rails-checks": {
+    "correctIndex": 0,
+    "explanation": "Controlled fixtures have a bounded claim."
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What should few-shot examples include?",
+    "options": [
+      "Only perfect happy paths",
+      "Private records from production",
+      "Normal, ambiguous and unknown cases"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What does a delimiter guarantee?",
+    "options": [
+      "Useful structure, with other controls still required",
+      "Complete prompt-injection prevention",
+      "Database scoping"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Where should prompt versions live?",
+    "options": [
+      "With the integration and its evaluation fixtures",
+      "Only in model weights",
+      "Only in an engineer’s chat history"
+    ]
+  }
+]

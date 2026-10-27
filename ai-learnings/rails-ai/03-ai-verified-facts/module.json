@@ -1,0 +1,103 @@
+{
+  "id": "ai-verified-facts",
+  "track": "rails-ai",
+  "number": 3,
+  "sequence": 3,
+  "globalSequence": 38,
+  "title": "Build a fact bundle before explaining a cause",
+  "level": "intermediate",
+  "outcome": "Create a minimal versioned fact set and keep verified rules separate from generated interpretation.",
+  "hours": 2.5,
+  "cue": "Fetch the facts. Run the rule. Explain the result you actually have.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-intent-filter",
+  "tags": [
+    "rails-ai",
+    "intermediate",
+    "verified",
+    "facts"
+  ],
+  "useCase": "Create a minimal versioned fact set and keep verified rules separate from generated interpretation.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "Verifying a warning code is not the same as proving every generated causal statement. A fact bundle can also become stale before it is displayed.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Authorized source\"]\n N1[\"Reviewed rule\"]\n N2[\"Versioned minimal facts\"]\n N3[\"Generated draft\"]\n N4[\"Checked facts and coverage labels\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Authorized source\"]\n N1[\"Reviewed rule\"]\n N2[\"Versioned minimal facts\"]\n N3[\"Generated draft\"]\n N4[\"Checked facts and coverage labels\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Authorized source",
+      "detail": "A warning label may describe a symptom rather than its true cause. Build a fact bundle from current authorized records and reviewed deterministic rules. For example, a held shipment may have a missing address, an incomplete label, or an unsupported carrier route. The model should not infer the warehouse's rule engine from a short warning string.\n\nEach fact needs an identity and version. Include only fields needed for this task. Record rule version and relevant source versions, so cached or asynchronous results can be checked later. Avoid sending whole ActiveRecord serializations with unrelated internal fields.\n\nA rule result can be exact under the rule's tested assumptions. Generated explanation is still interpretation. Unknown rule coverage should produce an honest unresolved state or a clearly labelled hypothesis, not a false “verified cause” badge."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Scoped lookup → derive only supported rule outputs → attach fact and rule versions → minimize fields → provider context → exact/narrow checks → honest labels. Test a warning with no supported rule and a source change mid-run."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Verifying a warning code is not the same as proving every generated causal statement. A fact bundle can also become stale before it is displayed."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    },
+    {
+      "title": "Structured outputs",
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Create a minimal versioned fact set and keep verified rules separate from generated interpretation. Give a concrete example, one failure, and the check that catches it."
+}

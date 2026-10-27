@@ -1,0 +1,104 @@
+{
+  "id": "ai-mcp-host-debug",
+  "track": "mcp",
+  "number": 7,
+  "sequence": 7,
+  "globalSequence": 35,
+  "title": "Rails as an MCP host: inspect, call, and debug",
+  "level": "intermediate",
+  "outcome": "Connect a host to a server and distinguish transport, protocol, policy, tool, and model failures.",
+  "hours": 2,
+  "cue": "Prove the connection with a fixture. Evaluate the planner separately.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": "ai-mcp-auth",
+  "tags": [
+    "mcp",
+    "intermediate",
+    "mcp",
+    "host",
+    "debug"
+  ],
+  "useCase": "Connect a host to a server and distinguish transport, protocol, policy, tool, and model failures.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A host can accidentally expose every tool from an unreviewed server. Tool names/descriptions can also change and increase the effective capability surface.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n N0[\"Initialized client\"]\n N1[\"Reviewed discovered tools\"]\n N2[\"Host translation and policy\"]\n N3[\"Server/domain result\"]\n N4[\"Classified trace and model continuation\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap: the full path and its checks",
+      "code": "flowchart TD\n N0[\"Initialized client\"]\n N1[\"Reviewed discovered tools\"]\n N2[\"Host translation and policy\"]\n N3[\"Server/domain result\"]\n N4[\"Classified trace and model continuation\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"Can you trust the result?\"}\n C --> V[\"Check evidence, permissions, and the failure case\"]\n V -. \"repeat with a changed input\" .-> N0",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Initialized client",
+      "detail": "A Rails application can act as a host as well as a capability server. Its client initializes a connection, inspects capabilities/tools, and calls permitted operations. A model is optional for testing that connection. Start with a known synthetic request and prove the protocol path before adding generated tool choice.\n\nMap only reviewed tool definitions into the model's visible tool set. Bound tool descriptions and results. Preserve both provider call IDs and protocol request IDs in the run trace without treating either as business approval. Close connections/processes under the chosen transport lifecycle.\n\nDebug by boundary: DNS/TLS/network, HTTP identity, protocol negotiation, tool schema, domain permission, tool execution, then final model interpretation. A failure in one layer should not be reported as a generic hallucination."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Known client fixture → initialized connection → actual tool discovery → allowed call → forbidden call → classified output. Then let a model propose from that reviewed tool set and run the same policy checks."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A host can accidentally expose every tool from an unreviewed server. Tool names/descriptions can also change and increase the effective capability surface."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MCP specification 2025-11-25",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25"
+    },
+    {
+      "title": "Official Ruby MCP SDK",
+      "url": "https://ruby.sdk.modelcontextprotocol.io/server/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Connect a host to a server and distinguish transport, protocol, policy, tool, and model failures. Give a concrete example, one failure, and the check that catches it."
+}

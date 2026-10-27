@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does an async adapter guarantee durable jobs?",
+    "options": [
+      "Only with JSON schemas",
+      "No, an in-process adapter may lose work",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should result access be checked?",
+    "options": [
+      "At the result endpoint under current policy",
+      "Only when the job was created",
+      "Only by hiding the link"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Should a DB lock cover a long provider call?",
+    "options": [
+      "Always",
+      "Only when temperature is low",
+      "Usually avoid it; separate claim and result transitions"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A current exact count should come from where?",
+    "options": [
+      "Model memory",
+      "An authorized current query",
+      "The nearest text chunk"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does RAG require a vector database?",
+    "options": [
+      "Only for Rails",
+      "Always",
+      "No; retrieval can use several methods"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What must precede retrieval?",
+    "options": [
+      "A generated confidence score",
+      "The actor’s data-access boundary",
+      "A longer answer"
+    ]
+  }
+]

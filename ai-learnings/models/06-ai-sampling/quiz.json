@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Temperature is primarily what?",
+    "options": [
+      "A truthfulness guarantee",
+      "A sampling control on supported models",
+      "A database isolation level"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Why keep a holdout?",
+    "options": [
+      "To avoid all human review",
+      "To detect overfitting to prompt-development cases",
+      "To make costs disappear"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should an experiment record?",
+    "options": [
+      "Only the API key",
+      "Prompt, effective model, inputs, retrieval/tools and parameters",
+      "Only the final sentence"
+    ]
+  }
+]

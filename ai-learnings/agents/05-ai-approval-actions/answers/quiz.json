@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Tool proposals are not authorization."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Approval must not drift to a different effect."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Preview and execution are separate moments."
+  }
+}

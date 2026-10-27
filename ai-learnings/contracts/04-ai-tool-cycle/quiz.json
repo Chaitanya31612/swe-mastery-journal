@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Who authorizes a client-side tool execution?",
+    "options": [
+      "The model’s tool name",
+      "The host/application policy",
+      "The JSON parser"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What ties a result to the request?",
+    "options": [
+      "Its position in a screenshot",
+      "The tool call identifier in the provider protocol",
+      "A guessed timestamp"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Should arbitrary model tool names become method calls?",
+    "options": [
+      "Only with temperature zero",
+      "Yes, via send",
+      "No, use an allowlisted registry"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Who aligns comparison fields?",
+    "options": [
+      "Application code",
+      "The model by guessing",
+      "The embedding index"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Is missing data equal to false?",
+    "options": [
+      "Only for comparisons",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Should group counts be generated from prose?",
+    "options": [
+      "No; compute exact scoped aggregates",
+      "Yes",
+      "Only for small groups"
+    ]
+  }
+]

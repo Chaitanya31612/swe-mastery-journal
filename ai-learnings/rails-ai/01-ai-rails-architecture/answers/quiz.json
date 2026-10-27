@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Use deterministic aggregates."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "The product is deliberately read-only."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Boundaries should expose responsibilities."
+  }
+}

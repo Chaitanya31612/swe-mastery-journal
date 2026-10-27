@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Controlled fixtures have a bounded claim."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Negative boundaries need executable evidence."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Evidence should match the conclusion."
+  }
+}

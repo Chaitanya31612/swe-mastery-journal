@@ -1,0 +1,99 @@
+{
+  "id": "ai-evaluation-dataset",
+  "track": "quality",
+  "number": 1,
+  "sequence": 1,
+  "globalSequence": 44,
+  "title": "Build an evaluation dataset before a success story",
+  "level": "intermediate",
+  "outcome": "Define task outcomes, labelled cases, holdouts, and hard failure gates.",
+  "hours": 2,
+  "cue": "Define success before looking at the answer.",
+  "version": "Provider-neutral principles · Ruby 3.3 / Rails 7.2 lab · legacy Ruby 2.7 adaptation notes",
+  "book": "",
+  "prerequisite": null,
+  "tags": [
+    "quality",
+    "intermediate",
+    "evaluation",
+    "dataset"
+  ],
+  "useCase": "Define task outcomes, labelled cases, holdouts, and hard failure gates.",
+  "benefits": "A clear decision and a way to check it.",
+  "drawbacks": "A dataset copied from the prompt examples tests recognition of known examples. An average can conceal a severe boundary failure.",
+  "lab": "dispatch-desk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Walk through an example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and remember",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "title": "Find the broken boundary",
+      "kind": "repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "title": "Change one requirement",
+      "kind": "transfer",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow this mechanism",
+      "code": "flowchart TD\n T[Task and acceptance criteria] --> D[Labelled synthetic cases]\n D --> S[Split development from held-out evaluation]\n S --> R[Run versioned prompt, model and retrieval]\n R --> C[Deterministic contract and access checks]\n R --> H[Human-reviewed task quality]\n C --> G[Slice metrics and inspect failures]\n H --> G\n G --> P{Meets release gate?}\n P -->|No| F[Repair one failure category]\n F --> R\n P -->|Yes| L[Limited release with monitoring and rollback]",
+      "placement": "overview"
+    },
+    {
+      "title": "Recap · redraw the full mechanism from memory",
+      "code": "flowchart TD\n T[Task and acceptance criteria] --> D[Labelled synthetic cases]\n D --> S[Split development from held-out evaluation]\n S --> R[Run versioned prompt, model and retrieval]\n R --> C[Deterministic contract and access checks]\n R --> H[Human-reviewed task quality]\n C --> G[Slice metrics and inspect failures]\n H --> G\n G --> P{Meets release gate?}\n P -->|No| F[Repair one failure category]\n F --> R\n P -->|Yes| L[Limited release with monitoring and rollback]",
+      "placement": "recap"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Task contract",
+      "detail": "An evaluation is a repeatable comparison between expected behavior and observed behavior. Start with the task contract. For an intent parser, check fields, ambiguity and unsupported requests. For an explanation, check supplied fact use and support. For an agent, also inspect tool decisions and budgets.\n\nCreate representative synthetic cases and add reviewed failure cases over time. Keep prompt-development examples separate from a held-out release set. Label expected alternatives, not only one exact sentence. Include no-answer and clarification states so the system is not rewarded for guessing.\n\nUse hard gates for unauthorized data or actions. Report quality by meaningful category rather than a single reassuring average. A high overall score can hide that every unusual name or exception fails. Record model/prompt/index/tool versions and run conditions so results are interpretable."
+    },
+    {
+      "title": "Follow one input",
+      "detail": "Write acceptance criteria → freeze labelled cases → run baseline/candidate → inspect failures by category → apply hard gates → decide rollout. Separate application fixture tests from live model evaluation results."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A dataset copied from the prompt examples tests recognition of known examples. An average can conceal a severe boundary failure."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Evaluation practices",
+      "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Define task outcomes, labelled cases, holdouts, and hard failure gates. Give a concrete example, one failure, and the check that catches it."
+}
