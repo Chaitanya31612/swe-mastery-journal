@@ -1,0 +1,101 @@
+{
+  "id": "cloud-ec2",
+  "track": "cloud",
+  "title": "EC2 and EBS: when you own the machine",
+  "level": "beginner",
+  "outcome": "Explain instance lifecycle, disk persistence, process supervision, and the responsibilities EC2 leaves with you.",
+  "useCase": "Understanding existing VM deployments and choosing compute ownership.",
+  "benefits": "Flexible machine-level control.",
+  "drawbacks": "Patching, configuration drift, and recovery remain your work.",
+  "tags": [
+    "aws",
+    "ec2",
+    "storage"
+  ],
+  "hours": 2,
+  "number": 3,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "A machine is replaceable only if its important state is accounted for.",
+  "prerequisite": "cloud-networking",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Image and instance\"]\n N1[\"Identity and config\"]\n N2[\"Supervised process\"]\n N3[\"External durable state\"]\n N4[\"Replacement test\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Image and instance\"]\n N1[\"Identity and config\"]\n N2[\"Supervised process\"]\n N3[\"External durable state\"]\n N4[\"Replacement test\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Image and instance",
+      "detail": "EC2 gives you virtual machines. You choose an image, instance capacity, network, identity, and storage. You still own operating-system patching, process configuration, application deployment, and much of the recovery plan."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Boot image → inject configuration/identity → start supervised process → health check → receive traffic. Replacement should recreate the application from its artifact/configuration, not depend on manual edits left on the old machine.\n\nScale to two instances and follow an upload/read. If only one instance has the file, the storage boundary is wrong for that architecture."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A manually repaired server becomes hard to reproduce. A successful reboot is not a tested restore. Local logs disappear with the machine if not collected."
+    }
+  ],
+  "sources": [
+    {
+      "title": "EC2 concepts",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html"
+    },
+    {
+      "title": "EBS overview",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain instance lifecycle, disk persistence, process supervision, and the responsibilities EC2 leaves with you. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 3
+}

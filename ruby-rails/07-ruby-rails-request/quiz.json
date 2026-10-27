@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What does permit(:title) establish?",
+    "options": [
+      "This caller owns the row",
+      "Only title may be mass-assigned through that permitted input",
+      "The request was authenticated"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Can strong parameters alone prevent editing another user’s task?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

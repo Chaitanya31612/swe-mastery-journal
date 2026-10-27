@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Valid JSON proves a valid event contract?",
+    "options": [
+      "Yes",
+      "Only with an event_id",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should payload scope follow?",
+    "options": [
+      "Every model column",
+      "Subscriber need and data policy",
+      "The largest object available"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Event ID and aggregate version are the same thing?",
+    "options": [
+      "No",
+      "Yes",
+      "Only for one partition"
+    ]
+  }
+]

@@ -1,0 +1,139 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Should every side effect be replayed like a projection?",
+    "options": [
+      "Yes",
+      "Only with a new group",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Why can a fresh group still skip effects?",
+    "options": [
+      "The event key is CSS",
+      "The same consumer inbox already marks IDs seen",
+      "Kafka deleted every record automatically"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What must a rebuild verify?",
+    "options": [
+      "Only process startup",
+      "Source history, schema, identity, ordering and comparison",
+      "Only a new topic name"
+    ]
+  },
+  {
+    "id": "review-events-logs-queues",
+    "prompt": "Events, commands, queues, and a retained log: Which name expresses a fact?",
+    "options": [
+      "GenerateReport",
+      "TicketCompleted",
+      "SendEmailNow"
+    ],
+    "covers": "events-logs-queues"
+  },
+  {
+    "id": "review-events-partitions",
+    "prompt": "Topics, partitions, keys, and local order: Offsets from different partitions are a global order?",
+    "options": [
+      "No",
+      "Yes",
+      "Only when equal"
+    ],
+    "covers": "events-partitions"
+  },
+  {
+    "id": "review-events-layers",
+    "prompt": "Kafka layers: clients, brokers, storage, replicas, controllers: What is bootstrap mainly for?",
+    "options": [
+      "A universal DB transaction",
+      "Cluster metadata discovery",
+      "A guarantee of all broker reachability"
+    ],
+    "covers": "events-layers"
+  },
+  {
+    "id": "review-events-producer",
+    "prompt": "Producers: acknowledgements, idempotence, and duplicate business events: Calling produce proves consumers finished?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with acks=all"
+    ],
+    "covers": "events-producer"
+  },
+  {
+    "id": "review-events-consumers",
+    "prompt": "Consumers: groups, positions, stored offsets, and commits: Committed offset 7 conventionally means resume where?",
+    "options": [
+      "Always event_id 7",
+      "Before every record",
+      "At the next record position 7"
+    ],
+    "covers": "events-consumers"
+  },
+  {
+    "id": "review-events-schemas",
+    "prompt": "Event envelopes, evolution, and privacy: Valid JSON proves a valid event contract?",
+    "options": [
+      "Yes",
+      "Only with an event_id",
+      "No"
+    ],
+    "covers": "events-schemas"
+  },
+  {
+    "id": "review-events-outbox",
+    "prompt": "Rails transactional outbox: save intent with the change: What does the outbox make atomic?",
+    "options": [
+      "Every consumer offset",
+      "Business DB change and saved event intent",
+      "PostgreSQL plus every remote effect"
+    ],
+    "covers": "events-outbox"
+  },
+  {
+    "id": "review-events-inbox",
+    "prompt": "Consumer inbox: one local effect for a repeated event: What must share the inbox transaction?",
+    "options": [
+      "The local business/projection effect",
+      "Only a log line",
+      "Every remote service in the world"
+    ],
+    "covers": "events-inbox"
+  },
+  {
+    "id": "review-events-retries",
+    "prompt": "Retries, poison events, and the ordering tradeoff: Does retrying malformed JSON usually fix it?",
+    "options": [
+      "No",
+      "Only with more consumers",
+      "Yes"
+    ],
+    "covers": "events-retries"
+  },
+  {
+    "id": "review-events-operations",
+    "prompt": "Lag, rebalances, retention, and the debugging checklist: Lag alone fully describes user impact?",
+    "options": [
+      "No",
+      "Only with three partitions",
+      "Yes"
+    ],
+    "covers": "events-operations"
+  },
+  {
+    "id": "review-events-rails-lab",
+    "prompt": "Read the Rails/Kafka app one file at a time: Does the lab run inside the work project?",
+    "options": [
+      "No, it is a separate synthetic app",
+      "Yes, it changes its gems",
+      "Only its production DB"
+    ],
+    "covers": "events-rails-lab"
+  }
+]

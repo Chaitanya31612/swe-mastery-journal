@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What should drive Cassandra table design?",
+    "options": [
+      "Specific access queries",
+      "The UI color scheme",
+      "An arbitrary normalized ER diagram alone"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What can an unbounded hot partition cause?",
+    "options": [
+      "Universal ACID joins",
+      "Skew and a bottleneck",
+      "Automatic even scaling"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Is Cassandra a default replacement for every relational app?",
+    "options": [
+      "Only in cloud",
+      "No",
+      "Yes"
+    ]
+  }
+]

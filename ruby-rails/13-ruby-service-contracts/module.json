@@ -1,0 +1,96 @@
+{
+  "id": "ruby-service-contracts",
+  "track": "ruby",
+  "title": "Rails service objects with a result you can trust",
+  "level": "intermediate",
+  "outcome": "Define inputs, results, transaction ownership, and error policy for one Rails use case.",
+  "useCase": "A use case shared by controllers and imports.",
+  "benefits": "Clearer decisions and error handling.",
+  "drawbacks": "Too many forwarding-only services can add indirection.",
+  "tags": [
+    "rails",
+    "services"
+  ],
+  "hours": 2,
+  "number": 13,
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "book": "",
+  "cue": "A service name is not a guarantee. Write the contract.",
+  "prerequisite": "ruby-rails-testing",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Trusted input\"]\n N1[\"Expected rejection\"]\n N2[\"Transaction owner\"]\n N3[\"Explicit result\"]\n N4[\"Caller mapping\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Trusted input\"]\n N1[\"Expected rejection\"]\n N2[\"Transaction owner\"]\n N3[\"Explicit result\"]\n N4[\"Caller mapping\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Trusted input",
+      "detail": "A service object is ordinary Ruby. It earns its place by naming one use case and making its boundary clear. It does not automatically supply permissions, a transaction, retries, or thread safety."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Controller validates permitted input and identifies actor → service checks the use-case rule → transaction writes → result maps to HTTP. A job caller uses the same rule with a deliberate actor/system role.\n\nUnit-test expected branches with a narrow seam. Use database tests for rollback and constraints. Test the caller’s mapping so a failure is not shown as a success response."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A service that catches StandardError and returns success hides operational defects. Passing a model from a controller does not mean it belongs to the actor’s tenant."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rails transactions",
+      "url": "https://api.rubyonrails.org/v4.2.11/classes/ActiveRecord/Transactions/ClassMethods.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Define inputs, results, transaction ownership, and error policy for one Rails use case. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 13
+}

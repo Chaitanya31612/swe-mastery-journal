@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "Public visibility is not authorization. An explicit command allowlist narrows the callable surface."
+  },
+  "predict": {
+    "correctIndex": 0,
+    "explanation": "define_method adds an instance method to that class or module."
+  }
+}

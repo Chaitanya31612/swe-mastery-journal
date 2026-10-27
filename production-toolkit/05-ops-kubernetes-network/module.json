@@ -1,0 +1,100 @@
+{
+  "id": "ops-kubernetes-network",
+  "track": "ops",
+  "title": "Kubernetes networking: Services, selectors, ingress, and names",
+  "level": "intermediate",
+  "outcome": "Trace a request from edge to a ready pod and debug an empty Service endpoint set.",
+  "useCase": "Debugging healthy-looking pods with broken traffic.",
+  "benefits": "Stable service access across pod replacement.",
+  "drawbacks": "Several routing layers can fail independently.",
+  "tags": [
+    "kubernetes",
+    "networking"
+  ],
+  "hours": 2,
+  "number": 5,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Name → route → Service → ready endpoint → listener.",
+  "prerequisite": "ops-docker-build",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"External route\"]\n N1[\"Installed controller\"]\n N2[\"Service selector\"]\n N3[\"Ready endpoint\"]\n N4[\"App listener\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"External route\"]\n N1[\"Installed controller\"]\n N2[\"Service selector\"]\n N3[\"Ready endpoint\"]\n N4[\"App listener\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "External route",
+      "detail": "Pods can be replaced and their addresses can change. A Service gives a stable access abstraction for matching endpoints. Selectors connect the Service to labelled Pods; a spelling mismatch can leave no endpoints."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Client/edge → controller route → Service port → selected ready Pod endpoint → app target port. A 503 can come from no eligible endpoints even when a pod process exists.\n\nTest a selector mismatch, wrong targetPort, and readiness failure separately. Observe how each changes events/endpoints/response. Keep the app’s allowed-host/proxy/TLS configuration in the path."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A container listening only on 127.0.0.1 may not accept the intended Pod-network traffic. An Ingress without its controller is only desired routing data."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kubernetes Services",
+      "url": "https://kubernetes.io/docs/concepts/services-networking/service/"
+    },
+    {
+      "title": "Ingress",
+      "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Trace a request from edge to a ready pod and debug an empty Service endpoint set. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 12
+}

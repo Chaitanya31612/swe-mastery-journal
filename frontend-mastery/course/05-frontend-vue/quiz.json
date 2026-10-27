@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What is a good computed use case?",
+    "options": [
+      "Deriving filtered tasks from tasks and a filter",
+      "Sending an email on every read",
+      "Keeping a second manually synchronized count"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Vue 3: const {count}=reactive({count:0}); is count a live numeric ref?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

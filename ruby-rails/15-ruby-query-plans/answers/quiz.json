@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Later Ruby filtering may operate on all loaded records."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Batching behavior is version-dependent."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "An index is useful for a query shape, not by existence alone."
+  }
+}

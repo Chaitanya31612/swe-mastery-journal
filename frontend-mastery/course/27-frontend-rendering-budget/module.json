@@ -1,0 +1,101 @@
+{
+  "id": "frontend-rendering-budget",
+  "track": "frontend",
+  "title": "Browser rendering and performance evidence",
+  "level": "intermediate",
+  "outcome": "Separate network, JavaScript, layout, paint, and rendering costs before optimizing a screen.",
+  "useCase": "Large workspaces, slow devices, and measurable frontend improvements.",
+  "benefits": "Optimization effort follows observed user delay.",
+  "drawbacks": "Lab recordings must be paired with representative conditions and regressions.",
+  "tags": [
+    "performance",
+    "browser",
+    "css"
+  ],
+  "hours": 2,
+  "number": 27,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Measure a task. Fix the costly boundary. Measure again.",
+  "prerequisite": "frontend-vue-forms",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Representative task\"]\n N1[\"Performance trace\"]\n N2[\"Locate costly boundary\"]\n N3[\"Small targeted repair\"]\n N4[\"Compare and check access\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Representative task\"]\n N1[\"Performance trace\"]\n N2[\"Locate costly boundary\"]\n N3[\"Small targeted repair\"]\n N4[\"Compare and check access\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Representative task",
+      "detail": "A slow screen can wait on a network response, execute too much JavaScript, repeatedly measure layout, paint a large area, or render too many DOM nodes. Each needs different evidence. A fast SQL query does not prove a fast interaction."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Record open-ticket → filter → select → edit using the same fixture. Mark request start/end and visible response. Inspect long tasks, style/layout, paints, and component updates. Check the slow path after the proposed repair.\n\nVirtualizing a list reduces DOM work but changes focus, search, row sizing, and screen-reader behavior. Memoization can add invalidation complexity. Choose the smallest fix supported by the recording."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Optimizing only the bundle can leave a long interaction unchanged. A desktop-only recording can hide low-end-device delay. A synthetic score is not the same as every real user outcome."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MDN critical rendering path",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path"
+    },
+    {
+      "title": "Vue performance",
+      "url": "https://vuejs.org/guide/best-practices/performance.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Separate network, JavaScript, layout, paint, and rendering costs before optimizing a screen. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 20
+}

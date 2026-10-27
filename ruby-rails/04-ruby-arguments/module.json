@@ -1,0 +1,95 @@
+{
+  "id": "ruby-arguments",
+  "track": "ruby",
+  "number": 4,
+  "title": "Arguments, closures, and return behavior",
+  "outcome": "Explain keyword forwarding and the difference between a proc and a lambda.",
+  "hours": 3,
+  "book": "Language ch. 6; Eloquent Ruby ch. 18–20; Metaprogramming Ruby Wednesday",
+  "cue": "Three envelopes: values, names, behavior.",
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "prerequisite": "ruby-objects",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A wrapper def call(*args); target(*args); end stops forwarding keywords correctly on a newer Ruby. Repair its signature and write a compatibility test.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A callback must return a value to a caller and continue the caller normally. Would you choose lambda or a proc with a non-local return?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Positional args\"]\n  N1[\"Keyword args\"]\n  N2[\"Block\"]\n  N3[\"Forward explicitly\"]\n  N4[\"Return to the right place\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Positional args\"]\n  N1[\"Keyword args\"]\n  N2[\"Block\"]\n  N3[\"Forward explicitly\"]\n  N4[\"Return to the right place\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Ruby 2.7 documentation",
+      "url": "https://docs.ruby-lang.org/en/2.7.0/"
+    },
+    {
+      "title": "Ruby keyword argument migration",
+      "url": "https://www.ruby-lang.org/en/news/2019/12/12/separation-of-positional-and-keyword-arguments-in-ruby-3-0/"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "Positional args",
+      "detail": "A closure carries access to variables from its surrounding scope. It does not take a frozen snapshot of every value. If that variable changes, the closure can see the new value. This is useful for callbacks and risky for long-lived captured state."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Split the call into three envelopes: positional values in args, named values in kwargs, behavior in block. Forward each explicitly. In Ruby 2.7, warnings are useful migration signals; do not silence them without understanding the call shape.\n\nFor the closure, reader keeps access to the label binding. Reassignment changes what that binding points to. For a snapshot of text, create a separate value deliberately, such as label.dup.freeze when a shallow frozen string is what you need."
+    },
+    {
+      "title": "Check the result",
+      "detail": "A callback with return inside Proc.new may exit its defining method rather than only finishing the callback. Rescue does not make confusing control flow easier to maintain."
+    }
+  ],
+  "recallPrompt": "Without notes: Explain keyword forwarding and the difference between a proc and a lambda. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 4
+}

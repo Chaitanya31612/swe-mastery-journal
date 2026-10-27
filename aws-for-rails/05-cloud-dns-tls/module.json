@@ -1,0 +1,101 @@
+{
+  "id": "cloud-dns-tls",
+  "track": "cloud",
+  "title": "Route 53 and ACM: names and trust before the request",
+  "level": "beginner",
+  "outcome": "Explain DNS records, certificate validation, region constraints, and what a DNS change does not instantly control.",
+  "useCase": "Custom domains and reliable traffic cutovers.",
+  "benefits": "Managed names and supported certificate lifecycle.",
+  "drawbacks": "Caching, validation, service scope, and renewal ownership still matter.",
+  "tags": [
+    "aws",
+    "dns",
+    "tls"
+  ],
+  "hours": 2,
+  "number": 5,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Resolve the name. Verify the name. Then handle HTTP.",
+  "prerequisite": "cloud-load-balancing",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Domain delegation\"]\n N1[\"DNS answer\"]\n N2[\"TLS name validation\"]\n N3[\"HTTPS endpoint\"]\n N4[\"Application host context\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Domain delegation\"]\n N1[\"DNS answer\"]\n N2[\"TLS name validation\"]\n N3[\"HTTPS endpoint\"]\n N4[\"Application host context\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Domain delegation",
+      "detail": "DNS resolves a name to a destination. It does not forward each HTTP request through a Rails controller. Route 53 can manage DNS records and health/routing policies. Cached answers mean a record change is not an instantaneous global traffic switch."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Resolver asks DNS → caches an answer → browser connects to that destination → TLS verifies hostname/certificate → HTTP request begins. A certificate error is different from NXDOMAIN or a target timeout.\n\nFor cutover, plan existing cache lifetimes, overlapping service readiness, rollback, and certificate coverage. DNS is one part of the release, not the whole release mechanism."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A certificate for one hostname does not cover arbitrary other names. Creating a hosted zone without registrar delegation may not affect public resolution."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Route 53 overview",
+      "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html"
+    },
+    {
+      "title": "ACM overview",
+      "url": "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain DNS records, certificate validation, region constraints, and what a DNS change does not instantly control. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 5
+}

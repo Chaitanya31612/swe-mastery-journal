@@ -1,0 +1,20 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What does flush guarantee?",
+    "options": [
+      "The transaction committed",
+      "SQL was sent; a later rollback may still happen",
+      "Every cache is updated"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "One list query and one owner lookup for each of 20 tasks: total?",
+    "options": [
+      "2",
+      "20",
+      "21"
+    ]
+  }
+]

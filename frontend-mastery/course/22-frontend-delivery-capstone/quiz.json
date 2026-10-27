@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What should the capstone prove?",
+    "options": [
+      "Only the number of components",
+      "Connected behavior across boundaries",
+      "That all state is global"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should shareable filters usually live?",
+    "options": [
+      "Only a console log",
+      "Only a private ref",
+      "A parsed URL contract"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is a useful handoff artifact?",
+    "options": [
+      "A dependency list only",
+      "A screenshot without behavior",
+      "State ownership and failure/test map"
+    ]
+  }
+]

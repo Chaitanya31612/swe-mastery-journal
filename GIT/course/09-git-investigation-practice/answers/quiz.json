@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "It tracks local ref movements, not arbitrary editor contents."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Its result depends on correct good/bad evidence."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "It isolates working files and index from the active checkout."
+  }
+}

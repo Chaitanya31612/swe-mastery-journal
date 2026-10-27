@@ -1,0 +1,96 @@
+{
+  "id": "ops-datadog",
+  "track": "ops",
+  "title": "Datadog: turn traces and monitors into an investigation",
+  "level": "beginner",
+  "outcome": "Connect Rails requests, jobs, SQL, and provider calls with useful service identity and bounded telemetry.",
+  "useCase": "Investigating Rails/worker latency and release regressions.",
+  "benefits": "Integrated signals and investigation workflows.",
+  "drawbacks": "Compatibility, sampling, volume, cost, and sensitive-data policy need ownership.",
+  "tags": [
+    "observability",
+    "datadog"
+  ],
+  "hours": 2,
+  "number": 10,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Start from the symptom, then follow a traceable boundary.",
+  "prerequisite": "ops-redis-types",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Service identity\"]\n N1[\"Instrumentation and agent\"]\n N2[\"Metrics and traces\"]\n N3[\"Correlated diagnosis\"]\n N4[\"Actionable monitor\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Service identity\"]\n N1[\"Instrumentation and agent\"]\n N2[\"Metrics and traces\"]\n N3[\"Correlated diagnosis\"]\n N4[\"Actionable monitor\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Service identity",
+      "detail": "Datadog combines observability capabilities such as infrastructure monitoring, APM, logs, and monitors. Choose the signals needed for a concrete investigation. Installing an agent alone does not make every request/job trace connected."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "User-visible latency spike → service latency/error metrics → slow trace → SQL or provider span → correlated safe logs → hypothesis → controlled repair → monitor recovery. Async boundaries need explicit context propagation/linking rather than assuming one synchronous stack.\n\nAn absent trace can mean sampling or missing instrumentation, not proof the request never ran."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Unbounded tags and full payload capture can create cost/privacy problems. A monitor without a clear action becomes noise. Trace instrumentation can be misconfigured even when infrastructure metrics arrive."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Datadog Ruby tracing",
+      "url": "https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/ruby/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Connect Rails requests, jobs, SQL, and provider calls with useful service identity and bounded telemetry. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 5
+}

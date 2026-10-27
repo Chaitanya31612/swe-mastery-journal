@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What responsibility remains with EC2 users?",
+    "options": [
+      "Only HTML styling",
+      "None",
+      "OS/application operation choices"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Is a local upload directory shared across EC2 replicas?",
+    "options": [
+      "Automatically",
+      "Only if file names match",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should replacement rely on?",
+    "options": [
+      "Reproducible artifact and configuration",
+      "Manual undocumented edits",
+      "The old machine never failing"
+    ]
+  }
+]

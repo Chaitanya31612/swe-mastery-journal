@@ -1,0 +1,97 @@
+{
+  "id": "events-retries",
+  "track": "events",
+  "title": "Retries, poison events, and the ordering tradeoff",
+  "level": "intermediate",
+  "outcome": "Choose blocking retry, retry topics, or quarantine from the required per-entity behavior.",
+  "useCase": "A consumer that must remain correct during outages and bad input.",
+  "benefits": "Explicit recovery instead of infinite or silent failure.",
+  "drawbacks": "Progress, ordering, and completeness can trade off.",
+  "tags": [
+    "kafka",
+    "retry",
+    "operations"
+  ],
+  "hours": 2,
+  "number": 9,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Every retry design is also an ordering design.",
+  "prerequisite": "events-inbox",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Classify failure\"]\n N1[\"Choose delay/block/quarantine\"]\n N2[\"Preserve required rule\"]\n N3[\"Repair and redrive\"]\n N4[\"Verify completeness\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Classify failure\"]\n N1[\"Choose delay/block/quarantine\"]\n N2[\"Preserve required rule\"]\n N3[\"Repair and redrive\"]\n N4[\"Verify completeness\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Classify failure",
+      "detail": "A transient outage and an invalid schema are different failures. Retrying malformed data forever does not repair it. Classify failures, bound attempts/delay, and retain enough safe context for diagnosis."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Receive A1 → fails → choose policy → observe whether A2/B1 may proceed → repair → redrive A1 → verify entity/projection version. Draw the order after every proposed retry design.\n\nUse event_id, key, schema version, topic/partition/offset, attempt, and safe error category in diagnostics. Keep sensitive payloads out of logs."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Retry topics can break per-key ordering if not designed for it. A DLQ can become a graveyard. More workers do not solve a deterministic poison message."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kafka operations",
+      "url": "https://kafka.apache.org/41/operations/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose blocking retry, retry topics, or quarantine from the required per-entity behavior. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 9
+}

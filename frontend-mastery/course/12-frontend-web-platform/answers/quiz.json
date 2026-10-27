@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "HTTP errors need an explicit status check."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "It is not a substitute for authentication and authorization."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Caches can serve the response at several layers."
+  }
+}

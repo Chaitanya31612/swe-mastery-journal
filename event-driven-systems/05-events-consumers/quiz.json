@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Committed offset 7 conventionally means resume where?",
+    "options": [
+      "Always event_id 7",
+      "Before every record",
+      "At the next record position 7"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Earliest rewinds every restart?",
+    "options": [
+      "No, only under reset conditions",
+      "Only with Ruby",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Commit before durable effect risks what?",
+    "options": [
+      "Automatic rollback",
+      "Only duplicates",
+      "Skipping unfinished work after crash"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Offsets are partition positions; commit records a resume point."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Existing usable group commits take precedence."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "The group may resume beyond work that never completed."
+  }
+}

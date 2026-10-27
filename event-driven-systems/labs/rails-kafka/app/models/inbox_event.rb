@@ -1,0 +1,2 @@
+class InboxEvent < ApplicationRecord
+end

@@ -1,0 +1,101 @@
+{
+  "id": "git-conflict-lab",
+  "track": "git",
+  "title": "Conflicts are behavior decisions",
+  "level": "intermediate",
+  "outcome": "Resolve a conflict by comparing base and both intents, then test the combined rule.",
+  "useCase": "Refactors overlapping feature and access changes.",
+  "benefits": "Preserves meaning rather than merely producing parseable text.",
+  "drawbacks": "The correct answer may require a product/API decision.",
+  "tags": [
+    "git",
+    "practice",
+    "conflicts"
+  ],
+  "hours": 2,
+  "number": 8,
+  "version": "Modern Git; check git --version for command availability",
+  "book": "",
+  "cue": "Keep both intentions when both are still valid.",
+  "prerequisite": "git-surgery",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Common base\"]\n N1[\"Intent on each side\"]\n N2[\"Combined rule\"]\n N3[\"Resolved patch\"]\n N4[\"Behavior test\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Common base\"]\n N1[\"Intent on each side\"]\n N2[\"Combined rule\"]\n N3[\"Resolved patch\"]\n N4[\"Behavior test\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Common base",
+      "detail": "Conflict markers identify text Git could not combine automatically. They do not tell you which product behavior should win. Read the common base, each change, callers, and tests."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Write intended before/after behavior for each branch. Decide the combined behavior. Edit the resolution, stage it, continue the operation, and run the relevant regression tests. If the operation is wrong for the task, abort deliberately after preserving needed work.\n\nUse the graph to explain where the resolution lives. A merge commit can contain meaningful hand-written conflict decisions that deserve review."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Accept Both can duplicate work or create unreachable code. Accept Current can remove a new rule. Conflict-free text can still be an invalid combined design."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Git merge",
+      "url": "https://git-scm.com/docs/git-merge"
+    },
+    {
+      "title": "Git rebase",
+      "url": "https://git-scm.com/docs/git-rebase"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Resolve a conflict by comparing base and both intents, then test the combined rule. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 8
+}

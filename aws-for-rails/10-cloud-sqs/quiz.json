@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Receiving an SQS message immediately deletes it?",
+    "options": [
+      "No",
+      "Only with long polling",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What handles crash after DB commit before delete?",
+    "options": [
+      "Only gzip",
+      "Idempotent business processing",
+      "Only a bigger visibility timeout"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does a DLQ indicate?",
+    "options": [
+      "Work needs investigation/recovery",
+      "All work succeeded",
+      "The DB transaction rolled back automatically"
+    ]
+  }
+]

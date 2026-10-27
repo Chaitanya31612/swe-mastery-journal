@@ -1,0 +1,96 @@
+{
+  "id": "ops-feature-flags",
+  "track": "ops",
+  "title": "Feature flags: release control without permanent branching",
+  "level": "intermediate",
+  "outcome": "Use a flag to limit exposure and define defaults, ownership, removal, and data compatibility.",
+  "useCase": "Controlled rollout of a risky workflow change.",
+  "benefits": "Smaller exposure and deliberate rollback decisions.",
+  "drawbacks": "State combinations, provider failure, and stale flags add complexity.",
+  "tags": [
+    "feature-flags",
+    "delivery"
+  ],
+  "hours": 2,
+  "number": 21,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Deploy code. Control exposure. Retire the switch.",
+  "prerequisite": "ops-proxy-pools",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Owned flag\"]\n N1[\"Context and safe default\"]\n N2[\"Chosen path\"]\n N3[\"Outcome guardrails\"]\n N4[\"Removal or recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Owned flag\"]\n N1[\"Context and safe default\"]\n N2[\"Chosen path\"]\n N3[\"Outcome guardrails\"]\n N4[\"Removal or recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Owned flag",
+      "detail": "A feature flag changes which behavior is active for a context. It can separate deployment from exposure and help a controlled rollout. It does not undo data already written or remove the need to test both paths."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Request context → flag decision → chosen behavior → observable outcome → guarded expansion → retire old path. Log a bounded variant tag where useful so errors can be compared.\n\nRehearse disabling the flag after the new path has written data. If the old path cannot read that data, the flag is not an effective rollback."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A flag can become permanent dead code. A frontend flag does not authorize a server action. Untested combinations can multiply behavior states."
+    }
+  ],
+  "sources": [
+    {
+      "title": "OpenFeature concepts",
+      "url": "https://openfeature.dev/docs/category/concepts/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Use a flag to limit exposure and define defaults, ownership, removal, and data compatibility. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 21
+}

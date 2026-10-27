@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Is a database password the same thing as a KMS key?",
+    "options": [
+      "Yes",
+      "No",
+      "Only in Rails"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does encryption at rest prove tenant access correctness?",
+    "options": [
+      "No",
+      "Only with a managed service",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What must rotation account for?",
+    "options": [
+      "Only a dashboard label",
+      "Only the new secret value",
+      "Client/cache/connection lifetime"
+    ]
+  }
+]

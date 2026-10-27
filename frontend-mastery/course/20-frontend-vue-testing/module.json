@@ -1,0 +1,100 @@
+{
+  "id": "frontend-vue-testing",
+  "track": "frontend",
+  "title": "Vue tests: behavior, timing, and contracts",
+  "level": "intermediate",
+  "outcome": "Write component tests for failed saves, async races, and accessible interaction.",
+  "useCase": "Changes to complex forms and route-driven panes.",
+  "benefits": "Repeatable evidence for failure paths.",
+  "drawbacks": "Mocks and simulated DOM tests have limits.",
+  "tags": [
+    "vue3",
+    "testing"
+  ],
+  "hours": 2,
+  "number": 20,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Test the promise the user sees.",
+  "prerequisite": "frontend-vue-performance",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Arrange a boundary\"]\n N1[\"User action\"]\n N2[\"Controlled async outcome\"]\n N3[\"Visible assertion\"]\n N4[\"Regression and browser check\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Arrange a boundary\"]\n N1[\"User action\"]\n N2[\"Controlled async outcome\"]\n N3[\"Visible assertion\"]\n N4[\"Regression and browser check\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Arrange a boundary",
+      "detail": "A pure test checks a transformation. A component test mounts a small UI and exercises its public behavior. A browser test verifies real navigation, layout, and browser APIs. Choose the layer that can observe the defect."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Arrange the state and fake boundary → act as a user → flush the required update boundary → assert visible outcome and emitted contract. Confirm the test fails when the repair is removed.\n\nFor focus trapping, hydration, scroll, and browser back behavior, run a real browser check. A simulated DOM does not implement all browser layout/accessibility behavior."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Testing private implementation details makes refactors expensive. Broad snapshots may miss the important failure. Arbitrary sleeps make the test depend on machine speed."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vue testing",
+      "url": "https://vuejs.org/guide/scaling-up/testing.html"
+    },
+    {
+      "title": "Vue Test Utils async",
+      "url": "https://test-utils.vuejs.org/guide/advanced/async-suspense.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Write component tests for failed saves, async races, and accessible interaction. Explain one example and one failure.",
+  "lab": "vue-workspace",
+  "sequence": 22
+}

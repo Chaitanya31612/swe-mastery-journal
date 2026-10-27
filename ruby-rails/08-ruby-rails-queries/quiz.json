@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "When does a typical relation execute its SELECT?",
+    "options": [
+      "Always at where",
+      "When results are demanded, such as iteration",
+      "Only at application boot"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "A 20-row list plus one owner query per row is N+1. Simple belongs_to preload usually makes count grow with every row?",
+    "options": [
+      "Yes",
+      "No, it loads owners together"
+    ]
+  }
+]

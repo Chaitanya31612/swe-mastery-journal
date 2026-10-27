@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Each partition has its own position space."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Assignment bounds active parallelism."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Related records placed together can create skew."
+  }
+}

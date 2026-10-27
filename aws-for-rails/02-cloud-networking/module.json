@@ -1,0 +1,97 @@
+{
+  "id": "cloud-networking",
+  "track": "cloud",
+  "title": "VPC networking: follow the packet",
+  "level": "beginner",
+  "outcome": "Trace public ingress, private application traffic, database access, and outbound AWS calls.",
+  "useCase": "Private Rails tasks with RDS and AWS service calls.",
+  "benefits": "Makes timeouts and access boundaries explainable.",
+  "drawbacks": "Egress, endpoints, zones, and policy add operational choices and cost.",
+  "tags": [
+    "aws",
+    "vpc",
+    "networking"
+  ],
+  "hours": 2,
+  "number": 2,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "DNS → route → listener → allowed traffic → application permission.",
+  "prerequisite": "cloud-identity",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Name resolution\"]\n N1[\"Subnet route\"]\n N2[\"Security-group path\"]\n N3[\"Service listener\"]\n N4[\"Application result\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Name resolution\"]\n N1[\"Subnet route\"]\n N2[\"Security-group path\"]\n N3[\"Service listener\"]\n N4[\"Application result\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Name resolution",
+      "detail": "A VPC is a network boundary you configure. A subnet belongs to one Availability Zone. A route table decides where traffic goes. A security group controls allowed traffic for attached resources; a route and a permission rule solve different parts of connectivity."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "A request needs DNS, a routable destination, a listener, and allowed traffic. A database timeout is not the same as a database login rejection. Follow the packet one hop at a time.\n\nFor S3 from a private task, inspect the endpoint/NAT route, endpoint policy, task IAM role, and bucket policy. Network reachability does not imply S3 authorization."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Putting RDS in a subnet does not decide all access rules. Opening a group to the whole internet can hide a wrong source rule. A NAT gateway can add continuing cost and is not inbound access to a private task."
+    }
+  ],
+  "sources": [
+    {
+      "title": "VPC overview",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Trace public ingress, private application traffic, database access, and outbound AWS calls. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 2
+}

@@ -1,0 +1,96 @@
+{
+  "id": "ops-docker-build",
+  "track": "ops",
+  "title": "Docker builds: layers, identity, and a smaller runtime",
+  "level": "intermediate",
+  "outcome": "Build a Rails artifact without embedding secrets or relying on mutable tags.",
+  "useCase": "Rails image delivery and predictable rebuilds.",
+  "benefits": "Faster repeat builds and clearer runtime boundaries.",
+  "drawbacks": "Native dependencies, patching, and reproducibility need maintenance.",
+  "tags": [
+    "docker",
+    "delivery"
+  ],
+  "hours": 2,
+  "number": 2,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Cache stable inputs. Keep secrets out. Let signals reach the app.",
+  "prerequisite": "ops-metrics-stack",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Build context\"]\n N1[\"Dependency layers\"]\n N2[\"App source\"]\n N3[\"Runtime identity and command\"]\n N4[\"Immutable image\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Build context\"]\n N1[\"Dependency layers\"]\n N2[\"App source\"]\n N3[\"Runtime identity and command\"]\n N4[\"Immutable image\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Build context",
+      "detail": "A Dockerfile records image construction. Layer caching can speed repeated builds when stable dependency steps occur before frequently changing app files. A .dockerignore keeps unnecessary/private content out of the build context."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Build context → dependency layers → app layer → runtime command → registry digest. Change only a source file and inspect which layers rebuild. Then change a gem lock and predict the invalidation.\n\nDuring stop, SIGTERM should reach the process so it can stop taking work and finish or abandon it safely within the orchestrator’s grace period."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Deleting a secret in a later layer does not erase it from earlier layers. A mutable base/tag can change rebuild output. A shell that does not exec can interfere with signal forwarding."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Docker build practices",
+      "url": "https://docs.docker.com/build/building/best-practices/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Build a Rails artifact without embedding secrets or relying on mutable tags. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 11
+}

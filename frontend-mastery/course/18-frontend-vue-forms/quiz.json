@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What should a network failure usually preserve?",
+    "options": [
+      "The user’s draft",
+      "No local state",
+      "Only the spinner"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What prevents a stale overwrite at the authority boundary?",
+    "options": [
+      "A longer debounce",
+      "A server-enforced version check",
+      "Only a hidden Save button"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Should every prop refresh reset a dirty draft?",
+    "options": [
+      "Always",
+      "Only under an explicit safe reset rule",
+      "Only if it is JSON"
+    ]
+  }
+]

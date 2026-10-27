@@ -1,0 +1,97 @@
+{
+  "id": "cloud-sns",
+  "track": "cloud",
+  "title": "SNS: fan out one fact to independent subscribers",
+  "level": "beginner",
+  "outcome": "Distinguish publish/subscribe fan-out from competing workers on a queue.",
+  "useCase": "A ticket event consumed by reporting and notifications.",
+  "benefits": "Simple fan-out with independently buffered subscribers.",
+  "drawbacks": "Schema, delivery type, policies, and history/backfill remain explicit choices.",
+  "tags": [
+    "aws",
+    "sns",
+    "messaging"
+  ],
+  "hours": 2,
+  "number": 11,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "One queue shares work. Fan-out copies responsibility.",
+  "prerequisite": "cloud-dns-tls",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Published fact\"]\n N1[\"Topic subscriptions\"]\n N2[\"Independent queues\"]\n N3[\"Competing workers per role\"]\n N4[\"Separate completion\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Published fact\"]\n N1[\"Topic subscriptions\"]\n N2[\"Independent queues\"]\n N3[\"Competing workers per role\"]\n N4[\"Separate completion\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Published fact",
+      "detail": "SNS can publish a message to subscriptions. This is fan-out: independent destinations can receive the same published fact. A set of workers competing on one queue instead shares work among them. Choose based on whether each downstream system needs its own copy."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Publisher sends one fact → SNS evaluates subscriptions/filters → each destination receives according to its delivery contract → each queue/consumer manages its own completion. One slow subscriber should not dictate another’s progress when their buffers are separate.\n\nCarry an event ID for duplicate handling and traceability. A publish acknowledgement does not prove every subscriber’s business effect completed."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Putting all independent subscribers on one queue makes them compete for messages instead of each receiving all required facts. An overly broad queue policy can allow unintended senders."
+    }
+  ],
+  "sources": [
+    {
+      "title": "SNS overview",
+      "url": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Distinguish publish/subscribe fan-out from competing workers on a queue. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 6
+}

@@ -1,0 +1,105 @@
+{
+  "id": "ops-redis-correctness",
+  "track": "ops",
+  "title": "Redis correctness: persistence, atomic work, and lock expiry",
+  "level": "intermediate",
+  "outcome": "Explain pipeline versus transaction/script, persistence loss windows, and why a lease needs stale-writer protection.",
+  "useCase": "Distributed workers, counters, and critical lock-based coordination.",
+  "benefits": "Prevents overclaiming what a fast coordination tool guarantees.",
+  "drawbacks": "Strong correctness can require authority-side mechanisms beyond Redis.",
+  "tags": [
+    "redis",
+    "reliability",
+    "correctness"
+  ],
+  "hours": 2,
+  "number": 9,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Atomic here is not atomic everywhere. A lease can expire.",
+  "prerequisite": "ops-redis-cache",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Command boundary\"]\n N1[\"Persistence policy\"]\n N2[\"Lease ownership\"]\n N3[\"Stale-owner timeline\"]\n N4[\"Authority-side rule\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Command boundary\"]\n N1[\"Persistence policy\"]\n N2[\"Lease ownership\"]\n N3[\"Stale-owner timeline\"]\n N4[\"Authority-side rule\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Command boundary",
+      "detail": "A pipeline batches network operations for efficiency; it does not by itself make them one indivisible business operation. MULTI/EXEC and scripts provide different atomic-execution tools, but Redis transactions do not behave like a relational transaction with automatic rollback of every runtime error."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Trace acquire → pause → expiry → new owner → old owner resumes. Identify which downstream store can reject the old write. Then trace a Redis crash and ask what persisted/replicated data is actually recoverable.\n\nTest the failure model in the isolated lab. Measure the selected durability policy’s behavior, and document what data can be rebuilt versus what needs reconciliation."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Atomic commands do not make external effects atomic. Pipeline success is not a database commit. A lock release can delete another owner’s lock if token ownership is not checked."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Redis transactions",
+      "url": "https://redis.io/docs/latest/develop/interact/transactions/"
+    },
+    {
+      "title": "Redis persistence",
+      "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/"
+    },
+    {
+      "title": "Redis locks",
+      "url": "https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain pipeline versus transaction/script, persistence loss windows, and why a lease needs stale-writer protection. Explain one example and one failure.",
+  "lab": "redis",
+  "sequence": 15
+}

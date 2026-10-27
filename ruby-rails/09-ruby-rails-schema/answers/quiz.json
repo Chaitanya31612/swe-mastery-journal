@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "Concurrent requests can both pass application checks. The database must reject conflicting stored keys."
+  },
+  "predict": {
+    "correctIndex": 0,
+    "explanation": "The checks can run before either insert is visible. A database constraint is needed."
+  }
+}

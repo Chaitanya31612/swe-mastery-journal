@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "The outcome may be unknown."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Retries can multiply across layers."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "It limits pressure, not the meaning of a repeated effect."
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "id": "spring-release-testing",
+  "track": "spring",
+  "title": "Integration tests, migrations, and a release rehearsal",
+  "level": "intermediate",
+  "outcome": "Prove the deployed configuration, database changes, and failure recovery beyond mock tests.",
+  "useCase": "A service release with a schema change and background delivery.",
+  "benefits": "Makes deployment assumptions testable.",
+  "drawbacks": "Integration environments cost time and still do not cover every production condition.",
+  "tags": [
+    "spring",
+    "testing",
+    "delivery"
+  ],
+  "hours": 2,
+  "number": 14,
+  "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+  "book": "",
+  "cue": "Test the boundary. Rehearse the release. Separate data recovery.",
+  "prerequisite": "spring-modular-usecases",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Built artifact\"]\n N1[\"Compatible schema\"]\n N2[\"Configured startup\"]\n N3[\"Smoke and failure tests\"]\n N4[\"Observe or roll back\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Built artifact\"]\n N1[\"Compatible schema\"]\n N2[\"Configured startup\"]\n N3[\"Smoke and failure tests\"]\n N4[\"Observe or roll back\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Built artifact",
+      "detail": "A unit suite can pass while the real application has the wrong bean, migration, permission, or SQL behavior. Keep focused integration tests for the boundaries you rely on. Use a disposable real database when engine behavior matters."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Build an immutable artifact → verify its configuration → apply a deliberate migration → start and check readiness → send a smoke request → observe → promote or roll back. Keep migration execution separate from ordinary request scaling.\n\nTests should show both permitted and denied behavior, transaction rollback, and an adapter failure. A green health endpoint alone does not prove the feature works."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Tests wrapped in a transaction can hide after-commit behavior. A fake repository cannot prove a unique index. A rollback button cannot undo every data effect."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Spring testing",
+      "url": "https://docs.spring.io/spring-boot/reference/testing/index.html"
+    },
+    {
+      "title": "Testcontainers PostgreSQL",
+      "url": "https://java.testcontainers.org/modules/databases/postgres/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Prove the deployed configuration, database changes, and failure recovery beyond mock tests. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 14
+}

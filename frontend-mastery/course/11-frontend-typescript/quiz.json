@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does an as Ticket cast validate JSON?",
+    "options": [
+      "No",
+      "Only in production builds",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What does state.kind narrow?",
+    "options": [
+      "The network response latency",
+      "The database permissions",
+      "The allowed union variant"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should unvalidated input usually start as?",
+    "options": [
+      "never",
+      "any everywhere",
+      "unknown, then checked"
+    ]
+  }
+]

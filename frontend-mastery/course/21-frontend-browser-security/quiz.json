@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does v-html change?",
+    "options": [
+      "JSON gets validated",
+      "Server authorization is added",
+      "Text is interpreted as HTML"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Is a hidden client prop secret?",
+    "options": [
+      "Yes",
+      "No",
+      "Only on mobile"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does sanitizing HTML establish row access?",
+    "options": [
+      "Yes",
+      "Only with CSP",
+      "No"
+    ]
+  }
+]

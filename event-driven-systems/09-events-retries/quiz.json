@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does retrying malformed JSON usually fix it?",
+    "options": [
+      "No",
+      "Only with more consumers",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Retry topics can change what?",
+    "options": [
+      "Per-entity processing order",
+      "Only CSS state",
+      "Database engine version"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "A DLQ means what?",
+    "options": [
+      "A recovery responsibility remains",
+      "No monitoring is needed",
+      "The effect completed"
+    ]
+  }
+]

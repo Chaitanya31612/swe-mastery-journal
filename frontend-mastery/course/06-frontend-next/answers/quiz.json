@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "The directive defines a module boundary for client behavior. It is not a blanket browser-only execution promise."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Client refresh and server data invalidation are distinct operations."
+  }
+}

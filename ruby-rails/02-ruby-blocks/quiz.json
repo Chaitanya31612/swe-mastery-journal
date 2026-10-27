@@ -1,0 +1,20 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which operation keeps a subset of the original array?",
+    "options": [
+      "map",
+      "select",
+      "each"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "[1, 2].map { |n| n if n.even? } returns?",
+    "options": [
+      "[2]",
+      "[nil, 2]",
+      "[1, 2]"
+    ]
+  }
+]

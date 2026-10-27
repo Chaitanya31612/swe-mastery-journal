@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "A vertical feature shows how the pieces work together."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Users expect refresh, links, and history to preserve context."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "It explains how to investigate and change the feature."
+  }
+}

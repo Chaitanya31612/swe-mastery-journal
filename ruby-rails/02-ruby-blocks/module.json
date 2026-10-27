@@ -1,0 +1,91 @@
+{
+  "id": "ruby-blocks",
+  "track": "ruby",
+  "number": 2,
+  "title": "Enumerable: choose the shape of the result",
+  "outcome": "Use each, map, select, find, and reduce without hiding side effects.",
+  "hours": 3,
+  "book": "Language ch. 5–6; Eloquent Ruby ch. 3, 17–19",
+  "cue": "Map changes shape inside. Select changes who stays.",
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "prerequisite": "ruby-values",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A developer writes tasks.map { |t| t if t[:done] }. They expect only done tasks. What does the result actually contain? Repair it.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "You need the first overdue task among a million database rows. Why might to_a.find be a bad first choice?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Collection\"]\n  N1[\"Block input\"]\n  N2[\"Block result\"]\n  N3[\"Chosen operation\"]\n  N4[\"Result shape\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Collection\"]\n  N1[\"Block input\"]\n  N2[\"Block result\"]\n  N3[\"Chosen operation\"]\n  N4[\"Result shape\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Ruby 2.7 documentation",
+      "url": "https://docs.ruby-lang.org/en/2.7.0/"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "Collection",
+      "detail": "A block is a chunk of behavior passed to a method. Enumerable gives collections common operations. Choose by the result you need: each for an action, map for one output per input, select for a subset, find for one match, and reduce for an accumulated result."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "For map, write the block result below each input. For select, write keep/drop below each input. For reduce, write the accumulator after each step.\n\nyield calls the provided block. A method that may be called without one can check block_given?. An Enumerator can defer iteration. lazy can avoid creating intermediate arrays, but the work still happens when a terminal operation asks for results."
+    },
+    {
+      "title": "Check the result",
+      "detail": "Using map only to send messages communicates the wrong intent and allocates an unused array. A query followed by Ruby select can load far more database rows than a SQL where clause."
+    }
+  ],
+  "recallPrompt": "Without notes: Use each, map, select, find, and reduce without hiding side effects. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 2
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does a schedule trigger guarantee?",
+    "options": [
+      "Exactly one business effect",
+      "That mail was delivered",
+      "Only that work was triggered under its scheduler contract"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should a business run key identify?",
+    "options": [
+      "Only current wall-clock seconds",
+      "The worker PID",
+      "The intended logical period and scope"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does a single-process mutex protect several replicas?",
+    "options": [
+      "Only in Rails",
+      "Yes",
+      "No"
+    ]
+  }
+]

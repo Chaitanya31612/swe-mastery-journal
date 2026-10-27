@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does queued prove?",
+    "options": [
+      "The result is ready",
+      "The request was accepted for later work",
+      "The user downloaded it"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "When is a determinate progress bar most defensible?",
+    "options": [
+      "When a meaningful total and completed amount are known",
+      "Only when green",
+      "Whenever a timer exists"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What makes a confirmation useful?",
+    "options": [
+      "A second identical button",
+      "A clear target and consequence",
+      "The phrase Are you sure alone"
+    ]
+  }
+]

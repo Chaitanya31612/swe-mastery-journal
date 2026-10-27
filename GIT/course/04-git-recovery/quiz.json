@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What can reflog commonly help recover?",
+    "options": [
+      "A recent local branch tip",
+      "Every file never staged",
+      "A remote machine’s editor buffer"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "A file was never added or committed. Does reflog guarantee recovery?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

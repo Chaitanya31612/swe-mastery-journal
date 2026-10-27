@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "The constraint exists at the database boundary. Test where that rule is enforced."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "It tests ordinary Java behavior. A Spring context is needed to exercise the proxy."
+  }
+}

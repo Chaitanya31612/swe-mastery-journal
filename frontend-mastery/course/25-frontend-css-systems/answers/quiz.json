@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Inspect the actual cascade rather than escalating selectors."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Meaning must not depend only on color."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Tokens support consistency but still require evaluation."
+  }
+}

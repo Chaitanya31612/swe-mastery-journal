@@ -1,0 +1,95 @@
+{
+  "id": "ruby-rails-transactions",
+  "track": "ruby",
+  "number": 10,
+  "title": "Services, transactions, locks, and callbacks",
+  "outcome": "Trace a Rails transaction and explain what after_commit does and does not promise.",
+  "hours": 3,
+  "book": "Metaprogramming Ruby Rails tour: concerns and hooks",
+  "cue": "One rule. One boundary. One failure timeline.",
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "prerequisite": "ruby-metaprogramming",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A transaction creates a reservation, calls stock.save (which returns false), then returns success. Repair the partial-success path.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "An after_commit callback enqueues a job, but the process dies just before enqueue. How can the system find the missing work?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Use-case service\"]\n  N1[\"Begin transaction\"]\n  N2[\"Lock and check\"]\n  N3[\"Bang writes\"]\n  N4[\"Commit and later delivery\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Use-case service\"]\n  N1[\"Begin transaction\"]\n  N2[\"Lock and check\"]\n  N3[\"Bang writes\"]\n  N4[\"Commit and later delivery\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rails 4.2 callbacks",
+      "url": "https://guides.rubyonrails.org/v4.2/active_record_callbacks.html"
+    },
+    {
+      "title": "Rails 4.2 query interface",
+      "url": "https://guides.rubyonrails.org/v4.2/active_record_querying.html"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "Use-case service",
+      "detail": "Use a service object to name one business action, such as ReserveStock. Use a transaction when its database changes must commit together. A service object by itself supplies no transaction, retry, or permission guarantee."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "A enters the transaction and locks the stock row. B waits for that row. A checks and writes, then commits. B continues and sees the new quantity before deciding. Test with independent connections so the overlap is real.\n\nCallbacks are hidden control flow. A concern can install one when included. Draw callback order and side effects before moving them. A clear use-case method often makes orchestration easier to test."
+    },
+    {
+      "title": "Check the result",
+      "detail": "Catching an exception inside the transaction and continuing may commit earlier work. Nested transactions are not necessarily independent commits. Read savepoint behavior before promising that an inner rollback undoes everything."
+    }
+  ],
+  "recallPrompt": "Without notes: Trace a Rails transaction and explain what after_commit does and does not promise. Give a concrete failure example.",
+  "level": "intermediate",
+  "tags": [],
+  "sequence": 10
+}

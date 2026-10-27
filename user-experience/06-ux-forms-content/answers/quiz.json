@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "A stable label supports recognition and review."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "They describe different states."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "The label should help users choose correctly."
+  }
+}

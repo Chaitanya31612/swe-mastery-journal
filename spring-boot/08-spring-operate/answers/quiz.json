@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "The provider may have completed the action before the response was lost. Treat the outcome as uncertain."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "A health result only proves the checks that actually ran."
+  }
+}

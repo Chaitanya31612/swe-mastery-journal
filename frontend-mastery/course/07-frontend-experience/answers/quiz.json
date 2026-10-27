@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "A native button supplies expected keyboard and accessibility semantics for an action."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Users need to distinguish “nothing exists” from “we could not load it.”"
+  }
+}

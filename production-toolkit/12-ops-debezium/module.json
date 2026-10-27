@@ -1,0 +1,101 @@
+{
+  "id": "ops-debezium",
+  "track": "ops",
+  "title": "Debezium: capture committed changes without inventing business meaning",
+  "level": "intermediate",
+  "outcome": "Explain CDC, snapshots, log positions, outbox routing, and duplicate-safe downstream processing.",
+  "useCase": "Search/reporting projections and deliberate event publication.",
+  "benefits": "Captures committed changes without app-level network dual writes.",
+  "drawbacks": "Connector state, source logs, schema exposure, and cutover require operations.",
+  "tags": [
+    "debezium",
+    "cdc",
+    "events"
+  ],
+  "hours": 2,
+  "number": 12,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Committed change is the source. Business meaning is your contract.",
+  "prerequisite": "ops-redis-correctness",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow the real boundaries",
+      "placement": "overview",
+      "code": "flowchart LR\n Rails --> TX[DB transaction]\n TX --> Outbox[(Outbox table)]\n TX --> WAL[(Postgres WAL)]\n WAL --> Slot[Replication slot and connector offset]\n Slot --> CDC[Debezium connector]\n CDC --> Router[Outbox event router]\n Router --> Kafka[Kafka topic]\n Slot -. stalled connector retains WAL .-> Disk[Monitor disk and lag]"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Business transaction\"]\n N1[\"Outbox or selected rows\"]\n N2[\"CDC position\"]\n N3[\"Routed Kafka record\"]\n N4[\"Repeat-safe projection\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Business transaction",
+      "detail": "Change data capture reads database changes through a supported source mechanism. Debezium connectors can take an initial snapshot and continue from a log position. This is useful for integration/projections, but a row change is not automatically a well-designed business event."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Initial snapshot → catch-up log position → committed changes → routed records → consumer effects. Restart at the connector’s saved position and expect the selected delivery/recovery contract, including possible repeats.\n\nTrace event_id from outbox row through connector/topic to the consumer inbox. Raw CDC delete/tombstone behavior and business cancellation semantics are different questions."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "CDC may expose columns not intended for downstream systems if schema/filtering is careless. A stopped replication slot/log reader can grow retained WAL. Running both polling and CDC publishers without coordination can duplicate events."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Debezium outbox router",
+      "url": "https://debezium.io/documentation/reference/stable/transformations/outbox-event-router.html"
+    },
+    {
+      "title": "PostgreSQL connector",
+      "url": "https://debezium.io/documentation/reference/stable/connectors/postgresql.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain CDC, snapshots, log positions, outbox routing, and duplicate-safe downstream processing. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 16
+}

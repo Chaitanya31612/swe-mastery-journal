@@ -1,0 +1,101 @@
+{
+  "id": "git-team-release",
+  "track": "git",
+  "title": "A practical Git release and review routine",
+  "level": "intermediate",
+  "outcome": "Review a change, integrate upstream work, and preserve a traceable release without rewriting shared history casually.",
+  "useCase": "Collaborative feature delivery and release support.",
+  "benefits": "Understandable changes and traceable deployments.",
+  "drawbacks": "Tools cannot substitute for team policy and review.",
+  "tags": [
+    "git",
+    "delivery",
+    "practice"
+  ],
+  "hours": 2,
+  "number": 10,
+  "version": "Modern Git; check git --version for command availability",
+  "book": "",
+  "cue": "Review the patch. Release the artifact. Keep the link.",
+  "prerequisite": "git-investigation-practice",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Intended base\"]\n N1[\"Reviewable patch\"]\n N2[\"Validated commit\"]\n N3[\"Immutable artifact\"]\n N4[\"Observed release\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Intended base\"]\n N1[\"Reviewable patch\"]\n N2[\"Validated commit\"]\n N3[\"Immutable artifact\"]\n N4[\"Observed release\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Intended base",
+      "detail": "Before review, compare against the intended base and inspect the actual outgoing patch. Explain the trigger, resulting behavior, test evidence, and known limitation. A long commit list is not a substitute for that explanation."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Reviewable branch → fetch and compare → relevant tests → reviewed integration → immutable build identity → release observation. Keep the relation between source revision and deployed artifact visible.\n\nUse small commits that can be understood and, when necessary, reverted meaningfully. Separate a mechanical rename from a behavior change when that improves review."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A tag can be moved unless policy protects it. A branch diff on the wrong base can hide important changes. A passing working-tree test may include uncommitted content."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Git fetch",
+      "url": "https://git-scm.com/docs/git-fetch"
+    },
+    {
+      "title": "Git push",
+      "url": "https://git-scm.com/docs/git-push"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Review a change, integrate upstream work, and preserve a traceable release without rewriting shared history casually. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 10
+}

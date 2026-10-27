@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does debounce guarantee response order?",
+    "options": [
+      "Yes",
+      "No",
+      "Only with GET"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should onWatcherCleanup be registered?",
+    "options": [
+      "Synchronously before awaiting",
+      "Only after response.json",
+      "After unmount"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "watchEffect automatically tracks a source first read after await?",
+    "options": [
+      "Yes",
+      "No",
+      "Only in production"
+    ]
+  }
+]

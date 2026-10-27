@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A presigned URL is inherently single-use?",
+    "options": [
+      "Only with GET",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should allowed download keys come from?",
+    "options": [
+      "A public bucket listing",
+      "Any key typed by the browser",
+      "An authorized server-side attachment record"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does storing bytes prove Rails metadata was saved?",
+    "options": [
+      "Yes",
+      "Only for small files",
+      "No"
+    ]
+  }
+]

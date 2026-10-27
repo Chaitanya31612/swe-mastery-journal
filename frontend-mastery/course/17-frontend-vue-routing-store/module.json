@@ -1,0 +1,101 @@
+{
+  "id": "frontend-vue-routing-store",
+  "track": "frontend",
+  "title": "Vue Router and Pinia: choose where state lives",
+  "level": "intermediate",
+  "outcome": "Use URL state, component state, and stores deliberately, including route changes and server rendering.",
+  "useCase": "Multi-workspace support dashboards.",
+  "benefits": "Shareable context and predictable navigation.",
+  "drawbacks": "Stores can become dumping grounds without ownership rules.",
+  "tags": [
+    "vue3",
+    "routing",
+    "pinia"
+  ],
+  "hours": 2,
+  "number": 17,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "URL for context. Store for sharing. Server for authority.",
+  "prerequisite": "frontend-vue-async",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"URL context\"]\n N1[\"Parsed route\"]\n N2[\"Scoped store state\"]\n N3[\"Allowed data load\"]\n N4[\"Back and forward behavior\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"URL context\"]\n N1[\"Parsed route\"]\n N2[\"Scoped store state\"]\n N3[\"Allowed data load\"]\n N4[\"Back and forward behavior\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "URL context",
+      "detail": "A route is part of the user’s working context. Search, selected workspace, and page often need to survive refresh or be shared. Put those values in a stable URL contract and parse them, including invalid inputs."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Direct URL → parse query/params → establish workspace context → load allowed server data → render → user changes filter → update URL. Back navigation should restore meaningful state.\n\nFor an unsaved form, define whether navigation prompts, saves a draft, or discards it. Browser Back and an in-app link should follow the same user-facing policy."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A single global editing object can make two open panes overwrite each other. A route guard is not server authorization. Query-string arrays and absent values require parsing."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vue Router data fetching",
+      "url": "https://router.vuejs.org/guide/advanced/data-fetching.html"
+    },
+    {
+      "title": "Pinia core concepts",
+      "url": "https://pinia.vuejs.org/core-concepts/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Use URL state, component state, and stores deliberately, including route changes and server rendering. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 18
+}

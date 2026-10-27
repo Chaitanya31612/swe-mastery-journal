@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Traffic routing is an explicit layer."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "The health signal must mean what operators think it means."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "It bypasses the load-balancer path."
+  }
+}

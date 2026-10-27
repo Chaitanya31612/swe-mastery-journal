@@ -1,0 +1,97 @@
+{
+  "id": "cloud-architecture",
+  "track": "cloud",
+  "title": "A complete Rails application on AWS: trace four journeys",
+  "level": "intermediate",
+  "outcome": "Explain the request, attachment, background job, and event paths, including cost and recovery choices.",
+  "useCase": "A holistic architecture explanation and cloud design interview/work review.",
+  "benefits": "Connects services to user journeys and operating decisions.",
+  "drawbacks": "The full design is a learning reference; a small product should select only justified parts.",
+  "tags": [
+    "aws",
+    "architecture",
+    "capstone"
+  ],
+  "hours": 2,
+  "number": 20,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Trace the journey, not the logos.",
+  "prerequisite": "cloud-secrets-kms",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow the real boundaries",
+      "placement": "overview",
+      "code": "flowchart TD\n Browser --> DNS[Route 53 and TLS]\n DNS --> CDN[CloudFront]\n CDN --> ALB[Application Load Balancer]\n ALB --> Web[Private Rails web tasks]\n Browser -->|signed upload| S3[Private S3 objects]\n Web --> DB[(RDS PostgreSQL)]\n Web --> Redis[(ElastiCache Redis)]\n Web --> SQS[SQS jobs]\n SQS --> Worker[Rails worker tasks]\n Web --> Outbox[(Transactional outbox)]\n Outbox --> Relay[Dispatcher or CDC]\n Relay --> MSK[MSK Kafka when replay is needed]\n MSK --> Reports[Reporting consumer]\n Web -. task role .-> IAM[IAM and Secrets Manager]\n Web -. signals .-> Observe[CloudWatch or Datadog]\n Worker -. signals .-> Observe"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"User identity and edge\"]\n N1[\"Web and authoritative DB\"]\n N2[\"Object/job/event boundary\"]\n N3[\"Independent consumers\"]\n N4[\"Observed recovery and cost\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "User identity and edge",
+      "detail": "Use a modular Rails app with web and workers, PostgreSQL as the business source, private attachments, a cache, and deliberate event delivery. Choose ECS/Fargate as one baseline; EKS is an alternative when Kubernetes benefits justify it. They are not two layers every app must run together."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "For each journey, point to where success is durable. A report request is not a ready file. An outbox commit is not a consumed event. A cache hit is not a new permission grant.\n\nWrite one runbook for a growing report age and one restore rehearsal for PostgreSQL/object metadata. Define RPO (acceptable data loss window) and RTO (acceptable recovery time) in plain task terms."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Putting every named tool into one diagram can create needless operational burden. HA without restore/reconciliation evidence is incomplete. A rollback cannot unsend notifications or restore all deleted data."
+    }
+  ],
+  "sources": [
+    {
+      "title": "AWS Well-Architected",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain the request, attachment, background job, and event paths, including cost and recovery choices. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 20
+}

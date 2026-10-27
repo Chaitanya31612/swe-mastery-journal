@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Each state has a different completion boundary."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "The percentage should represent observed work."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Users need information to decide."
+  }
+}

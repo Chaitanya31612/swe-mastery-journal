@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A flag undoes all data effects?",
+    "options": [
+      "Only when off",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should every temporary flag have?",
+    "options": [
+      "Only a catchy name",
+      "Only a frontend boolean",
+      "Owner and removal plan"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Can a client flag replace server permission?",
+    "options": [
+      "No",
+      "Only for internal users",
+      "Yes"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does ARIA implement a custom widget’s behavior?",
+    "options": [
+      "Only on desktop",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What is a strong first choice for an ordinary action?",
+    "options": [
+      "An image without a name",
+      "A native button",
+      "A clickable span"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does an automated audit prove every task is accessible?",
+    "options": [
+      "Only with no warnings",
+      "Yes",
+      "No"
+    ]
+  }
+]

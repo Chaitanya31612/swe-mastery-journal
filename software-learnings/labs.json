@@ -1,0 +1,93 @@
+[
+  {
+    "id": "rails-kafka",
+    "title": "Follow a Rails event across files",
+    "version": "Ruby 3.3.6 · Rails 7.2.2.2 · Kafka 4.1.0 · rdkafka 0.20.0 · PostgreSQL 16.6",
+    "directory": "event-driven-systems/labs/rails-kafka",
+    "files": [
+      "README.md",
+      "compose.yaml",
+      "Dockerfile",
+      "Gemfile",
+      "Gemfile.lock",
+      "config/routes.rb",
+      "app/controllers/tickets_controller.rb",
+      "app/services/complete_ticket.rb",
+      "app/services/ticket_event.rb",
+      "app/services/outbox_dispatcher.rb",
+      "app/services/kafka_publisher.rb",
+      "app/services/reporting_consumer.rb",
+      "app/services/apply_reporting_event.rb",
+      "db/migrate/20261021000100_create_event_learning.rb",
+      "app/models/ticket.rb",
+      "app/models/outbox_event.rb",
+      "app/models/inbox_event.rb",
+      "app/models/reporting_projection.rb",
+      "bin/dispatch.rb",
+      "bin/consume.rb",
+      "test/event_flow_test.rb",
+      "test/tickets_api_test.rb",
+      "smoke.py",
+      "config/application.rb",
+      "config/database.yml",
+      "config/environment.rb",
+      "config/boot.rb",
+      "config/environments/development.rb",
+      "config/environments/test.rb",
+      "app/controllers/application_controller.rb",
+      "app/models/application_record.rb",
+      "bin/rails",
+      "db/seeds.rb",
+      "Rakefile",
+      "config.ru",
+      "test/test_helper.rb",
+      "app/services/attachment_upload.rb",
+      "app/services/queue_worker.rb",
+      "test/aws_adapters_test.rb"
+    ]
+  },
+  {
+    "id": "aws-rails",
+    "title": "Rails on AWS · setup and adapter seams",
+    "version": "AWS SDK for Ruby v3 · local stubbed checks + optional cloud setup workbook",
+    "directory": "event-driven-systems/labs/rails-kafka",
+    "guide": "README.aws.md",
+    "files": [
+      "README.aws.md",
+      "app/services/attachment_upload.rb",
+      "app/services/queue_worker.rb",
+      "test/aws_adapters_test.rb",
+      "Gemfile",
+      "Gemfile.lock",
+      "compose.yaml"
+    ]
+  },
+  {
+    "id": "redis",
+    "title": "Redis · data, expiry, atomic updates, and leases",
+    "version": "Redis 7.4.2 · Python standard-library RESP client",
+    "directory": "production-toolkit/labs/redis",
+    "files": [
+      "README.md",
+      "compose.yaml",
+      "lab.py"
+    ]
+  },
+  {
+    "id": "vue-workspace",
+    "title": "Vue 3 · async requests and independent edit drafts",
+    "version": "Vue 3.5.25 · Vite 7.3.1 · Vitest 4.1.11 · synthetic data",
+    "directory": "frontend-mastery/labs/vue-ticket-workspace",
+    "files": [
+      "README.md",
+      "src/TicketWorkspace.vue",
+      "src/useTicketSearch.ts",
+      "src/api.ts",
+      "src/TicketWorkspace.test.ts",
+      "src/main.ts",
+      "vite.config.ts",
+      "package.json",
+      "index.html"
+    ]
+  }
+]

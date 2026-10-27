@@ -1,0 +1,91 @@
+{
+  "id": "ruby-rails-queries",
+  "track": "ruby",
+  "number": 8,
+  "title": "ActiveRecord: relation first, SQL later",
+  "outcome": "Predict query timing and repair N+1 without loading every association.",
+  "hours": 3,
+  "book": "Metaprogramming Ruby ch. 9: ActiveRecord as a DSL",
+  "cue": "Build the query. Ask for rows. Count the SQL.",
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "prerequisite": "ruby-rails-request",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A list uses Task.all.to_a.select { |t| !t.done }.first(20), then reads every owner. Repair both the row loading and association problem.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A dashboard needs a count of completed tasks per project. Should you load all tasks and count in Ruby?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n Q[\"where + order + limit\"] --> R[\"Relation: query description\"]\n R --> I[\"Iteration demands rows\"]\n I --> T[\"Task SELECT\"]\n T --> O{\"How are owners loaded?\"}\n O -->|\"One by one\"| N[\"N owner queries\"]\n O -->|\"preload\"| P[\"One owner query for this simple relation\"]",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n B[\"Keep filtering and limits in SQL\"] --> M[\"Measure query count on fresh records\"]\n M --> O[\"Load only needed associations\"]\n O --> P[\"Return bounded, ordered results\"]\n A[\"Array select runs Ruby\"] --> B\n C[\"count, size and length can differ\"] --> M\n P --> T[\"Compare one row and many rows\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rails 4.2 query interface",
+      "url": "https://guides.rubyonrails.org/v4.2/active_record_querying.html"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "where and order",
+      "detail": "An ActiveRecord relation is a description of a query. where, order, and limit can build it. Iteration often executes it. Once you call to_a, later filtering is usually Ruby work over loaded rows."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Draw the relation-building calls before the first SQL. Then draw the initial task query and the association-loading query. With a simple belongs_to preload, adding more tasks should not add one owner query per task.\n\nCompare one task and twenty tasks. Confirm the response needs each loaded field. An association cache on already loaded objects can make a repeated access look cheap; start the measurement with fresh records."
+    },
+    {
+      "title": "Check the result",
+      "detail": "Calling size, count, and length can have different SQL behavior depending on loaded state. A Ruby block passed to select after loading does not become a SQL WHERE clause."
+    }
+  ],
+  "recallPrompt": "Without notes: Predict query timing and repair N+1 without loading every association. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 7
+}

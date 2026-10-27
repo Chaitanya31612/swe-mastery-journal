@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A subnet belongs to how many Availability Zones?",
+    "options": [
+      "All regions",
+      "Every zone in a region",
+      "One"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does a route table authorize S3 object reads?",
+    "options": [
+      "Only through NAT",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is NAT primarily useful for here?",
+    "options": [
+      "Database row locking",
+      "A deliberate outbound path for private workloads",
+      "Universal inbound access"
+    ]
+  }
+]

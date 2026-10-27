@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does requestAnimationFrame make heavy work cheap?",
+    "options": [
+      "Only in Vue",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What can trigger repeated forced layout?",
+    "options": [
+      "A stable string constant",
+      "Interleaving DOM writes and layout reads",
+      "Only DNS"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should follow a performance repair?",
+    "options": [
+      "Repeat the same task and check regressions",
+      "Only a new abstraction",
+      "Only fewer lines"
+    ]
+  }
+]

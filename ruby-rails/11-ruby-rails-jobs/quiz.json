@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Why pass an ID rather than a model object to Sidekiq?",
+    "options": [
+      "It makes the job exactly once",
+      "It fits JSON arguments and reloads current state",
+      "It removes permission checks"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "A provider timeout proves that no receipt was sent?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

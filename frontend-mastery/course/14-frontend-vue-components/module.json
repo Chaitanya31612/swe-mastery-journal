@@ -1,0 +1,101 @@
+{
+  "id": "frontend-vue-components",
+  "track": "frontend",
+  "title": "Vue components: props, events, slots, and v-model",
+  "level": "beginner",
+  "outcome": "Design a reusable component API with one owner and explicit update events.",
+  "useCase": "Reusable form controls and ticket editors.",
+  "benefits": "Small component contracts and testable ownership.",
+  "drawbacks": "A very configurable component can become harder than two focused components.",
+  "tags": [
+    "vue3",
+    "components",
+    "accessibility"
+  ],
+  "hours": 2,
+  "number": 14,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Props describe. Events request. Slots compose.",
+  "prerequisite": "frontend-state",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Owner value\"]\n N1[\"Prop flows down\"]\n N2[\"User input\"]\n N3[\"Typed event\"]\n N4[\"Owner accepts new value\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Owner value\"]\n N1[\"Prop flows down\"]\n N2[\"User input\"]\n N3[\"Typed event\"]\n N4[\"Owner accepts new value\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Owner value",
+      "detail": "A component API is a small agreement. Props bring information in. Events ask the owner to change something. Slots let a caller supply presentation while the component owns behavior. Decide which part owns the saved value, draft, and focus."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Parent changes modelValue → child renders it. User types → child emits a value → parent accepts it → new prop flows down. This loop makes ownership visible.\n\nFor a wrapper, inspect whether id, aria-describedby, and class reach the actual input or only the wrapper div. Accessible names and error associations are part of the component’s contract."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A component that both owns a private value and blindly watches the parent prop can overwrite an in-progress edit. A custom input without a real label is harder to use even when v-model works."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vue component v-model",
+      "url": "https://vuejs.org/guide/components/v-model.html"
+    },
+    {
+      "title": "Fallthrough attributes",
+      "url": "https://vuejs.org/guide/components/attrs.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Design a reusable component API with one owner and explicit update events. Explain one example and one failure.",
+  "lab": "vue-workspace",
+  "sequence": 8
+}

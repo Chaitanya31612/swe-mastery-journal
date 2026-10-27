@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does a closure always freeze a variable value?",
+    "options": [
+      "No, it keeps access to the binding",
+      "Only in strict mode",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where does an arrow get this?",
+    "options": [
+      "From every object that stores it",
+      "From its enclosing scope",
+      "Always window"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "How do you check an own property safely?",
+    "options": [
+      "Only obj[key]",
+      "Assume every key is own",
+      "Object.hasOwn(obj,key)"
+    ]
+  }
+]

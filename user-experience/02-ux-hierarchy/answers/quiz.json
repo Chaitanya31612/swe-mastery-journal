@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Nearby elements are often perceived as belonging together."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Hierarchy requires meaningful differences."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Keyboard and assistive reading paths need a sensible order."
+  }
+}

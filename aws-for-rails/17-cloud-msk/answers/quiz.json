@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "The application still needs an outbox or another explicit consistency design."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Clients connect to relevant broker endpoints."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Offsets cannot recreate deleted history."
+  }
+}

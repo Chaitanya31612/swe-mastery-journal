@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What makes a regression test convincing?",
+    "options": [
+      "It is very long",
+      "It checks private variable names",
+      "It fails before the repair and passes after"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does nextTick wait for every fetch?",
+    "options": [
+      "Only with a component test",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Where should real focus/navigation behavior also be checked?",
+    "options": [
+      "Only a JSON snapshot",
+      "Only a pure function test",
+      "A real browser"
+    ]
+  }
+]

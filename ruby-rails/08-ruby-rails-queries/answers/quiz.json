@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "Relations commonly build query descriptions until a result-consuming operation needs rows."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "A preload groups the association load rather than querying once per task."
+  }
+}

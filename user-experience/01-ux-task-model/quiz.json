@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which is the clearest task statement?",
+    "options": [
+      "Build a modern dashboard",
+      "Use a new component library",
+      "Assign the oldest urgent ticket before handoff"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should partial success communicate?",
+    "options": [
+      "Only a raw exception",
+      "Which actions succeeded and how to recover failures",
+      "Only a green toast"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What makes a design critique useful?",
+    "options": [
+      "The newest visual trend",
+      "Personal preference alone",
+      "A problem and evidence tied to a task"
+    ]
+  }
+]

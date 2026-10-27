@@ -1,0 +1,101 @@
+{
+  "id": "ux-research",
+  "track": "ux",
+  "title": "Research and metrics: replace confident guesses with evidence",
+  "level": "intermediate",
+  "outcome": "Plan a small usability study and interpret product metrics without confusing clicks with success.",
+  "useCase": "Design reviews, feature experiments, and analytics interpretation.",
+  "benefits": "Makes UX decisions explainable and revisable.",
+  "drawbacks": "Small studies and incomplete telemetry have limits.",
+  "tags": [
+    "ux",
+    "research",
+    "metrics"
+  ],
+  "hours": 2,
+  "number": 8,
+  "version": "Web UX · WCAG 2.2 · principles, not magic formulas",
+  "book": "",
+  "cue": "Observe the task. Define the denominator. Keep a guardrail.",
+  "prerequisite": "ux-forms-content",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Question\"]\n N1[\"Neutral task or event schema\"]\n N2[\"Observed behavior\"]\n N3[\"Outcome and error rate\"]\n N4[\"Repair and retest\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Question\"]\n N1[\"Neutral task or event schema\"]\n N2[\"Observed behavior\"]\n N3[\"Outcome and error rate\"]\n N4[\"Repair and retest\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Question",
+      "detail": "Start with a question: can an agent find and assign the oldest urgent ticket? Give a realistic task without teaching the intended path. Observe hesitation, wrong turns, recovery, and completion. Ask neutral questions; “Was the new button easy?” biases the answer."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Hypothesis → task or event definition → collect evidence → distinguish observation from interpretation → choose a repair → test again. Keep quotes and observed behavior separate from your explanation of the cause.\n\nFor a funnel, ask who is excluded, whether events can duplicate, and whether missing telemetry correlates with failure. A rising completion rate can reflect a changed denominator rather than a better interface."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Leading tasks teach the answer. Vanity metrics reward activity without outcome. Changing several things at once makes attribution difficult. Analytics may miss the people who could not even start."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Usability testing introduction",
+      "url": "https://www.nngroup.com/articles/usability-testing-101/"
+    },
+    {
+      "title": "Task success metrics",
+      "url": "https://www.nngroup.com/articles/success-rate-the-simplest-usability-metric/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Plan a small usability study and interpret product metrics without confusing clicks with success. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 8
+}

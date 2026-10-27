@@ -1,0 +1,98 @@
+{
+  "id": "frontend-experience",
+  "track": "frontend",
+  "number": 7,
+  "title": "Make loading, errors, and controls understandable",
+  "outcome": "Design accessible states and measure a real user-visible delay.",
+  "hours": 3,
+  "book": "",
+  "cue": "Show progress. Keep work. Offer recovery.",
+  "version": "Portable JavaScript · React hooks · Vue 2/3 comparisons · Next App Router",
+  "prerequisite": "frontend-vue",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A failed save clears the form and displays a red toast that disappears in two seconds. Repair the learning and usability failure.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "Your task list has 10,000 rows and typing pauses. Design an investigation before choosing a library.",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"User intent\"]\n  N1[\"Accessible control\"]\n  N2[\"Clear progress\"]\n  N3[\"Success or useful error\"]\n  N4[\"Preserved draft and retry\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"User intent\"]\n  N1[\"Accessible control\"]\n  N2[\"Clear progress\"]\n  N3[\"Success or useful error\"]\n  N4[\"Preserved draft and retry\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "WAI accessible forms",
+      "url": "https://www.w3.org/WAI/tutorials/forms/"
+    },
+    {
+      "title": "Web performance learning",
+      "url": "https://web.dev/learn/performance"
+    }
+  ],
+  "reading": [
+    "frontend-mastery/docs/05-ui-ux-craft-and-product-thinking.md",
+    "frontend-mastery/staff-track/docs/09-uiux-craft-and-perceived-performance.md"
+  ],
+  "trace": [
+    {
+      "title": "User intent",
+      "detail": "A useful screen explains what is happening and what the user can do next. Design initial, loading, empty, ready, saving, failed, and retry states. Keep an unsaved draft when a save fails. An empty list and a failed request should not look identical."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Trace user intent → action → immediate feedback → result → recovery. During saving, prevent accidental duplicate actions while explaining progress. On failure, keep the input and offer retry. If a modal closes, restore focus to the control that opened it.\n\nUse a performance profile to find the long task behind an unresponsive click. Split work, reduce unnecessary rendering, or virtualize a genuinely large list after measuring. Do not add memoization to every line without evidence."
+    },
+    {
+      "title": "Check the result",
+      "detail": "A spinner without context can feel stuck. A disabled control may hide why an action is unavailable. A click-only div is not equivalent to a keyboard-accessible button."
+    }
+  ],
+  "recallPrompt": "Without notes: Design accessible states and measure a real user-visible delay. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 10
+}

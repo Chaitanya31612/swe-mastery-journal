@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which is content identity?",
+    "options": [
+      "A mutable latest tag",
+      "A branch nickname",
+      "Image digest"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does push success prove runtime success?",
+    "options": [
+      "Only on ECS",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should retention consider?",
+    "options": [
+      "Only the newest tag",
+      "Only deleting everything old",
+      "Rollback artifacts as well as storage cost"
+    ]
+  }
+]

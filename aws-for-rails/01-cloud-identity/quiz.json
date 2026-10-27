@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does a role trust policy answer?",
+    "options": [
+      "Who may assume the role",
+      "Which CSS theme is active",
+      "Which SQL query is fastest"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Are budget alerts a hard spending cap?",
+    "options": [
+      "Yes",
+      "Only for EC2",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Where should a container’s AWS keys normally live?",
+    "options": [
+      "Use workload role credentials, not baked keys",
+      "In committed source",
+      "In the Dockerfile"
+    ]
+  }
+]

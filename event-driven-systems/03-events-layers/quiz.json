@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What is bootstrap mainly for?",
+    "options": [
+      "A universal DB transaction",
+      "Cluster metadata discovery",
+      "A guarantee of all broker reachability"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What does the one-broker lab prove about HA?",
+    "options": [
+      "Full zone resilience",
+      "Three-replica durability",
+      "No multi-broker survival guarantee"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What manages Kafka cluster metadata in this lab?",
+    "options": [
+      "The Rails model callback",
+      "KRaft controllers",
+      "A Vue store"
+    ]
+  }
+]

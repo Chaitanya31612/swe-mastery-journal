@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Transport states and human behavior differ."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Delivery notifications can repeat."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Outside data is not inherently trusted."
+  }
+}

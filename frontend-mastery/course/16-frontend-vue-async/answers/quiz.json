@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Request start timing does not determine completion order."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Vue 3.5 requires synchronous registration."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Its automatic tracking covers synchronous reads."
+  }
+}

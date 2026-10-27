@@ -1,0 +1,101 @@
+{
+  "id": "spring-api-contracts",
+  "track": "spring",
+  "title": "REST contracts: pages, retries, and useful conflicts",
+  "level": "intermediate",
+  "outcome": "Design bounded APIs and idempotent command handling with explicit retry behavior.",
+  "useCase": "Ticket creation, payment-like commands, and large operational lists.",
+  "benefits": "Predictable retries and manageable data loads.",
+  "drawbacks": "Keys, retention, and mutable list ordering need explicit product rules.",
+  "tags": [
+    "spring",
+    "api",
+    "idempotency"
+  ],
+  "hours": 2,
+  "number": 10,
+  "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+  "book": "",
+  "cue": "A retry is the same command only when you can identify it.",
+  "prerequisite": "spring-configuration",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Validate and authorize\"]\n N1[\"Bound or identify request\"]\n N2[\"Database claim\"]\n N3[\"Commit result\"]\n N4[\"Retry or conflict response\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Validate and authorize\"]\n N1[\"Bound or identify request\"]\n N2[\"Database claim\"]\n N3[\"Commit result\"]\n N4[\"Retry or conflict response\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Validate and authorize",
+      "detail": "An endpoint contract includes more than a URL. Define allowed input, authorization, response shape, errors, ordering, page limits, and retry semantics. A list without a bound can turn an ordinary screen into an accidental bulk export."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "A creates a ticket and commits, but the response is lost. A retry with the same key reads the saved result rather than creating a second ticket. A different payload with that key receives a deliberate conflict.\n\nTest simultaneous same-key requests, a timeout after commit, an invalid cursor, and permission changes. Define key retention; forgetting keys eventually changes retry behavior."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "PUT/POST method names alone do not implement idempotence. Cursor encoding is not encryption or access control. A 200 containing an error object confuses clients."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Spring MVC",
+      "url": "https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller.html"
+    },
+    {
+      "title": "HTTP semantics",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Design bounded APIs and idempotent command handling with explicit retry behavior. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 10
+}

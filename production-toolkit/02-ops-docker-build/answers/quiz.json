@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Layer history can retain it."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Stable dependency inputs improve useful caching."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Lifecycle behavior depends on the main process."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Find the expensive boundary first."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Keys let the framework match items across updates."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "It reduces DOM work but adds interaction constraints."
+  }
+}

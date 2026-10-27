@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "Computed values are for derivation. Watchers/effects are for deliberate side effects."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Destructuring the primitive reads its current value. Use toRefs or keep the object access."
+  }
+}

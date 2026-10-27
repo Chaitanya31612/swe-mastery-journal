@@ -1,0 +1,96 @@
+{
+  "id": "ops-cassandra",
+  "track": "ops",
+  "title": "Cassandra: design the query before the table",
+  "level": "intermediate",
+  "outcome": "Explain partition/clustering keys, bounded partitions, denormalization, and the tradeoff versus PostgreSQL.",
+  "useCase": "High-volume query-specific event projections.",
+  "benefits": "Distributed storage designed around known access patterns.",
+  "drawbacks": "Denormalization, skew, consistency choices, and operations add responsibility.",
+  "tags": [
+    "cassandra",
+    "data-modeling"
+  ],
+  "hours": 2,
+  "number": 13,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Query first. Bound the partition. Plan the extra copies.",
+  "prerequisite": "ops-debezium",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Read pattern\"]\n N1[\"Partition key\"]\n N2[\"Clustering order\"]\n N3[\"Replica/consistency choice\"]\n N4[\"Projection repair\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Read pattern\"]\n N1[\"Partition key\"]\n N2[\"Clustering order\"]\n N3[\"Replica/consistency choice\"]\n N4[\"Projection repair\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Read pattern",
+      "detail": "Cassandra is a distributed wide-column database with a query-oriented data model. Start from the reads you need. Partition keys distribute/group data; clustering columns order rows within a partition under the table definition."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Query need → partition key scope → bounded partition → within-partition order → replicas/consistency → result. Then trace the writes needed for a second access pattern and how projections are repaired.\n\nMeasure partition size/skew and the cost of fetching a range across buckets. A query that requires broad filtering may signal a mismatched model."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A very large/hot partition can dominate one path despite many nodes. ALLOW FILTERING is not a universal performance solution. Cross-table denormalization can leave inconsistent projections after failure."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cassandra data modeling",
+      "url": "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/intro.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain partition/clustering keys, bounded partitions, denormalization, and the tradeoff versus PostgreSQL. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 17
+}

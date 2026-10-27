@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which probe controls traffic eligibility?",
+    "options": [
+      "Only startup",
+      "Readiness",
+      "Only liveness"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Should every provider failure force a restart?",
+    "options": [
+      "No",
+      "Always",
+      "Only in Kubernetes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What can memory limit termination resemble?",
+    "options": [
+      "A TLS error only",
+      "Automatic successful retry",
+      "An unexplained process crash"
+    ]
+  }
+]

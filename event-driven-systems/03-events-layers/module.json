@@ -1,0 +1,101 @@
+{
+  "id": "events-layers",
+  "track": "events",
+  "title": "Kafka layers: clients, brokers, storage, replicas, controllers",
+  "level": "beginner",
+  "outcome": "Follow one record through discovery, batching, append storage, replication, and consumer fetch.",
+  "useCase": "Debugging Kafka by layer instead of treating it as one box.",
+  "benefits": "A concrete model for network, storage, and coordination symptoms.",
+  "drawbacks": "A local flow demo cannot certify production durability or performance.",
+  "tags": [
+    "kafka",
+    "architecture",
+    "fundamentals"
+  ],
+  "hours": 2,
+  "number": 3,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Client → leader log → replicas; controller manages metadata.",
+  "prerequisite": "events-partitions",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow the real boundaries",
+      "placement": "overview",
+      "code": "flowchart TD\n Producer[Producer batches and key partitioner] --> Leader[Partition leader broker]\n Leader --> Log[(Partition log segments)]\n Leader --> Followers[Follower replicas]\n Followers --> Ack[ISR and acknowledgment policy]\n Ack --> Producer\n Log --> Consumer[Consumer fetch and local position]\n Consumer --> Effect[(Application DB effect)]\n Effect --> Commit[Group committed next offset]\n Controller[KRaft controller quorum] -. metadata and leader decisions .-> Leader\n Commit -. restart position .-> Consumer"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Client library\"]\n N1[\"Metadata and leader\"]\n N2[\"Batched append\"]\n N3[\"Replica acknowledgement\"]\n N4[\"Consumer fetch\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Client library",
+      "detail": "The client library handles protocol requests, metadata, batching, retries, and serialization integration. A bootstrap address helps discover the cluster. The client then communicates with relevant broker endpoints; bootstrap is not a permanent universal proxy."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "The producer discovers leader endpoints, sends a batch, and receives an acknowledgement under its configuration. A consumer fetches retained records from assigned partitions. It does not require the producer process to remain alive after durable publication.\n\nWhen a client cannot connect after initial discovery, inspect advertised listeners/DNS/network/auth for actual broker addresses. When append latency rises, inspect broker/storage/replica health rather than only Rails CPU."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "One local broker hides replica/failover behavior. Acknowledgement settings cannot create replicas that do not exist. Confusing controller roles with business consumers makes diagnosis random."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kafka implementation",
+      "url": "https://kafka.apache.org/41/implementation/"
+    },
+    {
+      "title": "Kafka KRaft",
+      "url": "https://kafka.apache.org/41/getting-started/zk2kraft/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Follow one record through discovery, batching, append storage, replication, and consumer fetch. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 3
+}

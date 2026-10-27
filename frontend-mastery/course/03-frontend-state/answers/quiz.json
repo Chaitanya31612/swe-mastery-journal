@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "If it can be calculated reliably from existing state, storing another copy can create avoidable drift."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "It is often a calculation over source data and the current filter."
+  }
+}

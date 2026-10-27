@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "It replays the selected change, not every dependency."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Behavior still needs verification."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "The older base may have different contracts."
+  }
+}

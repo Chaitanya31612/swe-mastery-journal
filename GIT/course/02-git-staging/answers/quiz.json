@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "The cached/staged diff compares the index with HEAD."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "This form changes the index, keeping working-tree content."
+  }
+}

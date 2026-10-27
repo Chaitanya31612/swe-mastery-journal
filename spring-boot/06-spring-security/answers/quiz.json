@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "Client-controlled fields are claims, not proof. The server must establish and check identity."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Only server-side permission checks can protect the write."
+  }
+}

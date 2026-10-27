@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "The injected bean reference normally points to the wrapper. A self-call stays on the same target object."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Default rollback rules distinguish unchecked and checked exceptions. Verify custom configuration."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Overlap policy must be implemented/selected."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Duplicate triggers should map to the same run."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Observe the final business outcome."
+  }
+}

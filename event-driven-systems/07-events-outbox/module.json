@@ -1,0 +1,97 @@
+{
+  "id": "events-outbox",
+  "track": "events",
+  "title": "Rails transactional outbox: save intent with the change",
+  "level": "intermediate",
+  "outcome": "Close the DB/publish loss gap while accepting and handling duplicate publication.",
+  "useCase": "Reliable Rails facts consumed by other services.",
+  "benefits": "No lost publication intent after a committed business change.",
+  "drawbacks": "Dispatcher operations and duplicate handling remain.",
+  "tags": [
+    "rails",
+    "outbox",
+    "kafka"
+  ],
+  "hours": 2,
+  "number": 7,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Commit the fact and its intent together. Publish later. Expect repeats.",
+  "prerequisite": "events-schemas",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow the real boundaries",
+      "placement": "overview",
+      "code": "sequenceDiagram\n participant R as Rails use case\n participant DB as Business database\n participant D as Dispatcher\n participant K as Kafka\n R->>DB: BEGIN - state and outbox row\n DB-->>R: COMMIT\n D->>DB: Read pending row\n D->>K: Publish stable event ID\n K-->>D: Delivery acknowledged\n Note over D,K: Crash here can repeat publication\n D->>DB: Mark row published"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Trusted completion command\"]\n N1[\"Ticket lock and rule\"]\n N2[\"State plus outbox commit\"]\n N3[\"Acknowledged publication\"]\n N4[\"Published mark or resend\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Trusted completion command",
+      "detail": "A direct DB write followed by a Kafka send is a dual write. Crash after DB commit but before send loses the event. Send first and a later DB rollback can publish a fact that never committed. Neither ordering solves both cases."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "HTTP completion → lock/check → ticket update + outbox insert → DB commit → dispatcher reads → producer delivery acknowledgement → published mark. Break the process at each arrow and state what can be retried.\n\nafter_commit enqueue alone still has a crash gap. It can be useful as a wake-up, but a durable scanner/outbox source must recover missing wake-ups."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Holding a DB lock during a slow network send can hurt capacity. Multiple dispatchers can reorder or duplicate without a deliberate claim strategy. A published flag is evidence of a local mark, not downstream completion."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Transactional outbox context",
+      "url": "https://debezium.io/documentation/reference/stable/transformations/outbox-event-router.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Close the DB/publish loss gap while accepting and handling duplicate publication. Explain one example and one failure.",
+  "lab": "rails-kafka",
+  "sequence": 7
+}

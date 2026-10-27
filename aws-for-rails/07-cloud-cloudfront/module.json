@@ -1,0 +1,97 @@
+{
+  "id": "cloud-cloudfront",
+  "track": "cloud",
+  "title": "CloudFront: fast delivery without mixing private users",
+  "level": "intermediate",
+  "outcome": "Choose cache keys, origin access, and freshness rules for assets and authorized downloads.",
+  "useCase": "Vue assets and controlled download delivery.",
+  "benefits": "Lower origin load and faster geographically distributed reads.",
+  "drawbacks": "Cache identity, invalidation, and asset compatibility add correctness work.",
+  "tags": [
+    "aws",
+    "cdn",
+    "frontend"
+  ],
+  "hours": 2,
+  "number": 7,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "A cache key is a sharing decision.",
+  "prerequisite": "cloud-s3",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Request identity\"]\n N1[\"Edge cache key\"]\n N2[\"Hit or allowed origin\"]\n N3[\"Freshness and access\"]\n N4[\"Compatible assets\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Request identity\"]\n N1[\"Edge cache key\"]\n N2[\"Hit or allowed origin\"]\n N3[\"Freshness and access\"]\n N4[\"Compatible assets\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Request identity",
+      "detail": "CloudFront is an edge delivery/cache layer in front of an origin. Static versioned assets are a natural fit. Dynamic or personalized responses require a deliberate cache key and authorization policy."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Browser request → edge key lookup → cached response or origin fetch → response headers → app behavior. Trace a permission change and decide whether an already cached/signed response remains usable.\n\nFor deployment, keep the HTML shell and referenced asset versions compatible. A stale shell pointing to removed files can break the app even when the new bundle is correct."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Caching personalized JSON under one shared key is dangerous. Removing old assets immediately can break clients with cached HTML. An invalidation is not a substitute for a correct cache policy."
+    }
+  ],
+  "sources": [
+    {
+      "title": "CloudFront guide",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose cache keys, origin access, and freshness rules for assets and authorized downloads. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 11
+}

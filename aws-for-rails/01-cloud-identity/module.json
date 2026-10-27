@@ -1,0 +1,101 @@
+{
+  "id": "cloud-identity",
+  "track": "cloud",
+  "title": "AWS identity: accounts, roles, and the caller you actually are",
+  "level": "beginner",
+  "outcome": "Set up a training identity and distinguish human sign-in, workload roles, trust, and permissions.",
+  "useCase": "Every Rails-to-AWS integration.",
+  "benefits": "Explicit identity and smaller permission scope.",
+  "drawbacks": "Several policy layers can affect the final decision.",
+  "tags": [
+    "aws",
+    "iam",
+    "setup"
+  ],
+  "hours": 2,
+  "number": 1,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Who calls? What action? Which resource? Under which context?",
+  "prerequisite": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Training account\"]\n N1[\"Human or workload identity\"]\n N2[\"Role trust\"]\n N3[\"Action and resource policy\"]\n N4[\"Verified request\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Training account\"]\n N1[\"Human or workload identity\"]\n N2[\"Role trust\"]\n N3[\"Action and resource policy\"]\n N4[\"Verified request\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Training account",
+      "detail": "An AWS request is made by a principal under a permission context. Human sign-in and application identity should be separate. Use a dedicated training account/profile and temporary credentials. A workload normally receives a role instead of a permanent access key baked into its image."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Human signs in → temporary credentials identify a principal → workload assumes its permitted role → SDK signs a request → AWS evaluates action/resource/context → result or denial. For an AccessDenied, record the caller ARN, action, resource, and request ID without secrets.\n\nFor ECS, distinguish the task role used by app code from the execution role used for platform tasks such as image/secret retrieval. In EKS, use the supported pod identity mechanism rather than giving every pod the node’s broad privileges."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A correct region with the wrong account can still target the wrong resource. Administrator access can make a lab pass while hiding the permission you actually need."
+    }
+  ],
+  "sources": [
+    {
+      "title": "IAM practices",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+    },
+    {
+      "title": "Ruby credential chain",
+      "url": "https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/credential-providers.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Set up a training identity and distinguish human sign-in, workload roles, trust, and permissions. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 1
+}

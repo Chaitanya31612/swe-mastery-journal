@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Why do rebased commits usually have new IDs?",
+    "options": [
+      "Their parent links and metadata change",
+      "Git encrypts them again",
+      "Only the branch name changes"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Does a conflict-free merge prove the program still works?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "id": "git-investigation-practice",
+  "track": "git",
+  "title": "Reflog, bisect, and exact-snapshot investigation",
+  "level": "intermediate",
+  "outcome": "Combine recovery and regression search without destroying unrelated working edits.",
+  "useCase": "Regression investigations and accidental branch movements.",
+  "benefits": "Evidence without sacrificing unrelated work.",
+  "drawbacks": "Historical environments and expired objects limit recovery/search.",
+  "tags": [
+    "git",
+    "debugging",
+    "practice"
+  ],
+  "hours": 2,
+  "number": 9,
+  "version": "Modern Git; check git --version for command availability",
+  "book": "",
+  "cue": "Preserve work. Reproduce the symptom. Search the graph.",
+  "prerequisite": "git-conflict-lab",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Active edits preserved\"]\n N1[\"Separate checkout\"]\n N2[\"Stable test\"]\n N3[\"Candidate change\"]\n N4[\"Explained regression\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Active edits preserved\"]\n N1[\"Separate checkout\"]\n N2[\"Stable test\"]\n N3[\"Candidate change\"]\n N4[\"Explained regression\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Active edits preserved",
+      "detail": "Use reflog to find a recent local reference movement, then name the candidate commit with a rescue branch before changing anything else. Reflog is local and expires; it does not store every unsaved file."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Observed regression → minimal deterministic check → known-good/bad commits → bisect or exact-snapshot comparison → inspect trigger → preserve regression test. Keep the active worktree’s edits untouched.\n\nA first-bad dependency update is a trigger to investigate, not automatically the root explanation. Reproduce the mechanism after locating the change."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A test can fail because its historical build environment is unavailable. Mark such commits untestable/skip rather than bad. A cleanup command can delete untracked work that Git never stored."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Git reflog",
+      "url": "https://git-scm.com/docs/git-reflog"
+    },
+    {
+      "title": "Git bisect",
+      "url": "https://git-scm.com/docs/git-bisect"
+    },
+    {
+      "title": "Git worktree",
+      "url": "https://git-scm.com/docs/git-worktree"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Combine recovery and regression search without destroying unrelated working edits. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 9
+}

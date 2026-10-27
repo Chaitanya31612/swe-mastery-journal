@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "It checks remote state, not collaborator expectations."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Mutable names alone are insufficient provenance."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Reviewers need the behavior and evidence."
+  }
+}

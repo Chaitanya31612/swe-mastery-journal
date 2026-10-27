@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Casts do not execute validation."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "A discriminator connects a tag to a valid shape."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "unknown requires checks before use."
+  }
+}

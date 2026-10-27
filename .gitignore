@@ -1,2 +1,32 @@
 *test*
 bin/
+
+# Keep the course's teaching tests and testing guide; ignore Maven output.
+!spring-boot/labs/task-service/src/test/
+!spring-boot/labs/task-service/src/test/**
+!frontend-mastery/docs/06-debugging-testing-and-review.md
+**/target/
+
+# Isolated course lab dependencies and generated files.
+**/node_modules/
+**/dist/
+**/log/
+**/tmp/
+**/__pycache__/
+!event-driven-systems/labs/rails-kafka/test/
+!event-driven-systems/labs/rails-kafka/test/**
+!event-driven-systems/labs/rails-kafka/bin/
+!event-driven-systems/labs/rails-kafka/bin/**
+!frontend-mastery/labs/vue-ticket-workspace/src/TicketWorkspace.test.ts
+
+# Course chapters about testing are teaching content.
+!spring-boot/07-spring-tests/
+!spring-boot/07-spring-tests/**
+!spring-boot/14-spring-release-testing/
+!spring-boot/14-spring-release-testing/**
+!ruby-rails/12-ruby-rails-testing/
+!ruby-rails/12-ruby-rails-testing/**
+!ruby-rails/18-ruby-compatibility-tests/
+!ruby-rails/18-ruby-compatibility-tests/**
+!frontend-mastery/course/20-frontend-vue-testing/
+!frontend-mastery/course/20-frontend-vue-testing/**

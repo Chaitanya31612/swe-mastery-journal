@@ -1,0 +1,97 @@
+{
+  "id": "events-logs-queues",
+  "track": "events",
+  "title": "Events, commands, queues, and a retained log",
+  "level": "beginner",
+  "outcome": "Choose messaging from responsibility, history, replay, and timing needs.",
+  "useCase": "Choosing a messaging model for reports and ticket facts.",
+  "benefits": "Clear responsibility and justified asynchronous boundaries.",
+  "drawbacks": "Async systems need duplicate, delay, schema, and recovery handling.",
+  "tags": [
+    "kafka",
+    "messaging",
+    "fundamentals"
+  ],
+  "hours": 2,
+  "number": 1,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Command asks. Event tells. Log remembers under a policy.",
+  "prerequisite": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Business decision\"]\n N1[\"Command or fact\"]\n N2[\"Queue or retained log\"]\n N3[\"Independent processing\"]\n N4[\"Visible outcome\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Business decision\"]\n N1[\"Command or fact\"]\n N2[\"Queue or retained log\"]\n N3[\"Independent processing\"]\n N4[\"Visible outcome\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Business decision",
+      "detail": "A command asks someone to do something: GenerateReport. An event states a fact: TicketCompleted. Naming the difference helps decide who owns rejection, completion, and follow-up work."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Business decision commits → fact is published → independent subscribers process later → their results become visible. Ask where a user can check each outcome and how old work may be replayed.\n\nCompare one reporting group with three workers versus two independent groups. Worker count and subscriber responsibility are different axes."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Changing a direct call into an event does not make the effect immediate or atomic. A queue/log is not the application’s permission authority."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kafka introduction",
+      "url": "https://kafka.apache.org/41/getting-started/introduction/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose messaging from responsibility, history, replay, and timing needs. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 1
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "The combined rule needs review and tests."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Conflict resolution is a behavior decision."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Git merges text, not business rules."
+  }
+}

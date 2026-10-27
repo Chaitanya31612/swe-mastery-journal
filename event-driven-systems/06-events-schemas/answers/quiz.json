@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Shape, version, and meaning still need validation."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Minimal contracts reduce coupling and exposure."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "One identifies a fact; the other orders entity state under a contract."
+  }
+}

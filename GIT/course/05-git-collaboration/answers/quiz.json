@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "Fetch updates your knowledge of the remote. Integration is a separate operation."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "It reflects your last relevant fetch/update, not a live subscription."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Sorted sets associate members with scores."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Other clients can interleave between commands."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Live Pub/Sub and retained streams/queues have different contracts."
+  }
+}

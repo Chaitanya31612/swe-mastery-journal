@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Metrics aggregate behavior over time."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Metric dimensions should be deliberately bounded."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "An alarm should lead to action."
+  }
+}

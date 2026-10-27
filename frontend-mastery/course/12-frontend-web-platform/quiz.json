@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "fetch receives HTTP 500. Does it normally reject solely for that status?",
+    "options": [
+      "Yes",
+      "Only with JSON",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "CORS primarily controls what?",
+    "options": [
+      "SQL isolation",
+      "Server-side ownership",
+      "Browser cross-origin response access"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "A new fetch call proves backend data was recomputed?",
+    "options": [
+      "Yes",
+      "No",
+      "Only with GET"
+    ]
+  }
+]

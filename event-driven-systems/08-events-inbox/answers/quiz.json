@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Atomic local dedup prevents a lost or repeated local effect."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Two clients can both see absent."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "The committed inbox makes the local replay safe."
+  }
+}

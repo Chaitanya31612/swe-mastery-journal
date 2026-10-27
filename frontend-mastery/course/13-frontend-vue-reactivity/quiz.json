@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does nextTick wait for?",
+    "options": [
+      "Vue’s pending DOM update flush",
+      "All pending HTTP requests",
+      "The next user click"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "A computed getter should normally do what?",
+    "options": [
+      "Derive a value from sources",
+      "Mutate its own input",
+      "Send an email"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Destructuring a reactive numeric property gives what?",
+    "options": [
+      "A primitive current value",
+      "A new live ref automatically",
+      "A database cursor"
+    ]
+  }
+]

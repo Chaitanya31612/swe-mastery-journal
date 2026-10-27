@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Offsets from different partitions are a global order?",
+    "options": [
+      "No",
+      "Yes",
+      "Only when equal"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "More consumers than partitions in one group means what?",
+    "options": [
+      "Automatic global order",
+      "Some may be idle for that topic",
+      "Every consumer gets every record"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "A hot single key can do what?",
+    "options": [
+      "Spread itself evenly automatically",
+      "Limit one partition’s throughput",
+      "Remove all retries"
+    ]
+  }
+]

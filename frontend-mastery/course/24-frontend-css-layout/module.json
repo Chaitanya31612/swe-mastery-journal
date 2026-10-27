@@ -1,0 +1,101 @@
+{
+  "id": "frontend-css-layout",
+  "track": "frontend",
+  "title": "CSS layout: size, flow, Flexbox, and Grid",
+  "level": "beginner",
+  "outcome": "Choose a layout from content behavior and debug overflow instead of adding random widths.",
+  "useCase": "Support dashboards with sidebars, toolbars, and long technical content.",
+  "benefits": "Responsive pages that survive real content.",
+  "drawbacks": "Nested min-size and overflow rules require inspection.",
+  "tags": [
+    "css",
+    "responsive",
+    "layout"
+  ],
+  "hours": 2,
+  "number": 24,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Find the box that refuses to shrink.",
+  "prerequisite": "frontend-typescript",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Content flow\"]\n N1[\"Box and min-size\"]\n N2[\"Grid or Flexbox\"]\n N3[\"Constrained overflow\"]\n N4[\"Narrow and zoom checks\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Content flow\"]\n N1[\"Box and min-size\"]\n N2[\"Grid or Flexbox\"]\n N3[\"Constrained overflow\"]\n N4[\"Narrow and zoom checks\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Content flow",
+      "detail": "Normal flow is the starting point: blocks stack and inline content flows within a line. The box model adds padding and border around content. box-sizing:border-box makes a declared width include padding and border. It does not make every child shrink automatically."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Inspect the overflowing element's bounding box. Walk to its grid/flex parent. Check min-size, fixed width, padding, and white-space. Change one rule, observe the effect, then remove temporary patches.\n\nA 100vw child plus body padding can overflow. A fixed-height card can cut off translated text. Avoid hiding overflow as the first repair because it can conceal controls or focused content."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A layout can look correct with short English text and fail with a long title or 200% zoom. overflow:hidden can hide the symptom while clipping important content."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MDN CSS layout",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Introduction"
+    },
+    {
+      "title": "MDN grid",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose a layout from content behavior and debug overflow instead of adding random widths. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 6
+}

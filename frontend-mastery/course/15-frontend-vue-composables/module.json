@@ -1,0 +1,97 @@
+{
+  "id": "frontend-vue-composables",
+  "track": "frontend",
+  "title": "Composables: reusable behavior without hidden global state",
+  "level": "intermediate",
+  "outcome": "Extract reactive behavior with explicit inputs, lifecycle cleanup, and a predictable return API.",
+  "useCase": "Selection, pagination, subscriptions, and reusable editor behavior.",
+  "benefits": "Reuse behavior without giant components.",
+  "drawbacks": "Hidden singleton state and implicit dependencies can make bugs travel.",
+  "tags": [
+    "vue3",
+    "composables",
+    "architecture"
+  ],
+  "hours": 2,
+  "number": 15,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Inputs visible. State owned. Effects cleaned up.",
+  "prerequisite": "frontend-vue-reactivity",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Explicit input\"]\n N1[\"Owned refs\"]\n N2[\"Reusable behavior\"]\n N3[\"Returned reactive API\"]\n N4[\"Scope cleanup\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Explicit input\"]\n N1[\"Owned refs\"]\n N2[\"Reusable behavior\"]\n N3[\"Returned reactive API\"]\n N4[\"Scope cleanup\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Explicit input",
+      "detail": "A composable is a function that packages reusable stateful logic. It is not simply any helper with use in its name. A pure formatter is often just a function."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Two components call useSelection. Each call allocates one ref, so they can select different tickets. Move the ref above the function and both callers now share it. Neither version is automatically better; the intended ownership decides.\n\nTest composables with pure seams when possible. For lifecycle-dependent behavior, mount a small component and verify listeners are removed when it unmounts."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Creating a timer without clearing it can keep updating a vanished view. A composable that silently reads route, store, and global user state is harder to reuse than one with explicit dependencies."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vue composables",
+      "url": "https://vuejs.org/guide/reusability/composables.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Extract reactive behavior with explicit inputs, lifecycle cleanup, and a predictable return API. Explain one example and one failure.",
+  "lab": "vue-workspace",
+  "sequence": 16
+}

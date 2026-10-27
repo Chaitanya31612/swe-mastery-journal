@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Nginx and PgBouncer primarily front which protocols?",
+    "options": [
+      "Both only browser storage",
+      "HTTP and PostgreSQL respectively",
+      "Both only Kafka"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Is transaction pooling transparent to every session assumption?",
+    "options": [
+      "Always",
+      "Only with Rails",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should justify another proxy/pool?",
+    "options": [
+      "A concrete measured need and compatible contract",
+      "Its popularity alone",
+      "A bigger diagram"
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Why use setCount(c => c + 1) for queued increments?",
+    "options": [
+      "It calculates from the previous queued state",
+      "It changes count immediately in this handler",
+      "It bypasses rendering"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Three setCount(count+1) calls from count=0 usually request what final value?",
+    "options": [
+      "1",
+      "3"
+    ]
+  }
+]

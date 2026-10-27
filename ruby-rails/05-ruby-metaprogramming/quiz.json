@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Does public_send alone make a user-selected operation safe?",
+    "options": [
+      "Yes",
+      "No, allowed operations and permissions still matter",
+      "Only on a presenter"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "define_method inside a class usually defines what?",
+    "options": [
+      "An instance method",
+      "A method only on one existing instance"
+    ]
+  }
+]

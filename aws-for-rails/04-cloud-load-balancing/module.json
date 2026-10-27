@@ -1,0 +1,97 @@
+{
+  "id": "cloud-load-balancing",
+  "track": "cloud",
+  "title": "Application Load Balancer: traffic is a separate layer",
+  "level": "beginner",
+  "outcome": "Configure listeners, target health, and request routing without confusing liveness with readiness.",
+  "useCase": "Public Rails traffic and rolling deployments.",
+  "benefits": "Central traffic routing and health-based distribution.",
+  "drawbacks": "Proxy headers, timeouts, and health contracts need configuration.",
+  "tags": [
+    "aws",
+    "alb",
+    "networking"
+  ],
+  "hours": 2,
+  "number": 4,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "A running process is not automatically a ready target.",
+  "prerequisite": "cloud-ec2",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"HTTPS listener\"]\n N1[\"Routing rule\"]\n N2[\"Healthy target group\"]\n N3[\"Rails request\"]\n N4[\"Drain or observe failure\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"HTTPS listener\"]\n N1[\"Routing rule\"]\n N2[\"Healthy target group\"]\n N3[\"Rails request\"]\n N4[\"Drain or observe failure\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "HTTPS listener",
+      "detail": "An ALB accepts HTTP(S) traffic and forwards it according to listeners/rules to target groups. The target group knows where application targets live and how health is checked. A listening app port alone does not prove the app should receive traffic."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Client connects → TLS listener → routing rule → healthy target → Rails → response. On a 502/503/504, identify whether there were no healthy targets, a connection/protocol issue, or a slow target/dependency.\n\nDuring deployment, allow draining and graceful shutdown so an old target can finish appropriate in-flight work before termination."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A health path that requires user login can mark every target unhealthy. A constant OK may hide failed startup dependencies. Sticky sessions can conceal session/storage assumptions rather than repair them."
+    }
+  ],
+  "sources": [
+    {
+      "title": "ALB introduction",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Configure listeners, target health, and request routing without confusing liveness with readiness. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 4
+}

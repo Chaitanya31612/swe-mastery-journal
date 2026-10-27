@@ -1,0 +1,101 @@
+{
+  "id": "events-rails-lab",
+  "track": "events",
+  "title": "Read the Rails/Kafka app one file at a time",
+  "level": "intermediate",
+  "outcome": "Run and explain the complete multi-file path from HTTP completion to a repeat-safe reporting projection.",
+  "useCase": "A hands-on end-to-end event application.",
+  "benefits": "Turns abstract Kafka guarantees into inspectable files and failure drills.",
+  "drawbacks": "A deliberately small local topology has documented production limits.",
+  "tags": [
+    "rails",
+    "kafka",
+    "lab"
+  ],
+  "hours": 2,
+  "number": 11,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "One file, one boundary, one observable state.",
+  "prerequisite": "events-operations",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"HTTP service\"]\n N1[\"DB outbox\"]\n N2[\"Kafka adapter\"]\n N3[\"Consumer inbox\"]\n N4[\"Reporting projection\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"HTTP service\"]\n N1[\"DB outbox\"]\n N2[\"Kafka adapter\"]\n N3[\"Consumer inbox\"]\n N4[\"Reporting projection\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "HTTP service",
+      "detail": "The local lab uses fresh support-ticket code. It borrows broad production patterns—service objects, transactions, workers, and projections—without copying private application code or data. It uses Ruby 3.3/Rails 7.2 with a pinned Kafka client; that is separate from the Ruby 2.7/Rails 4.2 work baseline."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Create one synthetic ticket. Complete it twice: the business transition should create one logical completion event. Wait for reporting: one inbox/effect appears. Re-publish the saved envelope: Kafka can contain another record with the same event_id, while the local projection effect remains one.\n\nStop the dispatcher before completion, then restart it. Saved intent should still be found. Stop the consumer, publish, then restart it. Retained history and group progress should let it catch up within retention."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "The lab is intentionally one broker and one serial dispatcher. It does not prove multi-zone HA, high-throughput ordering under several dispatchers, production auth, or every legacy-fork behavior."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Pinned Ruby Kafka client",
+      "url": "https://github.com/karafka/rdkafka-ruby/tree/v0.20.0"
+    },
+    {
+      "title": "Kafka 4.1 quickstart",
+      "url": "https://kafka.apache.org/41/getting-started/quickstart/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Run and explain the complete multi-file path from HTTP completion to a repeat-safe reporting projection. Explain one example and one failure.",
+  "lab": "rails-kafka",
+  "sequence": 11
+}

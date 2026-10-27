@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Rates make cumulative counters interpretable over time."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Collection absence is a different state."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Bounded categories keep series growth manageable."
+  }
+}

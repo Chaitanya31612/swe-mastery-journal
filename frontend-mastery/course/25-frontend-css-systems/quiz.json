@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Is specificity the first and only cascade rule?",
+    "options": [
+      "Only for Vue",
+      "Yes",
+      "No, origin/importance/layers also matter"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should an error communicate?",
+    "options": [
+      "Only an animation",
+      "Only red",
+      "Text and field association as appropriate"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is a token?",
+    "options": [
+      "Automatic proof of accessibility",
+      "A named design choice used consistently",
+      "A CSS security role"
+    ]
+  }
+]

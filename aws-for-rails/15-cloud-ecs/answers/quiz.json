@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "The service reconciles running tasks."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Managed capacity still needs application design."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Schema changes need controlled ownership."
+  }
+}

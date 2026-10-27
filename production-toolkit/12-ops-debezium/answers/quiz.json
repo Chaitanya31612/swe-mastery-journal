@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Business meaning needs a deliberate schema/contract."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "The commit saves intent atomically with the change."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "CDC can affect source storage and recovery."
+  }
+}

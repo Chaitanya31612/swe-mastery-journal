@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A ref declared inside each composable call is usually what?",
+    "options": [
+      "A prop",
+      "Always global",
+      "Per call"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Why return refs?",
+    "options": [
+      "To encrypt the values",
+      "To preserve reactive links when destructured",
+      "To prevent all writes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What owns a subscription lifetime?",
+    "options": [
+      "The browser forever",
+      "A deliberate component/store scope",
+      "The file name only"
+    ]
+  }
+]

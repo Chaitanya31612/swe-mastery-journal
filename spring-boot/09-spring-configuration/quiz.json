@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What should a missing required endpoint do?",
+    "options": [
+      "Become a blank URL silently",
+      "Fail clearly at configuration validation",
+      "Wait until an unrelated request fails"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does a profile protect a secret?",
+    "options": [
+      "Only when named prod",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What verifies property binding?",
+    "options": [
+      "A string comparison in an unrelated unit test",
+      "Only a controller mock",
+      "A focused context/configuration test"
+    ]
+  }
+]

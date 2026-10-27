@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Each logical subscriber has its own work to do."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Queue worker groups usually share work."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Transport acceptance and downstream completion differ."
+  }
+}

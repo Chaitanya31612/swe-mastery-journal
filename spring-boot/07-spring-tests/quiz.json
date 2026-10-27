@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which test can detect an absent SQL unique index?",
+    "options": [
+      "A pure mock repository test",
+      "A real database constraint test",
+      "A snapshot of a button"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "A pure constructor test proves @Transactional interception?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

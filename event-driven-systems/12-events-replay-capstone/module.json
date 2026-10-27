@@ -1,0 +1,101 @@
+{
+  "id": "events-replay-capstone",
+  "track": "events",
+  "title": "Replay, rebuild, and explain the complete event system",
+  "level": "intermediate",
+  "outcome": "Design a safe projection rebuild and explain which effects may and may not be replayed.",
+  "useCase": "Projection evolution and disaster-recovery reasoning.",
+  "benefits": "Makes replay a controlled engineering operation.",
+  "drawbacks": "Missing history, privacy, and irreversible effects can limit recovery.",
+  "tags": [
+    "kafka",
+    "capstone",
+    "replay"
+  ],
+  "hours": 2,
+  "number": 12,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Replay the facts for a purpose, not every side effect.",
+  "prerequisite": "events-rails-lab",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Rebuild purpose\"]\n N1[\"Available facts\"]\n N2[\"New projection identity\"]\n N3[\"Replay and compare\"]\n N4[\"Controlled read cutover\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Rebuild purpose\"]\n N1[\"Available facts\"]\n N2[\"New projection identity\"]\n N3[\"Replay and compare\"]\n N4[\"Controlled read cutover\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Rebuild purpose",
+      "detail": "Replay is a tool for a purpose. Rebuilding a reporting projection from retained facts can be useful. Re-sending every email or charging every payment again is a different and often unacceptable effect. Separate rebuildable projections from irreversible side-effect workflows."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Choose rebuild purpose → validate retained/backfill source → create isolated projection identity → replay → compare to authority/expected fixtures → switch reads → monitor → retire old state under retention policy.\n\nFor restore, draw the timeline of DB state, outbox marks, Kafka retained records, group commits, and inbox/projection state. Recovery is a reconciliation problem across those boundaries."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Resetting offsets while keeping the same inbox can result in no new projection writes. Clearing inbox blindly can repeat external effects. Old events may contain data that current privacy policy no longer permits retaining/replaying."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kafka design",
+      "url": "https://kafka.apache.org/41/design/design/"
+    },
+    {
+      "title": "Kafka group operations",
+      "url": "https://kafka.apache.org/41/operations/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Design a safe projection rebuild and explain which effects may and may not be replayed. Explain one example and one failure.",
+  "lab": "rails-kafka",
+  "sequence": 12
+}

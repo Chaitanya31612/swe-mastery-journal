@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Where should a rule shared by HTTP and jobs live?",
+    "options": [
+      "Only a controller annotation",
+      "Only a button handler",
+      "A reusable use-case/domain boundary"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Do more interfaces automatically improve design?",
+    "options": [
+      "Only in Java",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does splitting a process add?",
+    "options": [
+      "Free deployment safety",
+      "Automatic consistency",
+      "Network and operational failure boundaries"
+    ]
+  }
+]

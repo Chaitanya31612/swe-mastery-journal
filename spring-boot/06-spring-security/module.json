@@ -1,0 +1,91 @@
+{
+  "id": "spring-security",
+  "track": "spring",
+  "number": 6,
+  "title": "Who are you, and may you do this?",
+  "outcome": "Separate authentication, ownership checks, CSRF, and CORS.",
+  "hours": 3,
+  "book": "",
+  "cue": "Login opens the building. Permission opens the room.",
+  "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+  "prerequisite": "spring-http",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "PUT /tasks/41 accepts ownerId from JSON and uses it to authorize. Explain an attack and a repair.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "The frontend moves to another origin. Does adding it to CORS make users authorized?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Security filters\"]\n  N1[\"Verified identity\"]\n  N2[\"Route gate\"]\n  N3[\"Object permission\"]\n  N4[\"Allowed change\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Security filters\"]\n  N1[\"Verified identity\"]\n  N2[\"Route gate\"]\n  N3[\"Object permission\"]\n  N4[\"Allowed change\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Spring Security servlet architecture",
+      "url": "https://docs.spring.io/spring-security/reference/servlet/architecture.html"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "Security filters",
+      "detail": "Authentication identifies the caller. Authorization decides whether that caller may access this specific task. A logged-in user can still be forbidden from editing another user’s data."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Follow a request with no credentials: the security entry point decides how to challenge or redirect. Follow a valid user requesting somebody else’s task: authentication can succeed while authorization fails.\n\nFor API tests, assert response status and that no write occurred. Check session cookie settings, CSRF expectations, and explicit allowed origins separately. Keep secrets and token contents out of logs."
+    },
+    {
+      "title": "Check the result",
+      "detail": "A hidden Edit button is not protection. The user can send HTTP directly. A valid JWT proves only the claims you actually verify, including signature, issuer, audience, expiry, and your chosen access rules."
+    }
+  ],
+  "recallPrompt": "Without notes: Separate authentication, ownership checks, CSRF, and CORS. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 4
+}

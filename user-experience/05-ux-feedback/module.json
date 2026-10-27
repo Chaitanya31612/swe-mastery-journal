@@ -1,0 +1,101 @@
+{
+  "id": "ux-feedback",
+  "track": "ux",
+  "title": "Feedback, errors, undo, and honest progress",
+  "level": "intermediate",
+  "outcome": "Design visible system state and recovery for slow, failed, and partially completed work.",
+  "useCase": "Exports, bulk changes, uploads, and background jobs.",
+  "benefits": "Builds accurate expectations and supports recovery.",
+  "drawbacks": "Honest progress needs observable backend states, not only frontend animation.",
+  "tags": [
+    "ux",
+    "feedback",
+    "reliability"
+  ],
+  "hours": 2,
+  "number": 5,
+  "version": "Web UX · WCAG 2.2 · principles, not magic formulas",
+  "book": "",
+  "cue": "Name the real state. Keep a recovery path.",
+  "prerequisite": "ux-inclusive-access",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow the real boundaries",
+      "placement": "overview",
+      "code": "flowchart TD\n Action[User chooses Save] --> Pending[Saving - keep ownership clear]\n Pending --> Result{Known outcome?}\n Result -->|success| Saved[Show saved state]\n Result -->|validation error| Repair[Explain field and repair]\n Result -->|unknown network outcome| Reconcile[Check status before retrying a write]\n Repair --> Action\n Reconcile --> Result"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Action acknowledged\"]\n N1[\"Pending work\"]\n N2[\"Observed progress\"]\n N3[\"Accurate result\"]\n N4[\"Undo or retry\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Action acknowledged",
+      "detail": "After an action, people need to know whether the system heard them, whether work is still running, and what changed. “Saved” means something different from “Queued.” A progress indicator must describe the boundary it actually observes."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Trace click → acknowledged request → accepted job → processing → result or failure. Map each message to a real backend state. An optimistic UI should explain pending state when the result is not yet confirmed.\n\nFor partial success, show successful and failed items separately with a retry policy. Do not make users reconstruct a 50-item selection from memory."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A spinner with no timeout/recovery can feel abandoned. A percentage based only on elapsed time can be misleading. Toasts that vanish before users read them are poor error storage."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Nielsen status and errors",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+    },
+    {
+      "title": "Response-time perspective",
+      "url": "https://www.nngroup.com/articles/response-times-3-important-limits/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Design visible system state and recovery for slow, failed, and partially completed work. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 6
+}

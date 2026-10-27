@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What normally moves after git fetch origin?",
+    "options": [
+      "Remote-tracking refs such as origin/main",
+      "Every local working file",
+      "All local branch tips"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "origin/main always reflects the server right now?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

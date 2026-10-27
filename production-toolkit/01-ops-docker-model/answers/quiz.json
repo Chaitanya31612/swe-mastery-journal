@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Image and instance have different lifecycles."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Host port mapping is a separate runtime setting."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Persist/recover data explicitly."
+  }
+}

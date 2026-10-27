@@ -1,0 +1,95 @@
+{
+  "id": "ruby-rails-request",
+  "track": "ruby",
+  "number": 7,
+  "title": "Rails request: route, scope, params, response",
+  "outcome": "Trace a Rails 4.2 action and protect record ownership at the server.",
+  "hours": 3,
+  "book": "Metaprogramming Ruby part II: reading Rails declarations",
+  "cue": "Who? Which row? Which fields?",
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "prerequisite": "ruby-boundaries",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "The update action uses Task.find(id), permits title, and checks only that a user is logged in. Repair the cross-user write.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A background job also updates tasks. Where should the reusable business rule live?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Rack and route\"]\n  N1[\"Authenticated caller\"]\n  N2[\"Allowed record scope\"]\n  N3[\"Permitted fields\"]\n  N4[\"Service and response\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Rack and route\"]\n  N1[\"Authenticated caller\"]\n  N2[\"Allowed record scope\"]\n  N3[\"Permitted fields\"]\n  N4[\"Service and response\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rails 4.2 controllers",
+      "url": "https://guides.rubyonrails.org/v4.2/action_controller_overview.html"
+    },
+    {
+      "title": "Rails 4.2 guides",
+      "url": "https://guides.rubyonrails.org/v4.2/"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "Rack and route",
+      "detail": "Rails connects a Rack request to a route, a controller action, model work, and a response. A before_action can establish a current user. It does not automatically limit every database lookup to that user."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Trace PUT /tasks/7: route chooses update; authentication runs; the scoped find either returns an allowed task or raises not found; permitted input reaches update; the action chooses JSON and status.\n\nThe private helper cannot be called as a public action. Use request tests for missing authentication, another user’s ID, rejected attributes, validation errors, and a successful update. Also assert the database row stayed unchanged on rejection."
+    },
+    {
+      "title": "Check the result",
+      "detail": "Task.find(params[:id]) plus permit(:title) still allows an ownership bug. Strong parameters protect allowed attributes, not which task you can edit. Never permit owner_id just because the browser sent it."
+    }
+  ],
+  "recallPrompt": "Without notes: Trace a Rails 4.2 action and protect record ownership at the server. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 6
+}

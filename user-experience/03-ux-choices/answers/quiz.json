@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Visible choices, memory tasks, and navigation contexts differ."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Disclosure should follow task frequency and need."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Defaults reduce work only when users can understand and change them."
+  }
+}

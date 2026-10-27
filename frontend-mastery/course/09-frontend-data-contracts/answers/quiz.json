@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Nullish fallback preserves zero, false, and empty strings."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Spread is a shallow copy."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Shape and meaning need additional checks."
+  }
+}

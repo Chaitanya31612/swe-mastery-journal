@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "cron ensures the previous run is done?",
+    "options": [
+      "Only for daily jobs",
+      "No",
+      "Always"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What identifies one logical daily report?",
+    "options": [
+      "Scope plus intended business date",
+      "The current log line",
+      "The process PID"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "A started log proves completion?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with cron"
+    ]
+  }
+]

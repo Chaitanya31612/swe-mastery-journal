@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Promise.all rejects. What happens to other requests?",
+    "options": [
+      "Their writes roll back",
+      "They are automatically cancelled",
+      "They may still continue"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Which operation waits for every settled outcome?",
+    "options": [
+      "Promise.allSettled",
+      "A synchronous forEach",
+      "Promise.race"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What must a latest-request guard protect?",
+    "options": [
+      "Rows only",
+      "Only console logs",
+      "Rows, error and loading state"
+    ]
+  }
+]

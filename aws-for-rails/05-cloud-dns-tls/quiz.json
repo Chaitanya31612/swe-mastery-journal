@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does DNS normally proxy each HTTP request?",
+    "options": [
+      "No",
+      "Only with an alias",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "A hosted zone alone proves public delegation?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with ACM"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What must a certificate match?",
+    "options": [
+      "Only the EC2 instance ID",
+      "Only the Rails environment",
+      "The requested hostname under its rules"
+    ]
+  }
+]

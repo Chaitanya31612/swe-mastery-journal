@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does cherry-pick copy a whole branch dependency graph?",
+    "options": [
+      "Yes",
+      "No",
+      "Only if clean"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "A clean application proves what?",
+    "options": [
+      "Data was restored",
+      "Text applied, not full behavioral correctness",
+      "All tests passed"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What makes a release-fix test relevant?",
+    "options": [
+      "Only running main tests",
+      "Only checking the commit title",
+      "Running on the actual release base/configuration"
+    ]
+  }
+]

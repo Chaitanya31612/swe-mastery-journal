@@ -1,0 +1,96 @@
+{
+  "id": "ops-terraform",
+  "track": "ops",
+  "title": "Terraform: desired infrastructure with state and review",
+  "level": "intermediate",
+  "outcome": "Explain configuration, plan, state, drift, and the effect of apply without treating a plan as a harmless toy.",
+  "useCase": "Repeatable cloud infrastructure changes.",
+  "benefits": "Reviewable configuration and resource change plans.",
+  "drawbacks": "State, drift, provider behavior, and destructive changes require care.",
+  "tags": [
+    "terraform",
+    "infrastructure"
+  ],
+  "hours": 2,
+  "number": 17,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Plan the change. Protect state. Verify the service.",
+  "prerequisite": "ops-cassandra",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Configuration and variables\"]\n N1[\"Managed state\"]\n N2[\"Reviewed plan\"]\n N3[\"Deliberate apply\"]\n N4[\"Service validation and drift\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Configuration and variables\"]\n N1[\"Managed state\"]\n N2[\"Reviewed plan\"]\n N3[\"Deliberate apply\"]\n N4[\"Service validation and drift\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Configuration and variables",
+      "detail": "Terraform describes resources through providers and tracks managed identity in state. Configuration is desired structure; state maps that structure to actual remote objects. A plan compares the chosen inputs/state/provider view with reality and proposes changes."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Configuration + variables + state + provider context → plan → human/team review → apply → refreshed state → observed service. A successful apply proves resources changed, not that Rails works end to end.\n\nBefore a replacement/destruction, inspect why the provider proposes it and which data/lifecycles are affected. Keep backups and recovery separate from state-file backups."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "State is not an application database backup. Removing a resource block can propose deletion. A plan from the wrong account/variables is the wrong plan even if syntactically valid."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Terraform introduction",
+      "url": "https://developer.hashicorp.com/terraform/intro"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain configuration, plan, state, drift, and the effect of apply without treating a plan as a harmless toy. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 18
+}

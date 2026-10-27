@@ -1,0 +1,14 @@
+name: learning-redis-lab
+services:
+  redis:
+    image: redis:7.4.2-bookworm
+    ports: ["127.0.0.1:16379:6379"]
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redis_data:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+volumes:
+  redis_data:

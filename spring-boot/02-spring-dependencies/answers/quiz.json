@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "One context can reuse one service across request threads. Scope does not provide locking or distributed coordination."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Each invocation has its own local variables; the object fields belong to the shared instance."
+  }
+}

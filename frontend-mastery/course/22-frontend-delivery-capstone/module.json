@@ -1,0 +1,97 @@
+{
+  "id": "frontend-delivery-capstone",
+  "track": "frontend",
+  "title": "Ship a Vue 3 support workspace",
+  "level": "intermediate",
+  "outcome": "Connect URL state, reusable components, async data, editing, tests, and measured UX in one small feature.",
+  "useCase": "A maintainable multi-pane ticket workspace.",
+  "benefits": "Turns separate concepts into a feature you can explain and change.",
+  "drawbacks": "The capstone requires hands-on work beyond reading.",
+  "tags": [
+    "vue3",
+    "capstone",
+    "architecture"
+  ],
+  "hours": 2,
+  "number": 22,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "One feature. Several boundaries. Observable promises.",
+  "prerequisite": "frontend-capstone",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"URL and user intent\"]\n N1[\"API and request owner\"]\n N2[\"Accessible components\"]\n N3[\"Versioned save\"]\n N4[\"Tests and measured experience\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"URL and user intent\"]\n N1[\"API and request owner\"]\n N2[\"Accessible components\"]\n N3[\"Versioned save\"]\n N4[\"Tests and measured experience\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "URL and user intent",
+      "detail": "Build one vertical feature rather than a gallery of disconnected examples. A support workspace should open directly from a URL, load an allowed ticket list, filter it, open a ticket, edit its title, and preserve edits after a failed save."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Follow a search from URL to accepted rows. Follow an edit from input to versioned request to reconciled response. Follow a failed save back to a preserved draft. Finally trace an old request that arrives after navigation and prove it has no ownership.\n\nAdd one production-style change: a new optional status from the server. Decide how older clients render it. A strict parser can reject unexpected data; a tolerant adapter can preserve unknown states. Choose deliberately."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A feature can pass isolated tests while its router, API, and component contracts disagree. A polished happy path can still lose drafts or hide denied writes."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vue scaling up",
+      "url": "https://vuejs.org/guide/scaling-up/state-management.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Connect URL state, reusable components, async data, editing, tests, and measured UX in one small feature. Explain one example and one failure.",
+  "lab": "vue-workspace",
+  "sequence": 27
+}

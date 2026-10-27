@@ -1,0 +1,100 @@
+{
+  "id": "ops-redis-types",
+  "track": "ops",
+  "title": "Redis foundations: pick a data structure for the question",
+  "level": "beginner",
+  "outcome": "Choose strings, hashes, sets, sorted sets, lists, and streams from access patterns.",
+  "useCase": "Counters, memberships, ranked projections, and caches.",
+  "benefits": "Useful atomic data operations and low-latency access.",
+  "drawbacks": "Memory, round trips, key lifecycle, and cross-store consistency remain.",
+  "tags": [
+    "redis",
+    "fundamentals"
+  ],
+  "hours": 2,
+  "number": 7,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Ask the query, then choose the structure.",
+  "prerequisite": "ops-kubernetes-model",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Access question\"]\n N1[\"Scoped key\"]\n N2[\"Data structure\"]\n N3[\"Atomic command\"]\n N4[\"TTL and recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Access question\"]\n N1[\"Scoped key\"]\n N2[\"Data structure\"]\n N3[\"Atomic command\"]\n N4[\"TTL and recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Access question",
+      "detail": "Redis is a networked data-structure service, not just a faster hash in your Ruby process. Each operation has a data type, cost, key scope, and failure behavior. Keep network round trips and memory in mind."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Choose a question → choose a structure/key → execute a bounded operation → inspect result/TTL → define rebuild or persistence. Compare one command with read-modify-write in application code.\n\nINCR is atomic as that command. GET followed by SET from two clients can lose an update. A string counter also needs a policy for expiry and retry."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A set’s uniqueness does not coordinate a PostgreSQL write automatically. A key with no expiry can grow forever. Pub/Sub messages can be missed by disconnected subscribers under its contract."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Redis data types",
+      "url": "https://redis.io/docs/latest/develop/data-types/"
+    },
+    {
+      "title": "Redis Pub/Sub",
+      "url": "https://redis.io/docs/latest/develop/pubsub/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose strings, hashes, sets, sorted sets, lists, and streams from access patterns. Explain one example and one failure.",
+  "lab": "redis",
+  "sequence": 4
+}

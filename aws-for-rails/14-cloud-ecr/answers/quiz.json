@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "A digest identifies the image bytes."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Run and configuration checks are separate."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "A lifecycle policy must preserve the recovery plan."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "id": "frontend-data-contracts",
+  "track": "frontend",
+  "title": "JavaScript values at API boundaries",
+  "level": "beginner",
+  "outcome": "Distinguish missing, null, false, zero, and shared nested state when adapting API data.",
+  "useCase": "Support forms with optional flags, numeric limits, and editable tag lists.",
+  "benefits": "Fewer invisible defaulting and Cancel bugs.",
+  "drawbacks": "Boundary validation and draft ownership require explicit decisions.",
+  "tags": [
+    "javascript",
+    "forms",
+    "contracts"
+  ],
+  "hours": 2,
+  "number": 9,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Absence is a contract. Copy only what you own.",
+  "prerequisite": "frontend-browser",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"API values\"]\n N1[\"Validate shape\"]\n N2[\"Adapt meanings\"]\n N3[\"Independent edit draft\"]\n N4[\"Accept or cancel\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"API values\"]\n N1[\"Validate shape\"]\n N2[\"Adapt meanings\"]\n N3[\"Independent edit draft\"]\n N4[\"Accept or cancel\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "API values",
+      "detail": "A browser receives values, not intentions. A missing field can mean “leave unchanged.” null can mean “clear it.” false and zero can be valid choices. Decide those meanings in the API contract before choosing a default operator."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Trace load → validate → adapt → edit draft → submit → accept server result. Keep server data separate from unsaved edits. Test an absent field, explicit null, false, zero, and an empty string. They are five distinct cases.\n\nIf a nested structure is complex, copy the fields the form actually edits rather than cloning an entire model graph. structuredClone supports many values but not functions or every host object; it is not a universal serialization protocol."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Using value || default can silently change a valid zero. Copying only the outer object can leak draft changes. Parsing valid JSON can still produce the wrong type."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MDN nullish coalescing",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Distinguish missing, null, false, zero, and shared nested state when adapting API data. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 2
+}

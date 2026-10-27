@@ -1,0 +1,98 @@
+{
+  "id": "frontend-browser",
+  "track": "frontend",
+  "number": 1,
+  "title": "From URL to pixels",
+  "outcome": "Trace navigation, browser work, and the boundary between server and client.",
+  "hours": 3,
+  "book": "",
+  "cue": "URL → request → tree → layout → paint.",
+  "version": "Portable JavaScript · React hooks · Vue 2/3 comparisons · Next App Router",
+  "prerequisite": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A client route works after clicking but returns a server 404 on refresh. Explain the missing boundary.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A clock renders one time on the server and a later time on the first client render. How do you avoid a hydration mismatch?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"URL request\"]\n  N1[\"HTML and assets\"]\n  N2[\"DOM and CSS\"]\n  N3[\"Layout and paint\"]\n  N4[\"JavaScript interaction\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"URL request\"]\n  N1[\"HTML and assets\"]\n  N2[\"DOM and CSS\"]\n  N3[\"Layout and paint\"]\n  N4[\"JavaScript interaction\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "JavaScript execution model",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model"
+    },
+    {
+      "title": "Web performance learning",
+      "url": "https://web.dev/learn/performance"
+    }
+  ],
+  "reading": [
+    "frontend-mastery/docs/00-spa-mental-model-and-browser-internals.md",
+    "frontend-mastery/staff-track/docs/01-js-engine-and-runtime.md"
+  ],
+  "trace": [
+    {
+      "title": "URL request",
+      "detail": "The browser turns a URL into a request, receives HTML, builds a DOM tree, loads CSS and JavaScript, and paints pixels. JavaScript can change the DOM later. Layout calculates geometry. Paint draws visible styles. These are different costs."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Trace document request → HTML parsing → CSS/layout → script → UI change. Then trace a client navigation separately. The network requests and work can differ.\n\nFor a slow page, determine whether the wait is server response time, asset loading, script execution, layout, or a later API call. A single “loading” label hides several possible causes."
+    },
+    {
+      "title": "Check the result",
+      "detail": "A new Date() or random value rendered independently on server and client can produce different first markup. Browser-only APIs such as localStorage are not available during server execution."
+    }
+  ],
+  "recallPrompt": "Without notes: Trace navigation, browser work, and the boundary between server and client. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 1
+}

@@ -1,0 +1,239 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What should justify each tool?",
+    "options": [
+      "A responsibility and requirement it serves",
+      "Popularity alone",
+      "The number of logos"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where should incident diagnosis start?",
+    "options": [
+      "A random restart of everything",
+      "The newest dashboard theme",
+      "User impact and the oldest incomplete work"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What stays important when changing publisher technology?",
+    "options": [
+      "Only the vendor name",
+      "Only the container tag",
+      "Event identity/schema and consumer correctness"
+    ]
+  },
+  {
+    "id": "review-ops-docker-model",
+    "prompt": "Docker: image, container, process, and volume: What is an image?",
+    "options": [
+      "A running process only",
+      "A template/artifact for container instances",
+      "A database backup"
+    ],
+    "covers": "ops-docker-model"
+  },
+  {
+    "id": "review-ops-docker-build",
+    "prompt": "Docker builds: layers, identity, and a smaller runtime: Does later rm erase a copied secret from prior layers?",
+    "options": [
+      "Only with slim images",
+      "No",
+      "Yes"
+    ],
+    "covers": "ops-docker-build"
+  },
+  {
+    "id": "review-ops-compose",
+    "prompt": "Compose: connect web, database, broker, and workers: localhost inside a worker refers to what?",
+    "options": [
+      "Always the host",
+      "The worker container itself",
+      "Every service in Compose"
+    ],
+    "covers": "ops-compose"
+  },
+  {
+    "id": "review-ops-kubernetes-model",
+    "prompt": "Kubernetes: desired state, pods, and controllers: What does a Deployment express?",
+    "options": [
+      "Desired replaceable workload state",
+      "A universal data backup",
+      "Only a shell session"
+    ],
+    "covers": "ops-kubernetes-model"
+  },
+  {
+    "id": "review-ops-kubernetes-network",
+    "prompt": "Kubernetes networking: Services, selectors, ingress, and names: What connects a Service to ordinary selected Pods?",
+    "options": [
+      "The container image title",
+      "A database ID",
+      "Labels/selectors and endpoint readiness"
+    ],
+    "covers": "ops-kubernetes-network"
+  },
+  {
+    "id": "review-ops-kubernetes-release",
+    "prompt": "Kubernetes probes, resources, rollout, and graceful work: Which probe controls traffic eligibility?",
+    "options": [
+      "Only startup",
+      "Readiness",
+      "Only liveness"
+    ],
+    "covers": "ops-kubernetes-release"
+  },
+  {
+    "id": "review-ops-redis-types",
+    "prompt": "Redis foundations: pick a data structure for the question: Which structure naturally supports ranked scores?",
+    "options": [
+      "A CSS grid",
+      "Only a plain string",
+      "Sorted set"
+    ],
+    "covers": "ops-redis-types"
+  },
+  {
+    "id": "review-ops-redis-cache",
+    "prompt": "Redis caching: freshness, invalidation, and stampedes: What is the source of truth in ordinary cache-aside?",
+    "options": [
+      "The browser cache",
+      "Always Redis",
+      "The authoritative store"
+    ],
+    "covers": "ops-redis-cache"
+  },
+  {
+    "id": "review-ops-redis-correctness",
+    "prompt": "Redis correctness: persistence, atomic work, and lock expiry: A pipeline guarantees a multi-command atomic business operation?",
+    "options": [
+      "Only with many commands",
+      "Yes",
+      "No"
+    ],
+    "covers": "ops-redis-correctness"
+  },
+  {
+    "id": "review-ops-datadog",
+    "prompt": "Datadog: turn traces and monitors into an investigation: Agent installed means every app span is present?",
+    "options": [
+      "Always",
+      "No",
+      "Only on EC2"
+    ],
+    "covers": "ops-datadog"
+  },
+  {
+    "id": "review-ops-opentelemetry",
+    "prompt": "OpenTelemetry: instrumentation is not the storage backend: Is OTel alone a long-term query backend?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with Ruby"
+    ],
+    "covers": "ops-opentelemetry"
+  },
+  {
+    "id": "review-ops-debezium",
+    "prompt": "Debezium: capture committed changes without inventing business meaning: Does a raw row change automatically express a business event?",
+    "options": [
+      "Only after JSON encoding",
+      "Yes",
+      "No"
+    ],
+    "covers": "ops-debezium"
+  },
+  {
+    "id": "review-ops-cassandra",
+    "prompt": "Cassandra: design the query before the table: What should drive Cassandra table design?",
+    "options": [
+      "Specific access queries",
+      "The UI color scheme",
+      "An arbitrary normalized ER diagram alone"
+    ],
+    "covers": "ops-cassandra"
+  },
+  {
+    "id": "review-ops-sendgrid",
+    "prompt": "SendGrid: accepted email is not delivered email: API acceptance proves human receipt?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with HTML mail"
+    ],
+    "covers": "ops-sendgrid"
+  },
+  {
+    "id": "review-ops-cron",
+    "prompt": "cron and scheduled work: a trigger is not a transaction: cron ensures the previous run is done?",
+    "options": [
+      "Only for daily jobs",
+      "No",
+      "Always"
+    ],
+    "covers": "ops-cron"
+  },
+  {
+    "id": "review-ops-pendo",
+    "prompt": "Pendo: measure meaningful product behavior: A button click proves business completion?",
+    "options": [
+      "Only with a Track Event",
+      "Yes",
+      "No"
+    ],
+    "covers": "ops-pendo"
+  },
+  {
+    "id": "review-ops-terraform",
+    "prompt": "Terraform: desired infrastructure with state and review: What does Terraform state map?",
+    "options": [
+      "Every browser event",
+      "Configuration resources to managed remote identity",
+      "All application data backups"
+    ],
+    "covers": "ops-terraform"
+  },
+  {
+    "id": "review-ops-github-actions",
+    "prompt": "GitHub Actions: test, build once, and promote an artifact: What should be promoted after testing?",
+    "options": [
+      "The identified immutable artifact",
+      "Only a branch nickname",
+      "A fresh unrelated rebuild"
+    ],
+    "covers": "ops-github-actions"
+  },
+  {
+    "id": "review-ops-proxy-pools",
+    "prompt": "Nginx and PgBouncer: two different kinds of front door: Nginx and PgBouncer primarily front which protocols?",
+    "options": [
+      "Both only browser storage",
+      "HTTP and PostgreSQL respectively",
+      "Both only Kafka"
+    ],
+    "covers": "ops-proxy-pools"
+  },
+  {
+    "id": "review-ops-metrics-stack",
+    "prompt": "Prometheus and Grafana: collect a signal, then ask a question: What is a counter rate useful for?",
+    "options": [
+      "A secret value",
+      "Events per time over a defined window",
+      "A single record’s permission"
+    ],
+    "covers": "ops-metrics-stack"
+  },
+  {
+    "id": "review-ops-feature-flags",
+    "prompt": "Feature flags: release control without permanent branching: A flag undoes all data effects?",
+    "options": [
+      "Only when off",
+      "Yes",
+      "No"
+    ],
+    "covers": "ops-feature-flags"
+  }
+]

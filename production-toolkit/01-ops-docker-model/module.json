@@ -1,0 +1,96 @@
+{
+  "id": "ops-docker-model",
+  "track": "ops",
+  "title": "Docker: image, container, process, and volume",
+  "level": "beginner",
+  "outcome": "Reconstruct what survives stop, restart, replacement, and image rebuild.",
+  "useCase": "Remembering Docker by lifecycle instead of command memorization.",
+  "benefits": "Reproducible runtime packaging.",
+  "drawbacks": "State, platform, access, and recovery still need explicit design.",
+  "tags": [
+    "docker",
+    "fundamentals"
+  ],
+  "hours": 2,
+  "number": 1,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Image is the recipe. Container is the instance. Volume is a data decision.",
+  "prerequisite": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Image artifact\"]\n N1[\"Container instance\"]\n N2[\"Main process\"]\n N3[\"Writable layer or volume\"]\n N4[\"Restart versus replacement\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Image artifact\"]\n N1[\"Container instance\"]\n N2[\"Main process\"]\n N3[\"Writable layer or volume\"]\n N4[\"Restart versus replacement\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Image artifact",
+      "detail": "An image is a packaged filesystem/configuration template. A container is a running or stopped instance with its own writable layer. It runs processes using the host kernel’s container facilities; it is not automatically a whole independent virtual machine."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Build image → create container → start main process → write to layer/volume → stop → restart or replace. Before each step, predict which bytes and process state remain.\n\nTrace a Rails upload written locally. A replacement container starts from the image again; it does not inherit the old writable layer. External object storage solves a different boundary from packaging."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "EXPOSE documents a container port; it does not publish it to the host. A running container can contain a failing app. A volume is not itself a tested backup."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Docker containers",
+      "url": "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Reconstruct what survives stop, restart, replacement, and image rebuild. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 1
+}

@@ -1,0 +1,101 @@
+{
+  "id": "ops-metrics-stack",
+  "track": "ops",
+  "title": "Prometheus and Grafana: collect a signal, then ask a question",
+  "level": "beginner",
+  "outcome": "Explain metric collection, labels, rates, dashboards, and alert ownership without treating a graph as evidence by itself.",
+  "useCase": "Open observability stacks and interpreting operational dashboards.",
+  "benefits": "Flexible metric queries and shared operational views.",
+  "drawbacks": "Collection, cardinality, retention, and alerting need operation.",
+  "tags": [
+    "prometheus",
+    "grafana",
+    "observability"
+  ],
+  "hours": 2,
+  "number": 20,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "A graph is only as honest as its population and labels.",
+  "prerequisite": "ops-pendo",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Metric contract\"]\n N1[\"Collection\"]\n N2[\"Windowed query\"]\n N3[\"Dashboard or alert\"]\n N4[\"Task-level verification\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Metric contract\"]\n N1[\"Collection\"]\n N2[\"Windowed query\"]\n N3[\"Dashboard or alert\"]\n N4[\"Task-level verification\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Metric contract",
+      "detail": "Prometheus commonly scrapes exposed metrics and stores time series. Grafana can query/display data from selected sources. A dashboard is a view over a data contract, not an independent guarantee that the service is healthy."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "App records bounded metric → collector observes → query transforms over a time window → panel/alert presents it → investigator checks user outcome. A missing scrape and a true zero value are different things.\n\nFor a latency claim, ask which requests were included and whether errors/timeouts were excluded. A low median can coexist with painful tail latency."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A mean alone can hide a slow minority. Unbounded labels can overwhelm the system. A pretty dashboard with no action/owner can fail silently during an incident."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Prometheus metric types",
+      "url": "https://prometheus.io/docs/concepts/metric_types/"
+    },
+    {
+      "title": "Grafana data sources",
+      "url": "https://grafana.com/docs/grafana/latest/datasources/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain metric collection, labels, rates, dashboards, and alert ownership without treating a graph as evidence by itself. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 10
+}

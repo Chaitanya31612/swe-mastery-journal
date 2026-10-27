@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What is fan-out?",
+    "options": [
+      "Independent subscribers receive the fact",
+      "A database join",
+      "Workers always divide one copy"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "One queue shared by unrelated consumers creates what risk?",
+    "options": [
+      "Every event is automatically broadcast",
+      "No buffering",
+      "They compete instead of each seeing every event"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Publish acknowledgement proves every business effect?",
+    "options": [
+      "Only with JSON",
+      "Yes",
+      "No"
+    ]
+  }
+]

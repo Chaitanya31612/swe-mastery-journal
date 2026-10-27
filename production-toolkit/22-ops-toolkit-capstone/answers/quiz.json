@@ -1,0 +1,98 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Every tool adds an operating contract."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Trace a meaningful symptom through boundaries."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Transport changes do not erase business contracts."
+  },
+  "review-ops-docker-model": {
+    "correctIndex": 1,
+    "explanation": "Image and instance have different lifecycles."
+  },
+  "review-ops-docker-build": {
+    "correctIndex": 1,
+    "explanation": "Layer history can retain it."
+  },
+  "review-ops-compose": {
+    "correctIndex": 1,
+    "explanation": "Use service DNS for peer containers."
+  },
+  "review-ops-kubernetes-model": {
+    "correctIndex": 0,
+    "explanation": "Controllers reconcile the declared workload."
+  },
+  "review-ops-kubernetes-network": {
+    "correctIndex": 2,
+    "explanation": "A mismatch can produce no endpoints."
+  },
+  "review-ops-kubernetes-release": {
+    "correctIndex": 1,
+    "explanation": "Readiness says whether the pod should receive traffic now."
+  },
+  "review-ops-redis-types": {
+    "correctIndex": 2,
+    "explanation": "Sorted sets associate members with scores."
+  },
+  "review-ops-redis-cache": {
+    "correctIndex": 2,
+    "explanation": "The cache is a copy under a freshness policy."
+  },
+  "review-ops-redis-correctness": {
+    "correctIndex": 2,
+    "explanation": "It primarily reduces round trips."
+  },
+  "review-ops-datadog": {
+    "correctIndex": 1,
+    "explanation": "Application instrumentation and transport must work too."
+  },
+  "review-ops-opentelemetry": {
+    "correctIndex": 0,
+    "explanation": "You still choose storage/query/alerting."
+  },
+  "review-ops-debezium": {
+    "correctIndex": 2,
+    "explanation": "Business meaning needs a deliberate schema/contract."
+  },
+  "review-ops-cassandra": {
+    "correctIndex": 0,
+    "explanation": "Its model is query-oriented."
+  },
+  "review-ops-sendgrid": {
+    "correctIndex": 0,
+    "explanation": "Transport states and human behavior differ."
+  },
+  "review-ops-cron": {
+    "correctIndex": 1,
+    "explanation": "Overlap policy must be implemented/selected."
+  },
+  "review-ops-pendo": {
+    "correctIndex": 2,
+    "explanation": "The action may still fail later."
+  },
+  "review-ops-terraform": {
+    "correctIndex": 1,
+    "explanation": "State tracks resource management identity and attributes."
+  },
+  "review-ops-github-actions": {
+    "correctIndex": 0,
+    "explanation": "Testing evidence must connect to deployed bytes."
+  },
+  "review-ops-proxy-pools": {
+    "correctIndex": 1,
+    "explanation": "They solve different traffic boundaries."
+  },
+  "review-ops-metrics-stack": {
+    "correctIndex": 1,
+    "explanation": "Rates make cumulative counters interpretable over time."
+  },
+  "review-ops-feature-flags": {
+    "correctIndex": 2,
+    "explanation": "It controls behavior selection, not arbitrary historical writes."
+  }
+}

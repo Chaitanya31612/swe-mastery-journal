@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Receipt and deletion are distinct operations."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "The message can be delivered again."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Quarantine is an operational state, not success."
+  }
+}

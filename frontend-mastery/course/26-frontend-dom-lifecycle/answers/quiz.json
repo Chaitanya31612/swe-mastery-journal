@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Propagation and default action are different."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Removal matches the actual handler identity and capture option."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "target and currentTarget answer different questions."
+  }
+}

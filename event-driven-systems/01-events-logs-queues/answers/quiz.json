@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Past-tense facts and requested actions carry different responsibility."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Independent groups can process the retained log separately."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Choose from actual history/subscriber/throughput needs."
+  }
+}

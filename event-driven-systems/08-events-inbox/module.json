@@ -1,0 +1,101 @@
+{
+  "id": "events-inbox",
+  "track": "events",
+  "title": "Consumer inbox: one local effect for a repeated event",
+  "level": "intermediate",
+  "outcome": "Commit deduplication and projection changes together, then acknowledge Kafka progress.",
+  "useCase": "Reporting/search/materialized projections.",
+  "benefits": "Repeat-safe local effects across process crashes.",
+  "drawbacks": "External side effects need additional boundaries.",
+  "tags": [
+    "kafka",
+    "inbox",
+    "idempotency"
+  ],
+  "hours": 2,
+  "number": 8,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Dedup plus local effect together. Offset after.",
+  "prerequisite": "events-outbox",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow the real boundaries",
+      "placement": "overview",
+      "code": "sequenceDiagram\n participant K as Kafka partition\n participant C as Consumer\n participant DB as Reporting database\n K->>C: Event at offset N\n C->>DB: BEGIN - insert unique inbox ID\n C->>DB: Apply reporting effect\n DB-->>C: COMMIT together\n Note over C,DB: Crash here replays - inbox skips repeat\n C->>K: Commit next offset N+1"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Validated event\"]\n N1[\"Unique consumer inbox\"]\n N2[\"Projection transaction\"]\n N3[\"DB commit\"]\n N4[\"Kafka acknowledgement\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Validated event",
+      "detail": "A consumer can receive a record again after a crash/rebalance/replay. A seen? query followed by a write races when two processes overlap. Use a unique consumer-specific event key at the authority that stores the effect."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Receive E → validate → insert inbox + update report → commit DB → commit Kafka. Crash after DB commit before Kafka commit: receive E again → unique inbox says local effect exists → do not repeat it → commit progress.\n\nInclude consumer identity in deduplication scope when different projections independently need the same event. Their completion responsibilities are separate."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Writing inbox before the effect in a separate committed transaction can lose the effect. Writing it after can duplicate. A memory Set disappears on process restart."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kafka consumer contract",
+      "url": "https://kafka.apache.org/41/configuration/consumer-configs/"
+    },
+    {
+      "title": "PostgreSQL transactions",
+      "url": "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Commit deduplication and projection changes together, then acknowledge Kafka progress. Explain one example and one failure.",
+  "lab": "rails-kafka",
+  "sequence": 8
+}

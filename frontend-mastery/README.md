@@ -215,3 +215,7 @@ Interesting fact: React and Vue both make UI declarative, but they pay for that 
 - Next.js docs: https://nextjs.org/docs
 - Vue docs: https://vuejs.org/guide/introduction.html
 - WAI-ARIA Authoring Practices: https://www.w3.org/WAI/ARIA/apg/
+
+## Interactive learning path
+
+Use the [short course](course/README.md) for ordered lessons, diagrams, practice, and separate answers. The application’s **Software Learnings** area presents it with predictions, quizzes, saved attempts, AI coaching, and spaced recall. These existing longer notes remain available as deeper reading.

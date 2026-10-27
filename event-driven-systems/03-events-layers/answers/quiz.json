@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Clients subsequently use discovered endpoints."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Its topology cannot test missing replicas."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Kafka 4.1 lab uses the KRaft mode."
+  }
+}

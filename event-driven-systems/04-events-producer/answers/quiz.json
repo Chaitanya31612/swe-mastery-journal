@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Producer acceptance/acknowledgement is not downstream completion."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Its protocol scope differs from business identity."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Stable business identity supports repeat-safe processing."
+  }
+}

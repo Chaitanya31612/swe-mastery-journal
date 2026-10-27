@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "The work needs its own deduplication and completion rules."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Duplicate triggers should map to the same logical run."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Its scope is one process."
+  }
+}

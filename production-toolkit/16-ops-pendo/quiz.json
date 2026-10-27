@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A button click proves business completion?",
+    "options": [
+      "Only with a Track Event",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What belongs in event properties?",
+    "options": [
+      "Every free-text form value",
+      "Minimal intentional non-sensitive fields",
+      "API secrets"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Is client analytics the authoritative business ledger?",
+    "options": [
+      "Only with a dashboard",
+      "Yes",
+      "No"
+    ]
+  }
+]

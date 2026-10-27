@@ -1,0 +1,97 @@
+{
+  "id": "ops-kubernetes-release",
+  "track": "ops",
+  "title": "Kubernetes probes, resources, rollout, and graceful work",
+  "level": "intermediate",
+  "outcome": "Choose startup/readiness/liveness signals and release web/worker code without confusing restart with recovery.",
+  "useCase": "Rails web/worker deployment and incident diagnosis.",
+  "benefits": "Controlled traffic and process lifecycle.",
+  "drawbacks": "Poor probes/limits can create outages themselves.",
+  "tags": [
+    "kubernetes",
+    "delivery",
+    "reliability"
+  ],
+  "hours": 2,
+  "number": 6,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Start safely. Route when ready. Restart only for a reason.",
+  "prerequisite": "ops-kubernetes-network",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Measured resources\"]\n N1[\"Startup contract\"]\n N2[\"Readiness traffic\"]\n N3[\"Graceful rollout\"]\n N4[\"Repeat-safe recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Measured resources\"]\n N1[\"Startup contract\"]\n N2[\"Readiness traffic\"]\n N3[\"Graceful rollout\"]\n N4[\"Repeat-safe recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Measured resources",
+      "detail": "Startup, readiness, and liveness ask different questions. Startup protects a slow initialization phase. Readiness controls traffic eligibility. Liveness can trigger a restart when the process is stuck under the chosen health contract."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "New specification → new pods start → startup check → readiness allows traffic → old pods drain → process receives termination signal → unfinished work completes or becomes safely retryable. Observe rollout and user-level error/latency.\n\nIf a worker is terminated after DB commit but before offset/queue acknowledgement, its replacement may repeat the item. Infrastructure shutdown and business idempotence must cooperate."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A probe that requires login can fail every pod. Tight memory limits can cause repeated OOM termination. A code rollback does not reverse a destructive migration."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kubernetes probes",
+      "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose startup/readiness/liveness signals and release web/worker code without confusing restart with recovery. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 13
+}

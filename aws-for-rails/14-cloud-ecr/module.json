@@ -1,0 +1,97 @@
+{
+  "id": "cloud-ecr",
+  "track": "cloud",
+  "title": "ECR: publish an artifact you can identify and replace",
+  "level": "beginner",
+  "outcome": "Explain image tags, digests, registry access, scan results, and release retention.",
+  "useCase": "Rails/Vue container delivery.",
+  "benefits": "Managed artifact distribution and AWS access integration.",
+  "drawbacks": "Mutable tags, retention, and image-layer hygiene need policy.",
+  "tags": [
+    "aws",
+    "ecr",
+    "delivery"
+  ],
+  "hours": 2,
+  "number": 14,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Build once. Name the bytes. Deploy those bytes.",
+  "prerequisite": "cloud-lambda",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Source revision\"]\n N1[\"Image build\"]\n N2[\"Registry digest\"]\n N3[\"Workload pull\"]\n N4[\"Observed release identity\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Source revision\"]\n N1[\"Image build\"]\n N2[\"Registry digest\"]\n N3[\"Workload pull\"]\n N4[\"Observed release identity\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Source revision",
+      "detail": "A container registry stores images. A tag is a name that can move unless policy prevents it. A digest identifies image content. Deploying latest makes it difficult to know what actually ran during an incident."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Build → scan/check → push → resolve digest → deploy that artifact → observe → roll back to a known digest if needed. Connect logs/deployment metadata to the source and digest.\n\nRetention rules must not remove every artifact needed for rollback. Large layers and old tags also consume storage; define a deliberate policy."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "latest can mean different images on two machines. Credentials copied into a Docker layer remain in the image even if a later command removes the file."
+    }
+  ],
+  "sources": [
+    {
+      "title": "ECR guide",
+      "url": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain image tags, digests, registry access, scan results, and release retention. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 8
+}

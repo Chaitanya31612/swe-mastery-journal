@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Do not assume onMounted runs again for every param update."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "storeToRefs returns reactive references to state/getters."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Server-side access checks remain necessary."
+  }
+}

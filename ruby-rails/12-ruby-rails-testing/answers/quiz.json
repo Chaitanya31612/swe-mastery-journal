@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "It can prove local decisions for supplied fake behavior. Other boundaries need their own evidence."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Rails 4.2 uses classic autoloading. Version-specific behavior must be checked."
+  }
+}

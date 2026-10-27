@@ -1,0 +1,97 @@
+{
+  "id": "cloud-msk",
+  "track": "cloud",
+  "title": "MSK: managed Kafka still needs event design",
+  "level": "intermediate",
+  "outcome": "Map broker management, clients, network, identity, partitions, and consumer operations in AWS.",
+  "useCase": "The local Rails/Kafka design moved to a managed AWS environment.",
+  "benefits": "Managed broker infrastructure choices.",
+  "drawbacks": "Client integration, business correctness, and recovery remain yours.",
+  "tags": [
+    "aws",
+    "msk",
+    "kafka"
+  ],
+  "hours": 2,
+  "number": 17,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Managed brokers, still your event contract.",
+  "prerequisite": "cloud-eks",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Client network and identity\"]\n N1[\"Broker metadata\"]\n N2[\"Keyed topic\"]\n N3[\"Consumer group\"]\n N4[\"Lag and recovery window\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Client network and identity\"]\n N1[\"Broker metadata\"]\n N2[\"Keyed topic\"]\n N3[\"Consumer group\"]\n N4[\"Lag and recovery window\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Client network and identity",
+      "detail": "MSK provides managed Kafka options. It reduces parts of broker infrastructure work, but does not choose event keys, schemas, consumer groups, offset policy, or business idempotence for you. Provisioned/serverless options have different configuration and capacity contracts."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Client contacts bootstrap → discovers leaders → authenticates/connects to actual brokers → produces keyed record → group consumes/commits under its own policy. Debug network, auth, topic access, and business processing separately.\n\nRetention and consumer downtime interact. A lagging consumer can lose required history after retention; managed brokers do not extend the business recovery window automatically."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "MSK does not make a Rails DB write and Kafka publish atomic. Client libraries can require explicit support for the selected authentication method. A topic with one hot key can bottleneck despite more brokers."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MSK overview",
+      "url": "https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Map broker management, clients, network, identity, partitions, and consumer operations in AWS. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 18
+}

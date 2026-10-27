@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "It supplies name-resolution answers."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "The registrar/delegation chain must point to it."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "TLS hostname validation is separate from app routing."
+  }
+}

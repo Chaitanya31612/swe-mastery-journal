@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does the outbox make atomic?",
+    "options": [
+      "Every consumer offset",
+      "Business DB change and saved event intent",
+      "PostgreSQL plus every remote effect"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Can an acknowledged event be resent after dispatcher crash?",
+    "options": [
+      "Yes",
+      "No",
+      "Only without JSON"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Should a slow network call hold the business row lock by default?",
+    "options": [
+      "Yes",
+      "No, separate it when semantics permit",
+      "Only in Rails"
+    ]
+  }
+]

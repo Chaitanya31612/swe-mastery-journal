@@ -1,0 +1,95 @@
+{
+  "id": "frontend-next",
+  "track": "frontend",
+  "number": 6,
+  "title": "Next.js: server/client boundaries and freshness",
+  "outcome": "Place code at a deliberate execution boundary and explain which cache is being refreshed.",
+  "hours": 3,
+  "book": "",
+  "cue": "Place code. Limit data. Name the cache.",
+  "version": "Portable JavaScript · React hooks · Vue 2/3 comparisons · Next App Router",
+  "prerequisite": "frontend-react",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A save succeeds, router.refresh runs, but the task stays old because the server read is cached. Explain the missing step.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "An admin-only secret field is omitted visually but passed in props to a Client Component. Is that enough?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Server read\"]\n  N1[\"Serializable props\"]\n  N2[\"Client interaction\"]\n  N3[\"Authorized mutation\"]\n  N4[\"Chosen cache refresh\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Server read\"]\n  N1[\"Serializable props\"]\n  N2[\"Client interaction\"]\n  N3[\"Authorized mutation\"]\n  N4[\"Chosen cache refresh\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Next.js server and client components",
+      "url": "https://nextjs.org/docs/app/getting-started/server-and-client-components"
+    }
+  ],
+  "reading": [
+    "frontend-mastery/docs/03-react-next-vue-differentiation.md",
+    "frontend-mastery/staff-track/docs/07-nextjs-pages-to-app-and-rsc.md",
+    "frontend-mastery/staff-track/docs/08-nextjs-routing-and-caching.md"
+  ],
+  "trace": [
+    {
+      "title": "Server read",
+      "detail": "In the App Router, Server Components can read server-only data without shipping that code to the browser. Client Components support hooks and browser interaction. A use client boundary marks a client module graph; it does not mean that component never participates in server-rendered HTML."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Trace page request → allowed server read → serialized props → interactive button → server mutation → permission check → database change → deliberate revalidation → visible result.\n\nrouter.refresh requests a fresh server-component payload, but a server-side cached read may still return old data. Choose revalidatePath/tag or another data policy according to the exact version. Test the mutation then read from a fresh session as well as the current page."
+    },
+    {
+      "title": "Check the result",
+      "detail": "A Server Action is still a server input boundary and needs access checks. Moving a token into a client bundle exposes it. Client directives are not a substitute for a security review of what data is serialized."
+    }
+  ],
+  "recallPrompt": "Without notes: Place code at a deliberate execution boundary and explain which cache is being refreshed. Give a concrete failure example.",
+  "level": "intermediate",
+  "tags": [],
+  "sequence": 25
+}

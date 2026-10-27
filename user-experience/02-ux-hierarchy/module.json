@@ -1,0 +1,101 @@
+{
+  "id": "ux-hierarchy",
+  "track": "ux",
+  "title": "Perception, grouping, and information hierarchy",
+  "level": "beginner",
+  "outcome": "Use proximity, similarity, alignment, and contrast to make the page’s structure understandable.",
+  "useCase": "Dense dashboards and responsive ticket pages.",
+  "benefits": "Reduces search effort without removing needed information.",
+  "drawbacks": "Grouping can mislead if it implies a relationship the behavior does not honor.",
+  "tags": [
+    "ux",
+    "perception",
+    "layout"
+  ],
+  "hours": 2,
+  "number": 2,
+  "version": "Web UX · WCAG 2.2 · principles, not magic formulas",
+  "book": "",
+  "cue": "Group by meaning. Emphasize by task.",
+  "prerequisite": "ux-task-model",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Primary question\"]\n N1[\"Related groups\"]\n N2[\"Clear hierarchy\"]\n N3[\"Semantic reading order\"]\n N4[\"Scan and keyboard check\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Primary question\"]\n N1[\"Related groups\"]\n N2[\"Clear hierarchy\"]\n N3[\"Semantic reading order\"]\n N4[\"Scan and keyboard check\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Primary question",
+      "detail": "People scan before they read closely. Visual grouping suggests relationships. Nearby controls look related. Similar styling suggests similar purpose. A border around a group can imply a shared context. These are useful perceptual tendencies, not rules that override every task."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Ask a person to point to the current queue, the selected ticket, the primary next action, and unsaved state. Do they infer the intended relationships without a tutorial?\n\nThen remove color from the sketch and test reading order by keyboard. Grouping should still be understandable. A decorative divider is not a replacement for a meaningful heading."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Large gaps inside a field and small gaps between unrelated fields can imply the wrong grouping. A floating global action can look as if it applies only to the nearest item."
+    }
+  ],
+  "sources": [
+    {
+      "title": "WAI page structure",
+      "url": "https://www.w3.org/WAI/tutorials/page-structure/"
+    },
+    {
+      "title": "NNG visual hierarchy",
+      "url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Use proximity, similarity, alignment, and contrast to make the page’s structure understandable. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 2
+}

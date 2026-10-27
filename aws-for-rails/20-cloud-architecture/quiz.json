@@ -1,0 +1,219 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Must every Rails app run both ECS and EKS?",
+    "options": [
+      "Only with S3",
+      "No, they can be alternative operating models",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should each journey identify?",
+    "options": [
+      "Only product logos",
+      "Only the happy-path HTTP status",
+      "Its durable success boundary and recovery path"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should justify a new infrastructure tool?",
+    "options": [
+      "A concrete requirement and operating capacity",
+      "Its popularity alone",
+      "A larger architecture diagram"
+    ]
+  },
+  {
+    "id": "review-cloud-identity",
+    "prompt": "AWS identity: accounts, roles, and the caller you actually are: What does a role trust policy answer?",
+    "options": [
+      "Who may assume the role",
+      "Which CSS theme is active",
+      "Which SQL query is fastest"
+    ],
+    "covers": "cloud-identity"
+  },
+  {
+    "id": "review-cloud-networking",
+    "prompt": "VPC networking: follow the packet: A subnet belongs to how many Availability Zones?",
+    "options": [
+      "All regions",
+      "Every zone in a region",
+      "One"
+    ],
+    "covers": "cloud-networking"
+  },
+  {
+    "id": "review-cloud-ec2",
+    "prompt": "EC2 and EBS: when you own the machine: What responsibility remains with EC2 users?",
+    "options": [
+      "Only HTML styling",
+      "None",
+      "OS/application operation choices"
+    ],
+    "covers": "cloud-ec2"
+  },
+  {
+    "id": "review-cloud-load-balancing",
+    "prompt": "Application Load Balancer: traffic is a separate layer: What decides which app targets receive traffic?",
+    "options": [
+      "The database primary key",
+      "The Docker image name only",
+      "Target health and routing rules"
+    ],
+    "covers": "cloud-load-balancing"
+  },
+  {
+    "id": "review-cloud-dns-tls",
+    "prompt": "Route 53 and ACM: names and trust before the request: Does DNS normally proxy each HTTP request?",
+    "options": [
+      "No",
+      "Only with an alias",
+      "Yes"
+    ],
+    "covers": "cloud-dns-tls"
+  },
+  {
+    "id": "review-cloud-s3",
+    "prompt": "S3 for Rails attachments: private objects and signed access: A presigned URL is inherently single-use?",
+    "options": [
+      "Only with GET",
+      "Yes",
+      "No"
+    ],
+    "covers": "cloud-s3"
+  },
+  {
+    "id": "review-cloud-cloudfront",
+    "prompt": "CloudFront: fast delivery without mixing private users: What defines which requests can share a cached response?",
+    "options": [
+      "The cache key/policy",
+      "The Rails class name",
+      "Only the origin URL name"
+    ],
+    "covers": "cloud-cloudfront"
+  },
+  {
+    "id": "review-cloud-rds",
+    "prompt": "RDS PostgreSQL: managed database, owned data model: Does RDS design your indexes?",
+    "options": [
+      "Only for Rails",
+      "No",
+      "Yes"
+    ],
+    "covers": "cloud-rds"
+  },
+  {
+    "id": "review-cloud-elasticache",
+    "prompt": "ElastiCache: choose managed cache and queue roles deliberately: Are cache entries and queued work equally disposable?",
+    "options": [
+      "No",
+      "Only when both use strings",
+      "Always"
+    ],
+    "covers": "cloud-elasticache"
+  },
+  {
+    "id": "review-cloud-sqs",
+    "prompt": "SQS: work delivery, visibility, and deletion: Receiving an SQS message immediately deletes it?",
+    "options": [
+      "No",
+      "Only with long polling",
+      "Yes"
+    ],
+    "covers": "cloud-sqs"
+  },
+  {
+    "id": "review-cloud-sns",
+    "prompt": "SNS: fan out one fact to independent subscribers: What is fan-out?",
+    "options": [
+      "Independent subscribers receive the fact",
+      "A database join",
+      "Workers always divide one copy"
+    ],
+    "covers": "cloud-sns"
+  },
+  {
+    "id": "review-cloud-eventbridge",
+    "prompt": "EventBridge: route integration events by meaning: Does one successful batch HTTP call prove every entry succeeded?",
+    "options": [
+      "No",
+      "Only with a rule",
+      "Yes"
+    ],
+    "covers": "cloud-eventbridge"
+  },
+  {
+    "id": "review-cloud-lambda",
+    "prompt": "Lambda event functions: small work with explicit retry boundaries: Does each trigger have identical retry behavior?",
+    "options": [
+      "Yes",
+      "No",
+      "Only in Ruby"
+    ],
+    "covers": "cloud-lambda"
+  },
+  {
+    "id": "review-cloud-ecr",
+    "prompt": "ECR: publish an artifact you can identify and replace: Which is content identity?",
+    "options": [
+      "A mutable latest tag",
+      "A branch nickname",
+      "Image digest"
+    ],
+    "covers": "cloud-ecr"
+  },
+  {
+    "id": "review-cloud-ecs",
+    "prompt": "ECS with Fargate: web and workers as separate services: What maintains a desired long-running task count?",
+    "options": [
+      "A SQL migration",
+      "Only an image tag",
+      "An ECS service"
+    ],
+    "covers": "cloud-ecs"
+  },
+  {
+    "id": "review-cloud-eks",
+    "prompt": "EKS: Kubernetes control plane does not operate your application: Does a healthy EKS cluster prove Rails is ready?",
+    "options": [
+      "Only with two nodes",
+      "Yes",
+      "No"
+    ],
+    "covers": "cloud-eks"
+  },
+  {
+    "id": "review-cloud-msk",
+    "prompt": "MSK: managed Kafka still needs event design: Does managed Kafka solve the DB/publish dual-write gap?",
+    "options": [
+      "Yes",
+      "Only in AWS",
+      "No"
+    ],
+    "covers": "cloud-msk"
+  },
+  {
+    "id": "review-cloud-cloudwatch",
+    "prompt": "CloudWatch: logs, metrics, alarms, and a useful runbook: Which signal summarizes trends?",
+    "options": [
+      "A secret file",
+      "Only a single stack trace",
+      "Metrics"
+    ],
+    "covers": "cloud-cloudwatch"
+  },
+  {
+    "id": "review-cloud-secrets-kms",
+    "prompt": "Secrets Manager and KMS: credentials and encryption keys are different: Is a database password the same thing as a KMS key?",
+    "options": [
+      "Yes",
+      "No",
+      "Only in Rails"
+    ],
+    "covers": "cloud-secrets-kms"
+  }
+]

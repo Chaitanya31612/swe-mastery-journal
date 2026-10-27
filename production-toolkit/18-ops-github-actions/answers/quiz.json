@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Testing evidence must connect to deployed bytes."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Untrusted code and privileged credentials must be separated."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Environment wiring and runtime behavior need checks."
+  }
+}

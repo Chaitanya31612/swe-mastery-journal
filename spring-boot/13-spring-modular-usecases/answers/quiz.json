@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Multiple callers must preserve the same core rule."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "A seam should address an actual boundary or coupling."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Distribution creates work as well as options."
+  }
+}

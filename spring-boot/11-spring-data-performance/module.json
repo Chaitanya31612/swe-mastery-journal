@@ -1,0 +1,101 @@
+{
+  "id": "spring-data-performance",
+  "track": "spring",
+  "title": "SQL plans, connection pools, and transaction size",
+  "level": "intermediate",
+  "outcome": "Investigate a slow service without assuming more threads or caching is the first fix.",
+  "useCase": "Slow list endpoints and connection exhaustion incidents.",
+  "benefits": "Repairs the bottleneck rather than hiding it.",
+  "drawbacks": "Representative measurement and safe database change plans take effort.",
+  "tags": [
+    "spring",
+    "sql",
+    "performance"
+  ],
+  "hours": 2,
+  "number": 11,
+  "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+  "book": "",
+  "cue": "Find the wait before adding capacity.",
+  "prerequisite": "spring-api-contracts",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Request queue\"]\n N1[\"Connection pool\"]\n N2[\"SQL and locks\"]\n N3[\"Short transaction\"]\n N4[\"Measured response\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Request queue\"]\n N1[\"Connection pool\"]\n N2[\"SQL and locks\"]\n N3[\"Short transaction\"]\n N4[\"Measured response\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Request queue",
+      "detail": "A request can wait for a connection, a row lock, a slow query, or an external service. Low CPU does not prove spare useful capacity. Trace waiting time separately from execution time."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Trace request arrival → pool wait → SQL/lock wait → row fetch → DTO mapping → response. Measure each boundary before changing a limit.\n\nFor a transaction that calls a slow provider between writes, show how many requests can hold connections while waiting. Move delivery intent into an outbox when a later external effect is acceptable."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A larger pool can overload the database. SQL logs can expose values. A query that is fast on 10 rows may use a different plan on a million."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Spring JDBC transactions",
+      "url": "https://docs.spring.io/spring-framework/reference/data-access/transaction.html"
+    },
+    {
+      "title": "PostgreSQL EXPLAIN",
+      "url": "https://www.postgresql.org/docs/current/using-explain.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Investigate a slow service without assuming more threads or caching is the first fix. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 11
+}

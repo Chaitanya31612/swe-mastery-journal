@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "It is a DOM update timing tool, not a general async barrier."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Pure derivation keeps dependencies predictable."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Use a linked ref/getter for ongoing tracking."
+  }
+}

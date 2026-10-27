@@ -1,0 +1,100 @@
+{
+  "id": "ops-cron",
+  "track": "ops",
+  "title": "cron and scheduled work: a trigger is not a transaction",
+  "level": "beginner",
+  "outcome": "Read a schedule and design missed-run, overlap, timezone, and deduplication behavior.",
+  "useCase": "Reports, reminders, and periodic repair/reconciliation.",
+  "benefits": "Simple calendar triggering.",
+  "drawbacks": "Overlap, downtime, environment, and business success remain separate.",
+  "tags": [
+    "cron",
+    "scheduling"
+  ],
+  "hours": 2,
+  "number": 15,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Schedule the trigger. Persist the run. Observe completion.",
+  "prerequisite": "ops-sendgrid",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Calendar and timezone\"]\n N1[\"Known process environment\"]\n N2[\"Unique run claim\"]\n N3[\"Bounded work\"]\n N4[\"Missed-run recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Calendar and timezone\"]\n N1[\"Known process environment\"]\n N2[\"Unique run claim\"]\n N3[\"Bounded work\"]\n N4[\"Missed-run recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Calendar and timezone",
+      "detail": "cron evaluates calendar schedules and starts commands in its environment. It does not ensure the previous run finished, that the command succeeded, or that a missed business period is repaired. Environment variables, working directory, shell, and timezone can differ from your interactive terminal."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Calendar tick → process environment → command → unique business run → durable work → completion/failure. On restart after a day of downtime, decide whether the app enumerates missing periods or intentionally skips them.\n\nTest overlap, duplicate scheduler instances, failed exit, and late starts. A log saying command started is not proof a report completed."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Two replicas can run the same schedule. A local file lock does not necessarily coordinate separate hosts. DST can make a local scheduled time absent or repeated."
+    }
+  ],
+  "sources": [
+    {
+      "title": "POSIX crontab",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html"
+    },
+    {
+      "title": "Kubernetes CronJobs",
+      "url": "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Read a schedule and design missed-run, overlap, timezone, and deduplication behavior. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 8
+}

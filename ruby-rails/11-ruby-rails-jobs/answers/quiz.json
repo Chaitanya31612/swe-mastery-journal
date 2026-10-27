@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "Jobs cross a time/process boundary. Simple serialized arguments and deliberate reload behavior make that boundary clearer."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Acceptance may have happened before the response was lost."
+  }
+}

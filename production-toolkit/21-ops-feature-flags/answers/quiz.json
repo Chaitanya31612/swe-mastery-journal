@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "It controls behavior selection, not arbitrary historical writes."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Lifecycle prevents permanent accidental complexity."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Client state is not authority."
+  }
+}

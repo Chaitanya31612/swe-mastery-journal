@@ -1,0 +1,593 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "2026-10-21-intermediate",
+  "title": "Software Learnings",
+  "tracks": [
+    {
+      "id": "spring",
+      "title": "Java · Spring Boot",
+      "description": "Follow one request from startup to SQL, then test failures. Java knowledge is enough to start.",
+      "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+      "hours": 36
+    },
+    {
+      "id": "ruby",
+      "title": "Ruby · Rails at work",
+      "description": "Understand Ruby first. Then trace requests, queries, transactions, and jobs in a legacy Rails stack.",
+      "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+      "hours": 48
+    },
+    {
+      "id": "git",
+      "title": "Git · Change with confidence",
+      "description": "See what each command changes. Practice recovery in a disposable repository.",
+      "version": "Modern Git; check git --version for command availability",
+      "hours": 20
+    },
+    {
+      "id": "frontend",
+      "title": "Frontend · JavaScript & Vue 3",
+      "description": "Build JavaScript and CSS foundations. Follow Vue 3 state, requests, forms, rendering, and tests. React and Next.js remain comparison chapters.",
+      "version": "JavaScript and TypeScript · CSS · Vue 3.5 · Vue 2 compatibility notes",
+      "hours": 62
+    },
+    {
+      "id": "ux",
+      "title": "UX · Design for understanding",
+      "description": "Reason from tasks, perception, access, and evidence. Improve a support workflow one decision at a time.",
+      "version": "Web UX · WCAG 2.2 · principles, not magic formulas",
+      "hours": 18
+    },
+    {
+      "id": "cloud",
+      "title": "AWS · Run a Rails application",
+      "description": "Follow a request, file, job, and secret through AWS. Set up small examples and understand their cost and failure paths.",
+      "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+      "hours": 40
+    },
+    {
+      "id": "ops",
+      "title": "Production toolkit · Build and operate",
+      "description": "Docker, Kubernetes, Redis, observability, delivery, and useful integrations. Learn what each tool adds and what you must still own.",
+      "version": "Pinned local examples · version-labelled configuration fragments",
+      "hours": 44
+    },
+    {
+      "id": "events",
+      "title": "Event-driven systems · Kafka & Rails",
+      "description": "Build a mental model of the log, then follow an outbox event through a real multi-file Rails/Kafka lab.",
+      "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+      "hours": 24
+    }
+  ],
+  "modules": [
+    {
+      "id": "spring-startup",
+      "directory": "spring-boot/01-spring-startup"
+    },
+    {
+      "id": "spring-dependencies",
+      "directory": "spring-boot/02-spring-dependencies"
+    },
+    {
+      "id": "spring-http",
+      "directory": "spring-boot/03-spring-http"
+    },
+    {
+      "id": "spring-security",
+      "directory": "spring-boot/06-spring-security"
+    },
+    {
+      "id": "spring-persistence",
+      "directory": "spring-boot/04-spring-persistence"
+    },
+    {
+      "id": "spring-transactions",
+      "directory": "spring-boot/05-spring-transactions"
+    },
+    {
+      "id": "spring-tests",
+      "directory": "spring-boot/07-spring-tests"
+    },
+    {
+      "id": "spring-operate",
+      "directory": "spring-boot/08-spring-operate"
+    },
+    {
+      "id": "spring-configuration",
+      "directory": "spring-boot/09-spring-configuration"
+    },
+    {
+      "id": "spring-api-contracts",
+      "directory": "spring-boot/10-spring-api-contracts"
+    },
+    {
+      "id": "spring-data-performance",
+      "directory": "spring-boot/11-spring-data-performance"
+    },
+    {
+      "id": "spring-integration-resilience",
+      "directory": "spring-boot/12-spring-integration-resilience"
+    },
+    {
+      "id": "spring-modular-usecases",
+      "directory": "spring-boot/13-spring-modular-usecases"
+    },
+    {
+      "id": "spring-release-testing",
+      "directory": "spring-boot/14-spring-release-testing"
+    },
+    {
+      "id": "ruby-values",
+      "directory": "ruby-rails/01-ruby-values"
+    },
+    {
+      "id": "ruby-blocks",
+      "directory": "ruby-rails/02-ruby-blocks"
+    },
+    {
+      "id": "ruby-objects",
+      "directory": "ruby-rails/03-ruby-objects"
+    },
+    {
+      "id": "ruby-arguments",
+      "directory": "ruby-rails/04-ruby-arguments"
+    },
+    {
+      "id": "ruby-boundaries",
+      "directory": "ruby-rails/06-ruby-boundaries"
+    },
+    {
+      "id": "ruby-rails-request",
+      "directory": "ruby-rails/07-ruby-rails-request"
+    },
+    {
+      "id": "ruby-rails-queries",
+      "directory": "ruby-rails/08-ruby-rails-queries"
+    },
+    {
+      "id": "ruby-rails-schema",
+      "directory": "ruby-rails/09-ruby-rails-schema"
+    },
+    {
+      "id": "ruby-metaprogramming",
+      "directory": "ruby-rails/05-ruby-metaprogramming"
+    },
+    {
+      "id": "ruby-rails-transactions",
+      "directory": "ruby-rails/10-ruby-rails-transactions"
+    },
+    {
+      "id": "ruby-rails-jobs",
+      "directory": "ruby-rails/11-ruby-rails-jobs"
+    },
+    {
+      "id": "ruby-rails-testing",
+      "directory": "ruby-rails/12-ruby-rails-testing"
+    },
+    {
+      "id": "ruby-service-contracts",
+      "directory": "ruby-rails/13-ruby-service-contracts"
+    },
+    {
+      "id": "ruby-tenant-boundaries",
+      "directory": "ruby-rails/14-ruby-tenant-boundaries"
+    },
+    {
+      "id": "ruby-query-plans",
+      "directory": "ruby-rails/15-ruby-query-plans"
+    },
+    {
+      "id": "ruby-time-jobs",
+      "directory": "ruby-rails/16-ruby-time-jobs"
+    },
+    {
+      "id": "ruby-callback-refactor",
+      "directory": "ruby-rails/17-ruby-callback-refactor"
+    },
+    {
+      "id": "ruby-compatibility-tests",
+      "directory": "ruby-rails/18-ruby-compatibility-tests"
+    },
+    {
+      "id": "git-snapshots",
+      "directory": "GIT/course/01-git-snapshots"
+    },
+    {
+      "id": "git-staging",
+      "directory": "GIT/course/02-git-staging"
+    },
+    {
+      "id": "git-history",
+      "directory": "GIT/course/03-git-history"
+    },
+    {
+      "id": "git-recovery",
+      "directory": "GIT/course/04-git-recovery"
+    },
+    {
+      "id": "git-collaboration",
+      "directory": "GIT/course/05-git-collaboration"
+    },
+    {
+      "id": "git-investigation",
+      "directory": "GIT/course/06-git-investigation"
+    },
+    {
+      "id": "git-surgery",
+      "directory": "GIT/course/07-git-surgery"
+    },
+    {
+      "id": "git-conflict-lab",
+      "directory": "GIT/course/08-git-conflict-lab"
+    },
+    {
+      "id": "git-investigation-practice",
+      "directory": "GIT/course/09-git-investigation-practice"
+    },
+    {
+      "id": "git-team-release",
+      "directory": "GIT/course/10-git-team-release"
+    },
+    {
+      "id": "frontend-browser",
+      "directory": "frontend-mastery/course/01-frontend-browser"
+    },
+    {
+      "id": "frontend-data-contracts",
+      "directory": "frontend-mastery/course/09-frontend-data-contracts"
+    },
+    {
+      "id": "frontend-functions-objects",
+      "directory": "frontend-mastery/course/23-frontend-functions-objects"
+    },
+    {
+      "id": "frontend-runtime",
+      "directory": "frontend-mastery/course/02-frontend-runtime"
+    },
+    {
+      "id": "frontend-typescript",
+      "directory": "frontend-mastery/course/11-frontend-typescript"
+    },
+    {
+      "id": "frontend-css-layout",
+      "directory": "frontend-mastery/course/24-frontend-css-layout"
+    },
+    {
+      "id": "frontend-state",
+      "directory": "frontend-mastery/course/03-frontend-state"
+    },
+    {
+      "id": "frontend-vue-components",
+      "directory": "frontend-mastery/course/14-frontend-vue-components"
+    },
+    {
+      "id": "frontend-vue",
+      "directory": "frontend-mastery/course/05-frontend-vue"
+    },
+    {
+      "id": "frontend-experience",
+      "directory": "frontend-mastery/course/07-frontend-experience"
+    },
+    {
+      "id": "frontend-async-coordination",
+      "directory": "frontend-mastery/course/10-frontend-async-coordination"
+    },
+    {
+      "id": "frontend-web-platform",
+      "directory": "frontend-mastery/course/12-frontend-web-platform"
+    },
+    {
+      "id": "frontend-css-systems",
+      "directory": "frontend-mastery/course/25-frontend-css-systems"
+    },
+    {
+      "id": "frontend-dom-lifecycle",
+      "directory": "frontend-mastery/course/26-frontend-dom-lifecycle"
+    },
+    {
+      "id": "frontend-vue-reactivity",
+      "directory": "frontend-mastery/course/13-frontend-vue-reactivity"
+    },
+    {
+      "id": "frontend-vue-composables",
+      "directory": "frontend-mastery/course/15-frontend-vue-composables"
+    },
+    {
+      "id": "frontend-vue-async",
+      "directory": "frontend-mastery/course/16-frontend-vue-async"
+    },
+    {
+      "id": "frontend-vue-routing-store",
+      "directory": "frontend-mastery/course/17-frontend-vue-routing-store"
+    },
+    {
+      "id": "frontend-vue-forms",
+      "directory": "frontend-mastery/course/18-frontend-vue-forms"
+    },
+    {
+      "id": "frontend-rendering-budget",
+      "directory": "frontend-mastery/course/27-frontend-rendering-budget"
+    },
+    {
+      "id": "frontend-vue-performance",
+      "directory": "frontend-mastery/course/19-frontend-vue-performance"
+    },
+    {
+      "id": "frontend-vue-testing",
+      "directory": "frontend-mastery/course/20-frontend-vue-testing"
+    },
+    {
+      "id": "frontend-browser-security",
+      "directory": "frontend-mastery/course/21-frontend-browser-security"
+    },
+    {
+      "id": "frontend-react",
+      "directory": "frontend-mastery/course/04-frontend-react"
+    },
+    {
+      "id": "frontend-next",
+      "directory": "frontend-mastery/course/06-frontend-next"
+    },
+    {
+      "id": "frontend-capstone",
+      "directory": "frontend-mastery/course/08-frontend-capstone"
+    },
+    {
+      "id": "frontend-delivery-capstone",
+      "directory": "frontend-mastery/course/22-frontend-delivery-capstone"
+    },
+    {
+      "id": "ux-task-model",
+      "directory": "user-experience/01-ux-task-model"
+    },
+    {
+      "id": "ux-hierarchy",
+      "directory": "user-experience/02-ux-hierarchy"
+    },
+    {
+      "id": "ux-choices",
+      "directory": "user-experience/03-ux-choices"
+    },
+    {
+      "id": "ux-targets",
+      "directory": "user-experience/04-ux-targets"
+    },
+    {
+      "id": "ux-inclusive-access",
+      "directory": "user-experience/07-ux-inclusive-access"
+    },
+    {
+      "id": "ux-feedback",
+      "directory": "user-experience/05-ux-feedback"
+    },
+    {
+      "id": "ux-forms-content",
+      "directory": "user-experience/06-ux-forms-content"
+    },
+    {
+      "id": "ux-research",
+      "directory": "user-experience/08-ux-research"
+    },
+    {
+      "id": "ux-review-capstone",
+      "directory": "user-experience/09-ux-review-capstone"
+    },
+    {
+      "id": "cloud-identity",
+      "directory": "aws-for-rails/01-cloud-identity"
+    },
+    {
+      "id": "cloud-networking",
+      "directory": "aws-for-rails/02-cloud-networking"
+    },
+    {
+      "id": "cloud-ec2",
+      "directory": "aws-for-rails/03-cloud-ec2"
+    },
+    {
+      "id": "cloud-load-balancing",
+      "directory": "aws-for-rails/04-cloud-load-balancing"
+    },
+    {
+      "id": "cloud-dns-tls",
+      "directory": "aws-for-rails/05-cloud-dns-tls"
+    },
+    {
+      "id": "cloud-sns",
+      "directory": "aws-for-rails/11-cloud-sns"
+    },
+    {
+      "id": "cloud-lambda",
+      "directory": "aws-for-rails/13-cloud-lambda"
+    },
+    {
+      "id": "cloud-ecr",
+      "directory": "aws-for-rails/14-cloud-ecr"
+    },
+    {
+      "id": "cloud-cloudwatch",
+      "directory": "aws-for-rails/18-cloud-cloudwatch"
+    },
+    {
+      "id": "cloud-s3",
+      "directory": "aws-for-rails/06-cloud-s3"
+    },
+    {
+      "id": "cloud-cloudfront",
+      "directory": "aws-for-rails/07-cloud-cloudfront"
+    },
+    {
+      "id": "cloud-rds",
+      "directory": "aws-for-rails/08-cloud-rds"
+    },
+    {
+      "id": "cloud-elasticache",
+      "directory": "aws-for-rails/09-cloud-elasticache"
+    },
+    {
+      "id": "cloud-sqs",
+      "directory": "aws-for-rails/10-cloud-sqs"
+    },
+    {
+      "id": "cloud-eventbridge",
+      "directory": "aws-for-rails/12-cloud-eventbridge"
+    },
+    {
+      "id": "cloud-ecs",
+      "directory": "aws-for-rails/15-cloud-ecs"
+    },
+    {
+      "id": "cloud-eks",
+      "directory": "aws-for-rails/16-cloud-eks"
+    },
+    {
+      "id": "cloud-msk",
+      "directory": "aws-for-rails/17-cloud-msk"
+    },
+    {
+      "id": "cloud-secrets-kms",
+      "directory": "aws-for-rails/19-cloud-secrets-kms"
+    },
+    {
+      "id": "cloud-architecture",
+      "directory": "aws-for-rails/20-cloud-architecture"
+    },
+    {
+      "id": "ops-docker-model",
+      "directory": "production-toolkit/01-ops-docker-model"
+    },
+    {
+      "id": "ops-compose",
+      "directory": "production-toolkit/03-ops-compose"
+    },
+    {
+      "id": "ops-kubernetes-model",
+      "directory": "production-toolkit/04-ops-kubernetes-model"
+    },
+    {
+      "id": "ops-redis-types",
+      "directory": "production-toolkit/07-ops-redis-types"
+    },
+    {
+      "id": "ops-datadog",
+      "directory": "production-toolkit/10-ops-datadog"
+    },
+    {
+      "id": "ops-opentelemetry",
+      "directory": "production-toolkit/11-ops-opentelemetry"
+    },
+    {
+      "id": "ops-sendgrid",
+      "directory": "production-toolkit/14-ops-sendgrid"
+    },
+    {
+      "id": "ops-cron",
+      "directory": "production-toolkit/15-ops-cron"
+    },
+    {
+      "id": "ops-pendo",
+      "directory": "production-toolkit/16-ops-pendo"
+    },
+    {
+      "id": "ops-metrics-stack",
+      "directory": "production-toolkit/20-ops-metrics-stack"
+    },
+    {
+      "id": "ops-docker-build",
+      "directory": "production-toolkit/02-ops-docker-build"
+    },
+    {
+      "id": "ops-kubernetes-network",
+      "directory": "production-toolkit/05-ops-kubernetes-network"
+    },
+    {
+      "id": "ops-kubernetes-release",
+      "directory": "production-toolkit/06-ops-kubernetes-release"
+    },
+    {
+      "id": "ops-redis-cache",
+      "directory": "production-toolkit/08-ops-redis-cache"
+    },
+    {
+      "id": "ops-redis-correctness",
+      "directory": "production-toolkit/09-ops-redis-correctness"
+    },
+    {
+      "id": "ops-debezium",
+      "directory": "production-toolkit/12-ops-debezium"
+    },
+    {
+      "id": "ops-cassandra",
+      "directory": "production-toolkit/13-ops-cassandra"
+    },
+    {
+      "id": "ops-terraform",
+      "directory": "production-toolkit/17-ops-terraform"
+    },
+    {
+      "id": "ops-github-actions",
+      "directory": "production-toolkit/18-ops-github-actions"
+    },
+    {
+      "id": "ops-proxy-pools",
+      "directory": "production-toolkit/19-ops-proxy-pools"
+    },
+    {
+      "id": "ops-feature-flags",
+      "directory": "production-toolkit/21-ops-feature-flags"
+    },
+    {
+      "id": "ops-toolkit-capstone",
+      "directory": "production-toolkit/22-ops-toolkit-capstone"
+    },
+    {
+      "id": "events-logs-queues",
+      "directory": "event-driven-systems/01-events-logs-queues"
+    },
+    {
+      "id": "events-partitions",
+      "directory": "event-driven-systems/02-events-partitions"
+    },
+    {
+      "id": "events-layers",
+      "directory": "event-driven-systems/03-events-layers"
+    },
+    {
+      "id": "events-producer",
+      "directory": "event-driven-systems/04-events-producer"
+    },
+    {
+      "id": "events-consumers",
+      "directory": "event-driven-systems/05-events-consumers"
+    },
+    {
+      "id": "events-schemas",
+      "directory": "event-driven-systems/06-events-schemas"
+    },
+    {
+      "id": "events-outbox",
+      "directory": "event-driven-systems/07-events-outbox"
+    },
+    {
+      "id": "events-inbox",
+      "directory": "event-driven-systems/08-events-inbox"
+    },
+    {
+      "id": "events-retries",
+      "directory": "event-driven-systems/09-events-retries"
+    },
+    {
+      "id": "events-operations",
+      "directory": "event-driven-systems/10-events-operations"
+    },
+    {
+      "id": "events-rails-lab",
+      "directory": "event-driven-systems/11-events-rails-lab"
+    },
+    {
+      "id": "events-replay-capstone",
+      "directory": "event-driven-systems/12-events-replay-capstone"
+    }
+  ]
+}

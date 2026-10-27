@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does removing conflict markers prove?",
+    "options": [
+      "Only that the markers are gone",
+      "All dependencies match",
+      "The intended behavior is preserved"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Why inspect base and both sides?",
+    "options": [
+      "To avoid all tests",
+      "To choose the newest timestamp automatically",
+      "To recover each change’s intent"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Can a clean merge be semantically wrong?",
+    "options": [
+      "Only with binaries",
+      "No",
+      "Yes"
+    ]
+  }
+]

@@ -1,0 +1,100 @@
+{
+  "id": "events-producer",
+  "track": "events",
+  "title": "Producers: acknowledgements, idempotence, and duplicate business events",
+  "level": "beginner",
+  "outcome": "Distinguish client retry deduplication from repeated application publication.",
+  "useCase": "Reliable publication of saved Rails events.",
+  "benefits": "Clear publication evidence and stable retry identity.",
+  "drawbacks": "The DB/Kafka publication gap still permits repeats.",
+  "tags": [
+    "kafka",
+    "producer"
+  ],
+  "hours": 2,
+  "number": 4,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Buffer accepted ≠ broker acknowledged ≠ business completed.",
+  "prerequisite": "events-layers",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Stable event ID\"]\n N1[\"Client buffer\"]\n N2[\"Broker append and replicas\"]\n N3[\"Delivery result\"]\n N4[\"Outbox publication mark\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Stable event ID\"]\n N1[\"Client buffer\"]\n N2[\"Broker append and replicas\"]\n N3[\"Delivery result\"]\n N4[\"Outbox publication mark\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Stable event ID",
+      "detail": "A producer serializes a record and asks a partition leader to append it. Its delivery handle/future reports the result under the client configuration. Enqueueing into a client buffer is not the same as an acknowledged broker append."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Saved event E → client buffer → batch send → broker acknowledgement → mark outbox published. Crash after acknowledgement but before the DB mark means E may be published again.\n\nThe producer’s protocol identity does not make the DB mark and Kafka append one transaction. The consumer inbox is still needed for this gap."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Fire-and-forget publication can lose errors. Producer idempotence is often overclaimed as exactly-once business processing. App-level resends remain a distinct duplicate source."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kafka producer config",
+      "url": "https://kafka.apache.org/41/configuration/producer-configs/"
+    },
+    {
+      "title": "Ruby rdkafka client",
+      "url": "https://github.com/karafka/rdkafka-ruby"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Distinguish client retry deduplication from repeated application publication. Explain one example and one failure.",
+  "lab": "rails-kafka",
+  "sequence": 4
+}

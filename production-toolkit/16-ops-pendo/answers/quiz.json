@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "The action may still fail later."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Collect only data needed for the question."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Collection can be missing, duplicated, or manipulated."
+  }
+}

@@ -1,0 +1,2 @@
+class ReportingProjection < ApplicationRecord
+end

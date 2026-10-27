@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which test best catches a stale-response race?",
+    "options": [
+      "A controlled test resolving B before A",
+      "A screenshot of initial loading",
+      "A test of a CSS class name"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "A fixed sleep proves the correct async condition occurred?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

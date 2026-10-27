@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What should remain visible after typing?",
+    "options": [
+      "Only a placeholder",
+      "Only an icon",
+      "The field label"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "No matches and load failed should share which message?",
+    "options": [
+      "Different messages and recovery actions",
+      "A success toast",
+      "An identical No data message"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is a good action label?",
+    "options": [
+      "One that predicts the concrete outcome",
+      "Always Submit",
+      "An internal method name"
+    ]
+  }
+]

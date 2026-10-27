@@ -1,0 +1,97 @@
+{
+  "id": "cloud-eks",
+  "track": "cloud",
+  "title": "EKS: Kubernetes control plane does not operate your application",
+  "level": "intermediate",
+  "outcome": "Choose EKS for a concrete Kubernetes need and map AWS responsibility versus cluster/workload responsibility.",
+  "useCase": "Teams with a justified Kubernetes platform need.",
+  "benefits": "Managed Kubernetes integration and ecosystem access.",
+  "drawbacks": "Workload/platform lifecycle remains substantial.",
+  "tags": [
+    "aws",
+    "eks",
+    "kubernetes"
+  ],
+  "hours": 2,
+  "number": 16,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Managed control plane. Deliberately operated workload.",
+  "prerequisite": "cloud-ecs",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"EKS responsibility map\"]\n N1[\"Kubernetes desired state\"]\n N2[\"Pod identity and network\"]\n N3[\"Readiness and ingress\"]\n N4[\"Observed app behavior\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"EKS responsibility map\"]\n N1[\"Kubernetes desired state\"]\n N2[\"Pod identity and network\"]\n N3[\"Readiness and ingress\"]\n N4[\"Observed app behavior\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "EKS responsibility map",
+      "detail": "EKS supplies managed Kubernetes offerings. You still need to understand the selected mode’s responsibilities: workload configuration, identity, networking, storage, admission/access, observability, upgrades, and application recovery."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Manifest desired state → API admission → controller reconciliation → scheduler/capacity → pod process → readiness → service traffic. Then trace a pod reschedule and a rollout with the DB unchanged.\n\nMap every secret, network permission, and persistent data store to its owner. A healthy control plane does not prove your app is healthy."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Running a DB in a StatefulSet does not create a complete backup/HA plan. A broad node role can accidentally become every pod’s effective access. More platform components can increase incident surface."
+    }
+  ],
+  "sources": [
+    {
+      "title": "EKS overview",
+      "url": "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose EKS for a concrete Kubernetes need and map AWS responsibility versus cluster/workload responsibility. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 17
+}

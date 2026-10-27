@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Trust and action permissions are separate."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Alerts notify; they do not universally stop spending."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Temporary workload identity avoids embedded long-lived keys."
+  }
+}

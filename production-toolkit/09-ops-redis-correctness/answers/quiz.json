@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "It primarily reduces round trips."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Pauses can outlast a lease."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Release ownership and downstream stale-write rejection are separate."
+  }
+}

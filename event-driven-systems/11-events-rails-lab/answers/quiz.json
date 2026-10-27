@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "The private project stays read-only."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Business deduplication is independent of record count."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Its topology cannot demonstrate multi-broker survival."
+  }
+}

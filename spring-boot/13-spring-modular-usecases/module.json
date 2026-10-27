@@ -1,0 +1,96 @@
+{
+  "id": "spring-modular-usecases",
+  "track": "spring",
+  "title": "Use-case boundaries and practical modular design",
+  "level": "intermediate",
+  "outcome": "Separate transport, business rules, persistence, and external adapters without creating needless layers.",
+  "useCase": "Features called from controllers, imports, and jobs.",
+  "benefits": "Rules remain reusable and easier to test.",
+  "drawbacks": "Unnecessary abstractions can obscure a simple feature.",
+  "tags": [
+    "spring",
+    "architecture"
+  ],
+  "hours": 2,
+  "number": 13,
+  "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+  "book": "",
+  "cue": "Name the action. Protect the rule. Isolate real boundaries.",
+  "prerequisite": "spring-integration-resilience",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Transport input\"]\n N1[\"Trusted actor\"]\n N2[\"Use-case rule\"]\n N3[\"Persistence or adapter\"]\n N4[\"Observable result\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Transport input\"]\n N1[\"Trusted actor\"]\n N2[\"Use-case rule\"]\n N3[\"Persistence or adapter\"]\n N4[\"Observable result\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Transport input",
+      "detail": "A use case names an action, such as AssignTicket. It receives validated intent and a trusted actor, checks the rule, coordinates persistence, and returns a result. A controller translates HTTP into that action. A scheduled job can call the same use case through a different entry point."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Trace the same assignment from HTTP and a background import. Both must enforce the core transition rule. Then replace only the remote receipt adapter with a fake and test the use-case result.\n\nFor a new requirement, identify which boundary changes. A new HTTP representation need not rewrite the domain rule. A new provider should mostly change an adapter if its semantics fit the existing contract."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A service layer that merely forwards every call without a decision may add noise. Distributed services do not remove shared data/contract problems; they move them across a network."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Spring application architecture",
+      "url": "https://docs.spring.io/spring-boot/reference/using/structuring-your-code.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Separate transport, business rules, persistence, and external adapters without creating needless layers. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 13
+}

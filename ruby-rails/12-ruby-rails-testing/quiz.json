@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What can a fake repository unit test prove?",
+    "options": [
+      "The real database locking behavior",
+      "The service’s decisions under the fake contract",
+      "The production callback order"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Modern Zeitwerk advice describes the Rails 4.2 loader unchanged?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

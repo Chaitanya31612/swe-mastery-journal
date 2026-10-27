@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What maintains a desired long-running task count?",
+    "options": [
+      "A SQL migration",
+      "Only an image tag",
+      "An ECS service"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Fargate removes which concern?",
+    "options": [
+      "Every networking setting",
+      "Much host management, not app responsibility",
+      "All database limits"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Where should migrations usually run?",
+    "options": [
+      "Every request",
+      "A deliberate release/one-off task",
+      "Every new replica without coordination"
+    ]
+  }
+]

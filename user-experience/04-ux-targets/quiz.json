@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What matters for pointing besides visible icon size?",
+    "options": [
+      "Only CSS class names",
+      "Actual hit area and distance",
+      "Only color"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does Fitts’s law require full-screen buttons?",
+    "options": [
+      "Only for primary actions",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Why avoid hover-only actions?",
+    "options": [
+      "They always run slower JavaScript",
+      "Touch and keyboard users may not discover or reach them",
+      "They disable TLS"
+    ]
+  }
+]

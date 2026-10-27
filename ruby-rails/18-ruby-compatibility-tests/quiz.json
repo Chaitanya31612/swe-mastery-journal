@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does an upstream version guide prove fork behavior?",
+    "options": [
+      "Only if the version string matches",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What does a characterization test record?",
+    "options": [
+      "Guaranteed ideal behavior",
+      "Current observed behavior",
+      "All production traffic"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Should modern lab dependencies be installed into the work checkout for practice?",
+    "options": [
+      "Yes",
+      "No, use a separate training environment",
+      "Only without a lockfile"
+    ]
+  }
+]

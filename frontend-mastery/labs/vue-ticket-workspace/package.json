@@ -1,0 +1,1 @@
+{"name":"vue-ticket-training","private":true,"type":"module","scripts":{"dev":"vite --host 127.0.0.1 --port 5174","build":"vite build","test":"vitest run"},"dependencies":{"vue":"3.5.25"},"devDependencies":{"@vitejs/plugin-vue":"6.0.2","vite":"7.3.1","vitest":"4.1.11","@vue/test-utils":"2.4.6","jsdom":"26.1.0","typescript":"5.9.3"}}

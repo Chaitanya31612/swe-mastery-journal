@@ -1,0 +1,101 @@
+{
+  "id": "ops-redis-cache",
+  "track": "ops",
+  "title": "Redis caching: freshness, invalidation, and stampedes",
+  "level": "intermediate",
+  "outcome": "Design cache-aside with scoped keys and bounded rebuild behavior.",
+  "useCase": "Ticket summaries and expensive dashboard reads.",
+  "benefits": "Reduces repeated authority work.",
+  "drawbacks": "Freshness races and fallback pressure can be harder than the lookup itself.",
+  "tags": [
+    "redis",
+    "cache",
+    "correctness"
+  ],
+  "hours": 2,
+  "number": 8,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Cache content. State freshness. Keep permission honest.",
+  "prerequisite": "ops-kubernetes-release",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Scoped key\"]\n N1[\"Hit or miss\"]\n N2[\"Authoritative load\"]\n N3[\"Bounded fill/invalidation\"]\n N4[\"Freshness and recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Scoped key\"]\n N1[\"Hit or miss\"]\n N2[\"Authoritative load\"]\n N3[\"Bounded fill/invalidation\"]\n N4[\"Freshness and recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Scoped key",
+      "detail": "Cache-aside reads a copy if present, otherwise loads from the authority and stores a copy. The hard questions are which values may be stale, for how long, and how a write changes the cached answer."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Read miss → DB load → cache fill. Now interleave a write: A reads old DB, B commits new DB and deletes cache, A fills old value. A simple “delete after write” rule can still have a stale-fill race.\n\nChoose a consistency policy that matches the requirement: tolerate bounded staleness, version entries, use guarded refresh, or read the authority for strict decisions. Test the chosen timeline."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "TTL is not a universal correctness proof. Caching a denied/allowed result without proper context can leak access. Cold-cache fallback can collapse the authority."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Redis eviction",
+      "url": "https://redis.io/docs/latest/develop/reference/eviction/"
+    },
+    {
+      "title": "Rails caching",
+      "url": "https://guides.rubyonrails.org/v4.2/caching_with_rails.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Design cache-aside with scoped keys and bounded rebuild behavior. Explain one example and one failure.",
+  "lab": "redis",
+  "sequence": 14
+}

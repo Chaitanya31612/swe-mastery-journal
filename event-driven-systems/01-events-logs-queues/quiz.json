@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which name expresses a fact?",
+    "options": [
+      "GenerateReport",
+      "TicketCompleted",
+      "SendEmailNow"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What does each Kafka consumer group track?",
+    "options": [
+      "Its own progress",
+      "Only the producer’s RAM",
+      "One global deleted-message flag"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Is Kafka required for every background job?",
+    "options": [
+      "Yes",
+      "No",
+      "Only for Rails"
+    ]
+  }
+]

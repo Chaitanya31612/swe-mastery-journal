@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does a healthy EKS cluster prove Rails is ready?",
+    "options": [
+      "Only with two nodes",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Is Kubernetes mandatory after Docker?",
+    "options": [
+      "Yes",
+      "Only for Ruby",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should pod AWS access use?",
+    "options": [
+      "A universal broad node identity by habit",
+      "A committed access key",
+      "A deliberate supported workload identity"
+    ]
+  }
+]

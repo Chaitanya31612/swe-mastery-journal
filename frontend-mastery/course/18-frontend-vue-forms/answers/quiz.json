@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Data entry is work; failure should not erase it."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "The server must enforce the concurrency contract."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Unconditional synchronization loses edits."
+  }
+}

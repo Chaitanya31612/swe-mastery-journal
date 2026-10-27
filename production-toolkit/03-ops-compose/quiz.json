@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "localhost inside a worker refers to what?",
+    "options": [
+      "Always the host",
+      "The worker container itself",
+      "Every service in Compose"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Startup order proves readiness?",
+    "options": [
+      "Only with YAML",
+      "Always",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What scopes the lab’s resources?",
+    "options": [
+      "The Rails model name",
+      "The current browser title",
+      "A deliberate Compose project name"
+    ]
+  }
+]

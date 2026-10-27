@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "It is ordinary Ruby unless you implement the boundary."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Callers lose the failure meaning."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Request ownership should not leak across calls."
+  }
+}

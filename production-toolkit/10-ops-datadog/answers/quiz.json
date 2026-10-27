@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Application instrumentation and transport must work too."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Bounded identity connects signals to the deployed release."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Sampling and missing instrumentation can hide traces."
+  }
+}

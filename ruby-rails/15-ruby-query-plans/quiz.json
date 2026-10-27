@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What can to_a change?",
+    "options": [
+      "It adds a database index",
+      "It demands records into memory",
+      "It guarantees a snapshot"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Legacy find_each always honors custom business order?",
+    "options": [
+      "Only with a model scope",
+      "No; check its versioned contract",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should index choice follow?",
+    "options": [
+      "The longest column name",
+      "The controller name",
+      "The actual predicate/order and measured plan"
+    ]
+  }
+]

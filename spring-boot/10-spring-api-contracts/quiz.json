@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What protects a command key across instances?",
+    "options": [
+      "A database uniqueness rule",
+      "A private in-memory Set only",
+      "The HTTP method name"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Same key, different request should usually do what?",
+    "options": [
+      "Produce a deliberate conflict",
+      "Silently return an unrelated result",
+      "Create unlimited duplicates"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does a bounded list need?",
+    "options": [
+      "A server cap and deterministic ordering",
+      "Only gzip",
+      "Only a frontend page size"
+    ]
+  }
+]

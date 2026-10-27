@@ -1,0 +1,97 @@
+{
+  "id": "cloud-eventbridge",
+  "track": "cloud",
+  "title": "EventBridge: route integration events by meaning",
+  "level": "intermediate",
+  "outcome": "Configure an explicit event bus/rule/target contract and debug a missing delivery.",
+  "useCase": "AWS integrations and structured application-event routing.",
+  "benefits": "Managed routing/filtering and service integration.",
+  "drawbacks": "Offering-specific contracts, per-entry failures, and target policies need attention.",
+  "tags": [
+    "aws",
+    "eventbridge",
+    "messaging"
+  ],
+  "hours": 2,
+  "number": 12,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Accepted entry → matched rule → delivered target → completed effect.",
+  "prerequisite": "cloud-sqs",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Structured event\"]\n N1[\"Entry acceptance\"]\n N2[\"Selected bus and pattern\"]\n N3[\"Permitted target\"]\n N4[\"Consumer outcome\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Structured event\"]\n N1[\"Entry acceptance\"]\n N2[\"Selected bus and pattern\"]\n N3[\"Permitted target\"]\n N4[\"Consumer outcome\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Structured event",
+      "detail": "EventBridge connects event sources and targets with routing/filtering features. It is useful when you integrate AWS/service events or route application facts by a structured envelope. Choose the actual bus/pipe offering and its documented retention/ordering/replay behavior; newer offerings can differ from classic rule-based examples."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Application emits structured entry → event service accepts/rejects that entry → pattern matches → permitted target receives → consumer handles business effect. Debug one hop at a time with event/request identity.\n\nIf no target event appears, check producer entry result, bus/region/account, pattern field spelling/type, target permission, delivery retry/DLQ state, and consumer state."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A successful batch API call can include failed entries. A pattern mismatch is different from a consumer crash. Bus products and ordering/replay features must not be generalized from an old diagram."
+    }
+  ],
+  "sources": [
+    {
+      "title": "EventBridge overview",
+      "url": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Configure an explicit event bus/rule/target contract and debug a missing delivery. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 15
+}

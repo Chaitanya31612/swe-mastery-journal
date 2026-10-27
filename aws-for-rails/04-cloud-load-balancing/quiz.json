@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What decides which app targets receive traffic?",
+    "options": [
+      "The database primary key",
+      "The Docker image name only",
+      "Target health and routing rules"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Should readiness always be a constant OK?",
+    "options": [
+      "Only on ECS",
+      "No, it should reflect the chosen traffic-readiness contract",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "A local curl proves ALB network access?",
+    "options": [
+      "No",
+      "Only over HTTP",
+      "Yes"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does the lab run inside the work project?",
+    "options": [
+      "No, it is a separate synthetic app",
+      "Yes, it changes its gems",
+      "Only its production DB"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should duplicate envelope publication do locally?",
+    "options": [
+      "Erase Kafka history",
+      "Double the business effect",
+      "Keep one inbox/projection effect"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does the one-broker lab not prove?",
+    "options": [
+      "The tested DB transaction contract",
+      "Production HA",
+      "A local event flow"
+    ]
+  }
+]

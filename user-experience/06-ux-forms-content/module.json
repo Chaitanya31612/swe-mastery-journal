@@ -1,0 +1,97 @@
+{
+  "id": "ux-forms-content",
+  "track": "ux",
+  "title": "Forms, words, and decision-friendly defaults",
+  "level": "intermediate",
+  "outcome": "Write labels, hints, validation, and empty states that help users act correctly.",
+  "useCase": "Operational forms and bulk actions with meaningful consequences.",
+  "benefits": "Reduces confusion without adding long tutorials.",
+  "drawbacks": "Concise language still needs domain accuracy and localization.",
+  "tags": [
+    "ux",
+    "content",
+    "forms"
+  ],
+  "hours": 2,
+  "number": 6,
+  "version": "Web UX · WCAG 2.2 · principles, not magic formulas",
+  "book": "",
+  "cue": "Label the value. Explain the rule. Name the next action.",
+  "prerequisite": "ux-feedback",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Task language\"]\n N1[\"Label and hint\"]\n N2[\"Input and validation\"]\n N3[\"Preserved values\"]\n N4[\"Specific outcome or repair\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Task language\"]\n N1[\"Label and hint\"]\n N2[\"Input and validation\"]\n N3[\"Preserved values\"]\n N4[\"Specific outcome or repair\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Task language",
+      "detail": "Words are interface controls. “Submit” may be less clear than “Assign 15 tickets.” A label names the input; a hint explains a constraint; an error explains what is wrong and how to repair it. Placeholder text is not a stable replacement for a label."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Read the task → understand the field → enter a value → see timely validation → repair if needed → confirm the result. Check whether people understand the terms without internal team knowledge.\n\nFor defaults, test changing workspace, returning later, and repeating the action. A remembered choice can become wrong when context changes."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Required markers without an explanation can be confusing. A disabled button without a reason hides progress. Internal error codes tell users little about the repair."
+    }
+  ],
+  "sources": [
+    {
+      "title": "WAI forms",
+      "url": "https://www.w3.org/WAI/tutorials/forms/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Write labels, hints, validation, and empty states that help users act correctly. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 7
+}

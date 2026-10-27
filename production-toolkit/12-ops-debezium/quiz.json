@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does a raw row change automatically express a business event?",
+    "options": [
+      "Only after JSON encoding",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should a transactional outbox share with the business write?",
+    "options": [
+      "The same DB transaction",
+      "Only a timestamp",
+      "Only the same log message"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Which source-side signal matters for a stopped connector?",
+    "options": [
+      "Retained database log/WAL growth",
+      "Only image size",
+      "Only frontend clicks"
+    ]
+  }
+]

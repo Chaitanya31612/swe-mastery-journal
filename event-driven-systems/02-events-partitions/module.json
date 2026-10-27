@@ -1,0 +1,100 @@
+{
+  "id": "events-partitions",
+  "track": "events",
+  "title": "Topics, partitions, keys, and local order",
+  "level": "beginner",
+  "outcome": "Predict record placement and explain the scope and limits of ordering.",
+  "useCase": "Ordered ticket state and scalable subscriber work.",
+  "benefits": "Predictable local order and controlled partitioning.",
+  "drawbacks": "Hot keys and repartitioning complicate scaling.",
+  "tags": [
+    "kafka",
+    "partitions"
+  ],
+  "hours": 2,
+  "number": 2,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Order lives inside a partition, not in the topic name.",
+  "prerequisite": "events-logs-queues",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Record key\"]\n N1[\"Partition choice\"]\n N2[\"Leader append\"]\n N3[\"Partition offset\"]\n N4[\"Assigned consumer\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Record key\"]\n N1[\"Partition choice\"]\n N2[\"Leader append\"]\n N3[\"Partition offset\"]\n N4[\"Assigned consumer\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Record key",
+      "detail": "A Kafka topic is split into partitions. Each partition is an ordered append log with offsets. Offset 10 in partition 0 is unrelated to offset 10 in partition 1; it is not a global event number."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Producer chooses key → partitioner selects partition → leader appends record → offset identifies its position → assigned consumer processes that partition. Two partitions can advance at different speeds.\n\nDraw A1/A2 in one partition and B1/B2 in another. There is no single cross-partition order you can infer merely from their offsets."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A key is not a global lock. A large number of partitions is not free operationally. Changing keys can scatter one entity’s history."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kafka concepts",
+      "url": "https://kafka.apache.org/41/getting-started/introduction/"
+    },
+    {
+      "title": "Kafka design",
+      "url": "https://kafka.apache.org/41/design/design/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Predict record placement and explain the scope and limits of ordering. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 2
+}

@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which command previews the next staged snapshot changes?",
+    "options": [
+      "git diff --cached",
+      "git diff only",
+      "git log --all only"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "git restore --staged file normally deletes working edits?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

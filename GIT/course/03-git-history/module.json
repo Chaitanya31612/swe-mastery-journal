@@ -1,0 +1,93 @@
+{
+  "id": "git-history",
+  "track": "git",
+  "number": 3,
+  "title": "Merge, rebase, and conflict meaning",
+  "outcome": "Choose a history operation from the graph and resolve intent rather than markers alone.",
+  "hours": 2,
+  "book": "",
+  "cue": "Draw the graph before moving the label.",
+  "version": "Modern Git; check git --version for command availability",
+  "prerequisite": "git-staging",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A teammate rebased a shared branch and wants to force-push immediately. What evidence and coordination are needed?",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A merge has no textual conflict but breaks an API contract. What did Git fail to prove?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Common base\"]\n  N1[\"Two histories\"]\n  N2[\"Merge or replay\"]\n  N3[\"Resolve intent\"]\n  N4[\"Test combined behavior\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Common base\"]\n  N1[\"Two histories\"]\n  N2[\"Merge or replay\"]\n  N3[\"Resolve intent\"]\n  N4[\"Test combined behavior\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Git reference",
+      "url": "https://git-scm.com/docs"
+    }
+  ],
+  "reading": [
+    "GIT/docs/02-history-branches-merge-and-rebase.md"
+  ],
+  "trace": [
+    {
+      "title": "Common base",
+      "detail": "Merge joins histories. A merge commit can have two parents and preserve both lines of development. A fast-forward just moves a branch label when no divergent history needs joining."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Draw O→A on main and O→B→C on your branch. Merge can produce a node with A and C as parents. Rebase builds B′ and C′ on A. The old B/C objects may still exist, but your branch now names C′.\n\nFor each conflict, read the common base, both edits, and nearby call sites. Test the combined result. Record a short explanation when the merge resolution makes a meaningful product decision."
+    },
+    {
+      "title": "Check the result",
+      "detail": "A rebase can repeat conflicts across replayed commits. A merge can be conflict-free and still be behaviorally wrong. Git combines text; it does not understand your program’s rules."
+    }
+  ],
+  "recallPrompt": "Without notes: Choose a history operation from the graph and resolve intent rather than markers alone. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 3
+}

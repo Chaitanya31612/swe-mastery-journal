@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which value can establish the caller identity?",
+    "options": [
+      "An ownerId typed in JSON",
+      "The verified authentication context",
+      "The presence of an Edit button"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Hiding a Delete button prevents direct HTTP deletion?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

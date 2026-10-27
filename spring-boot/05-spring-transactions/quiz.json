@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which call typically crosses the transaction proxy?",
+    "options": [
+      "this.reserve()",
+      "An external caller invoking the injected service bean",
+      "A direct call on new Service()"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "A checked exception escapes an ordinary @Transactional method. Default rollback?",
+    "options": [
+      "Always",
+      "Not by default; configure rollback rules"
+    ]
+  }
+]

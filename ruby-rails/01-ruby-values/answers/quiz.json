@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "Zero and empty containers are truthy in Ruby. Test presence and numeric rules explicitly."
+  },
+  "predict": {
+    "correctIndex": 0,
+    "explanation": "Both names refer to the same array."
+  }
+}

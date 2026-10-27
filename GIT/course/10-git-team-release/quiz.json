@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does force-with-lease replace team coordination?",
+    "options": [
+      "No",
+      "Yes",
+      "Only for release branches"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should a deployment identify?",
+    "options": [
+      "Only a friendly branch name",
+      "Exact source revision and artifact digest",
+      "Only the latest tag text"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should a review description lead with?",
+    "options": [
+      "The problem and resulting behavior",
+      "Every shell command run",
+      "The number of changed lines"
+    ]
+  }
+]

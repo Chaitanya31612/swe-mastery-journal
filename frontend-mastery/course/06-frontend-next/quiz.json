@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Does use client mean “never rendered on the server”?",
+    "options": [
+      "Yes",
+      "No; initial HTML may still be produced on the server",
+      "Only in development"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "router.refresh guarantees every server cache entry is invalidated?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

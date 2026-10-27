@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Is seven a universal maximum for navigation items?",
+    "options": [
+      "Yes",
+      "No",
+      "Only for desktop"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What is the risk of hiding common settings under Advanced?",
+    "options": [
+      "Better authorization",
+      "Automatic performance gain",
+      "Lower findability for the basic task"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should a default make clear?",
+    "options": [
+      "Only its color",
+      "The choice and its consequences",
+      "Nothing, because defaults are always safe"
+    ]
+  }
+]

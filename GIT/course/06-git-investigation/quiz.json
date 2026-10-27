@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What must be true for a useful bisect result?",
+    "options": [
+      "The test must reliably distinguish good and bad",
+      "The branch must have no merge commits",
+      "Every commit message must mention the bug"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Does blame prove the last author caused the bug?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

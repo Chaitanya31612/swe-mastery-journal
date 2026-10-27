@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Does a closure always freeze captured values?",
+    "options": [
+      "Yes",
+      "No, it retains access to bindings",
+      "Only when it is a lambda"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "label=\"old\"; f=->{label}; label=\"new\"; f.call ?",
+    "options": [
+      "\"old\"",
+      "\"new\""
+    ]
+  }
+]

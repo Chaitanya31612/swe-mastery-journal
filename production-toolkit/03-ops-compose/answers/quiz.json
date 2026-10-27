@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Use service DNS for peer containers."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "The dependency may still be initializing or missing schema."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Project scoping helps avoid collisions."
+  }
+}

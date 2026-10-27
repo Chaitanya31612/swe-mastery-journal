@@ -1,0 +1,97 @@
+{
+  "id": "cloud-lambda",
+  "track": "cloud",
+  "title": "Lambda event functions: small work with explicit retry boundaries",
+  "level": "beginner",
+  "outcome": "Choose an event-function boundary and handle retry, concurrency, and database pressure.",
+  "useCase": "Queue/S3-triggered small processing steps.",
+  "benefits": "Managed event-driven compute without operating a VM per handler.",
+  "drawbacks": "Trigger semantics, cold starts, concurrency, and downstream limits remain.",
+  "tags": [
+    "aws",
+    "lambda",
+    "events"
+  ],
+  "hours": 2,
+  "number": 13,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Small handler, explicit source contract, bounded downstream work.",
+  "prerequisite": "cloud-sns",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Configured source\"]\n N1[\"Invocation identity\"]\n N2[\"Repeat-safe handler\"]\n N3[\"Source acknowledgement\"]\n N4[\"Concurrency and error metrics\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Configured source\"]\n N1[\"Invocation identity\"]\n N2[\"Repeat-safe handler\"]\n N3[\"Source acknowledgement\"]\n N4[\"Concurrency and error metrics\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Configured source",
+      "detail": "This chapter focuses on Lambda event functions: a handler invoked under a configured event source. Other Lambda offerings have different contracts. A small S3 metadata check or queue-driven transformation can fit well; a large always-warm Rails web process is a different decision."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Source event → invocation/batch → validate record → durable effect → source-specific acknowledgement/failure handling. A retry may invoke the handler again with the same logical item.\n\nMeasure cold-start and dependency latency for the actual interaction. Bound concurrency so a surge does not create more database connections than RDS can support."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Stateless compute does not mean the business effect is idempotent. Execution environments may be reused, so avoid treating mutable globals as per-user durable state."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Lambda overview",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose an event-function boundary and handle retry, concurrency, and database pressure. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 7
+}

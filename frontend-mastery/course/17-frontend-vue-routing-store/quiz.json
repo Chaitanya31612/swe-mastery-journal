@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Can a route component be reused for another ID?",
+    "options": [
+      "No",
+      "Yes",
+      "Only without params"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What preserves Pinia state reactivity when destructuring?",
+    "options": [
+      "JSON.stringify",
+      "storeToRefs",
+      "A shallow primitive assignment"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does a client route guard authorize a database write?",
+    "options": [
+      "Yes",
+      "No",
+      "Only with Pinia"
+    ]
+  }
+]

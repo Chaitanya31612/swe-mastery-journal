@@ -1,0 +1,100 @@
+{
+  "id": "frontend-vue-reactivity",
+  "track": "frontend",
+  "title": "Vue 3: refs, proxies, computed, and timing",
+  "level": "intermediate",
+  "outcome": "Follow a tracked read and explain why nextTick differs from ordinary assignment.",
+  "useCase": "Complex editable Vue screens and modal focus.",
+  "benefits": "Predictable derivation and fewer timing guesses.",
+  "drawbacks": "Deep and shallow tracking have different contracts.",
+  "tags": [
+    "vue3",
+    "reactivity"
+  ],
+  "hours": 2,
+  "number": 13,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Track the read. Batch the DOM. Wait for the right boundary.",
+  "prerequisite": "frontend-dom-lifecycle",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Reactive source\"]\n N1[\"Tracked getter\"]\n N2[\"Invalidation\"]\n N3[\"Batched DOM patch\"]\n N4[\"nextTick focus or measure\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Reactive source\"]\n N1[\"Tracked getter\"]\n N2[\"Invalidation\"]\n N3[\"Batched DOM patch\"]\n N4[\"nextTick focus or measure\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Reactive source",
+      "detail": "reactive returns a proxy. Vue can track property reads through that proxy and notify effects when relevant writes happen. ref creates a reactive value wrapper. JavaScript uses .value; templates unwrap refs in supported contexts."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Read query inside computed → Vue records that dependency. Change query → computed becomes stale → a dependent render asks for the new value. Several synchronous writes can lead to one DOM update batch.\n\nUse shallowRef when you intentionally treat a large outside object as one replaceable value. Deep mutation will not behave like an ordinary deep reactive ref. Choose it for a reason, such as an external editor instance, not as a universal speed switch."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Watching a computed merely to copy it into another ref creates two sources. Mutating a raw object behind a proxy can bypass the access path you expected Vue to track."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vue reactivity",
+      "url": "https://vuejs.org/guide/essentials/reactivity-fundamentals.html"
+    },
+    {
+      "title": "Computed values",
+      "url": "https://vuejs.org/guide/essentials/computed.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Follow a tracked read and explain why nextTick differs from ordinary assignment. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 15
+}

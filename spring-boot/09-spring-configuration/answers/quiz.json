@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Early validation localizes the fault."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Profiles organize settings, not secret access."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Exercise the boundary that binds and validates."
+  }
+}

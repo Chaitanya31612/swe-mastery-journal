@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does proximity usually suggest?",
+    "options": [
+      "Higher server priority",
+      "Relatedness",
+      "Encryption"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What happens when everything has equal strong emphasis?",
+    "options": [
+      "Priority becomes harder to scan",
+      "The page becomes accessible automatically",
+      "Everything becomes equally understandable"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Should visual reordering ignore DOM reading order?",
+    "options": [
+      "Yes",
+      "Only on phones",
+      "No"
+    ]
+  }
+]

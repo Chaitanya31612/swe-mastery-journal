@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Secrets and cryptographic keys have different lifecycles and APIs."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Authorization is a separate rule."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Processes may keep old values or connections."
+  }
+}

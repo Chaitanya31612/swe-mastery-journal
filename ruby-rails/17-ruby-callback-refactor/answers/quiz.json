@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Included modules can install lifecycle behavior."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "It is a lower-level bulk update path."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "The observable effect matters more than the implementation path."
+  }
+}

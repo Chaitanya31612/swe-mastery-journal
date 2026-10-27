@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does managed Kafka solve the DB/publish dual-write gap?",
+    "options": [
+      "Yes",
+      "Only in AWS",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Bootstrap is primarily what?",
+    "options": [
+      "Discovery of cluster metadata",
+      "A database transaction coordinator",
+      "A universal proxy for every record"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Can offset reset restore expired records?",
+    "options": [
+      "Only to earliest",
+      "No",
+      "Yes"
+    ]
+  }
+]

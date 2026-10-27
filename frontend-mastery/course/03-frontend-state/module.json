@@ -1,0 +1,98 @@
+{
+  "id": "frontend-state",
+  "track": "frontend",
+  "number": 3,
+  "title": "One owner for each piece of state",
+  "outcome": "Separate source state, derived values, URL state, server data, and temporary UI state.",
+  "hours": 3,
+  "book": "",
+  "cue": "Store facts. Derive views.",
+  "version": "Portable JavaScript · React hooks · Vue 2/3 comparisons · Next App Router",
+  "prerequisite": "frontend-css-layout",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A component stores tasks, filter, and visibleTasks. Updating a task forgets to update visibleTasks. Repair the model.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A delete disappears optimistically, then fails. What must the UI remember?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"User action\"]\n  N1[\"State owner\"]\n  N2[\"One source value\"]\n  N3[\"Derived view\"]\n  N4[\"Save and reconcile\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"User action\"]\n  N1[\"State owner\"]\n  N2[\"One source value\"]\n  N3[\"Derived view\"]\n  N4[\"Save and reconcile\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "React learning guide",
+      "url": "https://react.dev/learn"
+    },
+    {
+      "title": "Vue reactivity fundamentals",
+      "url": "https://vuejs.org/guide/essentials/reactivity-fundamentals.html"
+    }
+  ],
+  "reading": [
+    "frontend-mastery/docs/02-reactivity-rendering-and-state.md",
+    "frontend-mastery/docs/04-frontend-architecture-data-and-performance.md"
+  ],
+  "trace": [
+    {
+      "title": "User action",
+      "detail": "Source state is information you choose to store. Derived state can be calculated from it. If tasks and a filter are stored, visibleTasks can often be derived. Storing both copies creates a synchronization job you may not need."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Begin with the user action. Editing a draft changes local unsaved state. Saving asks the server to change persisted state. A successful response updates the cached server record. A derived list recalculates from that cache and the URL filter.\n\nFor optimistic UI, record how to undo or reconcile a failed action. If two saves overlap, an old response must not erase a newer edit. A disabled button alone may not cover every caller."
+    },
+    {
+      "title": "Check the result",
+      "detail": "Copying props into local state once can make later prop changes invisible. Deriving everything in an effect adds extra updates and stale intermediate renders. Define ownership and reset rules first."
+    }
+  ],
+  "recallPrompt": "Without notes: Separate source state, derived values, URL state, server data, and temporary UI state. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 7
+}

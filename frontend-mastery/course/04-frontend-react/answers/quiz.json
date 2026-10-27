@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "Functional updaters compose with other pending state updates instead of closing over one old value."
+  },
+  "predict": {
+    "correctIndex": 0,
+    "explanation": "Each computes the direct value 1 from the same snapshot."
+  }
+}

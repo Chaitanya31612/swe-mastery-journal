@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "State tracks resource management identity and attributes."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Application validation is a separate layer."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Backend/access/recovery need deliberate policy."
+  }
+}

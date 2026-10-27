@@ -1,0 +1,101 @@
+{
+  "id": "frontend-functions-objects",
+  "track": "frontend",
+  "title": "JavaScript functions, closures, and object lookup",
+  "level": "beginner",
+  "outcome": "Predict captured values, call-time this, and property lookup in everyday UI code.",
+  "useCase": "Event handlers, timers, reusable utilities, and callback APIs.",
+  "benefits": "Makes callback behavior predictable.",
+  "drawbacks": "Retained state and implicit receivers can hide ownership.",
+  "tags": [
+    "javascript",
+    "closures",
+    "objects"
+  ],
+  "hours": 2,
+  "number": 23,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Creation decides scope. Calling decides normal this.",
+  "prerequisite": "frontend-data-contracts",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Create function\"]\n N1[\"Retain binding\"]\n N2[\"Call with receiver\"]\n N3[\"Read current value\"]\n N4[\"Release unused callback\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Create function\"]\n N1[\"Retain binding\"]\n N2[\"Call with receiver\"]\n N3[\"Read current value\"]\n N4[\"Release unused callback\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Create function",
+      "detail": "A function can keep access to variables from the scope where it was created. That is a closure. It captures a binding, not always a frozen copy of the value. A later mutation can change what a callback reads. Each function call can also create a separate binding, which is why a factory can give each widget private state."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Trace creation → retained binding → callback invocation. Distinguish the value at registration from the value at execution. Then trace the call expression to find this.\n\nFor object lookup, check own properties first, then the prototype chain. Object.create(null) has no usual Object prototype; it also lacks methods such as hasOwnProperty. Object.hasOwn(obj,key) works without calling a method from untrusted input."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A callback can keep large objects alive after the screen closes. A detached method can lose this. Checking obj[key] alone can confuse absent values with inherited properties or valid falsey values."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MDN closures",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures"
+    },
+    {
+      "title": "MDN this",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Predict captured values, call-time this, and property lookup in everyday UI code. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 3
+}

@@ -1,0 +1,101 @@
+{
+  "id": "ops-toolkit-capstone",
+  "track": "ops",
+  "title": "Choose the tools, then debug the whole application",
+  "level": "intermediate",
+  "outcome": "Explain a production tool map and recover a synthetic incident without adding every tool by default.",
+  "useCase": "An end-of-course tool selection and incident exercise.",
+  "benefits": "Connects tools to responsibilities and practical diagnosis.",
+  "drawbacks": "A reference architecture is not a requirement to deploy every part.",
+  "tags": [
+    "capstone",
+    "architecture",
+    "tools"
+  ],
+  "hours": 2,
+  "number": 22,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Choose fewer tools well. Trace one item completely.",
+  "prerequisite": "ops-feature-flags",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow the real boundaries",
+      "placement": "overview",
+      "code": "flowchart TD\n Git[Git review] --> CI[GitHub Actions]\n CI --> Image[Docker image in ECR]\n TF[Terraform] --> Infra[Network and managed services]\n Image --> Runtime{Choose a runtime}\n Runtime --> ECS[ECS service]\n Runtime --> EKS[EKS Kubernetes service]\n ECS --> Rails[Rails web and workers]\n EKS --> Rails\n Rails --> Pool[Optional PgBouncer]\n Pool --> DB[(PostgreSQL)]\n Rails --> Redis[(Redis - deliberate purpose)]\n DB --> CDC[Debezium OR outbox dispatcher]\n CDC --> Kafka[Kafka retained log]\n Kafka --> Projection[Reporting projection]\n Projection --> Store[(Postgres or query-driven Cassandra)]\n Rails --> Email[SendGrid delivery adapter]\n Cron[One scheduler with job identity] --> Rails\n Rails -. OTel signals .-> Obs[Datadog or Prometheus and Grafana]\n Browser[Browser workflow] -. safe product events .-> Pendo[Pendo]\n Flags[Feature flag lifecycle] --> Rails"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Requirement and tool role\"]\n N1[\"Authoritative state\"]\n N2[\"Async and cached copies\"]\n N3[\"Correlated incident\"]\n N4[\"Verified repair\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Requirement and tool role",
+      "detail": "A production architecture is a set of responsibilities. Packaging, orchestration, storage, messaging, observation, delivery, scheduling, and product analytics are different jobs. Several products can cover overlapping parts. Choose a coherent minimum and justify each additional tool."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Begin at user impact. Identify the authority and each queued/retained copy. Find the oldest uncompleted item and its event/run ID. Distinguish delivery, processing, and UI problems. Repair the smallest broken boundary and verify both backlog recovery and user-visible completion.\n\nFinish the cumulative toolkit quiz, then explain why a plausible alternative tool is a poor fit for three scenarios. Selection reasoning matters more than logo recognition."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Adding capacity to a poison-message loop can worsen the DB incident. Installing every monitoring stack can duplicate cost without improving a question. Product analytics cannot substitute for a durable business audit trail."
+    }
+  ],
+  "sources": [
+    {
+      "title": "CNCF landscape context",
+      "url": "https://landscape.cncf.io/"
+    },
+    {
+      "title": "OpenTelemetry concepts",
+      "url": "https://opentelemetry.io/docs/concepts/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain a production tool map and recover a synthetic incident without adding every tool by default. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 22
+}

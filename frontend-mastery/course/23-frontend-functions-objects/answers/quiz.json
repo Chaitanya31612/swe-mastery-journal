@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "The binding can still hold a later value."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Arrow this is lexical."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Prototype lookup and own ownership differ."
+  }
+}

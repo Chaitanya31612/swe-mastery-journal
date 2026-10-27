@@ -1,0 +1,101 @@
+{
+  "id": "frontend-css-systems",
+  "track": "frontend",
+  "title": "CSS cascade, tokens, and component states",
+  "level": "intermediate",
+  "outcome": "Explain why a style wins and build consistent states without escalating selector strength.",
+  "useCase": "Shared components, themes, and regressions across screens.",
+  "benefits": "Predictable styles and consistent interactions.",
+  "drawbacks": "System-wide changes need representative state checks.",
+  "tags": [
+    "css",
+    "design-system",
+    "accessibility"
+  ],
+  "hours": 2,
+  "number": 25,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Inspect the winner. Name the choice. Test the state.",
+  "prerequisite": "frontend-web-platform",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Computed style\"]\n N1[\"Cascade ownership\"]\n N2[\"Named tokens\"]\n N3[\"Component states\"]\n N4[\"Keyboard and contrast checks\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Computed style\"]\n N1[\"Cascade ownership\"]\n N2[\"Named tokens\"]\n N3[\"Component states\"]\n N4[\"Keyboard and contrast checks\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Computed style",
+      "detail": "The cascade considers origin/importance and layers before specificity and source order. A more specific selector is not always the winner across different layers or important rules. Inspect the computed-style panel to see the actual winning declaration."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Select the element. Read computed style and the crossed-out rules. Locate origin/layer, selector, and source order. Remove accidental global leakage instead of adding another !important.\n\nThen inspect every state in the same container and theme. Token changes need representative screens, long text, zoom, and focus checks. A contrast check is necessary for relevant colors; it does not test whether the task is understandable."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A global button rule can break one nested form. Repeated !important patches make the next change harder. Color-only state is invisible to some users."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MDN cascade",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Cascade"
+    },
+    {
+      "title": "WCAG quick reference",
+      "url": "https://www.w3.org/WAI/WCAG22/quickref/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain why a style wins and build consistent states without escalating selector strength. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 13
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "They solve different traffic boundaries."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Session affinity/state behavior can change."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Each added layer also adds failure and operating work."
+  }
+}

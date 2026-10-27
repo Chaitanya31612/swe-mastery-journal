@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Lag alone fully describes user impact?",
+    "options": [
+      "No",
+      "Only with three partitions",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What can a rebalance lead to?",
+    "options": [
+      "Global order across topics",
+      "Automatic business rollback",
+      "A new owner replaying uncommitted work"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is a good first offset investigation?",
+    "options": [
+      "Delete retained data",
+      "Describe group progress before resetting it",
+      "Reset every group immediately"
+    ]
+  }
+]

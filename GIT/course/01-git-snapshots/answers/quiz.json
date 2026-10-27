@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "A normal commit records staged content from the index."
+  },
+  "predict": {
+    "correctIndex": 0,
+    "explanation": "The index still contains A."
+  }
+}

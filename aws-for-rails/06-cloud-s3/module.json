@@ -1,0 +1,101 @@
+{
+  "id": "cloud-s3",
+  "track": "cloud",
+  "title": "S3 for Rails attachments: private objects and signed access",
+  "level": "intermediate",
+  "outcome": "Set up private object storage and trace metadata, upload, authorization, and download separately.",
+  "useCase": "Private attachments and generated reports.",
+  "benefits": "Shared durable object storage without app-local upload disks.",
+  "drawbacks": "Metadata consistency, URL lifetime, lifecycle, and transfer costs need design.",
+  "tags": [
+    "aws",
+    "s3",
+    "rails"
+  ],
+  "hours": 2,
+  "number": 6,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "DB owns permission and meaning. S3 owns bytes.",
+  "prerequisite": "cloud-cloudwatch",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Authorized metadata\"]\n N1[\"Allowed object key\"]\n N2[\"Signed upload or read\"]\n N3[\"Object verification\"]\n N4[\"Reference and cleanup\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Authorized metadata\"]\n N1[\"Allowed object key\"]\n N2[\"Signed upload or read\"]\n N3[\"Object verification\"]\n N4[\"Reference and cleanup\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Authorized metadata",
+      "detail": "S3 stores objects addressed by bucket and key. A slash in a key is a naming convention, not a filesystem directory with ordinary POSIX behavior. Keep application metadata and access rules in the database; the object is the bytes."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "User requests attachment → Rails authorizes record → app issues allowed key/URL → browser uploads bytes → app verifies completion and saves metadata → later read rechecks access before issuing a download.\n\nTest the crash between upload and metadata save. Orphan cleanup must distinguish abandoned objects from live references. For immediate revocation needs, consider the lifetime of already issued URLs."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A public bucket can bypass Rails permission checks. Reusing a key can replace an existing object according to the operation/versioning contract. A presigned URL should not be logged as harmless metadata."
+    }
+  ],
+  "sources": [
+    {
+      "title": "S3 guide",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
+    },
+    {
+      "title": "Presigned access",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Set up private object storage and trace metadata, upload, authorization, and download separately. Explain one example and one failure.",
+  "lab": "aws-rails",
+  "sequence": 10
+}

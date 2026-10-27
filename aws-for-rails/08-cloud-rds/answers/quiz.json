@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Application query/schema decisions remain yours."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Read scaling and consistency are separate choices."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "You need evidence the data can be restored and used."
+  }
+}

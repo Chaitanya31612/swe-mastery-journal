@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Scheduling does not remove CPU cost."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "The browser may need fresh layout before returning measurements."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Comparable evidence tests whether the change helped."
+  }
+}

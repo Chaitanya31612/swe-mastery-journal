@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What is a counter rate useful for?",
+    "options": [
+      "A secret value",
+      "Events per time over a defined window",
+      "A single record’s permission"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Missing telemetry equals zero failures?",
+    "options": [
+      "Yes",
+      "Only in Grafana",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Which label is usually bounded?",
+    "options": [
+      "Outcome category",
+      "Every raw URL query",
+      "Every ticket UUID"
+    ]
+  }
+]

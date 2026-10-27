@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A pipeline guarantees a multi-command atomic business operation?",
+    "options": [
+      "Only with many commands",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Can an expired lock owner resume later?",
+    "options": [
+      "Yes",
+      "No",
+      "Only in Java"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does compare-delete alone fence writes to PostgreSQL?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with UUID tokens"
+    ]
+  }
+]

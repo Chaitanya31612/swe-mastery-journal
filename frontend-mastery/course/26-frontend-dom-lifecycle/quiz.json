@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does stopPropagation prevent form submission by itself?",
+    "options": [
+      "No",
+      "Yes",
+      "Only in capture"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Which reference removes a listener?",
+    "options": [
+      "Any equal-looking arrow",
+      "The same registered function identity",
+      "Only its function name text"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is currentTarget?",
+    "options": [
+      "Always the deepest child",
+      "The selected store record",
+      "The element whose listener is running"
+    ]
+  }
+]

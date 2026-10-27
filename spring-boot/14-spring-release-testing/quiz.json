@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does a code rollback undo deleted database rows?",
+    "options": [
+      "Only with a health check",
+      "Always",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Who should run a risky backfill?",
+    "options": [
+      "Every new replica automatically",
+      "A deliberate controlled migration/job",
+      "Every request thread"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does a fake repository not prove?",
+    "options": [
+      "A supplied error mapping",
+      "Local branch decisions",
+      "The real unique index/lock behavior"
+    ]
+  }
+]

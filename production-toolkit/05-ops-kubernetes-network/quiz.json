@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What connects a Service to ordinary selected Pods?",
+    "options": [
+      "The container image title",
+      "A database ID",
+      "Labels/selectors and endpoint readiness"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does defining Ingress install its controller?",
+    "options": [
+      "Only on a laptop",
+      "No",
+      "Automatically"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Does port-forward prove ingress works?",
+    "options": [
+      "No",
+      "Yes",
+      "Only over HTTP"
+    ]
+  }
+]

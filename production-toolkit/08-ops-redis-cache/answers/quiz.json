@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "The cache is a copy under a freshness policy."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "An earlier reader can refill old data after deletion."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Many misses can synchronize expensive rebuilds."
+  }
+}

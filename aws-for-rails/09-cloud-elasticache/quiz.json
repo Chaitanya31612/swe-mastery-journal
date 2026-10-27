@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Are cache entries and queued work equally disposable?",
+    "options": [
+      "No",
+      "Only when both use strings",
+      "Always"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What can a cold cache cause?",
+    "options": [
+      "Guaranteed lower load",
+      "A surge at the source database",
+      "Immediate data correctness proof"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should engine selection record?",
+    "options": [
+      "Only region",
+      "Only the Redis logo",
+      "Actual engine/mode and supported client contract"
+    ]
+  }
+]

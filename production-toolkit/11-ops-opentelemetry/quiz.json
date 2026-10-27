@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Is OTel alone a long-term query backend?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with Ruby"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What connects distributed observation?",
+    "options": [
+      "Context propagation/linking",
+      "A CSS ID",
+      "Only a DB index"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Trace ID is the business event deduplication key?",
+    "options": [
+      "Always",
+      "Only on replay",
+      "No"
+    ]
+  }
+]

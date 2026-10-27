@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Controllers reconcile the declared workload."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "It uses compatible container runtime interfaces."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Application processing still needs its own correctness rules."
+  }
+}

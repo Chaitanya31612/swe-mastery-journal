@@ -1,0 +1,101 @@
+{
+  "id": "events-operations",
+  "track": "events",
+  "title": "Lag, rebalances, retention, and the debugging checklist",
+  "level": "intermediate",
+  "outcome": "Diagnose slow or missing processing from broker, group, DB, and event identity evidence.",
+  "useCase": "Debugging the real reporting path.",
+  "benefits": "A repeatable boundary-based investigation.",
+  "drawbacks": "Metrics and retained history have limits; reset/replay can affect business effects.",
+  "tags": [
+    "kafka",
+    "debugging",
+    "operations"
+  ],
+  "hours": 2,
+  "number": 10,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Outbox → record → group → inbox → projection.",
+  "prerequisite": "events-retries",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Event identity\"]\n N1[\"Broker record\"]\n N2[\"Group progress\"]\n N3[\"Consumer transaction\"]\n N4[\"Projection and age\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Event identity\"]\n N1[\"Broker record\"]\n N2[\"Group progress\"]\n N3[\"Consumer transaction\"]\n N4[\"Projection and age\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Event identity",
+      "detail": "Lag is a progress difference, not a complete user-impact measure. A small lag can contain very old important work; a large lag can drain quickly. Observe oldest unprocessed age, processing rate, errors/retries, and backlog growth as well."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Missing report → locate outbox event → publication result → topic/partition record → group committed progress → inbox row → projection. The first missing boundary narrows the investigation.\n\nFor slow work, compare producer rate, consumer processing time, DB wait, hot partitions, and rebalance frequency. Adding partitions/consumers changes contracts and is not always the smallest repair."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A group may be subscribed to the wrong topic or have a different ID. earliest does not rewind existing commits. Resetting offsets can repeat external effects."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kafka operations",
+      "url": "https://kafka.apache.org/41/operations/"
+    },
+    {
+      "title": "Consumer settings",
+      "url": "https://kafka.apache.org/41/configuration/consumer-configs/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Diagnose slow or missing processing from broker, group, DB, and event identity evidence. Explain one example and one failure.",
+  "lab": "rails-kafka",
+  "sequence": 10
+}

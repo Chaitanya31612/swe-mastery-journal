@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "They filter assignable fields."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Cache identity must match the data scope."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "A delayed actor/context can change."
+  }
+}

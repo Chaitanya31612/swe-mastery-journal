@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Waiting consumes latency without necessarily consuming CPU."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "It can move overload into the database."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Engine and data distribution affect behavior."
+  }
+}

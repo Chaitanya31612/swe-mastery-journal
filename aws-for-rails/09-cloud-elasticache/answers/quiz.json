@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Their correctness and recovery requirements differ."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Misses can synchronize into a stampede."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Managed options do not all have identical behavior."
+  }
+}

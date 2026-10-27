@@ -1,0 +1,100 @@
+{
+  "id": "ux-task-model",
+  "track": "ux",
+  "title": "Start with the user’s task, not the screen",
+  "level": "beginner",
+  "outcome": "Turn a vague feature request into a task, context, success condition, and recovery path.",
+  "useCase": "Feature scoping and UX review for operational workflows.",
+  "benefits": "Connects interface decisions to outcomes people need.",
+  "drawbacks": "A task hypothesis still needs observation; a tidy diagram is not user evidence.",
+  "tags": [
+    "ux",
+    "fundamentals"
+  ],
+  "hours": 2,
+  "number": 1,
+  "version": "Web UX · WCAG 2.2 · principles, not magic formulas",
+  "book": "",
+  "cue": "Who is trying to do what, under which pressure?",
+  "prerequisite": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"User and context\"]\n N1[\"Task and known facts\"]\n N2[\"Action path\"]\n N3[\"Visible outcome\"]\n N4[\"Recovery and return\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"User and context\"]\n N1[\"Task and known facts\"]\n N2[\"Action path\"]\n N3[\"Visible outcome\"]\n N4[\"Recovery and return\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "User and context",
+      "detail": "A screen is a means to finish a task. “Add a dashboard” is not yet a task. “Find the oldest urgent ticket and assign it before the shift ends” is. Name the user, their goal, what they already know, and what interrupts them."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Observe one realistic attempt. Where does the person start? How do they identify the right records? What tells them the action finished? What do they do when only 12 of 15 changes succeed?\n\nWrite a decision log: observed problem → design choice → expected benefit → check. This keeps a critique from becoming a contest of taste."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Copying a competitor’s layout without the same user/context can add irrelevant controls. Showing a database term can make users guess. A success toast can hide partial failure."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Human-centred design overview",
+      "url": "https://www.usability.gov/how-to-and-tools/methods/user-centered-design.html"
+    },
+    {
+      "title": "Nielsen usability heuristics",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Turn a vague feature request into a task, context, success condition, and recovery path. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 1
+}

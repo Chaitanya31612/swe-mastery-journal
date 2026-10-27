@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "Application code or a router must react to that history change and render the view."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "A refresh crosses the document-serving boundary again."
+  }
+}

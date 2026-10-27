@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "A task names a user outcome in context."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Users need an accurate state and next action."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Task evidence gives a decision a purpose."
+  }
+}

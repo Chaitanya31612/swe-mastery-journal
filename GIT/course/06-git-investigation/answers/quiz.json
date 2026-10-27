@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "Bisect depends on the correctness and repeatability of its classification check."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "It identifies a line’s last recorded change. Root cause needs behavioral evidence."
+  }
+}

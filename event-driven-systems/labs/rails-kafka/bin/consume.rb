@@ -1,0 +1,1 @@
+ReportingConsumer.new.run

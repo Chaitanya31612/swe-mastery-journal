@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Classify deterministic poison separately from transient failure."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Later records can pass a delayed failed item."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Quarantine needs a repair/redrive process."
+  }
+}

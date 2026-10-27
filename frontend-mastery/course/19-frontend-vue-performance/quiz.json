@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What comes before selecting a performance trick?",
+    "options": [
+      "A repeatable measured symptom",
+      "Changing every ref to shallowRef",
+      "Adding v-memo everywhere"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What do stable keys primarily protect?",
+    "options": [
+      "Network bandwidth automatically",
+      "Component identity",
+      "Database indexes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Virtualization removes which responsibility?",
+    "options": [
+      "All keyboard testing",
+      "None of the access/focus responsibilities",
+      "Server permissions"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "It can be used while its permission and expiry remain valid."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Signing a key is an access decision."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Those are separate writes/boundaries."
+  }
+}

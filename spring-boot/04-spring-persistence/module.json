@@ -1,0 +1,91 @@
+{
+  "id": "spring-persistence",
+  "track": "spring",
+  "number": 4,
+  "title": "JPA: Java objects are not SQL",
+  "outcome": "Explain entity state, repository queries, lazy reads, and the N+1 problem.",
+  "hours": 3,
+  "book": "",
+  "cue": "Every object access deserves a SQL question.",
+  "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+  "prerequisite": "spring-security",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A /tasks list works locally but becomes slow with 100 tasks. Each item reads its owner. Explain how to confirm and repair the query count.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "Now each task has thousands of comments. Should the task list fetch all comments too?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Repository query\"]\n  N1[\"Managed entities\"]\n  N2[\"Association access\"]\n  N3[\"Flush SQL\"]\n  N4[\"Commit or rollback\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Repository query\"]\n  N1[\"Managed entities\"]\n  N2[\"Association access\"]\n  N3[\"Flush SQL\"]\n  N4[\"Commit or rollback\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Spring Data JPA reference",
+      "url": "https://docs.spring.io/spring-data/jpa/reference/"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "Repository query",
+      "detail": "JPA maps objects to relational rows. Hibernate is a common implementation. A repository is an access boundary; it does not remove the need to reason about SQL."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Ask what SQL runs at each line. The repository list call loads task rows. A lazy owner access can trigger another query while the context is open. Outside it, an uninitialized association may fail.\n\nBuild the response inside a deliberate read boundary. Count queries with test instrumentation or SQL logs in a sandbox. Compare one item and twenty items. A constant small query count is evidence; the word repository is not."
+    },
+    {
+      "title": "Check the result",
+      "detail": "An in-memory H2 test may hide PostgreSQL behavior. SQL logs can also expose values, so use synthetic test data. A uniqueness pre-check without a database constraint can race."
+    }
+  ],
+  "recallPrompt": "Without notes: Explain entity state, repository queries, lazy reads, and the N+1 problem. Give a concrete failure example.",
+  "level": "intermediate",
+  "tags": [],
+  "sequence": 5
+}

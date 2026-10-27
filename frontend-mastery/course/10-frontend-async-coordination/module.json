@@ -1,0 +1,97 @@
+{
+  "id": "frontend-async-coordination",
+  "track": "frontend",
+  "title": "Promises: overlap, cancel, and limit work",
+  "level": "intermediate",
+  "outcome": "Choose sequential or parallel work and prevent stale results without losing useful failures.",
+  "useCase": "Dashboards, typeahead, and attachment uploads.",
+  "benefits": "Less avoidable waiting and fewer stale screens.",
+  "drawbacks": "Parallel requests need per-operation ownership and limits.",
+  "tags": [
+    "javascript",
+    "async",
+    "performance"
+  ],
+  "hours": 2,
+  "number": 10,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Overlap independent work. Bound the amount. Accept only current results.",
+  "prerequisite": "frontend-experience",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Dependency graph\"]\n N1[\"Start bounded work\"]\n N2[\"Wait or cancel\"]\n N3[\"Accept current outcome\"]\n N4[\"Render useful partial states\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Dependency graph\"]\n N1[\"Start bounded work\"]\n N2[\"Wait or cancel\"]\n N3[\"Accept current outcome\"]\n N4[\"Render useful partial states\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Dependency graph",
+      "detail": "await describes a dependency: the next line waits for that promise in this function. Two awaits in sequence may waste time when their inputs are independent. Promise.all waits for all successes but rejects when one rejects; it does not automatically cancel the others. allSettled preserves each outcome when partial results are useful."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Draw the dependency graph. Loading a ticket and a member directory can overlap. Loading comments using an ID returned by a creation request cannot begin before that ID exists.\n\nFor a stale search: A starts, B starts, B succeeds, A fails. The final UI should show B and no stale error. Use controlled promises to reproduce this exact order. Avoid a fixed sleep as proof."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Promise.all does not undo a completed write when another promise fails. A spinner hidden in every finally block can be cleared by obsolete work."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MDN Promise",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose sequential or parallel work and prevent stale results without losing useful failures. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 11
+}

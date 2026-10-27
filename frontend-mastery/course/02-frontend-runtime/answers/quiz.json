@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "The browser drains queued microtasks before choosing the next task. This does not promise order between unrelated network responses."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "The promise callback runs after the current synchronous stack."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "id": "cloud-sqs",
+  "track": "cloud",
+  "title": "SQS: work delivery, visibility, and deletion",
+  "level": "intermediate",
+  "outcome": "Set up a queue and dead-letter path and implement repeat-safe processing.",
+  "useCase": "Exports and independent background tasks.",
+  "benefits": "Managed work delivery and buffering.",
+  "drawbacks": "Visibility, duplicate effects, and DLQ recovery still need design.",
+  "tags": [
+    "aws",
+    "sqs",
+    "messaging"
+  ],
+  "hours": 2,
+  "number": 10,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Receive. Do durable work. Delete. Expect repeats.",
+  "prerequisite": "cloud-elasticache",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Queue message\"]\n N1[\"Visibility window\"]\n N2[\"Repeat-safe DB effect\"]\n N3[\"Delete receipt handle\"]\n N4[\"DLQ or recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Queue message\"]\n N1[\"Visibility window\"]\n N2[\"Repeat-safe DB effect\"]\n N3[\"Delete receipt handle\"]\n N4[\"DLQ or recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Queue message",
+      "detail": "A queue hands work to consumers. Receiving an SQS message does not remove it; visibility temporarily hides it under the queue’s contract. Successful processing is followed by deliberate deletion using the receipt handle. If processing fails or times out, work can be seen again."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Send → visible → receive → temporarily invisible → DB effect → delete. Crash after DB commit but before delete leads to repetition, which a unique event/command identity must tolerate.\n\nDLQ means quarantined for investigation, not successfully processed. Redrive after a repair needs a repeat-safe consumer and an understanding of ordering consequences."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Deleting before processing can lose work. A too-short visibility window can overlap processing. A long visibility value can delay recovery after a real crash."
+    }
+  ],
+  "sources": [
+    {
+      "title": "SQS visibility",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Set up a queue and dead-letter path and implement repeat-safe processing. Explain one example and one failure.",
+  "lab": "aws-rails",
+  "sequence": 14
+}

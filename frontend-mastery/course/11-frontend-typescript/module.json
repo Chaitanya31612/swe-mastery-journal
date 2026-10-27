@@ -1,0 +1,96 @@
+{
+  "id": "frontend-typescript",
+  "track": "frontend",
+  "title": "TypeScript: make invalid states harder to express",
+  "level": "beginner",
+  "outcome": "Model request states and narrow outside data instead of hiding uncertainty with any.",
+  "useCase": "API adapters and reusable Vue components.",
+  "benefits": "Missing states and unsafe property reads surface earlier.",
+  "drawbacks": "Types still need runtime validation at outside boundaries.",
+  "tags": [
+    "typescript",
+    "contracts"
+  ],
+  "hours": 2,
+  "number": 11,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Types check your claims. Parsers check outside values.",
+  "prerequisite": "frontend-runtime",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Unknown input\"]\n N1[\"Runtime checks\"]\n N2[\"Typed model\"]\n N3[\"Narrowed state\"]\n N4[\"Handled UI branch\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Unknown input\"]\n N1[\"Runtime checks\"]\n N2[\"Typed model\"]\n N3[\"Narrowed state\"]\n N4[\"Handled UI branch\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Unknown input",
+      "detail": "TypeScript checks code before it runs. It does not validate JSON at runtime. A cast tells the compiler what you claim; it does not turn a string into a number or verify an API response."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "At compile time, narrowing follows kind. At runtime, a parser checks actual values. Once parsed, UI code can work with the smaller trusted shape. Recheck when a new outside boundary is crossed.\n\nFor an exhaustive switch, assign the unreachable value to never. A later added state can then produce a compiler error in code that forgot to handle it."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Non-null assertions hide absence but do not create a DOM element. any spreads unchecked assumptions across the program. Optional properties can conceal a missing required business decision."
+    }
+  ],
+  "sources": [
+    {
+      "title": "TypeScript narrowing",
+      "url": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Model request states and narrow outside data instead of hiding uncertainty with any. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 5
+}

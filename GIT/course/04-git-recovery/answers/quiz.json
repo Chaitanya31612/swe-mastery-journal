@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "It records local ref movements and can identify still-existing commits. It does not store arbitrary unsaved files."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Git may never have stored that file content."
+  }
+}

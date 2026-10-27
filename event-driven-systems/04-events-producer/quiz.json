@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Calling produce proves consumers finished?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with acks=all"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Producer idempotence deduplicates every app resend?",
+    "options": [
+      "No",
+      "Only with JSON",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Why keep event_id on retries?",
+    "options": [
+      "To replace every offset",
+      "To identify the same logical fact downstream",
+      "To authorize users"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Margins remain outside the border box."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "A zero minimum lets the track shrink deliberately."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Breakpoints should serve this content and layout."
+  }
+}

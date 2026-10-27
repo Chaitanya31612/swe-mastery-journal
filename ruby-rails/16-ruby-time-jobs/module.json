@@ -1,0 +1,101 @@
+{
+  "id": "ruby-time-jobs",
+  "track": "ruby",
+  "title": "Time zones, schedules, and jobs that run twice",
+  "level": "intermediate",
+  "outcome": "Separate an instant, a local calendar rule, a schedule trigger, and a unique business run.",
+  "useCase": "Daily reports, reminders, and tenant-local deadlines.",
+  "benefits": "Prevents common duplicate and off-by-a-day defects.",
+  "drawbacks": "Calendar changes and ambiguous outcomes need explicit policy.",
+  "tags": [
+    "rails",
+    "time",
+    "jobs"
+  ],
+  "hours": 2,
+  "number": 16,
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "book": "",
+  "cue": "A time is not a date. A tick is not a completed run.",
+  "prerequisite": "ruby-query-plans",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Calendar rule and zone\"]\n N1[\"Schedule trigger\"]\n N2[\"Unique run claim\"]\n N3[\"Retriable work\"]\n N4[\"Observed completion\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Calendar rule and zone\"]\n N1[\"Schedule trigger\"]\n N2[\"Unique run claim\"]\n N3[\"Retriable work\"]\n N4[\"Observed completion\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Calendar rule and zone",
+      "detail": "“Tomorrow at 9” needs a time zone and a calendar rule. Store an instant for an event that already happened. Store the intended zone/rule as well when scheduling future local-time behavior. Daylight-saving transitions can create missing or repeated local times."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Scheduler tick → compute intended business period → claim unique run → snapshot/request work → job retries → durable completion state. If a process crashes after claiming, define how a stale in-progress run is retried or repaired.\n\nTest a late scheduler, duplicate trigger, a DST boundary, and a provider timeout. “It ran yesterday” is weak evidence for these cases."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A mutex in one Ruby process does not coordinate multiple schedulers. A UTC date and a user-local date can refer to different report periods. A done flag written before the effect can lose work."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rails time support",
+      "url": "https://api.rubyonrails.org/v4.2.11/classes/ActiveSupport/TimeZone.html"
+    },
+    {
+      "title": "Sidekiq practices",
+      "url": "https://github.com/sidekiq/sidekiq/wiki/Best-Practices"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Separate an instant, a local calendar rule, a schedule trigger, and a unique business run. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 16
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "A mismatch can produce no endpoints."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Implementation must exist and be configured."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "It bypasses parts of the real traffic path."
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What is an image?",
+    "options": [
+      "A running process only",
+      "A template/artifact for container instances",
+      "A database backup"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does EXPOSE publish a host port?",
+    "options": [
+      "Only for Rails",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should survive replacement deliberately?",
+    "options": [
+      "Only logs left inside the old container",
+      "Every process memory value",
+      "Important state outside the disposable layer"
+    ]
+  }
+]

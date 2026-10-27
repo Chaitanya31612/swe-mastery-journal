@@ -153,3 +153,7 @@ Need remote work?
 - Git workflows: https://git-scm.com/docs/gitworkflows
 - Git object model commands: `git help cat-file`, `git help hash-object`, `git help update-index`
 - Recovery commands: `git help reflog`, `git help reset`, `git help restore`, `git help revert`
+
+## Interactive learning path
+
+Use the [short course](course/README.md) for ordered lessons, diagrams, practice, and separate answers. The application’s **Software Learnings** area presents it with predictions, quizzes, saved attempts, AI coaching, and spaced recall. These existing longer notes remain available as deeper reading.

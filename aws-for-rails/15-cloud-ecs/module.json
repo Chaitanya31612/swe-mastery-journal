@@ -1,0 +1,97 @@
+{
+  "id": "cloud-ecs",
+  "track": "cloud",
+  "title": "ECS with Fargate: web and workers as separate services",
+  "level": "intermediate",
+  "outcome": "Configure task definitions, roles, networking, logs, health, and scaling for Rails web and worker processes.",
+  "useCase": "A containerized Rails app without a Kubernetes requirement.",
+  "benefits": "Managed orchestration with direct AWS integration.",
+  "drawbacks": "Networking, release flow, identity, and capacity limits remain explicit.",
+  "tags": [
+    "aws",
+    "ecs",
+    "fargate"
+  ],
+  "hours": 2,
+  "number": 15,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Image, command, role, network, health, and desired count.",
+  "prerequisite": "cloud-eventbridge",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Task definition\"]\n N1[\"Image and platform role\"]\n N2[\"Application task role\"]\n N3[\"Web or worker service\"]\n N4[\"Health and bounded scaling\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Task definition\"]\n N1[\"Image and platform role\"]\n N2[\"Application task role\"]\n N3[\"Web or worker service\"]\n N4[\"Health and bounded scaling\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Task definition",
+      "detail": "ECS orchestrates tasks and services. A task definition describes containers, resources, ports, configuration, and roles. A service maintains a desired task count. Fargate is a capacity option that removes much of the host management; it does not remove application or network responsibility."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Scheduler starts task → platform pulls image using execution role → app receives workload task role/config → process becomes ready → traffic/work arrives → logs/metrics report progress. On shutdown, stop accepting new work and finish or safely retry current work.\n\nCount DB pools across every web and worker task before scaling. Managed task placement does not expand PostgreSQL capacity."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "An execution role is not automatically the app’s S3 role. Starting more workers can overload the DB/provider. A task repeatedly failing before logs are configured is hard to diagnose."
+    }
+  ],
+  "sources": [
+    {
+      "title": "ECS guide",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Configure task definitions, roles, networking, logs, health, and scaling for Rails web and worker processes. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 16
+}

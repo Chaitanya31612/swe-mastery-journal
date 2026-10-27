@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which values are false in Ruby conditions?",
+    "options": [
+      "nil and false only",
+      "nil, false, 0, and empty strings",
+      "Only nil"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "a = []; b = a; b << 7; a == [7] ?",
+    "options": [
+      "true",
+      "false"
+    ]
+  }
+]

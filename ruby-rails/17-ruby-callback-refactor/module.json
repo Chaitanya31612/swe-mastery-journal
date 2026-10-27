@@ -1,0 +1,97 @@
+{
+  "id": "ruby-callback-refactor",
+  "track": "ruby",
+  "title": "Refactor callback-heavy Rails without changing behavior accidentally",
+  "level": "intermediate",
+  "outcome": "Map hidden effects, move orchestration carefully, and keep a regression timeline.",
+  "useCase": "Legacy concerns and duplicate background effects.",
+  "benefits": "Makes hidden behavior explainable and refactoring safer.",
+  "drawbacks": "A complete caller map and version-aware tests are necessary.",
+  "tags": [
+    "rails",
+    "legacy",
+    "refactoring"
+  ],
+  "hours": 2,
+  "number": 17,
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "book": "",
+  "cue": "Map the hidden path before moving it.",
+  "prerequisite": "ruby-time-jobs",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Find callers and concerns\"]\n N1[\"Observe lifecycle\"]\n N2[\"Protect behavior test\"]\n N3[\"Introduce explicit use case\"]\n N4[\"Remove duplicate path\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Find callers and concerns\"]\n N1[\"Observe lifecycle\"]\n N2[\"Protect behavior test\"]\n N3[\"Introduce explicit use case\"]\n N4[\"Remove duplicate path\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Find callers and concerns",
+      "detail": "Callbacks can protect local lifecycle rules, but they can also hide a large workflow behind save. A concern may register callbacks when included. Search declarations and callers before assuming the method body is the whole behavior."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "List entry points and callback registrations. Record one completion with timestamps and event ID. Add tests for update!, bulk updates, imports, and rollback according to their actual paths.\n\nThen change one caller. Assert one logical event, not merely one method invocation under a fake. Inspect direct SQL/bulk methods that intentionally bypass callbacks."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "update_all bypasses model callbacks/validations. A callback’s after_commit hook can still lose enqueue during a crash gap. Removing a callback without tracing callers can remove behavior from an import."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rails 4.2 callbacks",
+      "url": "https://guides.rubyonrails.org/v4.2/active_record_callbacks.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Map hidden effects, move orchestration carefully, and keep a regression timeline. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 17
+}

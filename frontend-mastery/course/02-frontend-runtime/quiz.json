@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What runs first after the synchronous stack: a resolved promise callback or an eligible timer?",
+    "options": [
+      "The promise microtask",
+      "The timer always",
+      "They run simultaneously on this stack"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "console.log A; Promise.then C; console.log D gives?",
+    "options": [
+      "A C D",
+      "A D C"
+    ]
+  }
+]

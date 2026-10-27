@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does an update event do?",
+    "options": [
+      "Mutates the parent automatically in every case",
+      "Commits to the database",
+      "Requests the owner to change state"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Are nested objects in props deeply immutable?",
+    "options": [
+      "Only in TypeScript",
+      "No",
+      "Always"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is a slot useful for?",
+    "options": [
+      "Replacing all state ownership",
+      "Server authorization",
+      "Caller-supplied presentation within a behavior boundary"
+    ]
+  }
+]

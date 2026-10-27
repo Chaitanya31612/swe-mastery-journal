@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "owner identifies the class or module that defines the method chosen by lookup."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "prepend inserts the wrapper ahead of the class in lookup."
+  }
+}

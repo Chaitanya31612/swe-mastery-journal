@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "select filters original items. map transforms every item into a block result."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "map produces a result for each input, including the nil result for 1."
+  }
+}

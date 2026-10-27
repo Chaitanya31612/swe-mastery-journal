@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "Closures can observe later assignments to captured variables. Freezing and copying are separate choices."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "The closure sees the current value of the captured binding."
+  }
+}

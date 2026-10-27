@@ -1,0 +1,101 @@
+{
+  "id": "frontend-dom-lifecycle",
+  "track": "frontend",
+  "title": "DOM events, cleanup, and resource ownership",
+  "level": "intermediate",
+  "outcome": "Trace event propagation and release listeners, timers, observers, and subscriptions with their owner.",
+  "useCase": "Route transitions, realtime UI, resize handling, and forms.",
+  "benefits": "Fewer duplicate actions and retained screens.",
+  "drawbacks": "Resource ownership is separate from rendering correctness.",
+  "tags": [
+    "javascript",
+    "dom",
+    "lifecycle"
+  ],
+  "hours": 2,
+  "number": 26,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "If you open it, own its close.",
+  "prerequisite": "frontend-css-systems",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Mount owner\"]\n N1[\"Register resource\"]\n N2[\"Handle correct target\"]\n N3[\"Unmount cleanup\"]\n N4[\"Remount without duplicates\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Mount owner\"]\n N1[\"Register resource\"]\n N2[\"Handle correct target\"]\n N3[\"Unmount cleanup\"]\n N4[\"Remount without duplicates\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Mount owner",
+      "detail": "An event travels through capture, target, and bubble phases when the event supports propagation. target is where it originated; currentTarget is the element whose handler is running. Event delegation puts a handler on a stable ancestor and checks the relevant descendant. It is useful for dynamic lists, but needs a precise match and containment check."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Open a screen → register resource → use it → navigate away → cleanup → reopen. Observe that only one listener/subscription remains active. Repeated mounting should not multiply calls.\n\nFor a nested icon click, compare target with currentTarget before reading dataset values. A handler attached to the button can use currentTarget for the button's data. Do not trust DOM attributes as server authorization."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Repeated route visits can accumulate listeners and duplicate saves. A Cancel button without type=button can accidentally submit a form. stopPropagation does not automatically prevent navigation or form submission."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MDN event bubbling",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling"
+    },
+    {
+      "title": "Vue lifecycle",
+      "url": "https://vuejs.org/guide/essentials/lifecycle.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Trace event propagation and release listeners, timers, observers, and subscriptions with their owner. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 14
+}

@@ -1,0 +1,101 @@
+{
+  "id": "ux-inclusive-access",
+  "track": "ux",
+  "title": "Accessibility as a foundation for usable interaction",
+  "level": "beginner",
+  "outcome": "Check semantics, names, focus, contrast, motion, and zoom as part of the main flow.",
+  "useCase": "Every reusable component and critical business flow.",
+  "benefits": "Improves access and often clarifies interaction for everyone.",
+  "drawbacks": "Custom widgets carry ongoing keyboard and semantics responsibilities.",
+  "tags": [
+    "ux",
+    "accessibility",
+    "fundamentals"
+  ],
+  "hours": 2,
+  "number": 7,
+  "version": "Web UX · WCAG 2.2 · principles, not magic formulas",
+  "book": "",
+  "cue": "Name it. Reach it. Operate it. Understand it.",
+  "prerequisite": "ux-targets",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Semantic structure\"]\n N1[\"Named controls\"]\n N2[\"Visible focus\"]\n N3[\"Accessible state changes\"]\n N4[\"Task test across input methods\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Semantic structure\"]\n N1[\"Named controls\"]\n N2[\"Visible focus\"]\n N3[\"Accessible state changes\"]\n N4[\"Task test across input methods\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Semantic structure",
+      "detail": "Accessibility is not a final color check. A person must be able to perceive the state, operate controls, understand the result, and use compatible assistive technology. Native HTML gives many behaviors that a clickable div does not."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Complete the same task without a mouse. Can you reach every control, see focus, understand its name, operate it, and recover from failure? Then zoom the page and inspect reflow. Then test the key path with a screen reader.\n\nRespect reduced-motion preferences for unnecessary animation. Avoid information conveyed only by color, hover, or movement."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Adding role=button to a div without keyboard behavior creates a misleading contract. A focus trap that cannot be escaped is a defect. aria-hidden content can still contain focusable elements if implemented carelessly."
+    }
+  ],
+  "sources": [
+    {
+      "title": "WCAG 2.2 quick reference",
+      "url": "https://www.w3.org/WAI/WCAG22/quickref/"
+    },
+    {
+      "title": "ARIA authoring practices",
+      "url": "https://www.w3.org/WAI/ARIA/apg/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Check semantics, names, focus, contrast, motion, and zoom as part of the main flow. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 5
+}

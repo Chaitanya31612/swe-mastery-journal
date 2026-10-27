@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "A commit ID covers its content and metadata, including its parent relationship."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Textual compatibility does not prove behavioral compatibility."
+  }
+}

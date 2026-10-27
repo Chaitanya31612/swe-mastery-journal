@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "Control the completion order and assert the user-visible accepted result."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Elapsed time is not the same as observing the intended state."
+  }
+}

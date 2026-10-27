@@ -1,0 +1,96 @@
+{
+  "id": "ops-opentelemetry",
+  "track": "ops",
+  "title": "OpenTelemetry: instrumentation is not the storage backend",
+  "level": "beginner",
+  "outcome": "Explain traces, metrics, logs, context propagation, and collector/exporter roles.",
+  "useCase": "Portable instrumentation across services and observability vendors.",
+  "benefits": "Common telemetry concepts and integration options.",
+  "drawbacks": "Backend, volume, sampling, and privacy still need decisions.",
+  "tags": [
+    "observability",
+    "opentelemetry"
+  ],
+  "hours": 2,
+  "number": 11,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Instrument → collect → export → store → investigate.",
+  "prerequisite": "ops-datadog",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Application signal\"]\n N1[\"Context\"]\n N2[\"Collector processing\"]\n N3[\"Chosen backend\"]\n N4[\"Query and alert\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Application signal\"]\n N1[\"Context\"]\n N2[\"Collector processing\"]\n N3[\"Chosen backend\"]\n N4[\"Query and alert\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Application signal",
+      "detail": "OpenTelemetry supplies standards, APIs/SDKs, instrumentation, and collection/export tools. It is not by itself the long-term observability database or dashboard. You still choose where telemetry is stored and how it is queried/retained."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Request span begins → child SQL/client spans → context crosses a supported boundary → collector processes → backend receives → investigator queries. Inspect dropped/export-failed telemetry separately from application failures.\n\nFor a Kafka event, choose whether to propagate a trace context or use a span link, and keep event identity for business replay. Trace identity is not an idempotency key."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Choosing OTel does not eliminate backend cost. Baggage can spread sensitive values. A trace ID does not enforce exactly-once processing."
+    }
+  ],
+  "sources": [
+    {
+      "title": "OpenTelemetry signals",
+      "url": "https://opentelemetry.io/docs/concepts/signals/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain traces, metrics, logs, context propagation, and collector/exporter roles. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 6
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which signal summarizes trends?",
+    "options": [
+      "A secret file",
+      "Only a single stack trace",
+      "Metrics"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Where do high-cardinality event IDs usually belong?",
+    "options": [
+      "Only CSS attributes",
+      "Every metric dimension",
+      "Correlated logs/traces rather than ordinary metric labels"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "A useful alarm includes what?",
+    "options": [
+      "Only the service logo",
+      "Owner and first checks/recovery verification",
+      "Only a red color"
+    ]
+  }
+]

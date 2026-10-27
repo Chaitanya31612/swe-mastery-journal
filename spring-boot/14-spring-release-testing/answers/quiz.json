@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Data recovery is a separate plan."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Migration work needs coordination and observation."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Test the database boundary with the database."
+  }
+}

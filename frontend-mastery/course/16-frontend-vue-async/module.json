@@ -1,0 +1,97 @@
+{
+  "id": "frontend-vue-async",
+  "track": "frontend",
+  "title": "Vue watchers and async search without stale state",
+  "level": "intermediate",
+  "outcome": "Implement a watched request with cleanup, current-result guards, and honest loading/error states.",
+  "useCase": "Live ticket search and dependent selects.",
+  "benefits": "Predictable async state under fast input.",
+  "drawbacks": "Cancellation, ownership, and validation need separate handling.",
+  "tags": [
+    "vue3",
+    "async",
+    "testing"
+  ],
+  "hours": 2,
+  "number": 16,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Cleanup revokes ownership, not just network work.",
+  "prerequisite": "frontend-vue-composables",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow the real boundaries",
+      "placement": "overview",
+      "code": "sequenceDiagram\n participant UI as Search UI\n participant A as Request A\n participant B as Request B\n UI->>A: Search old text\n UI->>UI: New query invalidates A owner\n UI->>B: Search new text\n B-->>UI: New result accepted\n A-->>UI: Old success or error ignored\n Note over UI,B: Guard rows, errors, and loading"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Reactive query\"]\n N1[\"Register cleanup\"]\n N2[\"Fetch current input\"]\n N3[\"Guard every update\"]\n N4[\"Clean next run or unmount\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Reactive query",
+      "detail": "Use watch when you want a side effect tied to a specific source. watchEffect tracks reactive reads made during its synchronous execution; reads after the first await do not automatically become dependencies of that effect."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Query A starts and owns active=true. Query B invalidates A: cleanup sets A inactive and aborts it. B becomes the owner. If A finishes later, its active check prevents every visible update.\n\nTest success-success in reverse order, stale failure after success, abort, and unmount. Give each request a controlled deferred response so the test chooses the timeline."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Putting onWatcherCleanup after await can miss the synchronous registration requirement. Debouncing alone still allows two requests to overlap."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vue watchers",
+      "url": "https://vuejs.org/guide/essentials/watchers.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Implement a watched request with cleanup, current-result guards, and honest loading/error states. Explain one example and one failure.",
+  "lab": "vue-workspace",
+  "sequence": 17
+}

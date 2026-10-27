@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which element normally fits an action that saves a task?",
+    "options": [
+      "A div with only a click listener",
+      "A button with an accessible name",
+      "A link without an href"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "A failed request and a valid empty list should show identical text?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

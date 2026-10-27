@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Agent installed means every app span is present?",
+    "options": [
+      "Always",
+      "No",
+      "Only on EC2"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What tags make release comparison useful?",
+    "options": [
+      "Stable service, environment, and version",
+      "Only host color",
+      "Every raw email address"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "No trace proves no request ran?",
+    "options": [
+      "No",
+      "Yes",
+      "Only when sampled"
+    ]
+  }
+]

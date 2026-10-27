@@ -1,0 +1,101 @@
+{
+  "id": "ops-github-actions",
+  "track": "ops",
+  "title": "GitHub Actions: test, build once, and promote an artifact",
+  "level": "intermediate",
+  "outcome": "Design a CI/CD path with explicit permissions, artifact identity, and release gates.",
+  "useCase": "Rails/Vue delivery with reproducible artifacts.",
+  "benefits": "Repeatable checks and reviewable promotion.",
+  "drawbacks": "Runner trust, secrets, caches, and release compatibility need design.",
+  "tags": [
+    "ci",
+    "github-actions",
+    "delivery"
+  ],
+  "hours": 2,
+  "number": 18,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Test the revision. Build once. Promote known bytes.",
+  "prerequisite": "ops-terraform",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Workflow trigger\"]\n N1[\"Bounded permissions\"]\n N2[\"Relevant checks\"]\n N3[\"Immutable artifact\"]\n N4[\"Gated deployment and smoke\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Workflow trigger\"]\n N1[\"Bounded permissions\"]\n N2[\"Relevant checks\"]\n N3[\"Immutable artifact\"]\n N4[\"Gated deployment and smoke\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Workflow trigger",
+      "detail": "A workflow is triggered by an event and runs jobs/steps on runners. CI should produce relevant evidence for a change: type checks, tests, build, and selected integration checks. CD promotes a known artifact into an environment under deliberate permissions."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "PR event → least-privilege test job → passing evidence → identified artifact → deliberate environment gate → deployment → smoke/monitor → rollback decision. Keep credentials scoped to jobs/environments that need them.\n\nTreat migration compatibility and external effects as release concerns. A green CI job cannot make a destructive data rollback reversible."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A build from a dirty local tree is not the CI-tested revision. Broad write permissions on untrusted workflows widen access. A deployment without a smoke check can be green while users fail."
+    }
+  ],
+  "sources": [
+    {
+      "title": "GitHub workflows",
+      "url": "https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows"
+    },
+    {
+      "title": "Actions security",
+      "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Design a CI/CD path with explicit permissions, artifact identity, and release gates. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 19
+}

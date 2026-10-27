@@ -1,0 +1,96 @@
+{
+  "id": "frontend-vue-performance",
+  "track": "frontend",
+  "title": "Vue performance: measure the expensive boundary",
+  "level": "intermediate",
+  "outcome": "Find whether a slow interaction comes from work, rendering, layout, or network delay.",
+  "useCase": "Large ticket tables and optional rich editors.",
+  "benefits": "Improves the delay users actually experience.",
+  "drawbacks": "Optimizations can add stale-state, focus, and maintenance costs.",
+  "tags": [
+    "vue3",
+    "performance"
+  ],
+  "hours": 2,
+  "number": 19,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Measure one delay. Fix one cause. Retest the task.",
+  "prerequisite": "frontend-rendering-budget",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Slow interaction\"]\n N1[\"Profile the boundary\"]\n N2[\"Choose one repair\"]\n N3[\"Measure again\"]\n N4[\"Check access and correctness\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Slow interaction\"]\n N1[\"Profile the boundary\"]\n N2[\"Choose one repair\"]\n N3[\"Measure again\"]\n N4[\"Check access and correctness\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Slow interaction",
+      "detail": "Start with a measured symptom: typing takes 200 ms to appear with 5,000 tickets. Profile before choosing a fix. Filtering, component updates, layout, and network work have different repairs."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Record interaction → long task → flame chart → expensive function or layout. Change one thing and compare with the same synthetic dataset/device conditions. Keep a correctness check alongside the timing check.\n\nIf the server sends 50,000 rows, frontend tricks may hide a poor data boundary. Consider server filtering, pagination, and bounded responses before rendering every row."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A fast desktop can hide mobile main-thread cost. Virtualization can break screen-reader context. A deep watcher over a large tree may run more work than the user action needs."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vue performance",
+      "url": "https://vuejs.org/guide/best-practices/performance.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Find whether a slow interaction comes from work, rendering, layout, or network delay. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 21
+}

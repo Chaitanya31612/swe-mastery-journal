@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Fork changes can alter behavior."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "It supplies a baseline, not a product endorsement."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "The work project is read-only for this course."
+  }
+}

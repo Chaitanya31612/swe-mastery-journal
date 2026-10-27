@@ -1,0 +1,101 @@
+{
+  "id": "ruby-compatibility-tests",
+  "track": "ruby",
+  "title": "Compatibility and boundary tests for a legacy Rails stack",
+  "level": "intermediate",
+  "outcome": "Plan a small change or upgrade using version-specific tests rather than broad rewrites.",
+  "useCase": "Small legacy changes and planned runtime upgrades.",
+  "benefits": "Confidence comes from relevant evidence rather than a total rewrite.",
+  "drawbacks": "A compatibility matrix still has gaps outside tested seams.",
+  "tags": [
+    "rails",
+    "testing",
+    "compatibility"
+  ],
+  "hours": 2,
+  "number": 18,
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "book": "",
+  "cue": "Record the version. Test the seam. Change one promise.",
+  "prerequisite": "ruby-callback-refactor",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Exact versions\"]\n N1[\"Observed contract\"]\n N2[\"Focused reproduction\"]\n N3[\"Small adaptation\"]\n N4[\"Boundary evidence\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Exact versions\"]\n N1[\"Observed contract\"]\n N2[\"Focused reproduction\"]\n N3[\"Small adaptation\"]\n N4[\"Boundary evidence\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Exact versions",
+      "detail": "Start by recording exact Ruby, Rails, gem, database, and frontend versions. A fork may differ from upstream. A copied snippet is a hypothesis until the relevant boundary test runs in an authorized isolated environment."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Choose one behavior → record current contract → write a failing/characterization test → make a small change → run affected boundary tests → verify deployment compatibility. Keep a matrix of versions only for the seams actually being changed.\n\nDo not run course experiments inside the work checkout. Use synthetic data and a separately authorized test environment. Private source and data do not belong in the AI tutor."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A full mock suite can hide broken autoload or SQL behavior. A modern Rails guide can use APIs absent in the old app. A test that merely copies implementation conditions adds little evidence."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Ruby keyword migration",
+      "url": "https://www.ruby-lang.org/en/news/2019/12/12/separation-of-positional-and-keyword-arguments-in-ruby-3-0/"
+    },
+    {
+      "title": "Rails upgrading",
+      "url": "https://guides.rubyonrails.org/v4.2/upgrading_ruby_on_rails.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Plan a small change or upgrade using version-specific tests rather than broad rewrites. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 18
+}

@@ -1,0 +1,101 @@
+{
+  "id": "frontend-web-platform",
+  "track": "frontend",
+  "title": "HTTP, browser caching, and the real network path",
+  "level": "intermediate",
+  "outcome": "Separate HTTP caching, application state, CORS, cookies, and request success.",
+  "useCase": "Stale dashboards and cross-origin application debugging.",
+  "benefits": "Finds the actual boundary instead of adding random cache flags.",
+  "drawbacks": "Several caches and identity rules can interact.",
+  "tags": [
+    "http",
+    "browser",
+    "debugging"
+  ],
+  "hours": 2,
+  "number": 12,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "Name the layer before changing the setting.",
+  "prerequisite": "frontend-async-coordination",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Browser request\"]\n N1[\"HTTP status and headers\"]\n N2[\"Cache layer\"]\n N3[\"Validated data\"]\n N4[\"Visible result\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Browser request\"]\n N1[\"HTTP status and headers\"]\n N2[\"Cache layer\"]\n N3[\"Validated data\"]\n N4[\"Visible result\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Browser request",
+      "detail": "fetch resolves for an HTTP 404 or 500. Check response.ok before treating the body as success. A network failure is different from a server returning a deliberate error response."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Trace DNS → connection/TLS → request headers → server response → HTTP cache → app adapter → UI state. When the page is stale, identify which layer supplied the stale copy.\n\nA 304 response is used with a cached representation. A 200 with old data can come from a backend cache. A CORS error may hide a response from JavaScript while the server still received the request. Do not assume a browser error means no side effect happened."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Returning Access-Control-Allow-Origin:* does not make cookie-based cross-origin requests universally work. Sending a retry after a hidden response can repeat a server write."
+    }
+  ],
+  "sources": [
+    {
+      "title": "MDN HTTP caching",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching"
+    },
+    {
+      "title": "MDN Fetch",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Separate HTTP caching, application state, CORS, cookies, and request success. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 12
+}

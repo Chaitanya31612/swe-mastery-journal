@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Identity and forwarded dimensions must match response variation."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Cache scope is an access boundary."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Clients can remain on older shell versions."
+  }
+}

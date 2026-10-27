@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What does the default singleton scope imply?",
+    "options": [
+      "Every request gets a new service",
+      "Request data in fields can be shared between threads",
+      "The bean is a global distributed lock"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Two requests call one singleton service. Which storage is naturally per call?",
+    "options": [
+      "An instance field",
+      "A local variable"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does RDS design your indexes?",
+    "options": [
+      "Only for Rails",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What can read replicas introduce?",
+    "options": [
+      "Automatic business authorization",
+      "Replication lag",
+      "Guaranteed immediate read-your-write"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What proves recovery capability best?",
+    "options": [
+      "A backup setting alone",
+      "A green web icon",
+      "A measured restore exercise"
+    ]
+  }
+]

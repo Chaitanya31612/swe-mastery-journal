@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "You still choose storage/query/alerting."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Spans need deliberate relationships across boundaries."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Telemetry identity and business identity have different contracts."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Age, rate, errors, and importance matter."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Ownership and committed progress determine replay."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Observe before mutating recovery state."
+  }
+}

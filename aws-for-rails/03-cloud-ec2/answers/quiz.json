@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "A VM does not manage the whole application lifecycle."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Storage must be deliberately shared or externalized."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Recovery should not depend on a pet server."
+  }
+}

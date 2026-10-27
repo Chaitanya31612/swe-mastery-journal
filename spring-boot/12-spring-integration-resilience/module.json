@@ -1,0 +1,97 @@
+{
+  "id": "spring-integration-resilience",
+  "track": "spring",
+  "title": "Remote calls: timeouts, retries, and unknown outcomes",
+  "level": "intermediate",
+  "outcome": "Bound dependency work and design retries around a logical command rather than an exception name.",
+  "useCase": "Email, payments, file conversion, and third-party APIs.",
+  "benefits": "Contained failure and explainable retry behavior.",
+  "drawbacks": "Some outcomes remain ambiguous without provider support.",
+  "tags": [
+    "spring",
+    "integration",
+    "reliability"
+  ],
+  "hours": 2,
+  "number": 12,
+  "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+  "book": "",
+  "cue": "Bound the wait. Identify the command. Admit uncertainty.",
+  "prerequisite": "spring-data-performance",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Saved intent\"]\n N1[\"Timed adapter call\"]\n N2[\"Accepted or unknown\"]\n N3[\"Bounded safe retry\"]\n N4[\"Reconcile and observe\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Saved intent\"]\n N1[\"Timed adapter call\"]\n N2[\"Accepted or unknown\"]\n N3[\"Bounded safe retry\"]\n N4[\"Reconcile and observe\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Saved intent",
+      "detail": "A remote call crosses a failure boundary. The provider can reject, respond slowly, complete and lose the response, or return malformed data. A timeout says you did not get an answer in time; it does not prove no side effect occurred."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Business change commits with a receipt intent. A worker sends it with eventKey E. The provider accepts E but the response is lost. A retry uses E again under the provider’s documented key contract, or reconciliation resolves uncertainty when such a contract is absent.\n\nDo not retry an entire use case if that repeats unrelated writes. Put the retry around the boundary you actually intend to repeat."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Nested retries multiply attempts. A 3-attempt client inside a 3-attempt job can make nine calls. A fallback that reports success without performing the required effect is a false result."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Spring REST clients",
+      "url": "https://docs.spring.io/spring-framework/reference/integration/rest-clients.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Bound dependency work and design retries around a logical command rather than an exception name. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 12
+}

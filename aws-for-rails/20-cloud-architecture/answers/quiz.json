@@ -1,0 +1,90 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Select a justified compute/orchestration choice."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Completion meaning changes across boundaries."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Every tool adds responsibility as well as capability."
+  },
+  "review-cloud-identity": {
+    "correctIndex": 0,
+    "explanation": "Trust and action permissions are separate."
+  },
+  "review-cloud-networking": {
+    "correctIndex": 2,
+    "explanation": "A subnet is an AZ-scoped network range."
+  },
+  "review-cloud-ec2": {
+    "correctIndex": 2,
+    "explanation": "A VM does not manage the whole application lifecycle."
+  },
+  "review-cloud-load-balancing": {
+    "correctIndex": 2,
+    "explanation": "Traffic routing is an explicit layer."
+  },
+  "review-cloud-dns-tls": {
+    "correctIndex": 0,
+    "explanation": "It supplies name-resolution answers."
+  },
+  "review-cloud-s3": {
+    "correctIndex": 2,
+    "explanation": "It can be used while its permission and expiry remain valid."
+  },
+  "review-cloud-cloudfront": {
+    "correctIndex": 0,
+    "explanation": "Identity and forwarded dimensions must match response variation."
+  },
+  "review-cloud-rds": {
+    "correctIndex": 1,
+    "explanation": "Application query/schema decisions remain yours."
+  },
+  "review-cloud-elasticache": {
+    "correctIndex": 0,
+    "explanation": "Their correctness and recovery requirements differ."
+  },
+  "review-cloud-sqs": {
+    "correctIndex": 0,
+    "explanation": "Receipt and deletion are distinct operations."
+  },
+  "review-cloud-sns": {
+    "correctIndex": 0,
+    "explanation": "Each logical subscriber has its own work to do."
+  },
+  "review-cloud-eventbridge": {
+    "correctIndex": 0,
+    "explanation": "Inspect per-entry outcomes."
+  },
+  "review-cloud-lambda": {
+    "correctIndex": 1,
+    "explanation": "Invocation/acknowledgement semantics depend on the event source."
+  },
+  "review-cloud-ecr": {
+    "correctIndex": 2,
+    "explanation": "A digest identifies the image bytes."
+  },
+  "review-cloud-ecs": {
+    "correctIndex": 2,
+    "explanation": "The service reconciles running tasks."
+  },
+  "review-cloud-eks": {
+    "correctIndex": 2,
+    "explanation": "Workload and control-plane health are separate."
+  },
+  "review-cloud-msk": {
+    "correctIndex": 2,
+    "explanation": "The application still needs an outbox or another explicit consistency design."
+  },
+  "review-cloud-cloudwatch": {
+    "correctIndex": 2,
+    "explanation": "Metrics aggregate behavior over time."
+  },
+  "review-cloud-secrets-kms": {
+    "correctIndex": 1,
+    "explanation": "Secrets and cryptographic keys have different lifecycles and APIs."
+  }
+}

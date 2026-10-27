@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does later rm erase a copied secret from prior layers?",
+    "options": [
+      "Only with slim images",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What should enter the dependency layer before source?",
+    "options": [
+      "Gemfile and lockfile when appropriate",
+      "Every temporary log",
+      "Production credentials"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Why prefer exec-style process startup?",
+    "options": [
+      "Unlimited memory",
+      "Automatic SQL transactions",
+      "Clear signal delivery to the app process"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Low CPU and high latency can mean what?",
+    "options": [
+      "There cannot be a bottleneck",
+      "Every query is fast",
+      "Waiting on a pool, lock, or dependency"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does a bigger connection pool always help?",
+    "options": [
+      "Only with JPA",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Where should PostgreSQL plan claims be verified?",
+    "options": [
+      "PostgreSQL with representative data",
+      "Only an H2 happy path",
+      "Only a mock repository"
+    ]
+  }
+]

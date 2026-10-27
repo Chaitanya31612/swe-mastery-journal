@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "The authority must coordinate competing writes."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "The key identifies one logical request."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Clients cannot be trusted to supply safe bounds."
+  }
+}

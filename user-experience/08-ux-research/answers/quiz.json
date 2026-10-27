@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Describe the goal without naming the intended control."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Clicks can reflect friction or repeated failure."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Without scope, the number is hard to interpret."
+  }
+}

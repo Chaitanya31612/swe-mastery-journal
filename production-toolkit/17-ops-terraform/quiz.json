@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does Terraform state map?",
+    "options": [
+      "Every browser event",
+      "Configuration resources to managed remote identity",
+      "All application data backups"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does apply success prove Rails works?",
+    "options": [
+      "Only with AWS provider",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Can state contain sensitive values?",
+    "options": [
+      "Yes",
+      "Only comments",
+      "No"
+    ]
+  }
+]

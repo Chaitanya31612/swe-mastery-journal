@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "A false validation result is ordinary control flow unless the caller turns it into a rollback or exception."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "A crash can occur after commit but before the queue write."
+  }
+}

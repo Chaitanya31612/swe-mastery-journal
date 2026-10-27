@@ -1,0 +1,96 @@
+{
+  "id": "events-consumers",
+  "track": "events",
+  "title": "Consumers: groups, positions, stored offsets, and commits",
+  "level": "beginner",
+  "outcome": "Predict replay from the committed next offset and avoid acknowledging unfinished work.",
+  "useCase": "A reporting group with controlled replay.",
+  "benefits": "Independent subscribers and explicit progress.",
+  "drawbacks": "Incorrect offset handling can lose or duplicate business work.",
+  "tags": [
+    "kafka",
+    "consumer"
+  ],
+  "hours": 2,
+  "number": 5,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Fetch is not finish. Commit only completed progress.",
+  "prerequisite": "events-producer",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Partition assignment\"]\n N1[\"Fetched position\"]\n N2[\"Durable effect\"]\n N3[\"Contiguous completion\"]\n N4[\"Committed resume offset\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Partition assignment\"]\n N1[\"Fetched position\"]\n N2[\"Durable effect\"]\n N3[\"Contiguous completion\"]\n N4[\"Committed resume offset\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Partition assignment",
+      "detail": "A consumer group shares partition responsibility among its members. A different group has independent progress and can read the same retained records. Within a group, one assigned member normally owns a partition at a time under the selected group protocol."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Assigned partition → fetch → validate → DB transaction → commit completed progress. Parallel processing needs a contiguous completion frontier: do not commit past an earlier unfinished record merely because a later one finished.\n\nTest a consumer restart with an existing group and then a new group. Explain the difference from resetting offsets deliberately."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A high fetched position does not mean business work completed. More group members than partitions can leave members idle. An automatic progress setting can acknowledge work before your code intended."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kafka consumer config",
+      "url": "https://kafka.apache.org/41/configuration/consumer-configs/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Predict replay from the committed next offset and avoid acknowledging unfinished work. Explain one example and one failure.",
+  "lab": "rails-kafka",
+  "sequence": 5
+}

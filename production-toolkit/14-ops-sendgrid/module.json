@@ -1,0 +1,101 @@
+{
+  "id": "ops-sendgrid",
+  "track": "ops",
+  "title": "SendGrid: accepted email is not delivered email",
+  "level": "beginner",
+  "outcome": "Trace message intent, provider acceptance, delivery events, suppression, and retry uncertainty.",
+  "useCase": "Operational notifications and receipt-status tracking.",
+  "benefits": "Managed delivery integration and delivery feedback.",
+  "drawbacks": "Remote uncertainty, reputation/suppression, and webhook correctness remain.",
+  "tags": [
+    "sendgrid",
+    "email",
+    "integration"
+  ],
+  "hours": 2,
+  "number": 14,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Saved → accepted → delivered are different promises.",
+  "prerequisite": "ops-opentelemetry",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Durable notification intent\"]\n N1[\"Provider attempt\"]\n N2[\"Acceptance or unknown\"]\n N3[\"Verified webhook\"]\n N4[\"Idempotent status update\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Durable notification intent\"]\n N1[\"Provider attempt\"]\n N2[\"Acceptance or unknown\"]\n N3[\"Verified webhook\"]\n N4[\"Idempotent status update\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Durable notification intent",
+      "detail": "An email integration has several states: saved intent, attempted request, provider acceptance, recipient-server delivery, bounce, suppression, and user interaction. The API accepting a request does not prove the person received or read it."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Follow one notification ID through retries and provider events. A webhook can be repeated or arrive after another event. Define allowed state transitions from observed facts rather than assuming arrival order is perfect.\n\nFor a timeout, check provider-supported status/idempotency behavior before resending. If acceptance is unknown, record uncertainty and reconcile rather than asserting success or failure without evidence."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A delivered event does not prove the human read the message. Tracking opens can have privacy/client artifacts. Webhook bodies alone are not proof of sender authenticity."
+    }
+  ],
+  "sources": [
+    {
+      "title": "SendGrid event webhook",
+      "url": "https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/event"
+    },
+    {
+      "title": "SendGrid sandbox",
+      "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/sandbox-mode"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Trace message intent, provider acceptance, delivery events, suppression, and retry uncertainty. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 7
+}

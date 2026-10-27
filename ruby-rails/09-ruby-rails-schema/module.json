@@ -1,0 +1,95 @@
+{
+  "id": "ruby-rails-schema",
+  "track": "ruby",
+  "number": 9,
+  "title": "Validations help users; constraints protect rows",
+  "outcome": "Choose the right layer for uniqueness and evolve a schema safely.",
+  "hours": 3,
+  "book": "",
+  "cue": "Validation explains. Constraint enforces.",
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "prerequisite": "ruby-rails-queries",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A unique validation passes in tests but duplicates appear during imports. Repair the rule and identify a migration risk.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "You must add a required status to a table with old rows. Write a staged plan rather than one optimistic add_column call.",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Input validation\"]\n  N1[\"Concurrent writers\"]\n  N2[\"Database constraint\"]\n  N3[\"Conflict handling\"]\n  N4[\"Safe schema rollout\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Input validation\"]\n  N1[\"Concurrent writers\"]\n  N2[\"Database constraint\"]\n  N3[\"Conflict handling\"]\n  N4[\"Safe schema rollout\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rails 4.2 migrations",
+      "url": "https://guides.rubyonrails.org/v4.2/active_record_migrations.html"
+    },
+    {
+      "title": "Rails 4.2 guides",
+      "url": "https://guides.rubyonrails.org/v4.2/"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "Input validation",
+      "detail": "A model validation gives readable feedback before a save. A database constraint protects stored data even when two requests race or a different code path writes the table. Use both when the rule matters."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Two transactions can both pass a uniqueness validator before either inserts. The unique index makes only one conflicting insert succeed. The losing code must handle the database error and return a useful result.\n\nFor a rename, use expand → backfill → switch reads/writes → remove old data later. Verify both versions work during deployment. Test the migration on a disposable database with old-shaped data."
+    },
+    {
+      "title": "Check the result",
+      "detail": "update_all bypasses model callbacks and validations. That can be useful for a deliberate batch update, but database constraints still apply. A rollback that drops a filled column destroys values."
+    }
+  ],
+  "recallPrompt": "Without notes: Choose the right layer for uniqueness and evolve a schema safely. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 8
+}

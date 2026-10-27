@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A service object automatically adds a transaction?",
+    "options": [
+      "No",
+      "Only when named Service",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What is wrong with rescuing every failure into nil?",
+    "options": [
+      "Different outcomes become indistinguishable",
+      "It always improves reliability",
+      "It validates permissions"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Where should request data live?",
+    "options": [
+      "Shared mutable class state",
+      "A global current ticket",
+      "Arguments/local variables"
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "A 404 means a server handled the request but did not find that resource. Inspect routing and package discovery before changing memory or transactions."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Creating an object alone does not register it with MVC."
+  }
+}

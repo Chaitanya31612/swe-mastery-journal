@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "API acceptance proves human receipt?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with HTML mail"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "How should repeated webhooks be handled?",
+    "options": [
+      "Idempotently by event identity",
+      "Always applied as new business actions",
+      "Deleted before validation"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What must authenticate a webhook?",
+    "options": [
+      "The provider-supported verification mechanism",
+      "Only a familiar JSON field",
+      "Only its event name"
+    ]
+  }
+]

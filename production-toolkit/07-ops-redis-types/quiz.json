@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which structure naturally supports ranked scores?",
+    "options": [
+      "A CSS grid",
+      "Only a plain string",
+      "Sorted set"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "GET then SET is one atomic business operation?",
+    "options": [
+      "Yes",
+      "Only for integers",
+      "No"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Pub/Sub automatically stores missed messages for offline clients?",
+    "options": [
+      "Yes",
+      "No",
+      "Only with JSON"
+    ]
+  }
+]

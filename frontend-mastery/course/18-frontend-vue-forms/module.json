@@ -1,0 +1,101 @@
+{
+  "id": "frontend-vue-forms",
+  "track": "frontend",
+  "title": "Forms that survive real editing",
+  "level": "intermediate",
+  "outcome": "Handle validation, dirty state, unsaved changes, and server conflicts without losing user work.",
+  "useCase": "Support-ticket editing with concurrent agents.",
+  "benefits": "Fewer lost edits and more understandable failures.",
+  "drawbacks": "Dirty-state and conflict handling require product decisions.",
+  "tags": [
+    "vue3",
+    "forms",
+    "ux"
+  ],
+  "hours": 2,
+  "number": 18,
+  "version": "Modern JavaScript / TypeScript · Vue 3.5 where applicable · browser APIs",
+  "book": "",
+  "cue": "A failed save should lose the request, not the work.",
+  "prerequisite": "frontend-vue-routing-store",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Owned draft\"]\n N1[\"Accessible checks\"]\n N2[\"Versioned request\"]\n N3[\"Server result\"]\n N4[\"Preserve or reconcile\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Owned draft\"]\n N1[\"Accessible checks\"]\n N2[\"Versioned request\"]\n N3[\"Server result\"]\n N4[\"Preserve or reconcile\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Owned draft",
+      "detail": "A form is a small state machine: pristine, editing, validating, saving, saved, or failed. Some checks are immediate, such as a required title. Others depend on the server. Avoid showing aggressive errors before a user has had a reasonable chance to enter a value."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Type → dirty draft → client checks → request with expected version → server validation/authorization → success or conflict → keep or reconcile draft. An old successful response must not overwrite newer edits typed during the request.\n\nTest paste, keyboard submit, double-click, slow save, field rejection, network loss, and record replacement. Use a visible saving status and a clear retry path."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Resetting from props on every server refresh can wipe a dirty draft. Sending the whole entity can include server-owned fields. A stale response can erase a newer edit."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vue forms",
+      "url": "https://vuejs.org/guide/essentials/forms.html"
+    },
+    {
+      "title": "WAI form validation",
+      "url": "https://www.w3.org/WAI/tutorials/forms/validation/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Handle validation, dirty state, unsaved changes, and server conflicts without losing user work. Explain one example and one failure.",
+  "lab": "vue-workspace",
+  "sequence": 19
+}

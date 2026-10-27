@@ -1,0 +1,101 @@
+{
+  "id": "events-schemas",
+  "track": "events",
+  "title": "Event envelopes, evolution, and privacy",
+  "level": "beginner",
+  "outcome": "Define event identity, entity key, business version, time, and a compatible payload contract.",
+  "useCase": "Long-lived event contracts across teams/releases.",
+  "benefits": "Less coupling and clearer replay/debugging.",
+  "drawbacks": "Compatibility, retention, and private-data scope require governance.",
+  "tags": [
+    "kafka",
+    "schemas",
+    "contracts"
+  ],
+  "hours": 2,
+  "number": 6,
+  "version": "Kafka 4.1 KRaft · lab Ruby 3.3 / Rails 7.2 · legacy Rails adaptation notes",
+  "book": "",
+  "cue": "Identity, meaning, version, time, and minimal data.",
+  "prerequisite": "events-consumers",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Business fact\"]\n N1[\"Versioned envelope\"]\n N2[\"Serialized record\"]\n N3[\"Validated consumer input\"]\n N4[\"Compatible effect\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Business fact\"]\n N1[\"Versioned envelope\"]\n N2[\"Serialized record\"]\n N3[\"Validated consumer input\"]\n N4[\"Compatible effect\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Business fact",
+      "detail": "An event envelope makes meaning explicit. Include event_id, event_type, schema_version, aggregate identity/version, occurred_at, and minimal payload. Distinguish when the business fact happened from when a consumer processed it."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Business fact → envelope builder → serialization → broker bytes → consumer parsing → schema/business validation → effect. A valid JSON document can still be an invalid event.\n\nFor a new optional field, test an old consumer ignoring it and a new consumer handling its absence. For a new event meaning, choose a deliberate version/type transition rather than silently repurposing a field."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Changing the same field’s meaning without changing the contract can create correct-looking wrong reports. Personal/free text can spread to every subscriber and retained log."
+    }
+  ],
+  "sources": [
+    {
+      "title": "CloudEvents concepts",
+      "url": "https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md"
+    },
+    {
+      "title": "Kafka serialization context",
+      "url": "https://kafka.apache.org/41/getting-started/introduction/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Define event identity, entity key, business version, time, and a compatible payload contract. Explain one example and one failure.",
+  "lab": "rails-kafka",
+  "sequence": 6
+}

@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "It is a local DB transaction boundary."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "The published mark is a separate write."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Keep the transaction/lock window bounded."
+  }
+}

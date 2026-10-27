@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which tool reveals where the selected implementation came from?",
+    "options": [
+      "method(:name).owner",
+      "Object#to_s only",
+      "A bigger thread pool"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Task.prepend(Audit): which label implementation runs first?",
+    "options": [
+      "Task#label",
+      "Audit#label"
+    ]
+  }
+]

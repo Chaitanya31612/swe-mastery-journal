@@ -1,0 +1,96 @@
+{
+  "id": "spring-configuration",
+  "track": "spring",
+  "title": "Configuration you can explain in every environment",
+  "level": "intermediate",
+  "outcome": "Bind and validate configuration, separate secrets, and diagnose which setting actually won.",
+  "useCase": "The same service deployed to several environments.",
+  "benefits": "Clear startup failures and reproducible runtime behavior.",
+  "drawbacks": "Configuration precedence and secret delivery still need operational ownership.",
+  "tags": [
+    "spring",
+    "configuration"
+  ],
+  "hours": 2,
+  "number": 9,
+  "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+  "book": "",
+  "cue": "Bind it. Validate it. Know where it came from.",
+  "prerequisite": "spring-operate",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Property sources\"]\n N1[\"Typed binding\"]\n N2[\"Validation\"]\n N3[\"Client wiring\"]\n N4[\"Safe diagnostics\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Property sources\"]\n N1[\"Typed binding\"]\n N2[\"Validation\"]\n N3[\"Client wiring\"]\n N4[\"Safe diagnostics\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Property sources",
+      "detail": "Configuration changes behavior without changing the application’s source. That makes it powerful and easy to misunderstand. A value may come from a file, profile, environment variable, command line, or remote source. Record the effective value and its source without logging secrets."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Boot prepares environment properties → binds a settings object → validates it → creates dependent clients → starts serving traffic. A bad required setting should fail at a clear boundary.\n\nIn a test, supply an invalid max-attempts and verify startup rejects it. Then verify the intended profile chooses the fake integration. A unit test constructing the settings object does not prove binding/validation wiring."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A default secret committed to a property file is still a secret. A profile name such as prod does not prove that the right database or network was selected."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Boot configuration",
+      "url": "https://docs.spring.io/spring-boot/reference/features/external-config.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Bind and validate configuration, separate secrets, and diagnose which setting actually won. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 9
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What must share the inbox transaction?",
+    "options": [
+      "The local business/projection effect",
+      "Only a log line",
+      "Every remote service in the world"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "A pre-check without a unique constraint can do what?",
+    "options": [
+      "Guarantee uniqueness",
+      "Replace the transaction",
+      "Race"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Crash after DB commit before offset commit causes what?",
+    "options": [
+      "Guaranteed event loss",
+      "Replay that should be deduplicated",
+      "Automatic DB rollback"
+    ]
+  }
+]

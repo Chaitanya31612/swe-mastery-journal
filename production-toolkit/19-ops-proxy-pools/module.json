@@ -1,0 +1,101 @@
+{
+  "id": "ops-proxy-pools",
+  "track": "ops",
+  "title": "Nginx and PgBouncer: two different kinds of front door",
+  "level": "intermediate",
+  "outcome": "Distinguish HTTP reverse proxying from database connection pooling and test their compatibility limits.",
+  "useCase": "Understanding existing reverse-proxy and DB pool deployments.",
+  "benefits": "Traffic control and connection reuse where appropriate.",
+  "drawbacks": "Timeout/buffering/session contracts can change behavior.",
+  "tags": [
+    "nginx",
+    "pgbouncer",
+    "performance"
+  ],
+  "hours": 2,
+  "number": 19,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Name the protocol and the waiting layer.",
+  "prerequisite": "ops-github-actions",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"HTTP proxy\"]\n N1[\"App server\"]\n N2[\"Rails connection pool\"]\n N3[\"DB pool mode\"]\n N4[\"PostgreSQL transaction\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"HTTP proxy\"]\n N1[\"App server\"]\n N2[\"Rails connection pool\"]\n N3[\"DB pool mode\"]\n N4[\"PostgreSQL transaction\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "HTTP proxy",
+      "detail": "Nginx can accept HTTP traffic and proxy it to application servers, serve suitable static content, and enforce selected request/timeout rules. It is not a database pool or application permission layer. Managed ALB/CDN choices may cover some needs differently."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Follow HTTP headers/body/timeouts through the proxy, then follow one database transaction through both client and server pools. Count application processes/pools and observe queued versus active DB work.\n\nTest a feature relying on connection/session state before selecting transaction pooling. Do not infer compatibility from one simple SELECT."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Adding more pools can create more waiting layers. A proxy can buffer or time out large requests differently from the app. Session assumptions can break under a different pooling mode."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Nginx proxy guide",
+      "url": "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+    },
+    {
+      "title": "PgBouncer features",
+      "url": "https://www.pgbouncer.org/features.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Distinguish HTTP reverse proxying from database connection pooling and test their compatibility limits. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 20
+}

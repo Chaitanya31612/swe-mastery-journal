@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Workload and control-plane health are separate."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Choose orchestration from actual needs."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Workload permissions should be scoped intentionally."
+  }
+}

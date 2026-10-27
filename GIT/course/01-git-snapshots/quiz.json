@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What goes into the next ordinary git commit?",
+    "options": [
+      "All currently open editor files",
+      "The index snapshot",
+      "Only the last file saved"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Stage A, edit to B, commit without add. Commit contains?",
+    "options": [
+      "A",
+      "B"
+    ]
+  }
+]

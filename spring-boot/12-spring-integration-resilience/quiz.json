@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "A timeout proves the provider did nothing?",
+    "options": [
+      "Only for POST",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Three nested attempts inside three job attempts can mean how many calls?",
+    "options": [
+      "6",
+      "9",
+      "3"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does a circuit breaker replace?",
+    "options": [
+      "Every timeout",
+      "All transaction rules",
+      "Neither timeouts nor idempotency"
+    ]
+  }
+]

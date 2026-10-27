@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Readiness says whether the pod should receive traffic now."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "Restarting can amplify an external outage."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Inspect termination reason and resource evidence."
+  }
+}

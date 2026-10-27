@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Which is normally derived state?",
+    "options": [
+      "The visible list computed from tasks and a filter",
+      "An unsaved user-typed title",
+      "A server-assigned ID"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "A filter result must always be stored separately?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

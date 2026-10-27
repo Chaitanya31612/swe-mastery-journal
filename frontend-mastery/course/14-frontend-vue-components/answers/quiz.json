@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "The owner decides how the emitted value updates its state."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Avoid mutating shared nested values through props."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Slots compose UI without requiring the child to know every caller layout."
+  }
+}

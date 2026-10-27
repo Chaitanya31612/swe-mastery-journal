@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What closes the race in a uniqueness pre-check?",
+    "options": [
+      "Running the validation twice",
+      "A matching database uniqueness rule",
+      "Moving the check to the browser"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Can two requests both pass a uniqueness validator before inserting?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

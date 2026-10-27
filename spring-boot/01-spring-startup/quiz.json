@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "The app starts, but /ping returns 404. What should you inspect first?",
+    "options": [
+      "The mapping and scanned packages",
+      "Increase heap size",
+      "Add a transaction annotation"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Does new PingController() register an HTTP route?",
+    "options": [
+      "Yes, Java registers it",
+      "No, MVC needs a managed mapping"
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What does bundle exec primarily select?",
+    "options": [
+      "The project dependency environment",
+      "A database transaction",
+      "An operating-system container"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Does rescuing StandardError make a remote write safe to retry?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

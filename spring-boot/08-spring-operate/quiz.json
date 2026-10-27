@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "A provider timeout means what?",
+    "options": [
+      "The provider definitely did nothing",
+      "The result may be unknown; retries need care",
+      "The database must roll back automatically"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Does a constant health=UP prove your database is reachable?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

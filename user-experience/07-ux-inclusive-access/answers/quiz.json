@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "ARIA communicates semantics; code still implements interaction."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Native controls supply expected semantics and keyboard behavior."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Manual task testing is still necessary."
+  }
+}

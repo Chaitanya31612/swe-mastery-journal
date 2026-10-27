@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Do strong parameters authorize a row?",
+    "options": [
+      "Yes",
+      "Only with a workspace ID",
+      "No"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What belongs in a tenant-scoped cache key?",
+    "options": [
+      "Relevant tenant and query/version context",
+      "Only the class name",
+      "Only a global record number"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Must jobs consider permission timing?",
+    "options": [
+      "Yes, according to an explicit policy",
+      "Only when they fail",
+      "No, jobs are always trusted"
+    ]
+  }
+]

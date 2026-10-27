@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What must remain enforced when a job calls a service directly?",
+    "options": [
+      "Only JSON field names",
+      "Core business rules",
+      "The browser CORS setting"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Malformed JSON arrives. Should the create service run?",
+    "options": [
+      "Yes, then catch SQL errors",
+      "No, binding should fail first"
+    ]
+  }
+]

@@ -1,0 +1,91 @@
+{
+  "id": "ruby-boundaries",
+  "track": "ruby",
+  "number": 6,
+  "title": "Errors, files, gems, and small tests",
+  "outcome": "Write a reliable boundary around failure and know what a passing Ruby test proves.",
+  "hours": 3,
+  "book": "Language ch. 5, 9–10; Eloquent Ruby ch. 10, 28–30",
+  "cue": "Catch what you can explain. Test what you can observe.",
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "prerequisite": "ruby-arguments",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A method rescues Exception and returns nil for missing files, malformed JSON, and programmer errors. Explain how this hurts callers and rewrite the policy.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A worker does CPU-heavy Ruby transformations. Will increasing threads always improve throughput on MRI?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Input boundary\"]\n  N1[\"Parse or execute\"]\n  N2[\"Expected error policy\"]\n  N3[\"Cleanup\"]\n  N4[\"Observable result\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Input boundary\"]\n  N1[\"Parse or execute\"]\n  N2[\"Expected error policy\"]\n  N3[\"Cleanup\"]\n  N4[\"Observable result\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Ruby 2.7 documentation",
+      "url": "https://docs.ruby-lang.org/en/2.7.0/"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "Input boundary",
+      "detail": "Rescue exceptions where you can add useful context or recover. Do not turn every failure into nil. rescue without an explicit class normally catches StandardError; it does not mean every possible process failure. Catching Exception broadly can swallow interrupts and system exits."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "Classify the failure: missing file, invalid JSON, or valid but wrong settings shape. They are different contracts. The block closes the file. The rescue above handles only invalid JSON; it leaves missing-file behavior visible to the caller.\n\nWrite one test for a valid input, one malformed input, and one legitimate false value. A unit test can prove the parser contract. It cannot prove Rails boot, Sidekiq delivery, or production permissions."
+    },
+    {
+      "title": "Check the result",
+      "detail": "Logging the whole settings file may leak secrets. Tests should use synthetic temporary files. A retry around a non-idempotent side effect can repeat work after a timeout."
+    }
+  ],
+  "recallPrompt": "Without notes: Write a reliable boundary around failure and know what a passing Ruby test proves. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 5
+}

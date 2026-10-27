@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What does border-box include in declared width?",
+    "options": [
+      "Content, padding and border",
+      "Margin too",
+      "Only text"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Why can a 1fr track overflow?",
+    "options": [
+      "Its automatic minimum can preserve min-content width",
+      "Grid never responds",
+      "Only a browser bug"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What should choose a breakpoint?",
+    "options": [
+      "The point where content no longer works well",
+      "Always 768px",
+      "Only a device brand"
+    ]
+  }
+]

@@ -1,0 +1,100 @@
+{
+  "id": "ops-kubernetes-model",
+  "track": "ops",
+  "title": "Kubernetes: desired state, pods, and controllers",
+  "level": "beginner",
+  "outcome": "Explain how a Deployment leads to running pods and what happens when one disappears.",
+  "useCase": "Remembering Kubernetes from its control loop.",
+  "benefits": "Declarative workload replacement and orchestration.",
+  "drawbacks": "Workload correctness and platform operations remain.",
+  "tags": [
+    "kubernetes",
+    "fundamentals"
+  ],
+  "hours": 2,
+  "number": 4,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Declare the state. Observe reconciliation. Keep data responsibility explicit.",
+  "prerequisite": "ops-compose",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "Follow the real boundaries",
+      "placement": "overview",
+      "code": "flowchart TD\n Image[Docker-built OCI image] --> Registry[Image registry]\n Registry --> Deployment[Deployment desired replicas]\n Deployment --> RS[ReplicaSet]\n RS --> Pod[Pod - containers share network and volumes]\n Scheduler[Scheduler] --> Node[Worker node]\n Pod --> Node\n Node --> Runtime[Container runtime runs image]\n Service[Service stable endpoint] --> Ready[Ready Pod endpoints]\n Ready --> Pod\n Config[ConfigMap and Secret references] --> Pod"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Deployment desired state\"]\n N1[\"ReplicaSet\"]\n N2[\"Scheduled Pod\"]\n N3[\"Container process\"]\n N4[\"Readiness and replacement\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Deployment desired state",
+      "detail": "Docker packages/runs containers. Kubernetes coordinates desired workloads through an API and controllers. It can use compatible container runtimes; Docker Engine is not a required node runtime for every cluster."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Submit desired state → controller creates/adjusts ReplicaSet → scheduler chooses capacity → kubelet/runtime starts containers → readiness decides traffic eligibility. Remove one lab pod and observe reconciliation, not manual resurrection of the same identity.\n\nInspect events when a pod is Pending or repeatedly restarting. Image pull, scheduling, process failure, and readiness failure are different states."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A pod is disposable identity, not your only copy of data. Increasing replicas does not make a database transaction safe or a queue effect unique."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Kubernetes overview",
+      "url": "https://kubernetes.io/docs/concepts/overview/"
+    },
+    {
+      "title": "Deployments",
+      "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain how a Deployment leads to running pods and what happens when one disappears. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 3
+}

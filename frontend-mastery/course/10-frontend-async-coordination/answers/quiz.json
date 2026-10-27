@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Promise aggregation does not cancel underlying work."
+  },
+  "q2": {
+    "correctIndex": 0,
+    "explanation": "allSettled returns fulfilled/rejected results for each input."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Every visible state update can become stale."
+  }
+}

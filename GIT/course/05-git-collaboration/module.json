@@ -1,0 +1,93 @@
+{
+  "id": "git-collaboration",
+  "track": "git",
+  "number": 5,
+  "title": "Fetch, pull, and review a small change",
+  "outcome": "Explain remote-tracking refs and avoid treating fetch as a merge.",
+  "hours": 2,
+  "book": "",
+  "cue": "Fetch learns. Integrate changes. Push shares.",
+  "version": "Modern Git; check git --version for command availability",
+  "prerequisite": "git-recovery",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "After fetch, a developer says main contains the latest remote commits, but their local main has not moved. Explain the labels and next choices.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "Your push is rejected because a teammate pushed first. What is a deliberate recovery?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Remote commit\"]\n  N1[\"Fetch objects\"]\n  N2[\"origin/main updates\"]\n  N3[\"Local integration\"]\n  N4[\"Reviewed push\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Remote commit\"]\n  N1[\"Fetch objects\"]\n  N2[\"origin/main updates\"]\n  N3[\"Local integration\"]\n  N4[\"Reviewed push\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Git reference",
+      "url": "https://git-scm.com/docs"
+    }
+  ],
+  "reading": [
+    "GIT/docs/04-remotes-collaboration-and-prs.md"
+  ],
+  "trace": [
+    {
+      "title": "Remote commit",
+      "detail": "A remote is a named location. origin/main is a local remote-tracking reference updated by fetch; it is not a live window into the server. Your main branch is a different local label."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "The other clone pushes. Your origin/main stays old until fetch. Fetch moves origin/main. Your local branch remains where it was. An explicit integration step moves or joins your local history.\n\nBefore pushing, inspect the outgoing commits and diff. Before reviewing, compare against the intended base. A three-dot diff uses a merge base, which is often useful for what the branch introduced."
+    },
+    {
+      "title": "Check the result",
+      "detail": "A green local test on the wrong base may miss integration failures. Remote-tracking refs are snapshots of your latest fetch. Never treat a failed push as permission to overwrite somebody else’s work."
+    }
+  ],
+  "recallPrompt": "Without notes: Explain remote-tracking refs and avoid treating fetch as a merge. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 5
+}

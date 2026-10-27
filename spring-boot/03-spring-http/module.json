@@ -1,0 +1,91 @@
+{
+  "id": "spring-http",
+  "track": "spring",
+  "number": 3,
+  "title": "From HTTP input to a useful error",
+  "outcome": "Trace request binding, validation, service work, and response mapping.",
+  "hours": 3,
+  "book": "",
+  "cue": "Bind → check → act → reply.",
+  "version": "Java 21 · Spring Boot 4.0.3 teaching baseline",
+  "prerequisite": "spring-dependencies",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A POST endpoint accepts an empty title, saves an entity, and returns its entire graph. Identify the boundary mistakes and propose response tests.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A background import calls the same service without HTTP. Which rules must still hold?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"HTTP and filters\"]\n  N1[\"Route and bind\"]\n  N2[\"Validate input\"]\n  N3[\"Service use case\"]\n  N4[\"DTO and status\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"HTTP and filters\"]\n  N1[\"Route and bind\"]\n  N2[\"Validate input\"]\n  N3[\"Service use case\"]\n  N4[\"DTO and status\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Spring MVC annotated controllers",
+      "url": "https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller.html"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "HTTP and filters",
+      "detail": "An HTTP endpoint is a boundary. Treat incoming strings and JSON as untrusted input. Binding turns JSON into Java values. Validation checks those values. Authorization checks whether this caller may perform this action. These are separate steps."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "A servlet filter can run before MVC. DispatcherServlet chooses a handler. A message converter reads JSON. Validation runs on the bound input. Then the controller invokes the service. The response converter writes JSON.\n\nTry an empty title, malformed JSON, a valid request, and a simulated service conflict. For each, predict whether the service should run. Use @RestControllerAdvice with @ExceptionHandler for your domain errors. Log a request ID so an operator can find details privately."
+    },
+    {
+      "title": "Check the result",
+      "detail": "Returning an entity can trigger lazy queries during JSON serialization or reveal an internal field. A 200 response containing {error: ...} also makes clients guess whether the operation succeeded."
+    }
+  ],
+  "recallPrompt": "Without notes: Trace request binding, validation, service work, and response mapping. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 3
+}

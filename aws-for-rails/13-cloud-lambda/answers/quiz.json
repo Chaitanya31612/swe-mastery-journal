@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "Invocation/acknowledgement semantics depend on the event source."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Downstream systems still have limits."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Batch acknowledgement contracts differ."
+  }
+}

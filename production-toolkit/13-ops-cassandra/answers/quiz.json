@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 0,
+    "explanation": "Its model is query-oriented."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Distribution does not remove a hot key."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Choose from actual access/correctness needs."
+  }
+}

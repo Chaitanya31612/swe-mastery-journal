@@ -1,0 +1,97 @@
+{
+  "id": "cloud-rds",
+  "track": "cloud",
+  "title": "RDS PostgreSQL: managed database, owned data model",
+  "level": "intermediate",
+  "outcome": "Configure private connectivity, backups, failover expectations, and Rails connection limits.",
+  "useCase": "The Rails source-of-truth database.",
+  "benefits": "Managed infrastructure tasks and supported backup/HA features.",
+  "drawbacks": "Queries, pool limits, restore evidence, and consistency remain your work.",
+  "tags": [
+    "aws",
+    "rds",
+    "postgresql"
+  ],
+  "hours": 2,
+  "number": 8,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Managed infrastructure does not remove application data responsibility.",
+  "prerequisite": "cloud-cloudfront",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Private DB access\"]\n N1[\"Bounded connection pool\"]\n N2[\"SQL and constraints\"]\n N3[\"Backup/failover path\"]\n N4[\"Measured recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Private DB access\"]\n N1[\"Bounded connection pool\"]\n N2[\"SQL and constraints\"]\n N3[\"Backup/failover path\"]\n N4[\"Measured recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Private DB access",
+      "detail": "RDS manages parts of database infrastructure, not your schema, query design, or business rules. You still choose engine/version, instance/storage settings, network, credentials, backup retention, maintenance, and application connection behavior."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Rails checks out a connection → network/TLS/authentication → SQL/locks → commit → connection returns to pool. Multiply pool size by web/worker process count before comparing with DB limits.\n\nDuring failover, existing connections can break. The app needs bounded retry/reconnect behavior and must not retry a non-idempotent transaction blindly after an unknown commit outcome."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Managed backups do not prove your restore time. More app replicas can multiply connections. Read-replica lag can look like a lost update to the user."
+    }
+  ],
+  "sources": [
+    {
+      "title": "RDS overview",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Configure private connectivity, backups, failover expectations, and Rails connection limits. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 12
+}

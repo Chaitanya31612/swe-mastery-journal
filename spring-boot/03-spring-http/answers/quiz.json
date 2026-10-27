@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "A service can have more than one caller. Its required business rules cannot depend only on controller validation."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "The input boundary cannot produce a valid request object, so the use case should not run."
+  }
+}

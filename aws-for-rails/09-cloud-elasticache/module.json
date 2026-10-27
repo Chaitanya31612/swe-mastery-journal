@@ -1,0 +1,101 @@
+{
+  "id": "cloud-elasticache",
+  "track": "cloud",
+  "title": "ElastiCache: choose managed cache and queue roles deliberately",
+  "level": "intermediate",
+  "outcome": "Separate cache data from durable work and plan client behavior during eviction or failover.",
+  "useCase": "Rails caches, sessions, and queue infrastructure.",
+  "benefits": "Managed in-memory service operations.",
+  "drawbacks": "Role mixing and fallback behavior can threaten correctness or the DB.",
+  "tags": [
+    "aws",
+    "redis",
+    "cache"
+  ],
+  "hours": 2,
+  "number": 9,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Same protocol does not mean the same data responsibility.",
+  "prerequisite": "cloud-rds",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Choose data role\"]\n N1[\"Private managed endpoint\"]\n N2[\"Client and memory policy\"]\n N3[\"Miss or failover\"]\n N4[\"Bounded rebuild/recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Choose data role\"]\n N1[\"Private managed endpoint\"]\n N2[\"Client and memory policy\"]\n N3[\"Miss or failover\"]\n N4[\"Bounded rebuild/recovery\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Choose data role",
+      "detail": "ElastiCache supplies managed in-memory engines/options. Identify the selected engine and mode rather than assuming every Redis-compatible feature and durability behavior is identical. Client compatibility, topology, authentication, TLS, and failover matter."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Cache miss → authoritative DB read → cached copy → later hit → expiry/eviction → rebuild. Then trace failover: client connection breaks, DNS/topology changes, operations retry under the selected contract.\n\nMonitor memory, eviction, latency, connection count, and application fallback load. A cache outage can overload PostgreSQL if every request immediately falls back."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A cache is not permission authority. A Redis queue on an eviction-enabled shared cache can lose work. A cold-cache stampede can create a database incident."
+    }
+  ],
+  "sources": [
+    {
+      "title": "ElastiCache overview",
+      "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html"
+    },
+    {
+      "title": "Redis eviction",
+      "url": "https://redis.io/docs/latest/develop/reference/eviction/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Separate cache data from durable work and plan client behavior during eviction or failover. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 13
+}

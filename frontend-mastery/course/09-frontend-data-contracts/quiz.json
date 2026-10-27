@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Which fallback preserves a valid 0?",
+    "options": [
+      "Boolean(value)",
+      "value || 3",
+      "value ?? 3"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does {...record} copy nested arrays?",
+    "options": [
+      "Yes, recursively",
+      "Only when frozen",
+      "No, it copies their references"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What does JSON.parse validate?",
+    "options": [
+      "The full business schema",
+      "JSON syntax only",
+      "Server permissions"
+    ]
+  }
+]

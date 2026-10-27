@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Each invocation creates independent state unless it imports shared state."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Plain primitive returns would be snapshots."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Cleanup must match the scope that created the effect."
+  }
+}

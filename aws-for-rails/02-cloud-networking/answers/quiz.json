@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "A subnet is an AZ-scoped network range."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "Routing and IAM/resource policy are separate."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "NAT is not a substitute for every other network/security boundary."
+  }
+}

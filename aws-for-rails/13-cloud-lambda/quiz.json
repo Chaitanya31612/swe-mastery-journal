@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does each trigger have identical retry behavior?",
+    "options": [
+      "Yes",
+      "No",
+      "Only in Ruby"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What can unbounded function concurrency overload?",
+    "options": [
+      "Only the browser",
+      "Nothing, because serverless",
+      "A fixed-capacity database"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Should a generic handler return be copied to every event source?",
+    "options": [
+      "Yes",
+      "Only with JSON",
+      "No"
+    ]
+  }
+]

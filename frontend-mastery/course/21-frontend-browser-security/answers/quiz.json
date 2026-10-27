@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "It crosses a markup interpretation boundary."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "The browser received it even if it was not displayed."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Authorization remains a server responsibility."
+  }
+}

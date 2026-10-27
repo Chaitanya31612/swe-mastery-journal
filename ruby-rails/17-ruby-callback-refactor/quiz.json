@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Where can a callback be registered?",
+    "options": [
+      "Only in a migration",
+      "Only in a controller",
+      "Inside a concern as well as the model"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Does update_all run ordinary model callbacks?",
+    "options": [
+      "Only with a where clause",
+      "No",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "What is a useful regression assertion?",
+    "options": [
+      "One logical completion event",
+      "A callback exists",
+      "Only the service class name"
+    ]
+  }
+]

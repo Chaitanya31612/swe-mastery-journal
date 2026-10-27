@@ -1,0 +1,96 @@
+{
+  "id": "ops-compose",
+  "track": "ops",
+  "title": "Compose: connect web, database, broker, and workers",
+  "level": "beginner",
+  "outcome": "Explain service DNS, ports, volumes, health, and startup versus readiness in a local application.",
+  "useCase": "A repeatable Rails/Postgres/Kafka development lab.",
+  "benefits": "Connected local services in a reviewable file.",
+  "drawbacks": "Networking and readiness still require understanding.",
+  "tags": [
+    "docker",
+    "compose"
+  ],
+  "hours": 2,
+  "number": 3,
+  "version": "Pinned local examples · version-labelled configuration fragments",
+  "book": "",
+  "cue": "Know which network the client is standing in.",
+  "prerequisite": "ops-docker-model",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Compose project\"]\n N1[\"Service DNS\"]\n N2[\"Dependency readiness\"]\n N3[\"Internal connection\"]\n N4[\"Published browser port\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Compose project\"]\n N1[\"Service DNS\"]\n N2[\"Dependency readiness\"]\n N3[\"Internal connection\"]\n N4[\"Published browser port\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Compose project",
+      "detail": "Compose describes a multi-container application. Services can reach one another by service name on their configured network. localhost inside a container refers to that container, not the database next door or your host browser."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Compose creates network/services → database becomes healthy → schema setup completes → web/dispatch/consumer start → service DNS connects internal calls → published port serves the browser.\n\nInspect logs and exit status per service. Rebuilding an image does not necessarily replace every running service unless the chosen command does so. State what the command will change."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Using localhost for db from web points at the wrong container. Removing volumes erases local lab data. A started DB process may still be initializing or lack the schema."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Compose application model",
+      "url": "https://docs.docker.com/compose/intro/compose-application-model/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Explain service DNS, ports, volumes, health, and startup versus readiness in a local application. Explain one example and one failure.",
+  "lab": "rails-kafka",
+  "sequence": 2
+}

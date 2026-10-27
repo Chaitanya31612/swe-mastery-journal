@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "Does a false return from save necessarily roll back earlier writes in the block?",
+    "options": [
+      "Yes",
+      "No; the failure must affect transaction control",
+      "Only in a service object"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "after_commit alone guarantees the job is durably enqueued?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

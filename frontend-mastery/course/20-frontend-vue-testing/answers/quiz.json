@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "The test must discriminate the broken behavior."
+  },
+  "q2": {
+    "correctIndex": 2,
+    "explanation": "It waits for Vue’s pending DOM update flush."
+  },
+  "q3": {
+    "correctIndex": 2,
+    "explanation": "Browser behavior extends beyond a simulated DOM."
+  }
+}

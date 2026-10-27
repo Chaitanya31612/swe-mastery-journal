@@ -1,0 +1,95 @@
+{
+  "id": "ruby-metaprogramming",
+  "track": "ruby",
+  "number": 5,
+  "title": "Read the magic before writing more",
+  "outcome": "Explain define_method, dynamic dispatch, and DSLs with an explicit method map.",
+  "hours": 3,
+  "book": "Language ch. 8; Eloquent Ruby ch. 21–27; Metaprogramming Ruby Tuesday, Thursday, Friday",
+  "cue": "When? Self? Methods? Hooks?",
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "prerequisite": "ruby-rails-schema",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A controller does service.public_send(params[:operation]). It only uses public_send, so the author calls it safe. Repair the design.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A dynamic API works when called but respond_to? returns false. What contract is inconsistent?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n  N0[\"Class declaration\"]\n  N1[\"Current self\"]\n  N2[\"Generated method\"]\n  N3[\"Normal lookup\"]\n  N4[\"Runtime call\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n  N0[\"Class declaration\"]\n  N1[\"Current self\"]\n  N2[\"Generated method\"]\n  N3[\"Normal lookup\"]\n  N4[\"Runtime call\"]\n  N0 --> N1\n  N1 --> N2\n  N2 --> N3\n  N3 --> N4\n  N4 --> C{\"Did the rule hold?\"}\n  C -->|No| R[\"Small reproduction and repair\"]\n  R --> N0\n  C -->|Yes| T[\"Try a changed case without notes\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Ruby 2.7 documentation",
+      "url": "https://docs.ruby-lang.org/en/2.7.0/"
+    },
+    {
+      "title": "Rails 4.2 guides",
+      "url": "https://guides.rubyonrails.org/v4.2/"
+    }
+  ],
+  "reading": [],
+  "trace": [
+    {
+      "title": "Class declaration",
+      "detail": "Metaprogramming means code that defines or changes program behavior, often methods. Rails uses it to build readable APIs. Start by locating the generated methods rather than assuming the behavior is unknowable."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "The class body runs as Ruby code. It iterates over LABELS and adds two instance methods. Calling done_label then uses normal method lookup. No generated source string is needed.\n\nFor a Rails concern or DSL, ask four questions: when does this declaration run, which object is self, which methods get defined, and which hooks are registered? Trace one declaration all the way to a runtime call."
+    },
+    {
+      "title": "Check the result",
+      "detail": "The books contain historical patterns such as alias_method_chain and old security assumptions. They are reading exercises, not a recommendation for new code. Rails 4.2 uses classic autoloading; modern Zeitwerk advice is a separate version topic."
+    }
+  ],
+  "recallPrompt": "Without notes: Explain define_method, dynamic dispatch, and DSLs with an explicit method map. Give a concrete failure example.",
+  "level": "intermediate",
+  "tags": [],
+  "sequence": 9
+}

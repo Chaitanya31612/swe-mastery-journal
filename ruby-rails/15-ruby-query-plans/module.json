@@ -1,0 +1,101 @@
+{
+  "id": "ruby-query-plans",
+  "track": "ruby",
+  "title": "Rails queries: indexes, batching, and bounded reports",
+  "level": "intermediate",
+  "outcome": "Choose SQL work, Ruby work, and batching with attention to memory and business semantics.",
+  "useCase": "Exports, list screens, and repair jobs.",
+  "benefits": "Predictable memory and database work.",
+  "drawbacks": "Batching and snapshot semantics can change the meaning of a report.",
+  "tags": [
+    "rails",
+    "sql",
+    "performance"
+  ],
+  "hours": 2,
+  "number": 15,
+  "version": "Ruby 2.7.8 · Rails 4.2.11.3 · Sidekiq 5.2",
+  "book": "",
+  "cue": "Count rows, objects, and queries separately.",
+  "prerequisite": "ruby-tenant-boundaries",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Scoped relation\"]\n N1[\"SQL plan\"]\n N2[\"Bounded fetch\"]\n N3[\"Batch progress\"]\n N4[\"Measured report\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Scoped relation\"]\n N1[\"SQL plan\"]\n N2[\"Bounded fetch\"]\n N3[\"Batch progress\"]\n N4[\"Measured report\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Scoped relation",
+      "detail": "A report can be correct on ten rows and fail on a million. Ask how many rows are loaded, how many model objects are built, how many queries run, and whether the order matters."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Request scope → SQL predicate/order → database plan → limited rows/batches → Ruby transformation → output. Measure rows, query count, and memory at separate points.\n\nFor an export, decide what happens when tickets change while it runs. A transaction snapshot may give stability but can be expensive over a long job; a materialized export scope is another tradeoff."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "to_a before filtering moves potentially huge work into Ruby memory. Per-row association reads create N+1. A batch loop that changes its own selection criteria needs a progress rule."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rails 4.2 queries",
+      "url": "https://guides.rubyonrails.org/v4.2/active_record_querying.html"
+    },
+    {
+      "title": "PostgreSQL plans",
+      "url": "https://www.postgresql.org/docs/current/using-explain.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Choose SQL work, Ruby work, and batching with attention to memory and business semantics. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 15
+}

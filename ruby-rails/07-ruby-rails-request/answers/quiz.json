@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "Strong parameters filter assignable attributes. Ownership and authentication are separate checks."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "They filter fields, not row access."
+  }
+}

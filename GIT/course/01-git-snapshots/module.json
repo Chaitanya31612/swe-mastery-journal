@@ -1,0 +1,94 @@
+{
+  "id": "git-snapshots",
+  "track": "git",
+  "number": 1,
+  "title": "Commits, branches, and the three places",
+  "outcome": "Draw HEAD, the index, and the working tree before running a command.",
+  "hours": 2,
+  "book": "",
+  "cue": "Edit here. Stage next. Commit that.",
+  "version": "Modern Git; check git --version for command availability",
+  "prerequisite": null,
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "A small example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Follow the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "What can go wrong",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Find and fix the bug",
+      "minutes": 25,
+      "prompt": "A developer stages A, edits to B, commits, and says Git lost B. Explain the state and the command that shows the remaining change.",
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change one condition",
+      "minutes": 25,
+      "prompt": "A branch is deleted after a merge. What happened to its commits?",
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "See the path",
+      "code": "flowchart TD\n W[\"Working tree: B\"] -->|\"git add copies current content\"| I[\"Index: A, until you add again\"]\n I -->|\"git commit records this snapshot\"| H[\"HEAD: last commit\"]\n I -. \"git diff compares\" .-> W\n H -. \"git diff --cached compares\" .-> I",
+      "placement": "overview"
+    },
+    {
+      "title": "The whole idea, once more",
+      "code": "flowchart TD\n E[\"Edit file to A\"] --> A[\"Add: index now A\"]\n A --> B[\"Edit file to B: index stays A\"]\n B --> C[\"Commit: HEAD becomes A\"]\n C --> D[\"Working tree still B\"]\n D --> F[\"git diff shows A to B\"]\n G[\"Branch name\"] --> H[\"Commit\"]\n H --> T[\"Tree and blobs\"]",
+      "placement": "recap"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Git reference",
+      "url": "https://git-scm.com/docs"
+    }
+  ],
+  "reading": [
+    "GIT/docs/00-mental-model-and-internals.md",
+    "GIT/docs/01-local-workflow-index-and-diff.md"
+  ],
+  "trace": [
+    {
+      "title": "Working tree",
+      "detail": "Git stores snapshots and the links between them. A commit names a tree and parent commits. A branch name points to a commit. HEAD normally names the checked-out branch; in detached mode it points at a commit directly."
+    },
+    {
+      "title": "Follow the middle steps",
+      "detail": "After add, the index holds A. After editing, the working tree holds B. A commit records A. The remaining A→B difference stays in the working tree.\n\nDraw HEAD → commit → tree → blob, then draw the index as a separate proposed tree. This model explains partial staging, restore, reset, and why a clean diff is not always a clean staged snapshot."
+    },
+    {
+      "title": "Check the result",
+      "detail": "git diff by itself does not show staged changes. An ignored file that was already tracked remains tracked. Ignore rules affect untracked-file discovery, not all past snapshots."
+    }
+  ],
+  "recallPrompt": "Without notes: Draw HEAD, the index, and the working tree before running a command. Give a concrete failure example.",
+  "level": "beginner",
+  "tags": [],
+  "sequence": 1
+}

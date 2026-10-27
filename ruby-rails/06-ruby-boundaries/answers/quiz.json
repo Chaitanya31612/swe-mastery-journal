@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 0,
+    "explanation": "Bundler uses the project’s dependency definitions and lockfile to resolve gems for that command."
+  },
+  "predict": {
+    "correctIndex": 1,
+    "explanation": "Exception handling does not establish whether the remote action already happened."
+  }
+}

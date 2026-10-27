@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "correctIndex": 1,
+    "explanation": "The reasoning must connect the change to the task."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Severity depends on impact and recoverability, not taste alone."
+  },
+  "q3": {
+    "correctIndex": 0,
+    "explanation": "Real workflows include more than a happy path."
+  }
+}

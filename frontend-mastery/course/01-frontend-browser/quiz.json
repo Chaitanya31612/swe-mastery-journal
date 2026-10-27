@@ -1,0 +1,19 @@
+[
+  {
+    "id": "reason",
+    "prompt": "What does pushState do by itself?",
+    "options": [
+      "Fetch a page and render it",
+      "Change history/URL without automatically fetching a document",
+      "Reload all assets"
+    ]
+  },
+  {
+    "id": "predict",
+    "prompt": "Client navigation working proves refresh serving is configured?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  }
+]

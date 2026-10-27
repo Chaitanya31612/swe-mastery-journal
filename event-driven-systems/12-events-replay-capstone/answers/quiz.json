@@ -1,0 +1,58 @@
+{
+  "q1": {
+    "correctIndex": 2,
+    "explanation": "Irreversible effects need separate recovery semantics."
+  },
+  "q2": {
+    "correctIndex": 1,
+    "explanation": "Group progress and local deduplication are separate state."
+  },
+  "q3": {
+    "correctIndex": 1,
+    "explanation": "Recovery correctness crosses several boundaries."
+  },
+  "review-events-logs-queues": {
+    "correctIndex": 1,
+    "explanation": "Past-tense facts and requested actions carry different responsibility."
+  },
+  "review-events-partitions": {
+    "correctIndex": 0,
+    "explanation": "Each partition has its own position space."
+  },
+  "review-events-layers": {
+    "correctIndex": 1,
+    "explanation": "Clients subsequently use discovered endpoints."
+  },
+  "review-events-producer": {
+    "correctIndex": 0,
+    "explanation": "Producer acceptance/acknowledgement is not downstream completion."
+  },
+  "review-events-consumers": {
+    "correctIndex": 2,
+    "explanation": "Offsets are partition positions; commit records a resume point."
+  },
+  "review-events-schemas": {
+    "correctIndex": 2,
+    "explanation": "Shape, version, and meaning still need validation."
+  },
+  "review-events-outbox": {
+    "correctIndex": 1,
+    "explanation": "It is a local DB transaction boundary."
+  },
+  "review-events-inbox": {
+    "correctIndex": 0,
+    "explanation": "Atomic local dedup prevents a lost or repeated local effect."
+  },
+  "review-events-retries": {
+    "correctIndex": 0,
+    "explanation": "Classify deterministic poison separately from transient failure."
+  },
+  "review-events-operations": {
+    "correctIndex": 0,
+    "explanation": "Age, rate, errors, and importance matter."
+  },
+  "review-events-rails-lab": {
+    "correctIndex": 0,
+    "explanation": "The private project stays read-only."
+  }
+}

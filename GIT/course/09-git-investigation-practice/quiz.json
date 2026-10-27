@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Reflog recovers every unsaved file?",
+    "options": [
+      "No",
+      "Only on main",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What makes bisect trustworthy?",
+    "options": [
+      "A repeatable classification check",
+      "A large repository",
+      "A clean commit message style"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Why use another worktree?",
+    "options": [
+      "Test a committed snapshot while preserving active edits",
+      "Create a second remote automatically",
+      "Make all tests faster"
+    ]
+  }
+]

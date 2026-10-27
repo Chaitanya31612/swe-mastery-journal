@@ -1,0 +1,101 @@
+{
+  "id": "ux-review-capstone",
+  "track": "ux",
+  "title": "A repeatable UX review and redesign workshop",
+  "level": "intermediate",
+  "outcome": "Review a workflow using task evidence, interaction principles, accessibility, and measurable outcomes.",
+  "useCase": "Daily frontend reviews and a portfolio-quality workflow redesign.",
+  "benefits": "Turns UX knowledge into a repeatable engineering/design habit.",
+  "drawbacks": "A review still needs user and implementation evidence.",
+  "tags": [
+    "ux",
+    "capstone",
+    "practice"
+  ],
+  "hours": 2,
+  "number": 9,
+  "version": "Web UX · WCAG 2.2 · principles, not magic formulas",
+  "book": "",
+  "cue": "A principle is a question to test, not a verdict.",
+  "prerequisite": "ux-research",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Task walkthrough\"]\n N1[\"State and access review\"]\n N2[\"Prioritized finding\"]\n N3[\"Small prototype\"]\n N4[\"Outcome evidence\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Task walkthrough\"]\n N1[\"State and access review\"]\n N2[\"Prioritized finding\"]\n N3[\"Small prototype\"]\n N4[\"Outcome evidence\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Task walkthrough",
+      "detail": "Use your reading of The Design of Everyday Things and Don’t Make Me Think as a starting point, then apply a repeatable review. Look for a mismatch between what users intend, what the interface suggests, what the system does, and what feedback explains."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "First walk the task yourself. Then inspect controls, grouping, language, feedback, recovery, and access. Then observe another person attempting it. Turn the most consequential finding into a prototype and a focused test.\n\nKeep a small review checklist in daily work: task, context, next action, current state, error prevention, recovery, access, and evidence. Use heuristics to ask questions, not as decorative law names in a design review."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A beautiful mockup can hide missing system states. A law name does not prove a design. A new interaction can increase learning cost even if it looks cleaner."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Nielsen heuristics",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+    },
+    {
+      "title": "WCAG 2.2",
+      "url": "https://www.w3.org/TR/WCAG22/"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Review a workflow using task evidence, interaction principles, accessibility, and measurable outcomes. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 9
+}

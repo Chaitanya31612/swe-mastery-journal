@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Does one successful batch HTTP call prove every entry succeeded?",
+    "options": [
+      "No",
+      "Only with a rule",
+      "Yes"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "What does a routing pattern primarily select?",
+    "options": [
+      "Valid database transactions",
+      "Completed user workflows",
+      "Events matching field conditions"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Which context can explain a missing event?",
+    "options": [
+      "Only the Ruby class name",
+      "Wrong bus, account, region, or target permission",
+      "Only button color"
+    ]
+  }
+]

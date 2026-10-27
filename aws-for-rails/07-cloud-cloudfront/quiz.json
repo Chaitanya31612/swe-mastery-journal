@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "prompt": "What defines which requests can share a cached response?",
+    "options": [
+      "The cache key/policy",
+      "The Rails class name",
+      "Only the origin URL name"
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "Should personalized JSON be shared blindly?",
+    "options": [
+      "Yes",
+      "No",
+      "Only if gzipped"
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "Why retain old versioned assets temporarily?",
+    "options": [
+      "Cached HTML may still reference them",
+      "They improve SQL plans",
+      "To avoid authorization"
+    ]
+  }
+]

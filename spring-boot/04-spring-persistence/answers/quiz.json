@@ -1,0 +1,10 @@
+{
+  "reason": {
+    "correctIndex": 1,
+    "explanation": "Flush synchronizes changes with the database connection. The transaction can still roll back before commit."
+  },
+  "predict": {
+    "correctIndex": 2,
+    "explanation": "One initial query plus twenty lookups equals twenty-one."
+  }
+}

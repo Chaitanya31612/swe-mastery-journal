@@ -1,0 +1,100 @@
+{
+  "id": "git-surgery",
+  "track": "git",
+  "title": "Cherry-pick, revert, and moving a fix deliberately",
+  "level": "intermediate",
+  "outcome": "Move a small fix between release lines and distinguish patch replay from history preservation.",
+  "useCase": "Backports and shared-history repairs.",
+  "benefits": "Small fixes can move without unrelated features.",
+  "drawbacks": "Dependencies and merge semantics can make a small patch nontrivial.",
+  "tags": [
+    "git",
+    "releases"
+  ],
+  "hours": 2,
+  "number": 7,
+  "version": "Modern Git; check git --version for command availability",
+  "book": "",
+  "cue": "Move the patch. Check its assumptions.",
+  "prerequisite": "git-investigation",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Inspect fix\"]\n N1[\"Check release base\"]\n N2[\"Replay change\"]\n N3[\"Resolve dependencies\"]\n N4[\"Test target release\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Inspect fix\"]\n N1[\"Check release base\"]\n N2[\"Replay change\"]\n N3[\"Resolve dependencies\"]\n N4[\"Test target release\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Inspect fix",
+      "detail": "Cherry-pick applies a commit’s change onto the current base and usually creates a new commit. It does not bring every dependency of that change automatically. A patch that applies cleanly can still call a helper absent on the release branch."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Fix on main → inspect dependencies → replay onto release branch → resolve intent → test release configuration → review. The new commit ID can differ even when the patch is similar.\n\nFor a revert, test the resulting behavior with later changes present. A reverse patch is not a reversal of every external effect or migration."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "A clean cherry-pick can be behaviorally incomplete. Reverting a migration commit does not reconstruct deleted data. Shared branch rewrites need coordination."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Git cherry-pick",
+      "url": "https://git-scm.com/docs/git-cherry-pick"
+    },
+    {
+      "title": "Git revert",
+      "url": "https://git-scm.com/docs/git-revert"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Move a small fix between release lines and distinguish patch replay from history preservation. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 7
+}

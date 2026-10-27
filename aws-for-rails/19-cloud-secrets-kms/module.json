@@ -1,0 +1,101 @@
+{
+  "id": "cloud-secrets-kms",
+  "track": "cloud",
+  "title": "Secrets Manager and KMS: credentials and encryption keys are different",
+  "level": "intermediate",
+  "outcome": "Deliver secrets and authorize key use without confusing encryption with application access.",
+  "useCase": "Database credentials and private object encryption.",
+  "benefits": "Central secret/key lifecycle and access control.",
+  "drawbacks": "Rotation, caching, and multiple policy layers need operational tests.",
+  "tags": [
+    "aws",
+    "secrets",
+    "kms"
+  ],
+  "hours": 2,
+  "number": 19,
+  "version": "AWS SDK for Ruby v3 · service-specific setup · no cloud resources created automatically",
+  "book": "",
+  "cue": "Secret value, key permission, client lifetime, user permission.",
+  "prerequisite": "cloud-msk",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "Understand the idea",
+      "file": "idea.md"
+    },
+    {
+      "id": "example",
+      "title": "Follow a concrete example",
+      "file": "example.md"
+    },
+    {
+      "id": "trace",
+      "title": "Trace the execution",
+      "file": "trace.md"
+    },
+    {
+      "id": "failure",
+      "title": "Break it and reason about the repair",
+      "file": "failure.md"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "repair",
+      "kind": "repair",
+      "title": "Diagnose and repair",
+      "minutes": 30,
+      "file": "practice/repair.md",
+      "solutionFile": "answers/repair.md"
+    },
+    {
+      "id": "transfer",
+      "kind": "transfer",
+      "title": "Change the situation",
+      "minutes": 30,
+      "file": "practice/transfer.md",
+      "solutionFile": "answers/transfer.md"
+    }
+  ],
+  "visuals": [
+    {
+      "title": "The mechanism at a glance",
+      "placement": "overview",
+      "code": "flowchart TD\n N0[\"Workload identity\"]\n N1[\"Secret/key permission\"]\n N2[\"Validated config\"]\n N3[\"Client lifetime\"]\n N4[\"Rotation and access test\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4"
+    },
+    {
+      "title": "Recap: path, failure, and recovery",
+      "placement": "recap",
+      "code": "flowchart TD\n N0[\"Workload identity\"]\n N1[\"Secret/key permission\"]\n N2[\"Validated config\"]\n N3[\"Client lifetime\"]\n N4[\"Rotation and access test\"]\n N0 --> N1\n N1 --> N2\n N2 --> N3\n N3 --> N4\n N4 --> C{\"What if this fails or repeats?\"}\n C --> R[\"Check the stated rule and observe the boundary\"]\n R -. \"try the changed case\" .-> N0"
+    }
+  ],
+  "trace": [
+    {
+      "title": "Workload identity",
+      "detail": "A secret is a value the app needs, such as a database password. An encryption key protects cryptographic operations/data under a key policy. Secrets Manager and KMS address related but different responsibilities."
+    },
+    {
+      "title": "Follow one item",
+      "detail": "Workload role → permitted secret retrieval/key use → validated runtime config → client connection → rotation → refresh/reconnect. Test denied access and stale credentials without revealing values.\n\nFor incident response, distinguish revoking application access, rotating a credential, and changing encryption-key policy. They do not all revoke an already issued download URL or terminate every connection instantly."
+    },
+    {
+      "title": "Try the failure",
+      "detail": "Encrypting a secret in Git does not automatically establish safe key ownership. A successful secret fetch does not prove the DB accepts it. Rotation without refresh can cause intermittent failures."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Secrets Manager",
+      "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html"
+    },
+    {
+      "title": "KMS concepts",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html"
+    }
+  ],
+  "reading": [],
+  "recallPrompt": "Without notes: Deliver secrets and authorize key use without confusing encryption with application access. Explain one example and one failure.",
+  "lab": null,
+  "sequence": 19
+}
